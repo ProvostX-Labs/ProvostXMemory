@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Namespace ProvostXMemory.VectorIndex.Engine | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Namespace ProvostXMemory.VectorIndex.Engine | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.VectorIndex.Engine">
+
+  <h1 id="ProvostXMemory_VectorIndex_Engine" data-uid="ProvostXMemory.VectorIndex.Engine" class="text-break">Namespace ProvostXMemory.VectorIndex.Engine</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">
+Classes
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.EngineVectorIndexFactory.html">EngineVectorIndexFactory</a></h4>
+      <section>Own-engine factory: Flat → FlatExactIndex, Ivf → IvfFlatIndex, Hnsw → HnswIndex.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.EngineVectorIndexFactory.Options.html">EngineVectorIndexFactory.Options</a></h4>
+      <section>Backend options for every created index.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.FlatExactIndex.html">FlatExactIndex</a></h4>
+      <section>Own-engine exact backend: SIMD brute-force scan (Vector512→256→128, scalar fallback)
+over the in-memory float[] store. Fully built in memory; Flush is a no-op.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.FlatExactIndex.Options.html">FlatExactIndex.Options</a></h4>
+      <section>Backend options: the ranking metric (default cosine).</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswBeamSearcher.html">HnswBeamSearcher</a></h4>
+      <section>Exact analog of the canonical HNSW SEARCH-LAYER routine, in score form (higher = closer):
+candidate heap = max-heap by score (top = nearest candidate, expanded first), result heap
+= min-heap by score bounded to ef (top = worst kept result = the stop gate). A candidate
+whose score falls below the gate stops the beam. The visited set resets per layer
+traversal (canonical: fresh visited per searchLayer call); the query score cache lives in
+<a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswSearchContext.html">HnswSearchContext</a> and persists across layers of the same query. Returns
+results sorted best-first (score desc, node id asc).</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswBuilder.html">HnswBuilder</a></h4>
+      <section>Own HNSW construction (canonical INSERT algorithm, level-0 full beam): inserts each item
+in order, greedily descends from the entry point through layers above the node's top
+level, then beam-inserts per layer with the M / maxM neighbor pruning heuristic
+(keep-if-closer-than-direct-neighbors). Writes backlinks for pruned victims.
+Deterministic: seeded level assignment + insertion order + deterministic tie-breaks.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswGraph.html">HnswGraph</a></h4>
+      <section>Immutable-after-build layered HNSW graph topology: per-node adjacency sets per layer,
+plus the entry node and current max level. Pure data: ids/vectors live in
+<a class="xref" href="ProvostXMemory.VectorIndex.VectorItemStore.html">VectorItemStore</a>; the graph only stores link structure (int ids). Mutations
+happen only during construction — the finished graph is published in one reference swap
+and never modified afterwards (immutable-index semantics, ARCHITECTURE.md addendum).</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswIndex.html">HnswIndex</a></h4>
+      <section>Own-engine HNSW backend with IMMUTABLE-INDEX + BATCH-REBUILD semantics (patent-avoidance
+design, ARCHITECTURE.md addendum 2026-10-13): the layered graph is fully rebuilt from the
+item store on every Build, Add, and Remove — there is deliberately NO incremental update
+of a live graph, the method covered by US 15/929,802 "Dynamic Updates for HNSW". Core
+construction + layered greedy/beam search (unpatented) is implemented from scratch.
+Mutations mark the published graph dirty; the next search rebuilds it once (same
+batch-rebuild behavior as <a class="xref" href="ProvostXMemory.VectorIndex.Engine.IvfFlatIndex.html">IvfFlatIndex</a>). Cosine metric: vectors are
+L2-normalized internally. Deterministic given the same items in the same order + seed.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswLevelAssigner.html">HnswLevelAssigner</a></h4>
+      <section>Deterministic level assignment for HNSW layers: each node's top level is drawn from the
+geometric distribution ⌊-ln(U)/ln(levelFactor)⌋ (U uniform in [0,1), factor &lt; 1). Own
+<a class="xref" href="ProvostXMemory.VectorIndex.SeededRandom.html">SeededRandom</a> keeps level assignment stable across .NET versions/platforms; same
+seed + same insertion order → identical layer structure.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswOptions.html">HnswOptions</a></h4>
+      <section>HNSW backend tuning parameters, mirroring the canonical algorithm's knobs:
+<a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswOptions.html#ProvostXMemory_VectorIndex_Engine_HnswOptions_M">M</a> outgoing links per node above layer 0 (<a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswOptions.html#ProvostXMemory_VectorIndex_Engine_HnswOptions_MaxLevel0Connections">MaxLevel0Connections</a>
+on layer 0, typically 2·M), <a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswOptions.html#ProvostXMemory_VectorIndex_Engine_HnswOptions_LevelFactor">LevelFactor</a> as the level-assignment divisor
+(1/ln(M) canonically), <a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswOptions.html#ProvostXMemory_VectorIndex_Engine_HnswOptions_EfConstruction">EfConstruction</a> beam width while inserting,
+<a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswOptions.html#ProvostXMemory_VectorIndex_Engine_HnswOptions_EfSearch">EfSearch</a> beam width at query time, and the deterministic
+<a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswOptions.html#ProvostXMemory_VectorIndex_Engine_HnswOptions_Seed">Seed</a> for level assignment. Same seed + same insertion order → same graph.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswPublishedGraph.html">HnswPublishedGraph</a></h4>
+      <section>The published immutable snapshot of a built HNSW graph: row-order ids parallel to the
+normalized vector rows and the graph topology. Swapped in atomically after each full
+rebuild; never mutated afterwards (batch-rebuild semantics).</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswSearchContext.html">HnswSearchContext</a></h4>
+      <section>Reusable traversal context for one built HNSW graph: row-order ids parallel to
+normalized vector rows, a per-query dot-product score cache (NaN = unscored; zero-vector
+queries legitimately score 0 and MUST be rescored), and the visited set shared by
+construction-time multi-layer traversals. Score cache + visited set are reset per query
+(<a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswSearchContext.html#ProvostXMemory_VectorIndex_Engine_HnswSearchContext_ResetForNewQuery">ResetForNewQuery()</a>); the query is copied into a reusable buffer so no span
+state is held across calls.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswSearcher.html">HnswSearcher</a></h4>
+      <section>Query-time traversal over a built HNSW graph: greedy descent from the entry point
+through upper layers to layer 1, then a single ef-bounded beam search on layer 0,
+sorted best-first. Read-only over the published immutable graph.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.IvfFlatIndex.html">IvfFlatIndex</a></h4>
+      <section>Own-engine IVF-Flat: deterministic k-means coarse quantizer + inverted lists;
+search probes the nprobe nearest clusters (by quantizer metric) and scores members
+exactly. Mutations mark the partition stale; the next search rebuilds it (batch-rebuild
+semantics per the 2026-10-13 addendum). Flush is a no-op (in-memory).</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.IvfFlatIndex.Options.html">IvfFlatIndex.Options</a></h4>
+      <section>Backend options: metric, cluster count, probe count, k-means effort, deterministic seed.</section>
+    <h3 id="structs">
+Structs
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Engine.HnswCandidate.html">HnswCandidate</a></h4>
+      <section>A single candidate during graph traversal: node id + metric score.</section>
+
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

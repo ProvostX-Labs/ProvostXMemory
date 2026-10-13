@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class EvalReport | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class EvalReport | ProvostXMemory API ">
+    
+    <meta name="description" content="Serializable result of running an : per-case metrics, the aggregate, per-scope and per-stage breakdowns, threshold violations, and the per-case ranked id lists (with graded gains) for diffing. JSON-ready via System.Text.Json.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.Eval.EvalReport">
+
+
+
+  <h1 id="ProvostXMemory_Eval_EvalReport" data-uid="ProvostXMemory.Eval.EvalReport" class="text-break">Class EvalReport</h1>
+  <div class="markdown level0 summary">Serializable result of running an <a class="xref" href="ProvostXMemory.Eval.EvalCaseSet.html">EvalCaseSet</a>: per-case metrics, the
+aggregate, per-scope and per-stage breakdowns, threshold violations, and the per-case
+ranked id lists (with graded gains) for diffing. JSON-ready via System.Text.Json.</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">EvalReport</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="ProvostXMemory.Eval.EvalReport.html">EvalReport</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ProvostXMemory.html">ProvostXMemory</a>.<a class="xref" href="ProvostXMemory.Eval.html">Eval</a></h6>
+  <h6><strong>Assembly</strong>: ProvostXMemory.Eval.dll</h6>
+  <h5 id="ProvostXMemory_Eval_EvalReport_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed record EvalReport : IEquatable&lt;EvalReport&gt;</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <a id="ProvostXMemory_Eval_EvalReport__ctor_" data-uid="ProvostXMemory.Eval.EvalReport.#ctor*"></a>
+  <h4 id="ProvostXMemory_Eval_EvalReport__ctor_System_String_System_Int32_ProvostXMemory_Eval_EvalMetrics_System_Collections_Generic_IReadOnlyList_ProvostXMemory_Eval_EvalCaseMetrics__System_Collections_Generic_IReadOnlyList_ProvostXMemory_Eval_EvalMetricBreakdownEntry__System_Collections_Generic_IReadOnlyList_ProvostXMemory_Eval_EvalMetricBreakdownEntry__ProvostXMemory_Eval_MetricThresholdViolations_System_Collections_Generic_IReadOnlyList_ProvostXMemory_Eval_EvalCaseTrace__System_Int64_System_Double_" data-uid="ProvostXMemory.Eval.EvalReport.#ctor(System.String,System.Int32,ProvostXMemory.Eval.EvalMetrics,System.Collections.Generic.IReadOnlyList{ProvostXMemory.Eval.EvalCaseMetrics},System.Collections.Generic.IReadOnlyList{ProvostXMemory.Eval.EvalMetricBreakdownEntry},System.Collections.Generic.IReadOnlyList{ProvostXMemory.Eval.EvalMetricBreakdownEntry},ProvostXMemory.Eval.MetricThresholdViolations,System.Collections.Generic.IReadOnlyList{ProvostXMemory.Eval.EvalCaseTrace},System.Int64,System.Double)">EvalReport(string, int, EvalMetrics, IReadOnlyList&lt;EvalCaseMetrics&gt;, IReadOnlyList&lt;EvalMetricBreakdownEntry&gt;, IReadOnlyList&lt;EvalMetricBreakdownEntry&gt;, MetricThresholdViolations, IReadOnlyList&lt;EvalCaseTrace&gt;, long, double)</h4>
+  <div class="markdown level1 summary">Serializable result of running an <a class="xref" href="ProvostXMemory.Eval.EvalCaseSet.html">EvalCaseSet</a>: per-case metrics, the
+aggregate, per-scope and per-stage breakdowns, threshold violations, and the per-case
+ranked id lists (with graded gains) for diffing. JSON-ready via System.Text.Json.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EvalReport(string SetId, int TopK, EvalMetrics Aggregate, IReadOnlyList&lt;EvalCaseMetrics&gt; Cases, IReadOnlyList&lt;EvalMetricBreakdownEntry&gt; PerScope, IReadOnlyList&lt;EvalMetricBreakdownEntry&gt; PerStage, MetricThresholdViolations ThresholdViolations, IReadOnlyList&lt;EvalCaseTrace&gt; Traces, long CorpusRecordCount, double TotalDurationMs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">SetId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">TopK</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Eval.EvalMetrics.html">EvalMetrics</a></td>
+        <td><span class="parametername">Aggregate</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Eval.EvalCaseMetrics.html">EvalCaseMetrics</a>&gt;</td>
+        <td><span class="parametername">Cases</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Eval.EvalMetricBreakdownEntry.html">EvalMetricBreakdownEntry</a>&gt;</td>
+        <td><span class="parametername">PerScope</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Eval.EvalMetricBreakdownEntry.html">EvalMetricBreakdownEntry</a>&gt;</td>
+        <td><span class="parametername">PerStage</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Eval.MetricThresholdViolations.html">MetricThresholdViolations</a></td>
+        <td><span class="parametername">ThresholdViolations</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Eval.EvalCaseTrace.html">EvalCaseTrace</a>&gt;</td>
+        <td><span class="parametername">Traces</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">CorpusRecordCount</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
+        <td><span class="parametername">TotalDurationMs</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <a id="ProvostXMemory_Eval_EvalReport_Aggregate_" data-uid="ProvostXMemory.Eval.EvalReport.Aggregate*"></a>
+  <h4 id="ProvostXMemory_Eval_EvalReport_Aggregate" data-uid="ProvostXMemory.Eval.EvalReport.Aggregate">Aggregate</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EvalMetrics Aggregate { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Eval.EvalMetrics.html">EvalMetrics</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Eval_EvalReport_AllThresholdsPass_" data-uid="ProvostXMemory.Eval.EvalReport.AllThresholdsPass*"></a>
+  <h4 id="ProvostXMemory_Eval_EvalReport_AllThresholdsPass" data-uid="ProvostXMemory.Eval.EvalReport.AllThresholdsPass">AllThresholdsPass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AllThresholdsPass { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Eval_EvalReport_Cases_" data-uid="ProvostXMemory.Eval.EvalReport.Cases*"></a>
+  <h4 id="ProvostXMemory_Eval_EvalReport_Cases" data-uid="ProvostXMemory.Eval.EvalReport.Cases">Cases</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;EvalCaseMetrics&gt; Cases { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Eval.EvalCaseMetrics.html">EvalCaseMetrics</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Eval_EvalReport_CorpusRecordCount_" data-uid="ProvostXMemory.Eval.EvalReport.CorpusRecordCount*"></a>
+  <h4 id="ProvostXMemory_Eval_EvalReport_CorpusRecordCount" data-uid="ProvostXMemory.Eval.EvalReport.CorpusRecordCount">CorpusRecordCount</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long CorpusRecordCount { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Eval_EvalReport_PerScope_" data-uid="ProvostXMemory.Eval.EvalReport.PerScope*"></a>
+  <h4 id="ProvostXMemory_Eval_EvalReport_PerScope" data-uid="ProvostXMemory.Eval.EvalReport.PerScope">PerScope</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;EvalMetricBreakdownEntry&gt; PerScope { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Eval.EvalMetricBreakdownEntry.html">EvalMetricBreakdownEntry</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Eval_EvalReport_PerStage_" data-uid="ProvostXMemory.Eval.EvalReport.PerStage*"></a>
+  <h4 id="ProvostXMemory_Eval_EvalReport_PerStage" data-uid="ProvostXMemory.Eval.EvalReport.PerStage">PerStage</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;EvalMetricBreakdownEntry&gt; PerStage { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Eval.EvalMetricBreakdownEntry.html">EvalMetricBreakdownEntry</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Eval_EvalReport_SetId_" data-uid="ProvostXMemory.Eval.EvalReport.SetId*"></a>
+  <h4 id="ProvostXMemory_Eval_EvalReport_SetId" data-uid="ProvostXMemory.Eval.EvalReport.SetId">SetId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string SetId { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Eval_EvalReport_ThresholdViolations_" data-uid="ProvostXMemory.Eval.EvalReport.ThresholdViolations*"></a>
+  <h4 id="ProvostXMemory_Eval_EvalReport_ThresholdViolations" data-uid="ProvostXMemory.Eval.EvalReport.ThresholdViolations">ThresholdViolations</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MetricThresholdViolations ThresholdViolations { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Eval.MetricThresholdViolations.html">MetricThresholdViolations</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Eval_EvalReport_TopK_" data-uid="ProvostXMemory.Eval.EvalReport.TopK*"></a>
+  <h4 id="ProvostXMemory_Eval_EvalReport_TopK" data-uid="ProvostXMemory.Eval.EvalReport.TopK">TopK</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TopK { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Eval_EvalReport_TotalDurationMs_" data-uid="ProvostXMemory.Eval.EvalReport.TotalDurationMs*"></a>
+  <h4 id="ProvostXMemory_Eval_EvalReport_TotalDurationMs" data-uid="ProvostXMemory.Eval.EvalReport.TotalDurationMs">TotalDurationMs</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double TotalDurationMs { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Eval_EvalReport_Traces_" data-uid="ProvostXMemory.Eval.EvalReport.Traces*"></a>
+  <h4 id="ProvostXMemory_Eval_EvalReport_Traces" data-uid="ProvostXMemory.Eval.EvalReport.Traces">Traces</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;EvalCaseTrace&gt; Traces { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Eval.EvalCaseTrace.html">EvalCaseTrace</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable&lt;T&gt;</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

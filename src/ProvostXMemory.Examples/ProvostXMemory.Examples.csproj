@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>ProvostXMemory.Examples</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Facade package pulls in every layer (storage, retrieval, fusion, consolidation,
+         correction, graph, logging, eval helpers are reached through their own packages). -->
+    <ProjectReference Include="../ProvostXMemory/ProvostXMemory.csproj" />
+    <!-- Own-engine backends (Flat / IVF / HNSW) and the FlatJson index surface. -->
+    <ProjectReference Include="../ProvostXMemory.VectorIndex.Engine/ProvostXMemory.VectorIndex.Engine.csproj" />
+    <!-- GPU backend (guarded availability, transparent CPU fallback — runs without a GPU). -->
+    <ProjectReference Include="../ProvostXMemory.VectorIndex.Gpu/ProvostXMemory.VectorIndex.Gpu.csproj" />
+    <!-- Deterministic eval corpus / runner + the deterministic example embedder. -->
+    <ProjectReference Include="../ProvostXMemory.Eval/ProvostXMemory.Eval.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Namespace ProvostXMemory.VectorIndex.Gpu | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Namespace ProvostXMemory.VectorIndex.Gpu | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.VectorIndex.Gpu">
+
+  <h1 id="ProvostXMemory_VectorIndex_Gpu" data-uid="ProvostXMemory.VectorIndex.Gpu" class="text-break">Namespace ProvostXMemory.VectorIndex.Gpu</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">
+Classes
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.DefaultGpuContextPolicy.html">DefaultGpuContextPolicy</a></h4>
+      <section>Default policy: GPU-first discovery (CUDA/OpenCL per options), optional CPU fallback
+acceptance (off by default — availability must reflect real GPUs only). Device
+selection prefers CUDA &gt; OpenCL and never throws when none exist.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.GpuAccelerator.html">GpuAccelerator</a></h4>
+      <section>Owns the ILGPU Context and the resolved accelerator. The GPU hand-shake runs once,
+lazily, on first access, inside a lock, and every failure mode (builder exception,
+missing driver, no acceptable device, accelerator-creation failure) collapses to
+IsAvailable=false. Nothing here throws for 'no GPU present'.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.GpuDiscoveryOptions.html">GpuDiscoveryOptions</a></h4>
+      <section>How the ILGPU context is built for accelerator discovery. GPU-first builders enable
+CUDA/OpenCL discovery; the flag set mirrors what the host considers acceptable.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.GpuFlatIndex.html">GpuFlatIndex</a></h4>
+      <section>GPU-accelerated exact flat index (ILGPU kernel scan). When no GPU is available the
+injected CPU fallback IVectorIndex is used for every operation with identical
+semantics — the fallback path must pass the engine conformance suite unchanged.
+Kernels load lazily; all GPU faults collapse to CPU-fallback execution.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.GpuFlatIndex.Options.html">GpuFlatIndex.Options</a></h4>
+      <section>Backend options: ranking metric (default cosine) + launch chunking.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.GpuIvfIndex.html">GpuIvfIndex</a></h4>
+      <section>GPU-accelerated IVF index: the deterministic engine k-means partitions the corpus
+(CPU-side, same algorithm as IvfFlatIndex so partitions are identical), GPU kernels
+score (1) coarse centroids and (2) in-cluster members. When no GPU is available the
+injected CPU fallback IVectorIndex is used with identical semantics.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.GpuIvfIndex.Options.html">GpuIvfIndex.Options</a></h4>
+      <section>Backend options: mirrors the engine IVF options + ranking metric + launch chunking.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.GpuLaunchOptions.html">GpuLaunchOptions</a></h4>
+      <section>Kernel-launch policy: rows per launch chunk and the per-launch thread cap. Chunked
+launches keep the per-thread flat loop short and bounded on every backend (including
+ILGPU's CPU simulator, which materializes one thread per index).</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.GpuMetricCodec.html">GpuMetricCodec</a></h4>
+      <section>Mapping from the engine metric enum onto the GPU kernel's int metric code.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.GpuVectorIndexFactory.html">GpuVectorIndexFactory</a></h4>
+      <section>Factory that produces <a class="xref" href="ProvostXMemory.VectorIndex.Gpu.GpuFlatIndex.html">GpuFlatIndex</a> for <a class="xref" href="ProvostXMemory.Abstractions.IndexKind.html#ProvostXMemory_Abstractions_IndexKind_Gpu">Gpu</a> and
+delegates every other kind to the injected CPU <a class="xref" href="ProvostXMemory.VectorIndex.IVectorIndexFactory.html">IVectorIndexFactory</a>. The
+GPU index receives the standard <a class="xref" href="ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator.html">IGpuAccelerator</a> availability gate and
+wraps a flat CPU fallback <a class="xref" href="ProvostXMemory.VectorIndex.IVectorIndex.html">IVectorIndex</a> as its transparent CPU fallback,
+so search semantics are identical whether or not an accelerator is present.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.GpuVectorKernels.html">GpuVectorKernels</a></h4>
+      <section>ILGPU kernels: one thread per score slot, plain loops, no barriers/shared memory —
+identical accumulation order on every backend (CPU simulator included), so GPU and
+fallback results are bit-for-bit reproducible for the same inputs.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.GpuVectorMatrix.html">GpuVectorMatrix</a></h4>
+      <section>GPU-resident row-major vector matrix with lazy (re)upload: CPU-side rows + norms are
+mirrored to device buffers; uploads overwrite exactly the changed range. Ownership
+and synchronization live here — indexes never touch ILGPU buffers directly.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.IlgpuScoreLauncher.html">IlgpuScoreLauncher</a></h4>
+      <section>Lazy, guarded ILGPU kernel launcher: kernels compile on first launch only (never at
+construction), launches are chunked per GpuLaunchOptions, and every launch ends with
+a synchronize so scored results are deterministically visible on the host.</section>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator.html">IGpuAccelerator</a></h4>
+      <section>Availability handle for the ILGPU runtime: owns the Context and exposes the resolved
+accelerator lazily. Construction never throws and never touches GPU drivers; every
+member is guarded so machines without CUDA/OpenCL observe IsAvailable=false.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.IGpuContextPolicy.html">IGpuContextPolicy</a></h4>
+      <section>ILGPU accelerator hand-shake: a GPU-first context (CUDA + OpenCL as configured) with
+device classes the caller considers acceptable. All discovery is exception-
+guarded; a machine without GPU drivers simply observes IsAvailable=false.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.IGpuScoreLauncher.html">IGpuScoreLauncher</a></h4>
+      <section>Compiled-kernel launcher boundary: hides ILGPU's launcher delegates behind an
+injectable abstraction so index classes stay backend-agnostic and testable.</section>
+    <h3 id="enums">
+Enums
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.Gpu.GpuDistanceMetric.html">GpuDistanceMetric</a></h4>
+      <section>Backend metric shared with the engine kernels (mirrors VectorDistanceMetric).</section>
+
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

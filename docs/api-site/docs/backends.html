@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Backends | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Backends | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="backends">Backends</h1>
+
+<p>Every vector index backend implements the same <code>IVectorIndex</code> contract and must pass the same conformance suite (build, add, remove, search, flush, dimension/count invariants). Switching backends is a configuration change: set <code>VectorOptions.IndexKind</code> and wire the matching <code>IVectorIndexFactory</code>.</p>
+<h2 id="the-contract">The contract</h2>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Build(items)</code></td>
+<td>Replaces index contents with the given <code>VectorItem</code> set.</td>
+</tr>
+<tr>
+<td><code>Add(item)</code> / <code>Remove(id)</code></td>
+<td>Incremental mutation (where supported).</td>
+</tr>
+<tr>
+<td><code>Search(vector, k)</code></td>
+<td>Returns <code>ScoredVectorId</code> list, best first.</td>
+</tr>
+<tr>
+<td><code>Dim</code> / <code>Count</code></td>
+<td>Dimension and current item count.</td>
+</tr>
+<tr>
+<td><code>Flush</code></td>
+<td>Persists durable state.</td>
+</tr>
+</tbody>
+</table>
+<p>Guards (<code>IVectorIndexGuard</code>) protect against dimension and model-hash mismatches; violations throw <code>VectorIndexGuardMismatchException</code>. Missing ids throw <code>VectorIndexIdNotFoundException</code>.</p>
+<h2 id="flatjson-default-core-package">FlatJson (default, core package)</h2>
+<ul>
+<li><strong>Mechanism:</strong> vectors held in a per-scope <code>VectorNamespaceFile</code> (transactional JSON file, written via <code>AtomicFileWriter</code>); search is brute-force cosine over the scope's items.</li>
+<li><strong>Complexity:</strong> build O(n·d); search O(n·d) per query.</li>
+<li><strong>When to choose:</strong> small scopes (up to a few thousand vectors), persistence-first deployments, environments where zero extra dependencies matter. It is also the parity baseline all other backends are tested against.</li>
+<li><strong>Persistence:</strong> JSON in the scope's <code>vectors/&lt;model-hash&gt;/</code> directory; survives restarts without a rebuild.</li>
+</ul>
+<h2 id="flatexact-own-engine-simd">FlatExact (own engine, SIMD)</h2>
+<ul>
+<li><strong>Package:</strong> <code>ProvostXMemory.VectorIndex.Engine</code>.</li>
+<li><strong>Mechanism:</strong> exact brute-force search with <code>Vector512</code> SIMD kernels (<code>VectorMath</code>, <code>VectorScanner</code>, <code>VectorTopKBuffer</code>); in-memory item store with configurable distance metric (<code>Engine Options</code>).</li>
+<li><strong>Complexity:</strong> build O(n·d); search O(n·d) but with a large SIMD constant-factor win over FlatJson.</li>
+<li><strong>When to choose:</strong> exactness required and up to ~10k vectors per scope; also the reference result source for cross-backend parity tests.</li>
+</ul>
+<h2 id="ivf-own-engine">IVF (own engine)</h2>
+<ul>
+<li><strong>Package:</strong> <code>ProvostXMemory.VectorIndex.Engine</code>.</li>
+<li><strong>Mechanism:</strong> k-means coarse quantizer (<code>KMeansQuantizer</code>, seeded and deterministic) partitions vectors into inverted posting lists; a query scans only the nearest <code>nprobe</code> lists. <code>IvfPostingLists</code>, <code>IvfMember</code>, <code>KMeansResult</code> are the supporting types.</li>
+<li><strong>Complexity:</strong> build O(iterations · n · d); search O(nprobe/ncentroids · n · d) — sublinear in n.</li>
+<li><strong>Trade-off:</strong> recall depends on <code>nprobe</code>; results are deterministic for a given seed and build order.</li>
+<li><strong>When to choose:</strong> 10k–1M vectors where a small, tunable recall loss buys large search-speed gains.</li>
+</ul>
+<h2 id="hnsw-own-engine">HNSW (own engine)</h2>
+<ul>
+<li><strong>Package:</strong> <code>ProvostXMemory.VectorIndex.Engine</code>.</li>
+<li><strong>Mechanism:</strong> hierarchical navigable small-world graph — <code>HnswBuilder</code> constructs layered graphs (<code>HnswGraph</code>), level assignment is seeded (<code>HnswLevelAssigner</code>), search is greedy beam descent (<code>HnswSearcher</code>, <code>HnswBeamSearcher</code>).</li>
+<li><strong>Complexity:</strong> build O(n·log n·d); search approximately O(log n·d).</li>
+<li><strong>Patent-safe semantics:</strong> indexes are <strong>immutable after build</strong>; mutations trigger a batch rebuild. This deliberately avoids incremental dynamic-update methods (see the patent addendum in ARCHITECTURE.md).</li>
+<li><strong>Quality:</strong> measured recall@10 = 0.998 on a 2000×64 synthetic corpus; two identical builds produce bit-identical results (determinism pinned by tests).</li>
+<li><strong>When to choose:</strong> 10k–10M vectors with high recall requirements and read-mostly workloads.</li>
+</ul>
+<h2 id="gpu-ilgpu">GPU (ILGPU)</h2>
+<ul>
+<li><strong>Package:</strong> <code>ProvostXMemory.VectorIndex.Gpu</code>.</li>
+<li><strong>Mechanism:</strong> own ILGPU kernels for exact flat scoring and IVF list scans (<code>GpuVectorKernels</code>, <code>IlgpuScoreLauncher</code>, <code>GpuVectorMatrix</code>). Kernels are one-thread-per-slot with chunked launches — no barriers or shared memory — so accumulation order is identical to CPU: results are <strong>bit-exact</strong> between GPU and fallback paths.</li>
+<li><strong>Availability:</strong> <code>IGpuAccelerator</code> discovery is lazy and exception-guarded (<code>IGpuContextPolicy</code>, <code>GpuDiscoveryOptions</code>). On machines without a compatible accelerator the index transparently delegates to an injected CPU <code>IVectorIndex</code> with identical results; the same conformance suite passes on CPU-only machines via this path.</li>
+<li><strong>Factories:</strong> <code>GpuVectorIndexFactory</code> wraps an <code>EngineVectorIndexFactory</code> for the fallback; the engine factory itself rejects <code>IndexKind.Gpu</code> by design (explicit routing, pinned by tests).</li>
+<li><strong>When to choose:</strong> Flat/IVF-sized workloads where an accelerator is present and batch scoring throughput matters.</li>
+</ul>
+<h2 id="selection-matrix">Selection matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Backend</th>
+<th>Exact?</th>
+<th>Scale guidance</th>
+<th>Extra package</th>
+<th>Native deps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FlatJson</td>
+<td>yes</td>
+<td>≤ a few thousand per scope</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>FlatExact</td>
+<td>yes</td>
+<td>≤ ~10k per scope</td>
+<td>Engine</td>
+<td>none</td>
+</tr>
+<tr>
+<td>IVF</td>
+<td>approximate (tunable)</td>
+<td>10k–1M</td>
+<td>Engine</td>
+<td>none</td>
+</tr>
+<tr>
+<td>HNSW</td>
+<td>approximate</td>
+<td>10k–10M</td>
+<td>Engine</td>
+<td>none</td>
+</tr>
+<tr>
+<td>GPU (Flat/IVF)</td>
+<td>exact (bit-identical)</td>
+<td>Flat/IVF scale, accelerator-dependent</td>
+<td>Gpu</td>
+<td>GPU runtime via ILGPU</td>
+</tr>
+</tbody>
+</table>
+<p>Rules of thumb: start with FlatJson; move to HNSW when a scope outgrows brute-force latency; use IVF when you can trade a little recall for speed; configure GPU unconditionally when hardware may be present — the fallback makes it safe to configure unconditionally.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

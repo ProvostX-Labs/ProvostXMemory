@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Consolidation | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Consolidation | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="consolidation">Consolidation</h1>
+
+<p>Consolidation is the maintenance pass that keeps a scope's memory healthy: deduplication, TTL expiry, and cluster-summary emission. It is triggered explicitly via <code>IMemoryService.ConsolidateAsync(scope, options)</code> — the library never mutates memory in the background on its own.</p>
+<h2 id="what-a-pass-does">What a pass does</h2>
+<p><code>MemoryConsolidator</code> (implements <code>IMemoryConsolidator</code>) runs over one scope:</p>
+<ol>
+<li><strong>Deduplication</strong> — <code>ThresholdDedupDetector</code> (implements <code>IDedupDetector</code>) finds near-duplicates by embedding similarity at or above <code>ConsolidationOptions.DedupSimilarityThreshold</code>. Survivors are the <strong>oldest</strong> record; the survivor's tags are the union of the duplicate set's tags; newer duplicates are removed and their index artifacts are cleaned up.</li>
+<li><strong>TTL expiry</strong> — when <code>ConsolidationOptions.ExpireTtl</code> is set, records whose <code>ExpiresAt</code> is in the past are deleted; expiry persists across restarts.</li>
+<li><strong>Cluster summaries</strong> — when <code>ConsolidationOptions.EmitClusterSummaries</code> is set, <code>ClusterSummarizer</code> (implements <code>IClusterSummarizer</code>) produces a new summary record for each coherent cluster:
+<ul>
+<li>the summary record is stored with category <code>summary</code> and appears in ordinary recall results;</li>
+<li>the cluster is also recorded in the scope's graph store (<code>IMemoryGraphStore</code> cluster write path), linking the member entities.</li>
+</ul>
+</li>
+</ol>
+<p>The pass returns a report (via <code>ConsolidationReportMeta</code>) describing removals and emissions, and the facade refreshes or removes affected index artifacts so recall immediately reflects the consolidated state.</p>
+<h2 id="options-reference">Options reference</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DedupSimilarityThreshold</code></td>
+<td>high (≈0.99999 used in journeys)</td>
+<td>Similarity at which two records are considered duplicates.</td>
+</tr>
+<tr>
+<td><code>ExpireTtl</code></td>
+<td><code>true</code></td>
+<td>Delete records past <code>ExpiresAt</code> during the pass.</td>
+</tr>
+<tr>
+<td><code>EmitClusterSummaries</code></td>
+<td><code>true</code></td>
+<td>Generate summary records + graph clusters.</td>
+</tr>
+</tbody>
+</table>
+<p><code>ConsolidationTuning</code> exposes additional internal tuning knobs to the consolidator implementation.</p>
+<h2 id="policies-and-recommended-cadence">Policies and recommended cadence</h2>
+<ul>
+<li><strong>Threshold choice:</strong> set the dedup threshold as high as precision allows. At 0.99999+ only true restatements merge; lowering it aggressively risks collapsing distinct memories.</li>
+<li><strong>When to run:</strong> after bulk ingestion, periodically for long-lived session scopes, and before eval runs that should measure consolidated-state quality.</li>
+<li><strong>Ordering guarantees:</strong> consolidation is deterministic — the same store state and options produce the same survivors, unions, and summaries (pinned by tests, including non-regression of golden-query scores across a consolidation pass).</li>
+<li><strong>Index consistency:</strong> you do not need to rebuild after consolidation; the facade refreshes index artifacts as part of the pass. A full <code>RebuildAsync</code> remains available for wholesale reindexing.</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

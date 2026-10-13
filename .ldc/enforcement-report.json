@@ -1,0 +1,64 @@
+{
+  "project": "ProvostXMemory",
+  "timestamp": "2026-10-13T12:08:11.104095+00:00",
+  "total_violations": 9,
+  "errors": 1,
+  "warnings": 8,
+  "violations": [
+    {
+      "rule": "no-statics",
+      "severity": "error",
+      "file": "src/ProvostXMemory.Telemetry/NoopMemoryTelemetry.cs",
+      "message": "Static mutable field found in NoopMemoryTelemetry: static NoopMemoryTelemetry Instance ="
+    },
+    {
+      "rule": "interface-first",
+      "severity": "warning",
+      "file": "src/ProvostXMemory.Eval/EvalCase.cs",
+      "message": "Public class EvalCase in ProvostXMemory.Eval implements no interface \u2014 may be a boundary leak"
+    },
+    {
+      "rule": "interface-first",
+      "severity": "warning",
+      "file": "src/ProvostXMemory.Eval/EvalCaseSet.cs",
+      "message": "Public class EvalCaseSet in ProvostXMemory.Eval implements no interface \u2014 may be a boundary leak"
+    },
+    {
+      "rule": "interface-first",
+      "severity": "warning",
+      "file": "src/ProvostXMemory.Eval/EvalMetricThresholds.cs",
+      "message": "Public class MetricThresholdViolations in ProvostXMemory.Eval implements no interface \u2014 may be a boundary leak"
+    },
+    {
+      "rule": "interface-first",
+      "severity": "warning",
+      "file": "src/ProvostXMemory/GraphIndexLedger.cs",
+      "message": "Public class GraphIndexLedger in ProvostXMemory implements no interface \u2014 may be a boundary leak"
+    },
+    {
+      "rule": "interface-first",
+      "severity": "warning",
+      "file": "src/ProvostXMemory.VectorIndex.Engine/IvfPostingLists.cs",
+      "message": "Public class IvfPostingLists in ProvostXMemory.VectorIndex.Engine implements no interface \u2014 may be a boundary leak"
+    },
+    {
+      "rule": "interface-first",
+      "severity": "warning",
+      "file": "src/ProvostXMemory.Logging/MemoryLogger.cs",
+      "message": "Public class MemoryLogger in ProvostXMemory.Logging implements no interface \u2014 may be a boundary leak"
+    },
+    {
+      "rule": "interface-first",
+      "severity": "warning",
+      "file": "src/ProvostXMemory.VectorIndex/VectorNamespaceFile.cs",
+      "message": "Public class Entry in ProvostXMemory.VectorIndex implements no interface \u2014 may be a boundary leak"
+    },
+    {
+      "rule": "interface-first",
+      "severity": "warning",
+      "file": "src/ProvostXMemory.VectorIndex/VectorNamespaceFile.cs",
+      "message": "Public class Content in ProvostXMemory.VectorIndex implements no interface \u2014 may be a boundary leak"
+    }
+  ],
+  "passed": false
+}

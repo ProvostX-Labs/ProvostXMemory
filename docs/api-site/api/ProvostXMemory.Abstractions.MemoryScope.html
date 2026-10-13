@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class MemoryScope | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class MemoryScope | ProvostXMemory API ">
+    
+    <meta name="description" content="One isolation boundary of memory: the (Kind, Id) pair every record, index, and log line belongs to. Records written to one scope are structurally invisible to operations on another — the storage root layout pins each scope to its own directory tree and the index registry keys indexes by the exact scope pair. Scopes may carry a  chain for hierarchical fan-out (query plans target a root and resolve child scopes), but lookups never fall through to parents: a query against scope A sees scope A, nothing else, whatever its ancestry.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.Abstractions.MemoryScope">
+
+
+
+  <h1 id="ProvostXMemory_Abstractions_MemoryScope" data-uid="ProvostXMemory.Abstractions.MemoryScope" class="text-break">Class MemoryScope</h1>
+  <div class="markdown level0 summary"><p>One isolation boundary of memory: the (Kind, Id) pair every record, index, and
+log line belongs to. Records written to one scope are structurally invisible to
+operations on another — the storage root layout pins each scope to its own directory
+tree and the index registry keys indexes by the exact scope pair.</p>
+<p>Scopes may carry a <a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html#ProvostXMemory_Abstractions_MemoryScope_ParentScope">ParentScope</a> chain for hierarchical fan-out
+(query plans target a root and resolve child scopes), but lookups never fall through
+to parents: a query against scope A sees scope A, nothing else, whatever its ancestry.</p></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">MemoryScope</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ProvostXMemory.html">ProvostXMemory</a>.<a class="xref" href="ProvostXMemory.Abstractions.html">Abstractions</a></h6>
+  <h6><strong>Assembly</strong>: ProvostXMemory.Abstractions.dll</h6>
+  <h5 id="ProvostXMemory_Abstractions_MemoryScope_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed record MemoryScope : IEquatable&lt;MemoryScope&gt;</code></pre>
+  </div>
+  <h5 id="ProvostXMemory_Abstractions_MemoryScope_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks">Typical kinds: <code>MemoryScopeKind.Platform</code> (per surface),
+<code>MemoryScopeKind.Session</code> (per conversation),
+<code>MemoryScopeKind.Tenant</code> (per customer in multi-tenant hosts),
+<code>MemoryScopeKind.Purpose</code> (per knowledge base),
+<code>MemoryScopeKind.Custom</code> (anything else). Scope ids must be safe path
+segments (letters, digits, '-', '_'); traversal sequences are rejected at the layout layer.</div>
+  <h3 id="constructors">Constructors
+</h3>
+  <a id="ProvostXMemory_Abstractions_MemoryScope__ctor_" data-uid="ProvostXMemory.Abstractions.MemoryScope.#ctor*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryScope__ctor_ProvostXMemory_Abstractions_MemoryScopeKind_System_String_ProvostXMemory_Abstractions_MemoryScope_" data-uid="ProvostXMemory.Abstractions.MemoryScope.#ctor(ProvostXMemory.Abstractions.MemoryScopeKind,System.String,ProvostXMemory.Abstractions.MemoryScope)">MemoryScope(MemoryScopeKind, string, MemoryScope?)</h4>
+  <div class="markdown level1 summary"><p>One isolation boundary of memory: the (Kind, Id) pair every record, index, and
+log line belongs to. Records written to one scope are structurally invisible to
+operations on another — the storage root layout pins each scope to its own directory
+tree and the index registry keys indexes by the exact scope pair.</p>
+<p>Scopes may carry a <a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html#ProvostXMemory_Abstractions_MemoryScope_ParentScope">ParentScope</a> chain for hierarchical fan-out
+(query plans target a root and resolve child scopes), but lookups never fall through
+to parents: a query against scope A sees scope A, nothing else, whatever its ancestry.</p></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryScope(MemoryScopeKind Kind, string Id, MemoryScope? ParentScope = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScopeKind.html">MemoryScopeKind</a></td>
+        <td><span class="parametername">Kind</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">Id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">ParentScope</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ProvostXMemory_Abstractions_MemoryScope__ctor_ProvostXMemory_Abstractions_MemoryScopeKind_System_String_ProvostXMemory_Abstractions_MemoryScope__remarks">Remarks</h5>
+  <div class="markdown level1 remarks">Typical kinds: <code>MemoryScopeKind.Platform</code> (per surface),
+<code>MemoryScopeKind.Session</code> (per conversation),
+<code>MemoryScopeKind.Tenant</code> (per customer in multi-tenant hosts),
+<code>MemoryScopeKind.Purpose</code> (per knowledge base),
+<code>MemoryScopeKind.Custom</code> (anything else). Scope ids must be safe path
+segments (letters, digits, '-', '_'); traversal sequences are rejected at the layout layer.</div>
+  <h3 id="properties">Properties
+</h3>
+  <a id="ProvostXMemory_Abstractions_MemoryScope_Id_" data-uid="ProvostXMemory.Abstractions.MemoryScope.Id*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryScope_Id" data-uid="ProvostXMemory.Abstractions.MemoryScope.Id">Id</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Id { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryScope_Kind_" data-uid="ProvostXMemory.Abstractions.MemoryScope.Kind*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryScope_Kind" data-uid="ProvostXMemory.Abstractions.MemoryScope.Kind">Kind</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryScopeKind Kind { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScopeKind.html">MemoryScopeKind</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryScope_ParentScope_" data-uid="ProvostXMemory.Abstractions.MemoryScope.ParentScope*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryScope_ParentScope" data-uid="ProvostXMemory.Abstractions.MemoryScope.ParentScope">ParentScope</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryScope? ParentScope { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryScope_PathSegment_" data-uid="ProvostXMemory.Abstractions.MemoryScope.PathSegment*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryScope_PathSegment" data-uid="ProvostXMemory.Abstractions.MemoryScope.PathSegment">PathSegment</h4>
+  <div class="markdown level1 summary">Scope path segment ("<a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html#ProvostXMemory_Abstractions_MemoryScope_Kind">Kind</a>/<a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html#ProvostXMemory_Abstractions_MemoryScope_Id">Id</a>").</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PathSegment { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <a id="ProvostXMemory_Abstractions_MemoryScope_Chain_" data-uid="ProvostXMemory.Abstractions.MemoryScope.Chain*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryScope_Chain" data-uid="ProvostXMemory.Abstractions.MemoryScope.Chain">Chain()</h4>
+  <div class="markdown level1 summary">Flattens the scope chain, outermost first.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;MemoryScope&gt; Chain()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryScope_Contains_" data-uid="ProvostXMemory.Abstractions.MemoryScope.Contains*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryScope_Contains_ProvostXMemory_Abstractions_MemoryScope_" data-uid="ProvostXMemory.Abstractions.MemoryScope.Contains(ProvostXMemory.Abstractions.MemoryScope)">Contains(MemoryScope)</h4>
+  <div class="markdown level1 summary">Returns true when <code class="paramref">other</code> is this scope or a descendant of it.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(MemoryScope other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryScope_WithParent_" data-uid="ProvostXMemory.Abstractions.MemoryScope.WithParent*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryScope_WithParent_ProvostXMemory_Abstractions_MemoryScope_" data-uid="ProvostXMemory.Abstractions.MemoryScope.WithParent(ProvostXMemory.Abstractions.MemoryScope)">WithParent(MemoryScope)</h4>
+  <div class="markdown level1 summary">Returns this scope with <code class="paramref">parent</code> as its parent.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryScope WithParent(MemoryScope parent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">parent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable&lt;T&gt;</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

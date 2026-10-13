@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Namespace ProvostXMemory.Abstractions | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Namespace ProvostXMemory.Abstractions | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.Abstractions">
+
+  <h1 id="ProvostXMemory_Abstractions" data-uid="ProvostXMemory.Abstractions" class="text-break">Namespace ProvostXMemory.Abstractions</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">
+Classes
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.BackendStats.html">BackendStats</a></h4>
+      <section>Stats snapshot of a backend (store or index).</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.Chunk.html">Chunk</a></h4>
+      <section>A chunk produced by splitting a memory record. <a class="xref" href="ProvostXMemory.Abstractions.Chunk.html#ProvostXMemory_Abstractions_Chunk_StartOffset">StartOffset</a> and
+<a class="xref" href="ProvostXMemory.Abstractions.Chunk.html#ProvostXMemory_Abstractions_Chunk_EndOffset">EndOffset</a> are half-open offsets into the parent record's content
+(<code>parentContent[StartOffset..EndOffset] == Content</code>); the value -1 means "unset".
+Chunkers always set both.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.ChunkOptions.html">ChunkOptions</a></h4>
+      <section>Chunking parameters: structural markers, size and overlap. A trailing chunk shorter
+than <a class="xref" href="ProvostXMemory.Abstractions.ChunkOptions.html#ProvostXMemory_Abstractions_ChunkOptions_MinChunkLength">MinChunkLength</a> merges into its predecessor (may exceed the max —
+max is a packing target, min is a hard floor).</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.ConsolidationOptions.html">ConsolidationOptions</a></h4>
+      <section><p>Tuning for one <code>IMemoryService.ConsolidateAsync</code> pass over a scope.</p>
+<p><b><a class="xref" href="ProvostXMemory.Abstractions.ConsolidationOptions.html#ProvostXMemory_Abstractions_ConsolidationOptions_DedupSimilarityThreshold">DedupSimilarityThreshold</a></b> — cosine above which two records count
+as near-duplicates (lexical Jaccard fallback when embeddings degenerate). The OLDEST
+record of each duplicate group is kept, tags are unioned into it, the rest are deleted.
+<b><a class="xref" href="ProvostXMemory.Abstractions.ConsolidationOptions.html#ProvostXMemory_Abstractions_ConsolidationOptions_ExpireTtl">ExpireTtl</a></b> — when on (default), records whose <code>ExpiresAt</code> is past
+are deleted first. <b><a class="xref" href="ProvostXMemory.Abstractions.ConsolidationOptions.html#ProvostXMemory_Abstractions_ConsolidationOptions_EmitClusterSummaries">EmitClusterSummaries</a></b> — when on, the remaining
+near-duplicate clusters (similarity ≥ the <code>ConsolidationTuning.ClusterJoinThreshold</code>)
+emit one summary record each, graph-recorded when a graph extractor is wired.</p></section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.FusionOptions.html">FusionOptions</a></h4>
+      <section>Fusion options: RRF constant and stage weights.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.GraphOptions.html">GraphOptions</a></h4>
+      <section>Graph layer options: neighbor fan-out cap, walk depth, retriever behavior knobs.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.MemoryEntryModel.html">MemoryEntryModel</a></h4>
+      <section>Logical record model as persisted on disk (JSONL entry shape). <a class="xref" href="ProvostXMemory.Abstractions.MemoryEntryModel.html#ProvostXMemory_Abstractions_MemoryEntryModel_Reps">Reps</a> and
+<a class="xref" href="ProvostXMemory.Abstractions.MemoryEntryModel.html#ProvostXMemory_Abstractions_MemoryEntryModel_Meta">Meta</a> are optional trailing parameters: entries written before they existed
+(or writers that leave them out) deserialize with null, which the store maps to the
+record's empty defaults — never a null crash.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.MemoryLoggingOptions.html">MemoryLoggingOptions</a></h4>
+      <section><p>Logging configuration for the memory service. Off by default —
+<code>Enabled = false</code> means zero writes, zero log-entry allocations on the hot path,
+no log directory created. Enabled logging is content-minimized: log lines carry
+what happened (scope, operation, scores, durations), never record content itself,
+unless <code>IncludeContent</code> is explicitly set — the default-persisted posture is
+behavior-evidence without user-content retention.</p>
+<p><b>Audit mode:</b> <code>Integrity = MemoryLogIntegrity.HashChain</code> appends entries
+SHA-256 hash-chained to their predecessor (with monotonic sequence numbers) under a
+serialized gate — any modified or deleted line breaks verification, and
+<code>LogChainVerifier</code> proves integrity in one pass. <code>RetentionDays</code> triggers the
+retention sweeper; both file and console sinks are available, hosts inject their own
+<code>IMemoryLogSink</code> (SIEM, Serilog, …) through the builder.</p></section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.MemoryManifest.html">MemoryManifest</a></h4>
+      <section>On-disk metadata describing the memory root: codecs, counts, versions.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html">MemoryRecord</a></h4>
+      <section><p>The unit of remembered knowledge: an immutable record with identity, scope, content,
+and retrieval hints. Records are created by hosts and persisted through
+<code>IMemoryService.RememberAsync</code>; retrieval returns them wrapped in
+<code>ScoredMemoryRecord</code>.</p>
+<p>Retrieval relevance is driven by <a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Content">Content</a> (embedded and lexically
+indexed), boosted by <a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Tags">Tags</a> and <a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Key">Key</a> terms and
+<a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Category">Category</a> exact matches in the default reranker. Optional
+<a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Reps">Reps</a> add per-modality content (image captions, tables) that is embedded
+alongside the text and retrievable through the multi-representation retriever.</p></section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.MemoryRepresentation.html">MemoryRepresentation</a></h4>
+      <section><p>Additional per-modality content of a record: image captions, tables, audio
+transcripts, or any parallel content that should be retrievable alongside the record's
+main text. Each representation is embedded with the host's <code>IVectorEmbedder</code>
+and indexed under its own vector id
+(<code>repr|&lt;recordId&gt;|&lt;index&gt;</code>); the multi-representation retriever compares
+a query against every representation and keeps the best-matching one per record.</p>
+<p><b>Modality contract:</b> <a class="xref" href="ProvostXMemory.Abstractions.MemoryRepresentation.html#ProvostXMemory_Abstractions_MemoryRepresentation_Modality">Modality</a> is a tag, not a type system —
+content is always string. <a class="xref" href="ProvostXMemory.Abstractions.MemoryRepresentation.html#ProvostXMemory_Abstractions_MemoryRepresentation_EmbeddingModelHash">EmbeddingModelHash</a> is optional metadata for
+hosts that run several embedding models; the vector index namespace guard keys on the
+model hash + dimension, not on this field.</p></section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></h4>
+      <section><p>One isolation boundary of memory: the (Kind, Id) pair every record, index, and
+log line belongs to. Records written to one scope are structurally invisible to
+operations on another — the storage root layout pins each scope to its own directory
+tree and the index registry keys indexes by the exact scope pair.</p>
+<p>Scopes may carry a <a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html#ProvostXMemory_Abstractions_MemoryScope_ParentScope">ParentScope</a> chain for hierarchical fan-out
+(query plans target a root and resolve child scopes), but lookups never fall through
+to parents: a query against scope A sees scope A, nothing else, whatever its ancestry.</p></section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.MemoryServiceOptions.html">MemoryServiceOptions</a></h4>
+      <section><p>The root options record for <code>MemoryService</code>: the host's per-domain
+tuning, injected once at build time. Each section covers one pipeline concern —
+<a class="xref" href="ProvostXMemory.Abstractions.MemoryServiceOptions.html#ProvostXMemory_Abstractions_MemoryServiceOptions_Storage">Storage</a> (root layout), <a class="xref" href="ProvostXMemory.Abstractions.MemoryServiceOptions.html#ProvostXMemory_Abstractions_MemoryServiceOptions_Vector">Vector</a> (backend + dim),
+<a class="xref" href="ProvostXMemory.Abstractions.MemoryServiceOptions.html#ProvostXMemory_Abstractions_MemoryServiceOptions_Graph">Graph</a> (walk tuning), <a class="xref" href="ProvostXMemory.Abstractions.MemoryServiceOptions.html#ProvostXMemory_Abstractions_MemoryServiceOptions_Fusion">Fusion</a> (RRF weights),
+<a class="xref" href="ProvostXMemory.Abstractions.MemoryServiceOptions.html#ProvostXMemory_Abstractions_MemoryServiceOptions_Consolidation">Consolidation</a> (dedup/cluster thresholds), <a class="xref" href="ProvostXMemory.Abstractions.MemoryServiceOptions.html#ProvostXMemory_Abstractions_MemoryServiceOptions_Logging">Logging</a></p>
+<p>Section records carry safe defaults; a host that passes all defaults gets the
+reference pipeline. Optional capabilities (grader, graph extractor, reranker, log
+sink) are injected via <code>MemoryServiceBuilder</code> rather than this record —
+options tune behavior, wiring enables capabilities.</p></section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.QueryPlan.html">QueryPlan</a></h4>
+      <section>Declarative retrieval plan: an ordered set of steps the runner executes.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.QueryPlanStep.html">QueryPlanStep</a></h4>
+      <section>One step of a declarative plan (fan-out namespaces, merge, iterate).</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.QueryTokens.html">QueryTokens</a></h4>
+      <section>Pure query-text token helpers shared by text-processing packages (keyword rewriting,
+score-boost reranking). Stateless lookups and a compiled regex only; this class is the
+architecture-sanctioned pure-function static: no I/O, no ambient state, deterministic.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.RetrievalFilters.html">RetrievalFilters</a></h4>
+      <section>Immutable tag/category/date filter set for retrieval.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.RetrievalProvenance.html">RetrievalProvenance</a></h4>
+      <section>Provenance of a scored memory record: which retriever produced it and per-stage scores.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.RetrievalQuery.html">RetrievalQuery</a></h4>
+      <section><p>A scope-bound retrieval request: what to look for, where to look, and how much
+to return. Passed to <code>IMemoryService.RecallAsync</code>.</p>
+<p><a class="xref" href="ProvostXMemory.Abstractions.RetrievalQuery.html#ProvostXMemory_Abstractions_RetrievalQuery_Scope">Scope</a> is authoritative — results are drawn from that scope's
+indexes only, never from other scopes. <a class="xref" href="ProvostXMemory.Abstractions.RetrievalQuery.html#ProvostXMemory_Abstractions_RetrievalQuery_Text">Text</a> runs through the full
+pipeline (embedding + BM25 lexical + fusion + optional rerank/corrective loop);
+an empty or whitespace text short-circuits to an empty result.
+<a class="xref" href="ProvostXMemory.Abstractions.RetrievalQuery.html#ProvostXMemory_Abstractions_RetrievalQuery_TopK">TopK</a> bounds the returned records. <a class="xref" href="ProvostXMemory.Abstractions.RetrievalQuery.html#ProvostXMemory_Abstractions_RetrievalQuery_Filters">Filters</a> (tags,
+category, date-from) are applied after fusion, so they never affect ranking of
+the candidates they admit. <a class="xref" href="ProvostXMemory.Abstractions.RetrievalQuery.html#ProvostXMemory_Abstractions_RetrievalQuery_Plan">Plan</a> (when set) executes a declarative
+multi-scope fan-out instead of a single-scope lookup — see <code>QueryPlanRunner</code>.</p></section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.RetrievalResult.html">RetrievalResult</a></h4>
+      <section><p>The outcome of <code>IMemoryService.RecallAsync</code>: the scored records,
+best first, plus per-stage diagnostics.</p>
+<p><a class="xref" href="ProvostXMemory.Abstractions.RetrievalResult.html#ProvostXMemory_Abstractions_RetrievalResult_Records">Records</a> is ordered by <a class="xref" href="ProvostXMemory.Abstractions.ScoredMemoryRecord.html#ProvostXMemory_Abstractions_ScoredMemoryRecord_Score">Score</a>
+descending with deterministic tie-breaks by record id. <a class="xref" href="ProvostXMemory.Abstractions.RetrievalResult.html#ProvostXMemory_Abstractions_RetrievalResult_Diagnostics">Diagnostics</a> carries
+one entry per pipeline stage (dense, lexical, fusion, rerank, corrective retries) with
+durations and stage-specific metrics — feed it to the eval harness for Recall@k/MRR/NDCG.</p></section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.RetrievalStageDiagnostics.html">RetrievalStageDiagnostics</a></h4>
+      <section>Diagnostics of one retrieval stage (scores and timing).</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.ScoredId.html">ScoredId</a></h4>
+      <section>A scored hit from a store/index search: scope kind, scope id, id, score.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.ScoredMemoryRecord.html">ScoredMemoryRecord</a></h4>
+      <section>A record matched by a retrieval, its relevance score, and where the score came from.
+<a class="xref" href="ProvostXMemory.Abstractions.ScoredMemoryRecord.html#ProvostXMemory_Abstractions_ScoredMemoryRecord_Provenance">Provenance</a> names the stage that produced the score and carries per-stage
+subscores (e.g. the fused RRF score plus the rerank-adjusted score), so ranking changes
+across pipeline stages remain explainable end to end.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.StorageOptions.html">StorageOptions</a></h4>
+      <section>FlatJson store options: root folder + durability settings.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.VectorOptions.html">VectorOptions</a></h4>
+      <section>Vector index options: backend kind, model hash, dimension, default top-k.</section>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.IJsonlMemoryStore.html">IJsonlMemoryStore</a></h4>
+      <section>Default JSONL-backed store contract (transactional file I/O).</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.IMemoryManifestCodec.html">IMemoryManifestCodec</a></h4>
+      <section>Manifest read/write for a memory root.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.IMemoryStore.html">IMemoryStore</a></h4>
+      <section><p>The durable record store seam. Every method takes the scope explicitly
+(kind + id) — there is no scope-less operation anywhere in the contract, so a
+store implementation physically cannot conflate scopes. The default
+<code>JsonlMemoryStore</code> lays out one <code>records.jsonl</code> per scope directory with
+transactional rewrites (temp file + atomic move) and tolerant reads (blank lines and
+legacy entries without Reps/Meta deserialize to defaults).</p>
+<p><b>Concurrency contract:</b> implementations are not required to be internally
+thread-safe — <code>IMemoryService</code> serializes store mutations per service
+instance; direct multi-threaded store access is the host's own synchronization problem.</p></section>
+    <h3 id="enums">
+Enums
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.IndexKind.html">IndexKind</a></h4>
+      <section>The vector index backend family. <a class="xref" href="ProvostXMemory.Abstractions.IndexKind.html#ProvostXMemory_Abstractions_IndexKind_Flat">Flat</a> — exact SIMD scan, the correctness
+baseline and the best choice up to tens of thousands of vectors. <a class="xref" href="ProvostXMemory.Abstractions.IndexKind.html#ProvostXMemory_Abstractions_IndexKind_Ivf">Ivf</a> —
+deterministic k-means inverted lists; probes only <code>nprobe</code> clusters per query,
+the sweet spot for large corpora. <a class="xref" href="ProvostXMemory.Abstractions.IndexKind.html#ProvostXMemory_Abstractions_IndexKind_Hnsw">Hnsw</a> — navigable-small-world graph,
+highest recall per query latency; built with immutable-index/rebuild semantics and
+searched with a layered greedy beam (see the architecture patent addendum). <a class="xref" href="ProvostXMemory.Abstractions.IndexKind.html#ProvostXMemory_Abstractions_IndexKind_Gpu">Gpu</a>
+— ILGPU-kernel decoration over a CPU backend with bit-exact fallback when no device exists.
+All kinds pass one shared conformance suite; results are interchangeable between kinds
+(FlatJson included, see <code>IVectorIndex</code>).</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.MemoryLogFormat.html">MemoryLogFormat</a></h4>
+      <section>Seriline format used by the file sink.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.MemoryLogIntegrity.html">MemoryLogIntegrity</a></h4>
+      <section>Integrity protection applied to log entries.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.MemoryLogLevel.html">MemoryLogLevel</a></h4>
+      <section>Severity of a memory log entry.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.MemoryLogSinkKind.html">MemoryLogSinkKind</a></h4>
+      <section>Where log entries are written.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.MemoryRepresentationModality.html">MemoryRepresentationModality</a></h4>
+      <section>Modality of a memory representation.</section>
+      <h4><a class="xref" href="ProvostXMemory.Abstractions.MemoryScopeKind.html">MemoryScopeKind</a></h4>
+      <section>The isolation axis of a <a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a>. One record lives in exactly one
+(Kind, Id) pair; the kind determines what the id conventionally names:
+<code>Platform</code> (one surface — e.g. per chat platform), <code>Session</code>
+(one conversation or run), <code>Tenant</code> (one customer — multi-tenant hosts),
+<code>Purpose</code> (one knowledge base or domain), <code>Custom</code> (host-defined).
+Kinds map to storage path segments, so cross-kind and cross-id isolation are identical
+by construction. Unknown on-disk kinds degrade to <code>Custom</code> on read.</section>
+
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

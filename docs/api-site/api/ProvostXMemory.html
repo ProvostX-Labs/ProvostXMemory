@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Namespace ProvostXMemory | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Namespace ProvostXMemory | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory">
+
+  <h1 id="ProvostXMemory" data-uid="ProvostXMemory" class="text-break">Namespace ProvostXMemory</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">
+Classes
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.DefaultEvalServiceFactory.html">DefaultEvalServiceFactory</a></h4>
+      <section>Default eval wiring: a real <a class="xref" href="ProvostXMemory.MemoryService.html">MemoryService</a> over the transactional JSONL
+store + own-engine flat index + RRF, powered by the deterministic
+<a class="xref" href="ProvostXMemory.Eval.ClusterHashEmbedder.html">ClusterHashEmbedder</a> (no real model anywhere). Any host can substitute its
+own <a class="xref" href="ProvostXMemory.EvalServiceFactory.html">EvalServiceFactory</a> to eval its production wiring instead.</section>
+      <h4><a class="xref" href="ProvostXMemory.EvalRunner.html">EvalRunner</a></h4>
+      <section>Runs an <a class="xref" href="ProvostXMemory.Eval.EvalCaseSet.html">EvalCaseSet</a> against a freshly built service from an
+<a class="xref" href="ProvostXMemory.EvalServiceFactory.html">EvalServiceFactory</a>: materializes the corpus records under a fresh temp
+root, builds indexes per scope, replays every golden query, computes all metrics and
+breakdowns, checks thresholds, and produces a JSON-serializable <a class="xref" href="ProvostXMemory.Eval.EvalReport.html">EvalReport</a>.
+The runner never constructs a service itself — hosts control wiring via the factory.</section>
+      <h4><a class="xref" href="ProvostXMemory.EvalRunnerOptions.html">EvalRunnerOptions</a></h4>
+      <section>Per-run knobs for <a class="xref" href="ProvostXMemory.EvalRunner.html">EvalRunner</a>.</section>
+      <h4><a class="xref" href="ProvostXMemory.GraphIndexLedger.html">GraphIndexLedger</a></h4>
+      <section>Index-time graph maintenance over the scope-pinned <a class="xref" href="ProvostXMemory.Graph.IMemoryGraphStore.html">IMemoryGraphStore</a>
+(resolved via <a class="xref" href="ProvostXMemory.Graph.IMemoryGraphStoreResolver.html">IMemoryGraphStoreResolver</a>): per record, the wired
+<a class="xref" href="ProvostXMemory.Graph.IEntityExtractor.html">IEntityExtractor</a>'s entities/relations are upserted for the record's
+scope only; when a record is forgotten, its mentions are dropped by re-extracting
+the scope's remaining snapshot. The ledger itself holds no per-record entity cache —
+graph stores accumulate weight by design, so Forget rebuilds the affected entity
+mention lists from the surviving records. Scope comes from the record; the resolver
+is scope-exact by contract.</section>
+      <h4><a class="xref" href="ProvostXMemory.MemoryService.html">MemoryService</a></h4>
+      <section>Composition root: takes <a class="xref" href="ProvostXMemory.Abstractions.MemoryServiceOptions.html">MemoryServiceOptions</a> plus injected dependencies
+and owns the configured retrieval pipeline. Remember/Forget/Update maintain the
+per-scope indexes alongside the store; Recall routes through hybrid → optional
+corrective → plan (when the query carries one) → optional rerank. Every store access
+goes through the scope-bound <a class="xref" href="ProvostXMemory.Abstractions.IMemoryStore.html">IMemoryStore</a> API, so cross-scope isolation
+is structural. Per-scope indexes are created lazily and registered scope-exact.</section>
+      <h4><a class="xref" href="ProvostXMemory.MemoryServiceBuilder.html">MemoryServiceBuilder</a></h4>
+      <section>Fluent wiring helper for <a class="xref" href="ProvostXMemory.MemoryService.html">MemoryService</a>. Collects the host's choices and
+hands them to the <a class="xref" href="ProvostXMemory.MemoryService.html">MemoryService</a> constructor — still plain constructor
+injection underneath, no service locator, no ambient container.</section>
+      <h4><a class="xref" href="ProvostXMemory.MemoryServicePipelineOptions.html">MemoryServicePipelineOptions</a></h4>
+      <section>Pipeline wiring knobs layered over <a class="xref" href="ProvostXMemory.Abstractions.MemoryServiceOptions.html">MemoryServiceOptions</a>: which extra
+retrieval stages run during Recall/Remember and maintenance bounds for index updates.</section>
+      <h4><a class="xref" href="ProvostXMemory.RootChildScopeResolver.html">RootChildScopeResolver</a></h4>
+      <section>Default plan-fan-out scope resolution: a target string names either the root scope
+itself ("<code>&lt;Kind&gt;/&lt;Id&gt;</code>", case-insensitive) or a child scope built via
+<a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html#ProvostXMemory_Abstractions_MemoryScope_WithParent_ProvostXMemory_Abstractions_MemoryScope_">WithParent(MemoryScope)</a> ("<code>&lt;ChildKind&gt;/&lt;ChildId&gt;</code>" over
+the root). Resolving a child pins the parent, so fan-out targets are always
+descendants or the root itself — never unrelated scopes.</section>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.EvalServiceFactory.html">EvalServiceFactory</a></h4>
+      <section>Host-pluggable service construction for eval runs: given a fresh root path the host
+builds an <a class="xref" href="ProvostXMemory.IMemoryService.html">IMemoryService</a> exactly as it does in production.
+Implementations must return a service with no records yet — the runner owns corpus
+loadout and index building.</section>
+      <h4><a class="xref" href="ProvostXMemory.IMemoryService.html">IMemoryService</a></h4>
+      <section><p>The single public surface of the ProvostXMemory library. Host applications see
+this interface — plus the options records they pass to <a class="xref" href="ProvostXMemory.MemoryServiceBuilder.html">MemoryServiceBuilder</a> —
+and nothing else. Every capability of the library (durable storage, hybrid lexical and
+dense-vector retrieval, fusion, reranking, optional corrective and graph retrieval,
+consolidation, and audit-grade logging) is reachable through the members below.</p>
+<p><b>Scope isolation.</b> Every record belongs to exactly one <a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a>
+(platform, session, tenant, purpose, or custom). Every operation is scope-bound; a record
+written to scope A is structurally invisible to operations on scope B — the storage layout
+and the index registry make cross-scope access impossible rather than merely discouraged.</p>
+<p><b>Concurrency.</b> Implementations are safe for concurrent use from multiple threads.
+Mutations (Remember/Update/Forget) are serialized per service instance; embedding computation
+happens outside the serialization gate, so concurrent callers do not block on model latency.</p></section>
+      <h4><a class="xref" href="ProvostXMemory.IScopesAware.html">IScopesAware</a></h4>
+      <section>Implemented by stores that can enumerate their scopes natively.</section>
+
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

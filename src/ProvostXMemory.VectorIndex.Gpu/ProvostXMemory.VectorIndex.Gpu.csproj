@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>ProvostXMemory.VectorIndex.Gpu</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- ILGPU 1.5.1 (MIT license noted; full license verification TODO). -->
+    <PackageReference Include="ILGPU" Version="1.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../ProvostXMemory.Abstractions/ProvostXMemory.Abstractions.csproj" />
+    <ProjectReference Include="../ProvostXMemory.VectorIndex/ProvostXMemory.VectorIndex.csproj" />
+  </ItemGroup>
+
+</Project>

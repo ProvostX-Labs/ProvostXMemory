@@ -1,0 +1,10 @@
+bin/
+obj/
+*.user
+.vs/
+artifacts/
+TestResults/
+*.binlog
+.DS_Store
+*.nupkg
+*.snupkg

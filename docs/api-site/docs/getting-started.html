@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Getting Started | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Getting Started | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="getting-started">Getting Started</h1>
+
+<p>This guide walks through installing ProvostXMemory, wiring it into a host application, and selecting a vector index backend.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>.NET 8 (the library targets the .NET 8 SDK; any runtime compatible with .NET 8 works)</li>
+<li>No native dependencies, no external services, no database server. Storage is files on disk; the vector engine is pure C#.</li>
+</ul>
+<h2 id="install">Install</h2>
+<p>The public package id is <code>ProvostXMemory</code> (packaging is owner-gated; until published, reference the projects directly):</p>
+<pre><code class="lang-text">dotnet add package ProvostXMemory
+</code></pre>
+<p>Hosts reference <strong>only</strong> the root package. Optional backend packages are added when a non-default index kind is selected:</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Provides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ProvostXMemory</code></td>
+<td>Facade, abstractions, storage, lexical, fusion, chunking, graph, consolidation, correction, reranking, retrieval, eval, logging, telemetry, FlatJson backend</td>
+</tr>
+<tr>
+<td><code>ProvostXMemory.VectorIndex.Engine</code></td>
+<td>Own vector engine: FlatExact (SIMD), IVF, HNSW</td>
+</tr>
+<tr>
+<td><code>ProvostXMemory.VectorIndex.Gpu</code></td>
+<td>ILGPU GPU kernels (Flat + IVF) with transparent CPU fallback</td>
+</tr>
+</tbody>
+</table>
+<h2 id="first-run">First run</h2>
+<pre><code class="lang-csharp">using ProvostXMemory;
+using ProvostXMemory.Abstractions;
+using ProvostXMemory.Fusion;
+using ProvostXMemory.Storage;
+using ProvostXMemory.Telemetry;
+using ProvostXMemory.VectorIndex.Engine;
+
+var root = &quot;/data/memory-root&quot;;
+var layout = new MemoryRootLayout(root, &quot;model-hash-v1&quot;);
+
+IMemoryService memory = new MemoryServiceBuilder()
+    .WithOptions(new MemoryServiceOptions(
+        Storage: new StorageOptions(root),
+        Vector: new VectorOptions(&quot;model-hash-v1&quot;, dim: 768, IndexKind.IndexKind.Hnsw),
+        Graph: GraphOptions.Default,
+        Fusion: new FusionOptions(),
+        Consolidation: new ConsolidationOptions()))
+    .WithStore(new JsonlMemoryStore(layout))
+    .WithEmbedder(embedder)                       // host-injected IVectorEmbedder
+    .WithIndexFactory(new EngineVectorIndexFactory())
+    .WithFuser(new ReciprocalRankFuser())
+    .WithTelemetry(NoopMemoryTelemetry.Instance)
+    .Build();
+</code></pre>
+<p>Everything the host injects is an interface: <code>IVectorEmbedder</code> (your embedding model), <code>IVectorIndexFactory</code> (the backend), optionally <code>IRetrievalGrader</code>, <code>IQueryRewriter</code>, <code>IReranker</code>, <code>IEntityExtractor</code>, <code>IMemoryTelemetry</code>, and <code>IMemoryLogSink</code>. The library never picks models or calls out to the network on its own.</p>
+<h3 id="write-and-read">Write and read</h3>
+<pre><code class="lang-csharp">var scope = new MemoryScope(MemoryScopeKind.Session, &quot;user-42&quot;);
+
+await memory.RememberAsync(new MemoryRecord(
+    &quot;note-1&quot;, scope, &quot;helm-rollout&quot;, &quot;Kubernetes rollout notes…&quot;,
+    Category: &quot;ops&quot;, Tags: new[] { &quot;infra&quot;, &quot;deploy&quot; }));
+
+await memory.BuildIndexesAsync(scope);
+
+RetrievalResult result = await memory.RecallAsync(new RetrievalQuery(
+    &quot;kubernetes rollout&quot;,
+    scope,
+    TopK: 5,
+    Filters: new RetrievalFilters(Tags: new[] { &quot;deploy&quot; })));
+
+foreach (var hit in result.Records)
+{
+    Console.WriteLine($&quot;{hit.Score:0.000} {hit.Record.Id}: {hit.Record.Key}&quot;);
+}
+</code></pre>
+<p>Key semantics to know on day one:</p>
+<ul>
+<li><code>BuildIndexesAsync(scope)</code> must be called (or <code>RebuildAsync()</code> for all scopes) before recall returns results — index state is cold until built, and rebuilt deterministically after a restart.</li>
+<li>Every record, query, and index artifact is bound to a <code>MemoryScope</code>. A query in one scope can never return records from another.</li>
+</ul>
+<h2 id="dependency-injection-wiring">Dependency-injection wiring</h2>
+<p><code>MemoryServiceBuilder</code> is a fluent convenience wrapper; underneath it is plain constructor injection, so it composes naturally with any DI container:</p>
+<pre><code class="lang-csharp">services.AddSingleton(sp =&gt;
+{
+    var root = configuration[&quot;Memory:Root&quot;]!;
+    var layout = new MemoryRootLayout(root, configuration[&quot;Memory:ModelHash&quot;]!);
+    return new MemoryServiceBuilder()
+        .WithOptions(new MemoryServiceOptions(
+            Storage: new StorageOptions(root),
+            Vector: new VectorOptions(
+                configuration[&quot;Memory:ModelHash&quot;]!,
+                dim: 768,
+                IndexKind.IndexKind.Hnsw),
+            Graph: GraphOptions.Default,
+            Fusion: new FusionOptions(),
+            Consolidation: new ConsolidationOptions(),
+            Logging: new MemoryLoggingOptions(
+                Enabled: true,
+                Level: MemoryLogLevel.Info,
+                Sink: MemoryLogSinkKind.Injected,
+                Integrity: MemoryLogIntegrity.HashChain)))
+        .WithStore(new JsonlMemoryStore(layout))
+        .WithEmbedder(sp.GetRequiredService&lt;IVectorEmbedder&gt;())
+        .WithIndexFactory(new EngineVectorIndexFactory())
+        .WithFuser(new ReciprocalRankFuser())
+        .WithTelemetry(NoopMemoryTelemetry.Instance)
+        .WithLogSink(sp.GetRequiredService&lt;IMemoryLogSink&gt;())
+        .Build();
+});
+services.AddSingleton&lt;IMemoryService&gt;(sp =&gt; sp.GetRequiredService&lt;MemoryServiceBuilder&gt;().Build());
+</code></pre>
+<p>Register the embedder once; it is the single place where your embedding model enters the system. The <code>model-hash</code> in <code>VectorOptions</code> and <code>MemoryRootLayout</code> must match the model you inject — the library guards against dimension and model-hash mismatches when opening index artifacts (see <a href="concepts.html#model-hash-guard">Concepts</a>).</p>
+<h2 id="backend-selection">Backend selection</h2>
+<p>Choose <code>VectorOptions.IndexKind</code> and the matching factory:</p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Factory</th>
+<th>Package</th>
+<th>Choose when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Flat</code></td>
+<td><code>EngineVectorIndexFactory</code></td>
+<td>Engine</td>
+<td>Exact search up to ~10k vectors; SIMD-accelerated</td>
+</tr>
+<tr>
+<td><code>Ivf</code></td>
+<td><code>EngineVectorIndexFactory</code></td>
+<td>Engine</td>
+<td>10k–1M vectors; small recall trade-off for much faster search</td>
+</tr>
+<tr>
+<td><code>Hnsw</code></td>
+<td><code>EngineVectorIndexFactory</code></td>
+<td>Engine</td>
+<td>10k–10M vectors; approximate, high recall (measured 0.998 @10)</td>
+</tr>
+<tr>
+<td><code>Gpu</code></td>
+<td><code>GpuVectorIndexFactory</code></td>
+<td>Gpu</td>
+<td>Flat/IVF workloads with a compatible accelerator; falls back to CPU transparently</td>
+</tr>
+<tr>
+<td>default FlatJson</td>
+<td>core (no factory wiring needed beyond a scope-aware factory)</td>
+<td>core</td>
+<td>Zero-dependency persistence-first deployments; brute-force cosine per scope</td>
+</tr>
+</tbody>
+</table>
+<p>All backends implement the same <code>IVectorIndex</code> contract and pass an identical conformance suite, so switching is a configuration change, not a code change. See <a href="backends.html">Backends</a> for the full comparison.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class MemoryRecord | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class MemoryRecord | ProvostXMemory API ">
+    
+    <meta name="description" content="The unit of remembered knowledge: an immutable record with identity, scope, content, and retrieval hints. Records are created by hosts and persisted through IMemoryService.RememberAsync; retrieval returns them wrapped in ScoredMemoryRecord. Retrieval relevance is driven by  (embedded and lexically indexed), boosted by  and  terms and  exact matches in the default reranker. Optional  add per-modality content (image captions, tables) that is embedded alongside the text and retrievable through the multi-representation retriever.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.Abstractions.MemoryRecord">
+
+
+
+  <h1 id="ProvostXMemory_Abstractions_MemoryRecord" data-uid="ProvostXMemory.Abstractions.MemoryRecord" class="text-break">Class MemoryRecord</h1>
+  <div class="markdown level0 summary"><p>The unit of remembered knowledge: an immutable record with identity, scope, content,
+and retrieval hints. Records are created by hosts and persisted through
+<code>IMemoryService.RememberAsync</code>; retrieval returns them wrapped in
+<code>ScoredMemoryRecord</code>.</p>
+<p>Retrieval relevance is driven by <a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Content">Content</a> (embedded and lexically
+indexed), boosted by <a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Tags">Tags</a> and <a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Key">Key</a> terms and
+<a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Category">Category</a> exact matches in the default reranker. Optional
+<a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Reps">Reps</a> add per-modality content (image captions, tables) that is embedded
+alongside the text and retrievable through the multi-representation retriever.</p></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">MemoryRecord</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html">MemoryRecord</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ProvostXMemory.html">ProvostXMemory</a>.<a class="xref" href="ProvostXMemory.Abstractions.html">Abstractions</a></h6>
+  <h6><strong>Assembly</strong>: ProvostXMemory.Abstractions.dll</h6>
+  <h5 id="ProvostXMemory_Abstractions_MemoryRecord_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed record MemoryRecord : IEquatable&lt;MemoryRecord&gt;</code></pre>
+  </div>
+  <h5 id="ProvostXMemory_Abstractions_MemoryRecord_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Lifecycle: <code>CreatedAt</code> and <code>UpdatedAt</code> default to UTC now; consolidation
+keeps the OLDEST record of each duplicate group (so timestamps determine dedup winners);
+<code>ExpiresAt</code> in the past marks a record for TTL deletion on the next consolidation pass;
+<code>Meta</code> is a free-form bag persisted with the record (used e.g. for cluster-summary flags).
+Ids must be unique per scope and should not contain '|', '-', or path separators (the
+id-separator restriction keeps vector/chunk ids reversible; violators are rejected).</p></div>
+  <h3 id="constructors">Constructors
+</h3>
+  <a id="ProvostXMemory_Abstractions_MemoryRecord__ctor_" data-uid="ProvostXMemory.Abstractions.MemoryRecord.#ctor*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryRecord__ctor_System_String_ProvostXMemory_Abstractions_MemoryScope_System_String_System_String_System_String_System_Collections_Generic_IReadOnlyList_System_String__System_Collections_Generic_IReadOnlyList_ProvostXMemory_Abstractions_MemoryRepresentation__" data-uid="ProvostXMemory.Abstractions.MemoryRecord.#ctor(System.String,ProvostXMemory.Abstractions.MemoryScope,System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{ProvostXMemory.Abstractions.MemoryRepresentation})">MemoryRecord(string, MemoryScope, string, string, string?, IReadOnlyList&lt;string&gt;?, IReadOnlyList&lt;MemoryRepresentation&gt;?)</h4>
+  <div class="markdown level1 summary"><p>The unit of remembered knowledge: an immutable record with identity, scope, content,
+and retrieval hints. Records are created by hosts and persisted through
+<code>IMemoryService.RememberAsync</code>; retrieval returns them wrapped in
+<code>ScoredMemoryRecord</code>.</p>
+<p>Retrieval relevance is driven by <a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Content">Content</a> (embedded and lexically
+indexed), boosted by <a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Tags">Tags</a> and <a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Key">Key</a> terms and
+<a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Category">Category</a> exact matches in the default reranker. Optional
+<a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html#ProvostXMemory_Abstractions_MemoryRecord_Reps">Reps</a> add per-modality content (image captions, tables) that is embedded
+alongside the text and retrievable through the multi-representation retriever.</p></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryRecord(string Id, MemoryScope Scope, string Key, string Content, string? Category = null, IReadOnlyList&lt;string&gt;? Tags = null, IReadOnlyList&lt;MemoryRepresentation&gt;? Reps = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">Id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">Scope</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">Key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">Content</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">Category</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><span class="parametername">Tags</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryRepresentation.html">MemoryRepresentation</a>&gt;</td>
+        <td><span class="parametername">Reps</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ProvostXMemory_Abstractions_MemoryRecord__ctor_System_String_ProvostXMemory_Abstractions_MemoryScope_System_String_System_String_System_String_System_Collections_Generic_IReadOnlyList_System_String__System_Collections_Generic_IReadOnlyList_ProvostXMemory_Abstractions_MemoryRepresentation___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Lifecycle: <code>CreatedAt</code> and <code>UpdatedAt</code> default to UTC now; consolidation
+keeps the OLDEST record of each duplicate group (so timestamps determine dedup winners);
+<code>ExpiresAt</code> in the past marks a record for TTL deletion on the next consolidation pass;
+<code>Meta</code> is a free-form bag persisted with the record (used e.g. for cluster-summary flags).
+Ids must be unique per scope and should not contain '|', '-', or path separators (the
+id-separator restriction keeps vector/chunk ids reversible; violators are rejected).</p></div>
+  <h3 id="properties">Properties
+</h3>
+  <a id="ProvostXMemory_Abstractions_MemoryRecord_Category_" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Category*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryRecord_Category" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Category">Category</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? Category { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryRecord_Content_" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Content*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryRecord_Content" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Content">Content</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Content { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryRecord_CreatedAt_" data-uid="ProvostXMemory.Abstractions.MemoryRecord.CreatedAt*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryRecord_CreatedAt" data-uid="ProvostXMemory.Abstractions.MemoryRecord.CreatedAt">CreatedAt</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset CreatedAt { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryRecord_ExpiresAt_" data-uid="ProvostXMemory.Abstractions.MemoryRecord.ExpiresAt*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryRecord_ExpiresAt" data-uid="ProvostXMemory.Abstractions.MemoryRecord.ExpiresAt">ExpiresAt</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset? ExpiresAt { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryRecord_Id_" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Id*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryRecord_Id" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Id">Id</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Id { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryRecord_Key_" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Key*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryRecord_Key" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Key">Key</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Key { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryRecord_Meta_" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Meta*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryRecord_Meta" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Meta">Meta</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyDictionary&lt;string, string&gt; Meta { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryRecord_Reps_" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Reps*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryRecord_Reps" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Reps">Reps</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;MemoryRepresentation&gt; Reps { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryRepresentation.html">MemoryRepresentation</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryRecord_Scope_" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Scope*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryRecord_Scope" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Scope">Scope</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryScope Scope { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryRecord_Tags_" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Tags*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryRecord_Tags" data-uid="ProvostXMemory.Abstractions.MemoryRecord.Tags">Tags</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;string&gt; Tags { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Abstractions_MemoryRecord_UpdatedAt_" data-uid="ProvostXMemory.Abstractions.MemoryRecord.UpdatedAt*"></a>
+  <h4 id="ProvostXMemory_Abstractions_MemoryRecord_UpdatedAt" data-uid="ProvostXMemory.Abstractions.MemoryRecord.UpdatedAt">UpdatedAt</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset UpdatedAt { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable&lt;T&gt;</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

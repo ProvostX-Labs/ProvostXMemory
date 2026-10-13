@@ -1,0 +1,70 @@
+name: build-test-publish
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+env:
+  PvxUseProjectRefs: "true"
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Build (Release)
+        run: dotnet build ProvostXMemory.sln -c Release
+      - name: Test (all 17 suites)
+        run: dotnet test ProvostXMemory.sln -c Release --no-build
+
+  pack-publish:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build-test
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # enable GitHub OIDC token issuance (keyless Trusted Publishing)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Pack facade package
+        # DebugType=none: the .NET 10 SDK embeds PDBs (with absolute source
+        # paths) into DLLs by default — anonymous release packages need none.
+        run: dotnet pack src/ProvostXMemory/ProvostXMemory.csproj -c Release -p:DebugType=none
+      - name: Merge layer assemblies into the package
+        run: |
+          NUPKG=$(ls src/ProvostXMemory/bin/Release/ProvostXMemory.*.nupkg | head -1)
+          python3 .ldc/merge_nupkg.py "$NUPKG" 'src/*/bin/Release/net8.0'
+      - name: Smoke-check package contents
+        run: |
+          NUPKG=$(ls src/ProvostXMemory/bin/Release/ProvostXMemory.*.nupkg | head -1)
+          python3 - << 'EOF'
+          import glob, zipfile
+          nupkg = sorted(glob.glob('src/ProvostXMemory/bin/Release/ProvostXMemory.*.nupkg'))[-1]
+          z = zipfile.ZipFile(nupkg)
+          names = z.namelist()
+          assert 'README.md' in names and 'icon.png' in names, 'missing package representation files'
+          assert not [n for n in names if 'Examples' in n], 'Examples (console app) must not ship in the facade package'
+          import re
+          ns = z.read([n for n in names if n.endswith('.nuspec')][0]).decode()
+          assert not re.search(r'<dependency id="ProvostXMemory\.', ns), 'ProvostXMemory.* layer deps must be stripped (all layers merged)'
+          assert 'ILGPU' in ns, 'ILGPU dependency must be declared (GPU ships in this package)'
+          print('nupkg OK:', len([n for n in names if n.startswith('lib/')]), 'lib files')
+          EOF
+      - name: Scrub manifest (anonymity)
+        run: python3 .ldc/scrub_manifest.py docs/api-site/manifest.json || true
+      - name: NuGet login (OIDC -> temp API key, keyless Trusted Publishing)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ProvostX-Labs
+      - name: Push to nuget.org (keyless)
+        run: |
+          NUPKG=$(ls src/ProvostXMemory/bin/Release/ProvostXMemory.*.nupkg | head -1)
+          dotnet nuget push "$NUPKG" --source https://api.nuget.org/v3/index.json --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --skip-duplicate

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class MemoryLogEntry | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class MemoryLogEntry | ProvostXMemory API ">
+    
+    <meta name="description" content="A single memory log entry.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.Logging.MemoryLogEntry">
+
+
+
+  <h1 id="ProvostXMemory_Logging_MemoryLogEntry" data-uid="ProvostXMemory.Logging.MemoryLogEntry" class="text-break">Class MemoryLogEntry</h1>
+  <div class="markdown level0 summary">A single memory log entry.</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">MemoryLogEntry</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="ProvostXMemory.Logging.MemoryLogEntry.html">MemoryLogEntry</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ProvostXMemory.html">ProvostXMemory</a>.<a class="xref" href="ProvostXMemory.Logging.html">Logging</a></h6>
+  <h6><strong>Assembly</strong>: ProvostXMemory.Logging.dll</h6>
+  <h5 id="ProvostXMemory_Logging_MemoryLogEntry_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed record MemoryLogEntry : IEquatable&lt;MemoryLogEntry&gt;</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <a id="ProvostXMemory_Logging_MemoryLogEntry__ctor_" data-uid="ProvostXMemory.Logging.MemoryLogEntry.#ctor*"></a>
+  <h4 id="ProvostXMemory_Logging_MemoryLogEntry__ctor_System_DateTimeOffset_System_Int64_ProvostXMemory_Abstractions_MemoryLogLevel_ProvostXMemory_Logging_MemoryLogCategory_System_String_ProvostXMemory_Logging_MemoryLogScope_System_String_System_Nullable_System_Double__System_String_System_String_System_String_" data-uid="ProvostXMemory.Logging.MemoryLogEntry.#ctor(System.DateTimeOffset,System.Int64,ProvostXMemory.Abstractions.MemoryLogLevel,ProvostXMemory.Logging.MemoryLogCategory,System.String,ProvostXMemory.Logging.MemoryLogScope,System.String,System.Nullable{System.Double},System.String,System.String,System.String)">MemoryLogEntry(DateTimeOffset, long, MemoryLogLevel, MemoryLogCategory, string, MemoryLogScope?, string?, double?, string?, string?, string?)</h4>
+  <div class="markdown level1 summary">A single memory log entry.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryLogEntry(DateTimeOffset TimestampUtc, long SequenceNumber, MemoryLogLevel Level, MemoryLogCategory Category, string Message, MemoryLogScope? Scope = null, string? CorrelationId = null, double? DurationMs = null, string? PreviousHash = null, string? EntryHash = null, string? ContentExcerpt = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></td>
+        <td><span class="parametername">TimestampUtc</span></td>
+        <td>UTC timestamp of the event.</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">SequenceNumber</span></td>
+        <td>Monotonic sequence number (only with hash-chain integrity).</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryLogLevel.html">MemoryLogLevel</a></td>
+        <td><span class="parametername">Level</span></td>
+        <td>Severity.</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Logging.MemoryLogCategory.html">MemoryLogCategory</a></td>
+        <td><span class="parametername">Category</span></td>
+        <td>Functional area.</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">Message</span></td>
+        <td>Human-readable message (never contains content unless IncludeContent).</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Logging.MemoryLogScope.html">MemoryLogScope</a></td>
+        <td><span class="parametername">Scope</span></td>
+        <td>Optional scope information.</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">CorrelationId</span></td>
+        <td>Optional correlation identifier.</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</td>
+        <td><span class="parametername">DurationMs</span></td>
+        <td>Optional operation duration in milliseconds.</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">PreviousHash</span></td>
+        <td>Hash of the previous chained entry.</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">EntryHash</span></td>
+        <td>Hash of this entry.</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">ContentExcerpt</span></td>
+        <td>Optional content excerpt; null unless explicitly enabled.</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <a id="ProvostXMemory_Logging_MemoryLogEntry_Category_" data-uid="ProvostXMemory.Logging.MemoryLogEntry.Category*"></a>
+  <h4 id="ProvostXMemory_Logging_MemoryLogEntry_Category" data-uid="ProvostXMemory.Logging.MemoryLogEntry.Category">Category</h4>
+  <div class="markdown level1 summary">Functional area.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryLogCategory Category { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Logging.MemoryLogCategory.html">MemoryLogCategory</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Logging_MemoryLogEntry_ContentExcerpt_" data-uid="ProvostXMemory.Logging.MemoryLogEntry.ContentExcerpt*"></a>
+  <h4 id="ProvostXMemory_Logging_MemoryLogEntry_ContentExcerpt" data-uid="ProvostXMemory.Logging.MemoryLogEntry.ContentExcerpt">ContentExcerpt</h4>
+  <div class="markdown level1 summary">Optional content excerpt; null unless explicitly enabled.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? ContentExcerpt { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Logging_MemoryLogEntry_CorrelationId_" data-uid="ProvostXMemory.Logging.MemoryLogEntry.CorrelationId*"></a>
+  <h4 id="ProvostXMemory_Logging_MemoryLogEntry_CorrelationId" data-uid="ProvostXMemory.Logging.MemoryLogEntry.CorrelationId">CorrelationId</h4>
+  <div class="markdown level1 summary">Optional correlation identifier.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? CorrelationId { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Logging_MemoryLogEntry_DurationMs_" data-uid="ProvostXMemory.Logging.MemoryLogEntry.DurationMs*"></a>
+  <h4 id="ProvostXMemory_Logging_MemoryLogEntry_DurationMs" data-uid="ProvostXMemory.Logging.MemoryLogEntry.DurationMs">DurationMs</h4>
+  <div class="markdown level1 summary">Optional operation duration in milliseconds.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double? DurationMs { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Logging_MemoryLogEntry_EntryHash_" data-uid="ProvostXMemory.Logging.MemoryLogEntry.EntryHash*"></a>
+  <h4 id="ProvostXMemory_Logging_MemoryLogEntry_EntryHash" data-uid="ProvostXMemory.Logging.MemoryLogEntry.EntryHash">EntryHash</h4>
+  <div class="markdown level1 summary">Hash of this entry.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? EntryHash { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Logging_MemoryLogEntry_Level_" data-uid="ProvostXMemory.Logging.MemoryLogEntry.Level*"></a>
+  <h4 id="ProvostXMemory_Logging_MemoryLogEntry_Level" data-uid="ProvostXMemory.Logging.MemoryLogEntry.Level">Level</h4>
+  <div class="markdown level1 summary">Severity.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryLogLevel Level { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryLogLevel.html">MemoryLogLevel</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Logging_MemoryLogEntry_Message_" data-uid="ProvostXMemory.Logging.MemoryLogEntry.Message*"></a>
+  <h4 id="ProvostXMemory_Logging_MemoryLogEntry_Message" data-uid="ProvostXMemory.Logging.MemoryLogEntry.Message">Message</h4>
+  <div class="markdown level1 summary">Human-readable message (never contains content unless IncludeContent).</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Message { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Logging_MemoryLogEntry_PreviousHash_" data-uid="ProvostXMemory.Logging.MemoryLogEntry.PreviousHash*"></a>
+  <h4 id="ProvostXMemory_Logging_MemoryLogEntry_PreviousHash" data-uid="ProvostXMemory.Logging.MemoryLogEntry.PreviousHash">PreviousHash</h4>
+  <div class="markdown level1 summary">Hash of the previous chained entry.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? PreviousHash { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Logging_MemoryLogEntry_Scope_" data-uid="ProvostXMemory.Logging.MemoryLogEntry.Scope*"></a>
+  <h4 id="ProvostXMemory_Logging_MemoryLogEntry_Scope" data-uid="ProvostXMemory.Logging.MemoryLogEntry.Scope">Scope</h4>
+  <div class="markdown level1 summary">Optional scope information.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryLogScope? Scope { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Logging.MemoryLogScope.html">MemoryLogScope</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Logging_MemoryLogEntry_SequenceNumber_" data-uid="ProvostXMemory.Logging.MemoryLogEntry.SequenceNumber*"></a>
+  <h4 id="ProvostXMemory_Logging_MemoryLogEntry_SequenceNumber" data-uid="ProvostXMemory.Logging.MemoryLogEntry.SequenceNumber">SequenceNumber</h4>
+  <div class="markdown level1 summary">Monotonic sequence number (only with hash-chain integrity).</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long SequenceNumber { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Logging_MemoryLogEntry_TimestampUtc_" data-uid="ProvostXMemory.Logging.MemoryLogEntry.TimestampUtc*"></a>
+  <h4 id="ProvostXMemory_Logging_MemoryLogEntry_TimestampUtc" data-uid="ProvostXMemory.Logging.MemoryLogEntry.TimestampUtc">TimestampUtc</h4>
+  <div class="markdown level1 summary">UTC timestamp of the event.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset TimestampUtc { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable&lt;T&gt;</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Scopes and Multi-Tenancy | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Scopes and Multi-Tenancy | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="scopes-and-multi-tenancy">Scopes and Multi-Tenancy</h1>
+
+<p>Scopes are the isolation unit of ProvostXMemory. This page covers scope kinds, the on-disk layout, hierarchy semantics, and patterns for multi-tenant hosts.</p>
+<h2 id="scope-kinds">Scope kinds</h2>
+<p><code>MemoryScopeKind</code> has five values; they are labels for intent, not behavior switches:</p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Platform</code></td>
+<td>Root scope of a host installation or product surface.</td>
+</tr>
+<tr>
+<td><code>Session</code></td>
+<td>One conversation / working session.</td>
+</tr>
+<tr>
+<td><code>Tenant</code></td>
+<td>One customer or organization in a multi-tenant host.</td>
+</tr>
+<tr>
+<td><code>Purpose</code></td>
+<td>A functional partition (e.g. curated long-term notes vs. scratch).</td>
+</tr>
+<tr>
+<td><code>Custom</code></td>
+<td>Host-defined partitioning.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="path-layout">Path layout</h2>
+<p><code>MemoryRootLayout</code> resolves every scope to a unique directory subtree under the configured root:</p>
+<pre><code>&lt;root&gt;/
+  manifest.json
+  &lt;scope-kind&gt;/&lt;scope-id&gt;/
+    records.jsonl
+    chunks/
+    vectors/&lt;model-hash&gt;/
+      index.json          (FlatJson backend)
+      index artifacts     (Engine / GPU backends)
+    graph/
+      entities.jsonl
+      relations.jsonl
+      clusters.jsonl
+</code></pre>
+<p>Because isolation is implemented as path resolution, cross-scope access is structurally impossible: an operation bound to scope <code>Session/user-42</code> never reads or writes outside <code>Session/user-42/</code>. There is no &quot;global override&quot;, and none is needed — see the multi-tenancy patterns below for legitimate cross-scope aggregation.</p>
+<h2 id="hierarchy">Hierarchy</h2>
+<p><code>MemoryScope</code> is <code>(Kind, Id, ParentScope?)</code>:</p>
+<pre><code class="lang-csharp">var tenant = new MemoryScope(MemoryScopeKind.Tenant, &quot;acme&quot;);
+var session = new MemoryScope(MemoryScopeKind.Session, &quot;chat-1&quot;, tenant);
+
+session.Chain();       // [Tenant/acme, Session/chat-1] — outermost first
+tenant.Contains(session);   // true
+session.Contains(tenant);   // false
+</code></pre>
+<p>Semantics pinned by tests: chains flatten outermost-first; <code>Contains</code> is reflexive and transitive over the chain; scopes are immutable (<code>WithParent</code> returns a copy). Persistence equality is kind + id — parent chains are host-side metadata used for <code>Contains</code> decisions and query-plan fan-out, and do not change where artifacts live.</p>
+<h2 id="multi-tenancy-patterns">Multi-tenancy patterns</h2>
+<p><strong>Strict isolation (default).</strong> One scope per tenant; every <code>RecallAsync</code> and <code>RememberAsync</code> carries the tenant's scope. Nothing crosses. Use <code>QueryPlan</code> fan-out only when you deliberately want a merged view.</p>
+<p><strong>Scoped aggregation via plans.</strong> To answer a question &quot;over a tenant and the current session&quot;, issue a <code>RetrievalQuery</code> with a <code>QueryPlan</code> whose steps target both scope ids. The plan runner fuses results with scope-qualified ids — the same record id in two scopes stays distinct — and structural isolation is preserved because fan-out is an explicit, declared operation, not ambient access.</p>
+<p><strong>Root + children.</strong> Model shared knowledge at the root (<code>Platform</code>) and per-context children beneath it (<code>Tenant</code>, <code>Session</code>). Children are separate scopes with their own artifacts; &quot;inheritance&quot; of knowledge is expressed as plan fan-out, not implicit reads.</p>
+<p><strong>Enumeration.</strong> <code>IMemoryService.Scopes()</code> lists existing scopes under the root (via the store's <code>IScopesAware</code> hook, with a directory-layout fallback), enabling admin-style overviews without breaching per-scope read isolation.</p>
+<h2 id="testing-your-isolation-story">Testing your isolation story</h2>
+<p>The library's test suite pins cross-scope invisibility at the storage, retrieval, and journey levels. For host-side confidence, assert in your own tests that a query scoped to tenant A never returns tenant B record ids — <code>RecallAsync</code> makes this a data assertion, no configuration required.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

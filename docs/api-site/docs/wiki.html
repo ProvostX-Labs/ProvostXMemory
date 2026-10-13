@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProvostXMemory — Documentation</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #334155; --muted: #5A6B80; --border: #E2E8F0;
+  --accent: #6366F1; --accent-soft: #EEF2FF; --sidebar: #F8FAFC; --code-bg: #EEF1F6;
+  --tok-k: #00539B; --tok-s: #A34E00; --tok-n: #067D62; --tok-c: #456A45;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0E1E3E; --fg: #E6EBF2; --muted: #A4B8D8; --border: #28406E;
+    --accent: #5B9CFF; --accent-soft: #152B54; --sidebar: #152B54; --code-bg: #152B54;
+    --tok-k: #569CD6; --tok-s: #CE9179; --tok-n: #B5CEA8; --tok-c: #7FA88C;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--fg); line-height: 1.6; font-size: 16px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.layout { display: flex; min-height: 100vh; }
+aside {
+  width: 280px; flex-shrink: 0; background: var(--sidebar); border-right: 1px solid var(--border);
+  position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 24px 0;
+}
+.brand { font-weight: 700; font-size: 17px; padding: 0 24px 4px; }
+.brand-sub { font-size: 12px; color: var(--muted); padding: 0 24px 16px; }
+.search-wrap { padding: 0 16px 12px; }
+#search { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px;
+  background: var(--bg); color: var(--fg); font-size: 14px; }
+nav { display: flex; flex-direction: column; }
+.nav-link { padding: 7px 24px; color: var(--fg); font-size: 14px; border-left: 3px solid transparent; }
+.nav-link:hover { background: var(--accent-soft); text-decoration: none; }
+.nav-link.active { border-left-color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+main { flex: 1; min-width: 0; padding: 40px 56px 80px; max-width: 980px; }
+.pane { display: none; }
+.pane.visible { display: block; }
+h1 { font-size: 30px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+h2 { font-size: 22px; margin-top: 36px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+h3 { font-size: 17px; margin-top: 28px; }
+code { background: var(--code-bg); padding: .15em .35em; border-radius: 5px; font-size: 87%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+pre.code { background: var(--code-bg); color: var(--fg); padding: 14px 16px; border-radius: 8px;
+  overflow-x: auto; font-size: 13.5px; line-height: 1.5; border: 1px solid var(--border);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; }
+pre.code code { background: none; padding: 0; font-size: inherit; }
+pre.code .tok-k { color: var(--tok-k); }
+pre.code .tok-s { color: var(--tok-s); }
+pre.code .tok-n { color: var(--tok-n); }
+pre.code .tok-c { color: var(--tok-c); font-style: italic; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 14.5px; }
+th, td { border: 1px solid var(--border); padding: 7px 12px; text-align: left; vertical-align: top; }
+th { background: var(--sidebar); font-weight: 600; }
+tbody tr:nth-child(2n) td { background: var(--sidebar); }
+li { margin: 4px 0; }
+.match-hidden { display: none !important; }
+.copy-btn { position: absolute; top: 6px; right: 6px; padding: 2px 10px; font-size: 12px;
+  line-height: 1.4; color: var(--muted); background: var(--bg); border: 1px solid var(--border);
+  border-radius: 5px; opacity: 0; transition: opacity .15s ease; cursor: pointer; z-index: 5; }
+pre.code { position: relative; }
+pre.code:hover > .copy-btn, .copy-btn.copied { opacity: 1; }
+.copy-btn:hover, .copy-btn.copied { color: var(--accent); border-color: var(--accent); font-weight: 600; }
+.copy-btn:focus-visible { opacity: 1; }
+.footnote { color: var(--muted); font-size: 13px; margin-top: 60px; border-top: 1px solid var(--border); padding-top: 16px; }
+@media (max-width: 900px) {
+  .layout { flex-direction: column; }
+  aside { position: static; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+  main { padding: 24px 20px 60px; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside>
+  <div class="brand">ProvostXMemory</div>
+  <div class="brand-sub">Documentation &middot; offline wiki</div>
+  <div class="search-wrap"><input id="search" type="search" placeholder="Filter sections and headings&hellip;" autocomplete="off"></div>
+  <nav id="nav">
+<a class="nav-link" href="#pane-getting-started" data-target="getting-started">Getting Started</a>
+<a class="nav-link" href="#pane-concepts" data-target="concepts">Concepts</a>
+<a class="nav-link" href="#pane-scopes" data-target="scopes">Scopes and Multi-Tenancy</a>
+<a class="nav-link" href="#pane-retrieval" data-target="retrieval">Retrieval</a>
+<a class="nav-link" href="#pane-backends" data-target="backends">Backends</a>
+<a class="nav-link" href="#pane-consolidation" data-target="consolidation">Consolidation</a>
+<a class="nav-link" href="#pane-evaluation" data-target="evaluation">Evaluation</a>
+<a class="nav-link" href="#pane-logging" data-target="logging">Logging and Audit</a>
+<a class="nav-link" href="#pane-api-glossary" data-target="api-glossary">API Glossary</a>
+<a class="nav-link" href="#pane-faq" data-target="faq">FAQ</a>
+  </nav>
+</aside>
+<main id="main">
+<section class="pane" id="pane-getting-started" data-title="Getting Started"><h1 id="getting-started">Getting Started</h1>
+<p>This guide walks through installing ProvostXMemory, wiring it into a host application, and selecting a vector index backend.</p>
+<h2 id="requirements">Requirements</h2>
+<ul><li>.NET 8 (the library targets the .NET 8 SDK; any runtime compatible with .NET 8 works)</li><li>No native dependencies, no external services, no database server. Storage is files on disk; the vector engine is pure C#.</li></ul>
+<h2 id="install">Install</h2>
+<p>The public package id is <code>ProvostXMemory</code> (packaging is owner-gated; until published, reference the projects directly):</p>
+<pre class="code" data-lang="text">dotnet add package ProvostXMemory</pre>
+<p>Hosts reference <strong>only</strong> the root package. Optional backend packages are added when a non-default index kind is selected:</p>
+<table><thead><tr><th>Package</th><th>Provides</th></tr></thead><tbody><tr><td><code>ProvostXMemory</code></td><td>Facade, abstractions, storage, lexical, fusion, chunking, graph, consolidation, correction, reranking, retrieval, eval, logging, telemetry, FlatJson backend</td></tr><tr><td><code>ProvostXMemory.VectorIndex.Engine</code></td><td>Own vector engine: FlatExact (SIMD), IVF, HNSW</td></tr><tr><td><code>ProvostXMemory.VectorIndex.Gpu</code></td><td>ILGPU GPU kernels (Flat + IVF) with transparent CPU fallback</td></tr></tbody></table>
+<h2 id="first-run">First run</h2>
+<pre class="code" data-lang="csharp"><span class="tok-k">using</span> ProvostXMemory;
+<span class="tok-k">using</span> ProvostXMemory.Abstractions;
+<span class="tok-k">using</span> ProvostXMemory.Fusion;
+<span class="tok-k">using</span> ProvostXMemory.Storage;
+<span class="tok-k">using</span> ProvostXMemory.Telemetry;
+<span class="tok-k">using</span> ProvostXMemory.VectorIndex.Engine;
+
+<span class="tok-k">var</span> root = <span class="tok-s">&quot;/data/memory-root&quot;</span>;
+<span class="tok-k">var</span> layout = <span class="tok-k">new</span> MemoryRootLayout(root, <span class="tok-s">&quot;model-hash-v1&quot;</span>);
+
+IMemoryService memory = <span class="tok-k">new</span> MemoryServiceBuilder()
+    .WithOptions(<span class="tok-k">new</span> MemoryServiceOptions(
+        Storage: <span class="tok-k">new</span> StorageOptions(root),
+        Vector: <span class="tok-k">new</span> VectorOptions(<span class="tok-s">&quot;model-hash-v1&quot;</span>, dim: <span class="tok-n">768</span>, IndexKind.IndexKind.Hnsw),
+        Graph: GraphOptions.Default,
+        Fusion: <span class="tok-k">new</span> FusionOptions(),
+        Consolidation: <span class="tok-k">new</span> ConsolidationOptions()))
+    .WithStore(<span class="tok-k">new</span> JsonlMemoryStore(layout))
+    .WithEmbedder(embedder)                       <span class="tok-c">// host-injected IVectorEmbedder</span>
+    .WithIndexFactory(<span class="tok-k">new</span> EngineVectorIndexFactory())
+    .WithFuser(<span class="tok-k">new</span> ReciprocalRankFuser())
+    .WithTelemetry(NoopMemoryTelemetry.Instance)
+    .Build();</pre>
+<p>Everything the host injects is an interface: <code>IVectorEmbedder</code> (your embedding model), <code>IVectorIndexFactory</code> (the backend), optionally <code>IRetrievalGrader</code>, <code>IQueryRewriter</code>, <code>IReranker</code>, <code>IEntityExtractor</code>, <code>IMemoryTelemetry</code>, and <code>IMemoryLogSink</code>. The library never picks models or calls out to the network on its own.</p>
+<h3 id="write-and-read">Write and read</h3>
+<pre class="code" data-lang="csharp"><span class="tok-k">var</span> scope = <span class="tok-k">new</span> MemoryScope(MemoryScopeKind.Session, <span class="tok-s">&quot;user-42&quot;</span>);
+
+<span class="tok-k">await</span> memory.RememberAsync(<span class="tok-k">new</span> MemoryRecord(
+    <span class="tok-s">&quot;note-1&quot;</span>, scope, <span class="tok-s">&quot;helm-rollout&quot;</span>, <span class="tok-s">&quot;Kubernetes rollout notes…&quot;</span>,
+    Category: <span class="tok-s">&quot;ops&quot;</span>, Tags: <span class="tok-k">new</span>[] { <span class="tok-s">&quot;infra&quot;</span>, <span class="tok-s">&quot;deploy&quot;</span> }));
+
+<span class="tok-k">await</span> memory.BuildIndexesAsync(scope);
+
+RetrievalResult result = <span class="tok-k">await</span> memory.RecallAsync(<span class="tok-k">new</span> RetrievalQuery(
+    <span class="tok-s">&quot;kubernetes rollout&quot;</span>,
+    scope,
+    TopK: <span class="tok-n">5</span>,
+    Filters: <span class="tok-k">new</span> RetrievalFilters(Tags: <span class="tok-k">new</span>[] { <span class="tok-s">&quot;deploy&quot;</span> })));
+
+<span class="tok-k">foreach</span> (<span class="tok-k">var</span> hit <span class="tok-k">in</span> result.Records)
+{
+    Console.WriteLine($<span class="tok-s">&quot;{hit.Score:0.000} {hit.Record.Id}: {hit.Record.Key}&quot;</span>);
+}</pre>
+<p>Key semantics to know on day one:</p>
+<ul><li><code>BuildIndexesAsync(scope)</code> must be called (or <code>RebuildAsync()</code> for all scopes) before recall returns results — index state is cold until built, and rebuilt deterministically after a restart.</li><li>Every record, query, and index artifact is bound to a <code>MemoryScope</code>. A query in one scope can never return records from another.</li></ul>
+<h2 id="dependency-injection-wiring">Dependency-injection wiring</h2>
+<p><code>MemoryServiceBuilder</code> is a fluent convenience wrapper; underneath it is plain constructor injection, so it composes naturally with any DI container:</p>
+<pre class="code" data-lang="csharp">services.AddSingleton(sp =&gt;
+{
+    <span class="tok-k">var</span> root = configuration[<span class="tok-s">&quot;Memory:Root&quot;</span>]!;
+    <span class="tok-k">var</span> layout = <span class="tok-k">new</span> MemoryRootLayout(root, configuration[<span class="tok-s">&quot;Memory:ModelHash&quot;</span>]!);
+    <span class="tok-k">return</span> <span class="tok-k">new</span> MemoryServiceBuilder()
+        .WithOptions(<span class="tok-k">new</span> MemoryServiceOptions(
+            Storage: <span class="tok-k">new</span> StorageOptions(root),
+            Vector: <span class="tok-k">new</span> VectorOptions(
+                configuration[<span class="tok-s">&quot;Memory:ModelHash&quot;</span>]!,
+                dim: <span class="tok-n">768</span>,
+                IndexKind.IndexKind.Hnsw),
+            Graph: GraphOptions.Default,
+            Fusion: <span class="tok-k">new</span> FusionOptions(),
+            Consolidation: <span class="tok-k">new</span> ConsolidationOptions(),
+            Logging: <span class="tok-k">new</span> MemoryLoggingOptions(
+                Enabled: <span class="tok-k">true</span>,
+                Level: MemoryLogLevel.Info,
+                Sink: MemoryLogSinkKind.Injected,
+                Integrity: MemoryLogIntegrity.HashChain)))
+        .WithStore(<span class="tok-k">new</span> JsonlMemoryStore(layout))
+        .WithEmbedder(sp.GetRequiredService&lt;IVectorEmbedder&gt;())
+        .WithIndexFactory(<span class="tok-k">new</span> EngineVectorIndexFactory())
+        .WithFuser(<span class="tok-k">new</span> ReciprocalRankFuser())
+        .WithTelemetry(NoopMemoryTelemetry.Instance)
+        .WithLogSink(sp.GetRequiredService&lt;IMemoryLogSink&gt;())
+        .Build();
+});
+services.AddSingleton&lt;IMemoryService&gt;(sp =&gt; sp.GetRequiredService&lt;MemoryServiceBuilder&gt;().Build());</pre>
+<p>Register the embedder once; it is the single place where your embedding model enters the system. The <code>model-hash</code> in <code>VectorOptions</code> and <code>MemoryRootLayout</code> must match the model you inject — the library guards against dimension and model-hash mismatches when opening index artifacts (see <a href="#pane-concepts" data-doc="concepts" data-anchor="model-hash-guard">Concepts</a>).</p>
+<h2 id="backend-selection">Backend selection</h2>
+<p>Choose <code>VectorOptions.IndexKind</code> and the matching factory:</p>
+<table><thead><tr><th>Kind</th><th>Factory</th><th>Package</th><th>Choose when</th></tr></thead><tbody><tr><td><code>Flat</code></td><td><code>EngineVectorIndexFactory</code></td><td>Engine</td><td>Exact search up to ~10k vectors; SIMD-accelerated</td></tr><tr><td><code>Ivf</code></td><td><code>EngineVectorIndexFactory</code></td><td>Engine</td><td>10k–1M vectors; small recall trade-off for much faster search</td></tr><tr><td><code>Hnsw</code></td><td><code>EngineVectorIndexFactory</code></td><td>Engine</td><td>10k–10M vectors; approximate, high recall (measured 0.998 @10)</td></tr><tr><td><code>Gpu</code></td><td><code>GpuVectorIndexFactory</code></td><td>Gpu</td><td>Flat/IVF workloads with a compatible accelerator; falls back to CPU transparently</td></tr><tr><td>default FlatJson</td><td>core (no factory wiring needed beyond a scope-aware factory)</td><td>core</td><td>Zero-dependency persistence-first deployments; brute-force cosine per scope</td></tr></tbody></table>
+<p>All backends implement the same <code>IVectorIndex</code> contract and pass an identical conformance suite, so switching is a configuration change, not a code change. See <a href="#pane-backends">Backends</a> for the full comparison.</p></section>
+<section class="pane" id="pane-concepts" data-title="Concepts"><h1 id="concepts">Concepts</h1>
+<p>The memory model of ProvostXMemory: what a record is, how scopes isolate data, how representations and chunking work, and how the model-hash guard protects index consistency.</p>
+<h2 id="records">Records</h2>
+<p>A <code>MemoryRecord</code> is the atomic unit of memory. It is an immutable record type:</p>
+<table><thead><tr><th>Member</th><th>Description</th></tr></thead><tbody><tr><td><code>Id</code></td><td>Stable identifier; unique within its scope.</td></tr><tr><td><code>Scope</code></td><td>The <code>MemoryScope</code> this record belongs to (isolation boundary).</td></tr><tr><td><code>Key</code></td><td>Short symbolic name (also boosted in lexical scoring).</td></tr><tr><td><code>Content</code></td><td>Primary text content.</td></tr><tr><td><code>Category</code></td><td>Optional single-value classification, filterable.</td></tr><tr><td><code>Tags</code></td><td>Optional label set, filterable; stored normalized (empty list, never null).</td></tr><tr><td><code>Reps</code></td><td>Additional <code>MemoryRepresentation</code> entries (multi-modal).</td></tr><tr><td><code>CreatedAt</code> / <code>UpdatedAt</code></td><td>UTC timestamps, set on creation and maintained by the facade.</td></tr><tr><td><code>ExpiresAt</code></td><td>Optional TTL deadline; honored by consolidation.</td></tr><tr><td><code>Meta</code></td><td>Free-form string key/value metadata, persisted with the record.</td></tr></tbody></table>
+<p>Hosts create records; the facade owns index maintenance. <code>RememberAsync</code>, <code>UpdateAsync</code>, and <code>ForgetAsync</code> keep the dense and lexical indexes (and optionally the graph ledger) in sync through a per-record id ledger.</p>
+<h2 id="scopes-and-the-isolation-model">Scopes and the isolation model</h2>
+<p>A <code>MemoryScope</code> is <code>(Kind, Id, ParentScope?)</code> — hierarchical and immutable:</p>
+<ul><li>Kinds: <code>Platform</code>, <code>Session</code>, <code>Tenant</code>, <code>Purpose</code>, <code>Custom</code>.</li><li><code>Chain()</code> flattens the parent chain, outermost first.</li><li><code>Contains(other)</code> reports whether <code>other</code> is this scope or a descendant.</li></ul>
+<p>Isolation is <strong>structural, not conventional</strong>: every store, index, and graph operation is scope-bound, and scope resolution is enforced by <code>MemoryRootLayout</code>, which maps each scope to its own directory subtree. Cross-scope reads are impossible by construction — a query in scope A cannot observe records, vectors, or graph entities of scope B. This property is pinned by dedicated isolation tests in every layer and by end-to-end multi-tenant journey tests.</p>
+<p>Parent chains are host-side metadata: they express intent (a session belonging to a tenant) and participate in <code>Contains</code> semantics, but persistence equality is by kind + id — scopes are stored under their own resolved paths regardless of parentage.</p>
+<h2 id="representations">Representations</h2>
+<p>One record can carry multiple <code>MemoryRepresentation</code> entries with modality <code>Text | Image | Table | Audio | Custom</code> and an optional per-representation <code>EmbeddingModelHash</code>. This supports multi-modal memory: a table and its textual description can live on the same record and be embedded separately.</p>
+<p>Retrieval addresses representations with vector ids of the form <code>repr|&lt;recordId&gt;|&lt;index&gt;</code>. The multi-representation retriever resolves these back to the owning record and reports the <strong>best-representation score</strong> per record, so one hit per record per stage regardless of how many representations matched.</p>
+<h2 id="chunking">Chunking</h2>
+<p>Long content is split into <code>Chunk</code> items before embedding. <code>IChunker</code> implementations:</p>
+<ul><li><code>StructuredChunker</code> — respects document structure (line/paragraph boundaries) when <code>ChunkOptions.RespectStructure</code> is set.</li><li><code>SizeChunker</code> — size/overlap-driven splitting.</li></ul>
+<p><code>ChunkOptions</code> controls <code>MaxChunkLength</code> (default 512), <code>Overlap</code>, <code>MinChunkLength</code>, <code>Separator</code>, and structure respect; all combinations are validated (overlap must be smaller than the max length, minimum must not exceed the maximum, and so on). Chunk ids are encoded by <code>ChunkIdCodec</code> as scope-qualified identifiers and resolved back to their parent record by <code>IParentResolver</code> / <code>ChunkParentResolver</code> — the parent-document recall pattern: retrieve the best chunk, return the whole record.</p>
+<h2 id="model-hash-guard">Model-hash guard</h2>
+<p>Embedding models define the geometry of their vectors. Mixing vectors produced by different models (or dimensions) in one index silently destroys retrieval quality. ProvostXMemory prevents this at three levels:</p>
+<ol><li><strong>Path isolation</strong> — index artifacts live under <code>vectors/&lt;model-hash&gt;/</code> inside each scope, so a different model means a different artifact set.</li><li><strong>Options guard</strong> — <code>VectorOptions</code> carries the model hash and dimension; index files record them at build time.</li><li><strong>Runtime guard</strong> — <code>IVectorIndexGuard</code> implementations reject opens with a mismatched model hash or dimension, throwing <code>VectorIndexGuardMismatchException</code> instead of returning garbage.</li></ol>
+<p>Consequence: <strong>swapping the embedding model is a data-migration decision, not a config flag.</strong> Re-embed and rebuild (<code>RebuildAsync</code>) under the new hash. See the <a href="#pane-faq" data-doc="faq" data-anchor="can-i-swap-the-embedding-model">FAQ</a>.</p>
+<h2 id="namespaces">Namespaces</h2>
+<p>The term *namespace* in this codebase means the scope-qualified partition that owns an artifact: a (scope, model-hash) pair for vectors, a scope for records/graph/lexical state. Query plans fan out across namespaces by targeting scope ids; fusion identifiers are scope-qualified so the same record id in two scopes never conflates (see <a href="#pane-retrieval" data-doc="retrieval" data-anchor="query-plans">Retrieval</a>).</p></section>
+<section class="pane" id="pane-scopes" data-title="Scopes and Multi-Tenancy"><h1 id="scopes-and-multi-tenancy">Scopes and Multi-Tenancy</h1>
+<p>Scopes are the isolation unit of ProvostXMemory. This page covers scope kinds, the on-disk layout, hierarchy semantics, and patterns for multi-tenant hosts.</p>
+<h2 id="scope-kinds">Scope kinds</h2>
+<p><code>MemoryScopeKind</code> has five values; they are labels for intent, not behavior switches:</p>
+<table><thead><tr><th>Kind</th><th>Typical use</th></tr></thead><tbody><tr><td><code>Platform</code></td><td>Root scope of a host installation or product surface.</td></tr><tr><td><code>Session</code></td><td>One conversation / working session.</td></tr><tr><td><code>Tenant</code></td><td>One customer or organization in a multi-tenant host.</td></tr><tr><td><code>Purpose</code></td><td>A functional partition (e.g. curated long-term notes vs. scratch).</td></tr><tr><td><code>Custom</code></td><td>Host-defined partitioning.</td></tr></tbody></table>
+<h2 id="path-layout">Path layout</h2>
+<p><code>MemoryRootLayout</code> resolves every scope to a unique directory subtree under the configured root:</p>
+<pre class="code" data-lang="">&lt;root&gt;/
+  manifest.json
+  &lt;scope-kind&gt;/&lt;scope-id&gt;/
+    records.jsonl
+    chunks/
+    vectors/&lt;model-hash&gt;/
+      index.json          (FlatJson backend)
+      index artifacts     (Engine / GPU backends)
+    graph/
+      entities.jsonl
+      relations.jsonl
+      clusters.jsonl</pre>
+<p>Because isolation is implemented as path resolution, cross-scope access is structurally impossible: an operation bound to scope <code>Session/user-42</code> never reads or writes outside <code>Session/user-42/</code>. There is no &quot;global override&quot;, and none is needed — see the multi-tenancy patterns below for legitimate cross-scope aggregation.</p>
+<h2 id="hierarchy">Hierarchy</h2>
+<p><code>MemoryScope</code> is <code>(Kind, Id, ParentScope?)</code>:</p>
+<pre class="code" data-lang="csharp"><span class="tok-k">var</span> tenant = <span class="tok-k">new</span> MemoryScope(MemoryScopeKind.Tenant, <span class="tok-s">&quot;acme&quot;</span>);
+<span class="tok-k">var</span> session = <span class="tok-k">new</span> MemoryScope(MemoryScopeKind.Session, <span class="tok-s">&quot;chat-1&quot;</span>, tenant);
+
+session.Chain();       <span class="tok-c">// [Tenant/acme, Session/chat-1] — outermost first</span>
+tenant.Contains(session);   <span class="tok-c">// true</span>
+session.Contains(tenant);   <span class="tok-c">// false</span></pre>
+<p>Semantics pinned by tests: chains flatten outermost-first; <code>Contains</code> is reflexive and transitive over the chain; scopes are immutable (<code>WithParent</code> returns a copy). Persistence equality is kind + id — parent chains are host-side metadata used for <code>Contains</code> decisions and query-plan fan-out, and do not change where artifacts live.</p>
+<h2 id="multi-tenancy-patterns">Multi-tenancy patterns</h2>
+<p><strong>Strict isolation (default).</strong> One scope per tenant; every <code>RecallAsync</code> and <code>RememberAsync</code> carries the tenant&#x27;s scope. Nothing crosses. Use <code>QueryPlan</code> fan-out only when you deliberately want a merged view.</p>
+<p><strong>Scoped aggregation via plans.</strong> To answer a question &quot;over a tenant and the current session&quot;, issue a <code>RetrievalQuery</code> with a <code>QueryPlan</code> whose steps target both scope ids. The plan runner fuses results with scope-qualified ids — the same record id in two scopes stays distinct — and structural isolation is preserved because fan-out is an explicit, declared operation, not ambient access.</p>
+<p><strong>Root + children.</strong> Model shared knowledge at the root (<code>Platform</code>) and per-context children beneath it (<code>Tenant</code>, <code>Session</code>). Children are separate scopes with their own artifacts; &quot;inheritance&quot; of knowledge is expressed as plan fan-out, not implicit reads.</p>
+<p><strong>Enumeration.</strong> <code>IMemoryService.Scopes()</code> lists existing scopes under the root (via the store&#x27;s <code>IScopesAware</code> hook, with a directory-layout fallback), enabling admin-style overviews without breaching per-scope read isolation.</p>
+<h2 id="testing-your-isolation-story">Testing your isolation story</h2>
+<p>The library&#x27;s test suite pins cross-scope invisibility at the storage, retrieval, and journey levels. For host-side confidence, assert in your own tests that a query scoped to tenant A never returns tenant B record ids — <code>RecallAsync</code> makes this a data assertion, no configuration required.</p></section>
+<section class="pane" id="pane-retrieval" data-title="Retrieval"><h1 id="retrieval">Retrieval</h1>
+<p>How a query becomes an answer: the pipeline stages, when to use each retrieval route, and how filters apply.</p>
+<h2 id="pipeline-overview">Pipeline overview</h2>
+<pre class="code" data-lang="">                       RetrievalQuery (text, scope, topK, filters, plan?)
+                                        |
+                     ┌──────────────────┴──────────────────┐
+                     |  MemoryService.RecallAsync routing  |
+                     |  plan → corrective → hybrid → rerank|
+                     └──────────────────┬──────────────────┘
+                                        |
+        ┌───────────────┬───────────────┴────────────────┐
+        ▼               ▼                                ▼
+   dense vector     lexical (BM25)                  query plan fan-<span class="tok-k">out</span>
+   search per       search per scope                across target scopes
+   scope            + key boost
+        └───────┬───────┘
+                ▼
+        fusion (RRF, k=<span class="tok-n">60</span> <span class="tok-k">default</span>; weighted dense/lexical)
+                ▼
+        resolve vector/chunk ids → memory records (parent-document recall)
+                ▼
+        filter enforcement (tags / category / date window)
+                ▼
+        optional rerank (IReranker)
+                ▼
+        corrective loop (<span class="tok-k">when</span> a grader <span class="tok-k">is</span> wired): grade → rewrite → retry
+                ▼
+        RetrievalResult + diagnostics (per-stage scores, timings)</pre>
+<p>Every stage is scope-exact. The scope index registry resolves the vector index, lexical index, and record provider for the query&#x27;s scope; nothing from another scope enters the funnel.</p>
+<h2 id="hybrid-retrieval-default-route">Hybrid retrieval (default route)</h2>
+<p><code>HybridRetriever</code> (implements <code>IHybridRetriever</code>) runs dense and lexical search in parallel for the query scope, then fuses:</p>
+<ul><li><strong>Dense</strong> — the query is embedded with the host&#x27;s <code>IVectorEmbedder</code> and searched against the scope&#x27;s vector index.</li><li><strong>Lexical</strong> — the tokenized query is scored against the scope&#x27;s BM25 index (<code>Bm25Scorer</code>, saturated-TF IDF weighting plus a key-term boost).</li><li><strong>Fusion</strong> — <code>ReciprocalRankFuser</code> combines the ranked lists with Reciprocal Rank Fusion (<code>FusionOptions.RrfK</code>, default 60) and configurable <code>DenseWeight</code> / <code>LexicalWeight</code>. Zero weights drop a stage entirely; a deterministic fallback ordering handles the all-zero edge case.</li><li><strong>Resolve</strong> — vector ids (including <code>repr|…</code> multi-representation ids and chunk ids) resolve back to records via the per-record id ledger and parent resolver.</li><li><strong>Rerank</strong> — if an <code>IReranker</code> is wired, candidates are re-scored after fusion.</li></ul>
+<p>Use this route when you want the standard quality/speed balance with no extra infrastructure.</p>
+<h2 id="reranking">Reranking</h2>
+<p>Three built-in <code>IReranker</code> implementations:</p>
+<table><thead><tr><th>Reranker</th><th>Behavior</th></tr></thead><tbody><tr><td><code>NoopReranker</code></td><td>Pass-through; default when none is wired.</td></tr><tr><td><code>ScoreBoostReranker</code></td><td>Heuristic boosts for tag matches, key-term hits, and category matches; length-based penalties (<code>ScoreBoostRerankerOptions</code>).</td></tr><tr><td><code>ClientBackedReranker</code></td><td>Delegates to an <code>IRerankerClient</code> (your cross-encoder/LLM service) with a fallback <code>IReranker</code>; <code>ClientBackedRerankerOptions.TrustClientCompletely</code> controls whether client order is taken verbatim or fused with the fallback.</td></tr></tbody></table>
+<p>The library stays LLM-agnostic: reranking intelligence is injected, never built in.</p>
+<h2 id="corrective-loop">Corrective loop</h2>
+<p><code>CorrectiveRetriever</code> (implements <code>ICorrectiveRetriever</code>) wraps the hybrid retriever with a self-checking loop:</p>
+<ol><li>Retrieve candidates via the hybrid retriever.</li><li><code>IRetrievalGrader</code> grades each candidate <code>Relevant | Irrelevant | Uncertain</code> (host-injected — typically an LLM call).</li><li>If evidence is weak (below <code>CorrectionOptions.RelevanceFloor</code>), <code>IQueryRewriter</code> (default <code>KeywordQueryRewriter</code>) rewrites the query and retries.</li><li>If the result set is empty and <code>UseFetcherOnEmpty</code> is set, the injected <code>IExternalFetcher</code> is invoked — the extension hook for web augmentation. The library never fetches on its own.</li></ol>
+<p>Use this route when recall quality matters more than latency, and you have a grading signal available.</p>
+<h2 id="graph-retrieval">Graph retrieval</h2>
+<p>The graph layer stores entities and relations extracted from memory records (via <code>IEntityExtractor</code> — <code>HeuristicEntityExtractor</code> ships in-box; hosts may inject an LLM-backed extractor) into a scope-pinned <code>JsonlMemoryGraphStore</code>.</p>
+<p><code>GraphRetriever</code> (implements <code>IGraphRetriever</code>) maps a query to relevant entities, traverses <code>Neighbors</code> / <code>ShortestPath</code>, and returns records from the relevant subgraph together with <code>GraphCluster</code> summaries. Consolidation-emitted cluster summaries also surface in ordinary recall results as records with category <code>summary</code> and are linked as graph clusters.</p>
+<p>Use graph retrieval when questions are relational (&quot;who is connected to X&quot;, &quot;what cluster does this belong to&quot;) rather than purely similarity-based.</p>
+<h2 id="query-plans">Query plans</h2>
+<p>A <code>QueryPlan</code> is a declarative, ordered list of <code>QueryPlanStep</code> entries, each with an <code>Action</code>, <code>TargetScopes</code> (scope ids to fan out to), and <code>TopK</code>. <code>QueryPlanRunner</code> executes the steps:</p>
+<ul><li>Fan out retrieval across target scopes, with <strong>scope-qualified fusion ids</strong> so identical record ids in different scopes stay distinct.</li><li>Merge step results through the fuser.</li><li>One weak-evidence retry: if merged evidence is thin, the query is rewritten once (<code>IQueryTextRewriter</code>, default <code>KeywordQueryTextRewriter</code>) and re-executed.</li></ul>
+<p>Use a plan when one logical question spans multiple scopes (e.g. a session scope plus its tenant parent) or when the agentic surface should express retrieval as data. <code>MemoryService.RecallAsync</code> routes to the plan runner automatically when <code>RetrievalQuery.Plan</code> is set.</p>
+<h2 id="filters">Filters</h2>
+<p><code>RetrievalFilters</code> supports tag sets, a single category, and a date window (<code>From</code> / <code>To</code>). Filters are <strong>enforced</strong> after candidate resolution (<code>RetrievalFilterApplier</code>), not merely hinted — filtering is pinned by dedicated enforcement tests. Filter on tags/category/date when the candidate set should be narrowed semantically *and* structurally.</p>
+<h2 id="diagnostics">Diagnostics</h2>
+<p><code>RetrievalResult.Diagnostics</code> exposes per-stage scores and timings; <code>IMemoryTelemetry</code> receives the same signals for host-side observability. Stage names are stable constants (<code>StageNames</code>).</p></section>
+<section class="pane" id="pane-backends" data-title="Backends"><h1 id="backends">Backends</h1>
+<p>Every vector index backend implements the same <code>IVectorIndex</code> contract and must pass the same conformance suite (build, add, remove, search, flush, dimension/count invariants). Switching backends is a configuration change: set <code>VectorOptions.IndexKind</code> and wire the matching <code>IVectorIndexFactory</code>.</p>
+<h2 id="the-contract">The contract</h2>
+<table><thead><tr><th>Member</th><th>Description</th></tr></thead><tbody><tr><td><code>Build(items)</code></td><td>Replaces index contents with the given <code>VectorItem</code> set.</td></tr><tr><td><code>Add(item)</code> / <code>Remove(id)</code></td><td>Incremental mutation (where supported).</td></tr><tr><td><code>Search(vector, k)</code></td><td>Returns <code>ScoredVectorId</code> list, best first.</td></tr><tr><td><code>Dim</code> / <code>Count</code></td><td>Dimension and current item count.</td></tr><tr><td><code>Flush</code></td><td>Persists durable state.</td></tr></tbody></table>
+<p>Guards (<code>IVectorIndexGuard</code>) protect against dimension and model-hash mismatches; violations throw <code>VectorIndexGuardMismatchException</code>. Missing ids throw <code>VectorIndexIdNotFoundException</code>.</p>
+<h2 id="flatjson-default-core-package">FlatJson (default, core package)</h2>
+<ul><li><strong>Mechanism:</strong> vectors held in a per-scope <code>VectorNamespaceFile</code> (transactional JSON file, written via <code>AtomicFileWriter</code>); search is brute-force cosine over the scope&#x27;s items.</li><li><strong>Complexity:</strong> build O(n·d); search O(n·d) per query.</li><li><strong>When to choose:</strong> small scopes (up to a few thousand vectors), persistence-first deployments, environments where zero extra dependencies matter. It is also the parity baseline all other backends are tested against.</li><li><strong>Persistence:</strong> JSON in the scope&#x27;s <code>vectors/&lt;model-hash&gt;/</code> directory; survives restarts without a rebuild.</li></ul>
+<h2 id="flatexact-own-engine-simd">FlatExact (own engine, SIMD)</h2>
+<ul><li><strong>Package:</strong> <code>ProvostXMemory.VectorIndex.Engine</code>.</li><li><strong>Mechanism:</strong> exact brute-force search with <code>Vector512</code> SIMD kernels (<code>VectorMath</code>, <code>VectorScanner</code>, <code>VectorTopKBuffer</code>); in-memory item store with configurable distance metric (<code>Engine Options</code>).</li><li><strong>Complexity:</strong> build O(n·d); search O(n·d) but with a large SIMD constant-factor win over FlatJson.</li><li><strong>When to choose:</strong> exactness required and up to ~10k vectors per scope; also the reference result source for cross-backend parity tests.</li></ul>
+<h2 id="ivf-own-engine">IVF (own engine)</h2>
+<ul><li><strong>Package:</strong> <code>ProvostXMemory.VectorIndex.Engine</code>.</li><li><strong>Mechanism:</strong> k-means coarse quantizer (<code>KMeansQuantizer</code>, seeded and deterministic) partitions vectors into inverted posting lists; a query scans only the nearest <code>nprobe</code> lists. <code>IvfPostingLists</code>, <code>IvfMember</code>, <code>KMeansResult</code> are the supporting types.</li><li><strong>Complexity:</strong> build O(iterations · n · d); search O(nprobe/ncentroids · n · d) — sublinear in n.</li><li><strong>Trade-off:</strong> recall depends on <code>nprobe</code>; results are deterministic for a given seed and build order.</li><li><strong>When to choose:</strong> 10k–1M vectors where a small, tunable recall loss buys large search-speed gains.</li></ul>
+<h2 id="hnsw-own-engine">HNSW (own engine)</h2>
+<ul><li><strong>Package:</strong> <code>ProvostXMemory.VectorIndex.Engine</code>.</li><li><strong>Mechanism:</strong> hierarchical navigable small-world graph — <code>HnswBuilder</code> constructs layered graphs (<code>HnswGraph</code>), level assignment is seeded (<code>HnswLevelAssigner</code>), search is greedy beam descent (<code>HnswSearcher</code>, <code>HnswBeamSearcher</code>).</li><li><strong>Complexity:</strong> build O(n·log n·d); search approximately O(log n·d).</li><li><strong>Patent-safe semantics:</strong> indexes are <strong>immutable after build</strong>; mutations trigger a batch rebuild. This deliberately avoids incremental dynamic-update methods (see the patent addendum in ARCHITECTURE.md).</li><li><strong>Quality:</strong> measured recall@10 = 0.998 on a 2000×64 synthetic corpus; two identical builds produce bit-identical results (determinism pinned by tests).</li><li><strong>When to choose:</strong> 10k–10M vectors with high recall requirements and read-mostly workloads.</li></ul>
+<h2 id="gpu-ilgpu">GPU (ILGPU)</h2>
+<ul><li><strong>Package:</strong> <code>ProvostXMemory.VectorIndex.Gpu</code>.</li><li><strong>Mechanism:</strong> own ILGPU kernels for exact flat scoring and IVF list scans (<code>GpuVectorKernels</code>, <code>IlgpuScoreLauncher</code>, <code>GpuVectorMatrix</code>). Kernels are one-thread-per-slot with chunked launches — no barriers or shared memory — so accumulation order is identical to CPU: results are <strong>bit-exact</strong> between GPU and fallback paths.</li><li><strong>Availability:</strong> <code>IGpuAccelerator</code> discovery is lazy and exception-guarded (<code>IGpuContextPolicy</code>, <code>GpuDiscoveryOptions</code>). On machines without a compatible accelerator the index transparently delegates to an injected CPU <code>IVectorIndex</code> with identical results; the same conformance suite passes on CPU-only machines via this path.</li><li><strong>Factories:</strong> <code>GpuVectorIndexFactory</code> wraps an <code>EngineVectorIndexFactory</code> for the fallback; the engine factory itself rejects <code>IndexKind.Gpu</code> by design (explicit routing, pinned by tests).</li><li><strong>When to choose:</strong> Flat/IVF-sized workloads where an accelerator is present and batch scoring throughput matters.</li></ul>
+<h2 id="selection-matrix">Selection matrix</h2>
+<table><thead><tr><th>Backend</th><th>Exact?</th><th>Scale guidance</th><th>Extra package</th><th>Native deps</th></tr></thead><tbody><tr><td>FlatJson</td><td>yes</td><td>≤ a few thousand per scope</td><td>none</td><td>none</td></tr><tr><td>FlatExact</td><td>yes</td><td>≤ ~10k per scope</td><td>Engine</td><td>none</td></tr><tr><td>IVF</td><td>approximate (tunable)</td><td>10k–1M</td><td>Engine</td><td>none</td></tr><tr><td>HNSW</td><td>approximate</td><td>10k–10M</td><td>Engine</td><td>none</td></tr><tr><td>GPU (Flat/IVF)</td><td>exact (bit-identical)</td><td>Flat/IVF scale, accelerator-dependent</td><td>Gpu</td><td>GPU runtime via ILGPU</td></tr></tbody></table>
+<p>Rules of thumb: start with FlatJson; move to HNSW when a scope outgrows brute-force latency; use IVF when you can trade a little recall for speed; configure GPU unconditionally when hardware may be present — the fallback makes it safe to configure unconditionally.</p></section>
+<section class="pane" id="pane-consolidation" data-title="Consolidation"><h1 id="consolidation">Consolidation</h1>
+<p>Consolidation is the maintenance pass that keeps a scope&#x27;s memory healthy: deduplication, TTL expiry, and cluster-summary emission. It is triggered explicitly via <code>IMemoryService.ConsolidateAsync(scope, options)</code> — the library never mutates memory in the background on its own.</p>
+<h2 id="what-a-pass-does">What a pass does</h2>
+<p><code>MemoryConsolidator</code> (implements <code>IMemoryConsolidator</code>) runs over one scope:</p>
+<ol><li><strong>Deduplication</strong> — <code>ThresholdDedupDetector</code> (implements <code>IDedupDetector</code>) finds near-duplicates by embedding similarity at or above <code>ConsolidationOptions.DedupSimilarityThreshold</code>. Survivors are the <strong>oldest</strong> record; the survivor&#x27;s tags are the union of the duplicate set&#x27;s tags; newer duplicates are removed and their index artifacts are cleaned up.</li><li><strong>TTL expiry</strong> — when <code>ConsolidationOptions.ExpireTtl</code> is set, records whose <code>ExpiresAt</code> is in the past are deleted; expiry persists across restarts.</li><li><strong>Cluster summaries</strong> — when <code>ConsolidationOptions.EmitClusterSummaries</code> is set, <code>ClusterSummarizer</code> (implements <code>IClusterSummarizer</code>) produces a new summary record for each coherent cluster:</li></ol>
+<ul><li>the summary record is stored with category <code>summary</code> and appears in ordinary recall results;</li><li>the cluster is also recorded in the scope&#x27;s graph store (<code>IMemoryGraphStore</code> cluster write path), linking the member entities.</li></ul>
+<p>The pass returns a report (via <code>ConsolidationReportMeta</code>) describing removals and emissions, and the facade refreshes or removes affected index artifacts so recall immediately reflects the consolidated state.</p>
+<h2 id="options-reference">Options reference</h2>
+<table><thead><tr><th>Option</th><th>Default</th><th>Effect</th></tr></thead><tbody><tr><td><code>DedupSimilarityThreshold</code></td><td>high (≈0.99999 used in journeys)</td><td>Similarity at which two records are considered duplicates.</td></tr><tr><td><code>ExpireTtl</code></td><td><code>true</code></td><td>Delete records past <code>ExpiresAt</code> during the pass.</td></tr><tr><td><code>EmitClusterSummaries</code></td><td><code>true</code></td><td>Generate summary records + graph clusters.</td></tr></tbody></table>
+<p><code>ConsolidationTuning</code> exposes additional internal tuning knobs to the consolidator implementation.</p>
+<h2 id="policies-and-recommended-cadence">Policies and recommended cadence</h2>
+<ul><li><strong>Threshold choice:</strong> set the dedup threshold as high as precision allows. At 0.99999+ only true restatements merge; lowering it aggressively risks collapsing distinct memories.</li><li><strong>When to run:</strong> after bulk ingestion, periodically for long-lived session scopes, and before eval runs that should measure consolidated-state quality.</li><li><strong>Ordering guarantees:</strong> consolidation is deterministic — the same store state and options produce the same survivors, unions, and summaries (pinned by tests, including non-regression of golden-query scores across a consolidation pass).</li><li><strong>Index consistency:</strong> you do not need to rebuild after consolidation; the facade refreshes index artifacts as part of the pass. A full <code>RebuildAsync</code> remains available for wholesale reindexing.</li></ul></section>
+<section class="pane" id="pane-evaluation" data-title="Evaluation"><h1 id="evaluation">Evaluation</h1>
+<p>The <code>ProvostXMemory.Eval</code> package measures retrieval quality with standard ranking metrics, guards against regressions, and produces JSON reports. It is the same harness used by the library&#x27;s own journey tests (golden-query recall gate at Recall@5 ≥ 0.9, achieved 1.0).</p>
+<h2 id="usage">Usage</h2>
+<pre class="code" data-lang="csharp"><span class="tok-k">var</span> factory = <span class="tok-k">new</span> DefaultEvalServiceFactory(vectorDim: <span class="tok-n">768</span>);
+<span class="tok-k">var</span> runner = <span class="tok-k">new</span> EvalRunner(factory);
+
+<span class="tok-k">var</span> caseSet = <span class="tok-k">new</span> EvalCaseSet(<span class="tok-s">&quot;release-notes&quot;</span>, <span class="tok-k">new</span>[]
+{
+    <span class="tok-k">new</span> EvalCase(
+        CaseId: <span class="tok-s">&quot;q-01&quot;</span>,
+        Query: <span class="tok-s">&quot;kubernetes rollout&quot;</span>,
+        Scope: scope,
+        RelevantIds: <span class="tok-k">new</span>[] { <span class="tok-s">&quot;note-1&quot;</span> },
+        RelevantKeys: Array.Empty&lt;<span class="tok-k">string</span>&gt;())  <span class="tok-c">// optional key hints</span>
+    <span class="tok-c">// ...</span>
+});
+
+EvalRunnerOptions options = <span class="tok-k">new</span>(
+    TopK: <span class="tok-n">10</span>,
+    Thresholds: <span class="tok-k">new</span> EvalMetricThresholds(recallAtK: <span class="tok-n">0.9</span>));
+
+<span class="tok-k">var</span> report = <span class="tok-k">await</span> runner.EvaluateAsync(caseSet, options);</pre>
+<p>The <code>EvalServiceFactory</code> abstraction builds a self-contained service (store, embedder, indexes) per evaluation; <code>DefaultEvalServiceFactory</code> composes the standard stack, and <code>DeterministicEvalCorpus</code> generates reproducible synthetic corpora (<code>ClusterHashEmbedder</code> provides deterministic embeddings with a fixed noise amplitude). <code>disposeRootDirectory</code> controls cleanup of the temporary root.</p>
+<h2 id="metrics">Metrics</h2>
+<p>Let *R* be the set of relevant record ids for a case, *k* the cut-off, and *d(i)* the rank position of the *i*-th relevant result in the returned ranking.</p>
+<table><thead><tr><th>Metric</th><th>Formula</th><th>Meaning</th></tr></thead><tbody><tr><td>Recall@k</td><td>&amp;#124;R ∩ top-k&amp;#124; / &amp;#124;R&amp;#124;</td><td>Fraction of relevant records found within the top *k*.</td></tr><tr><td>Precision@k</td><td>&amp;#124;R ∩ top-k&amp;#124; / k</td><td>Fraction of the top *k* that is relevant.</td></tr><tr><td>MRR</td><td>(1/&amp;#124;R&amp;#124;) · Σ 1/d(i)</td><td>Mean of reciprocal ranks of the first relevant hit (1.0 when the first result is relevant).</td></tr><tr><td>NDCG@k</td><td>DCG@k / IDCG@k, where DCG@k = Σ&lt;sub&gt;i≤k&lt;/sub&gt; gain(i)/log&lt;sub&gt;2&lt;/sub&gt;(i+1)</td><td>Discounted cumulative gain normalized by the ideal ranking; supports graded gains from per-hit traces.</td></tr></tbody></table>
+<p>Metric math lives in <code>EvalMetricMath</code> (hand-verified against known answers, pinned by <code>EvalMetricMathTests</code>). Per-case results are <code>EvalCaseMetrics</code>; per-case hit traces (<code>EvalCaseTrace</code>, <code>EvalCaseTraceHit</code>) carry ids, scores, and gains.</p>
+<h2 id="reports">Reports</h2>
+<p><code>EvalReportJson</code> serializes a full report — aggregate metrics plus per-scope and per-stage breakdowns, threshold evaluations, and traces — in snake_case JSON. Round-trips are byte-identical (canonical rewrite), so reports diff cleanly in version control.</p>
+<h2 id="regression-guarding">Regression guarding</h2>
+<p><code>EvalMetricThresholds</code> declares per-metric floors:</p>
+<pre class="code" data-lang="csharp"><span class="tok-k">new</span> EvalMetricThresholds(recallAtK: <span class="tok-n">0.90</span>, mrr: <span class="tok-n">0.8</span>);</pre>
+<p>Violations are reported as <code>MetricThresholdViolation</code> entries (metric, actual, threshold) collected in <code>MetricThresholdViolations</code>. A non-empty violation list means the harness fails the run — wire it into CI as the recall-regression guard: fix the corpus and golden queries once, then any retrieval change that drops quality below the floors fails the build instead of shipping.</p>
+<p>Recommended practice:</p>
+<ol><li>Keep golden queries per scope in version control (the <code>EvalCaseSet</code> is plain data).</li><li>Pin thresholds slightly below observed baselines so noise does not flap.</li><li>Diff serialized reports after intentional changes to see exactly which cases regressed.</li></ol></section>
+<section class="pane" id="pane-logging" data-title="Logging and Audit"><h1 id="logging-and-audit-hash-chain">Logging and Audit Hash-Chain</h1>
+<p>ProvostXMemory ships a self-contained logging facility with an audit-grade integrity mode: append-only files, a SHA-256 hash chain for tamper evidence, rotation, retention, and strict content minimization.</p>
+<h2 id="disabled-by-default">Disabled by default</h2>
+<p>Logging is off by default with <strong>zero cost</strong>: no files are created, no allocations occur. Enable via <code>MemoryServiceOptions.Logging</code>:</p>
+<pre class="code" data-lang="csharp">Logging: <span class="tok-k">new</span> MemoryLoggingOptions(
+    Enabled: <span class="tok-k">true</span>,
+    Level: MemoryLogLevel.Info,
+    Sink: MemoryLogSinkKind.File,          <span class="tok-c">// File | Console | Injected</span>
+    Directory: Path.Combine(root, <span class="tok-s">&quot;logs&quot;</span>),
+    FileNamePattern: <span class="tok-s">&quot;memory-{date}.log&quot;</span>,
+    Format: MemoryLogFormat.JsonLines,
+    IncludeContent: <span class="tok-k">false</span>,                 <span class="tok-c">// content NEVER logged by default</span>
+    Integrity: MemoryLogIntegrity.HashChain,
+    RetentionDays: <span class="tok-n">30</span>)</pre>
+<h2 id="options-reference">Options reference</h2>
+<table><thead><tr><th>Option</th><th>Type / default</th><th>Description</th></tr></thead><tbody><tr><td><code>Enabled</code></td><td><code>bool</code>, <code>false</code></td><td>Master switch. Disabled ⇒ no writes, no allocations.</td></tr><tr><td><code>Level</code></td><td><code>MemoryLogLevel</code>, <code>Info</code></td><td>Minimum level emitted.</td></tr><tr><td><code>Sink</code></td><td><code>MemoryLogSinkKind</code>, <code>File</code></td><td><code>File</code> (rolling files), <code>Console</code>, or <code>Injected</code> (host-provided <code>IMemoryLogSink</code> via <code>MemoryServiceBuilder.WithLogSink</code>).</td></tr><tr><td><code>Directory</code></td><td><code>string</code></td><td>Log directory (typically under the memory root).</td></tr><tr><td><code>FileNamePattern</code></td><td><code>string</code></td><td>Rolling file name pattern.</td></tr><tr><td><code>Format</code></td><td><code>MemoryLogFormat</code>, <code>JsonLines</code></td><td>Line format; <code>MemoryLogJson</code> provides the encoder.</td></tr><tr><td><code>IncludeContent</code></td><td><code>bool</code>, <code>false</code></td><td>When false (default), record content never appears in any output — at most a short excerpt when explicitly enabled. Pinned by content-leak tests.</td></tr><tr><td><code>Integrity</code></td><td><code>MemoryLogIntegrity</code>, <code>HashChain</code></td><td>Enables the SHA-256 audit hash chain.</td></tr><tr><td><code>RetentionDays</code></td><td><code>int?</code></td><td>Retention window enforced by <code>RetentionSweeper</code>.</td></tr></tbody></table>
+<h2 id="emitted-categories">Emitted categories</h2>
+<table><thead><tr><th>Category</th><th>Level</th><th>Meaning</th></tr></thead><tbody><tr><td><code>Lifecycle</code></td><td>info</td><td>Service built; scope indexes opened.</td></tr><tr><td><code>IndexBuild</code></td><td>info</td><td>Vector/lexical index builds per scope.</td></tr><tr><td><code>Consolidation</code></td><td>info</td><td>Consolidation pass activity.</td></tr><tr><td><code>ScopeRejection</code></td><td>warn</td><td>Store rejected an operation for a missing scope or record id.</td></tr><tr><td><code>StoreError</code></td><td>error</td><td>Storage-layer failures.</td></tr></tbody></table>
+<p>Each <code>MemoryLogEntry</code> carries a timestamp, monotonically increasing sequence number, level, category, optional <code>MemoryLogScope</code> (kind + id), correlation id, duration, and the chain fields.</p>
+<h2 id="the-audit-hash-chain">The audit hash chain</h2>
+<p>When <code>Integrity = MemoryLogIntegrity.HashChain</code>, every entry is chained:</p>
+<pre class="code" data-lang="">entryHash(n) = SHA-<span class="tok-n">256</span>( sequence(n) ‖ timestamp(n) ‖ level ‖ category ‖ payload ‖ previousHash )</pre>
+<p><code>HashChainAppender</code> computes and appends the chain; <code>previousHash</code> of entry *n* is <code>entryHash(n-1)</code>, so any modification, deletion, or reordering of historical entries breaks every subsequent link.</p>
+<h3 id="verifying-a-log">Verifying a log</h3>
+<p><code>LogChainVerifier</code> walks a log file (or stream) from the beginning and returns a <code>LogChainVerificationResult</code>:</p>
+<pre class="code" data-lang="csharp"><span class="tok-k">var</span> verifier = <span class="tok-k">new</span> LogChainVerifier();
+LogChainVerificationResult result = verifier.Verify(logFilePath);
+
+<span class="tok-k">if</span> (!result.IsValid)
+{
+    <span class="tok-c">// result.BrokenAtSequence: first sequence number where the chain broke</span>
+    <span class="tok-c">// result.Detail: human-readable failure description</span>
+}</pre>
+<p>A valid result means the log is complete and unmodified from the first entry onward. This makes the log admissible as internal audit evidence: silent edits are detectable, and truncation is detectable as a chain break at the missing sequence.</p>
+<h2 id="retention-and-rotation">Retention and rotation</h2>
+<ul><li><code>RetentionSweeper</code> deletes log files older than <code>RetentionDays</code>. Run it on your schedule (e.g. at service start) — retention is explicit, never implicit.</li><li>Rotation follows <code>FileNamePattern</code>; rolling behavior is pinned by tests (<code>FileRollingTests</code>).</li><li>Deleted log segments are not chains-compatible by design: if you must delete aged logs, delete whole files and treat each file as an independent chain (each file starts its own chain at sequence 0).</li></ul>
+<h2 id="routing-into-host-logging">Routing into host logging</h2>
+<p>Use <code>Sink: MemoryLogSinkKind.Injected</code> plus <code>MemoryServiceBuilder.WithLogSink(...)</code> to forward <code>MemoryLogEntry</code> objects into your own logging pipeline. Note that hash-chain integrity applies to entries as emitted; if you need the chain, keep the file sink enabled as well.</p></section>
+<section class="pane" id="pane-api-glossary" data-title="API Glossary"><h1 id="api-glossary">API Glossary</h1>
+<p>Reference for the public types of ProvostXMemory, grouped by namespace. Hosts normally interact only with the root facade, the abstractions, and the backend factories; the remaining namespaces document the contracts behind each capability.</p>
+<p>Legend: interfaces are marked <strong>I</strong>, classes <strong>C</strong>, records <strong>R</strong>, enums <strong>E</strong>.</p>
+<p>---</p>
+<h2 id="provostxmemory-facade">ProvostXMemory (facade)</h2>
+<h3 id="imemoryservice-i">IMemoryService (I)</h3>
+<p>The single public surface of the library. Every operation is scope-bound.</p>
+<table><thead><tr><th>Member</th><th>Description</th></tr></thead><tbody><tr><td><code>RememberAsync(record, ct?)</code></td><td>Stores a record and maintains dense/lexical indexes (and the optional graph ledger).</td></tr><tr><td><code>ForgetAsync(scope, id, ct?)</code></td><td>Deletes a record and its index artifacts in that scope.</td></tr><tr><td><code>GetAsync(scope, id, ct?)</code></td><td>Returns the record or <code>null</code>; scope-exact.</td></tr><tr><td><code>UpdateAsync(record, ct?)</code></td><td>Updates record content/metadata and refreshes index entries.</td></tr><tr><td><code>RecallAsync(query, ct?)</code></td><td>Runs the retrieval pipeline; routes plan → corrective → hybrid, then optional rerank.</td></tr><tr><td><code>ConsolidateAsync(scope, options, ct?)</code></td><td>Runs a consolidation pass and refreshes index artifacts.</td></tr><tr><td><code>BuildIndexesAsync(scope, ct?)</code></td><td>Chunks, embeds, and builds vector + lexical indexes for a scope.</td></tr><tr><td><code>RebuildAsync(ct?)</code></td><td>Rebuilds indexes for all known scopes (deterministic; identical rankings).</td></tr><tr><td><code>Scopes()</code></td><td>Enumerates scopes known under the root.</td></tr></tbody></table>
+<p><strong>Usage note:</strong> this is the only type most hosts need beyond options and factories. See <a href="#pane-getting-started">Getting Started</a>.</p>
+<h3 id="memoryservice-c">MemoryService (C)</h3>
+<p>Composition root implementing <code>IMemoryService</code>. Constructor takes <code>MemoryServiceOptions</code> plus injected dependencies: store, embedder, index factory, fuser, telemetry, and optional grader, graph extractor, reranker, chunker (+ <code>ChunkOptions</code>), pipeline options, graph-store resolver, and log sink. Not typically constructed directly — use the builder.</p>
+<h3 id="memoryservicebuilder-c">MemoryServiceBuilder (C)</h3>
+<p>Fluent wiring helper; plain constructor injection underneath (no service locator).</p>
+<table><thead><tr><th>Member</th><th>Description</th></tr></thead><tbody><tr><td><code>WithOptions(options)</code></td><td>Root options (required).</td></tr><tr><td><code>WithStore(store)</code></td><td><code>IMemoryStore</code> implementation (required).</td></tr><tr><td><code>WithEmbedder(embedder)</code></td><td>Host embedding model (required).</td></tr><tr><td><code>WithIndexFactory(factory)</code></td><td>Backend factory (required).</td></tr><tr><td><code>WithFuser(fuser)</code></td><td>Result fuser (required).</td></tr><tr><td><code>WithTelemetry(telemetry)</code></td><td>Telemetry sink (required; <code>NoopMemoryTelemetry.Instance</code> for silence).</td></tr><tr><td><code>WithGrader(grader)</code></td><td>Optional; enables the corrective recall route.</td></tr><tr><td><code>WithGraphExtractor(...)</code> / graph-store resolver</td><td>Optional graph ingestion.</td></tr><tr><td><code>WithReranker(reranker)</code></td><td>Optional post-fusion reranking.</td></tr><tr><td><code>WithChunker(chunker, options)</code></td><td>Optional custom chunking.</td></tr><tr><td><code>WithLogSink(sink)</code></td><td>Optional injected log sink.</td></tr><tr><td><code>Build()</code></td><td>Validates all required wiring and returns <code>IMemoryService</code>.</td></tr></tbody></table>
+<h3 id="iscopesaware-i">IScopesAware (I)</h3>
+<p>Optional store hook: <code>Scopes()</code> returns all scopes currently known to the store. Enables <code>IMemoryService.Scopes()</code>; the facade falls back to the directory layout when the store does not implement it.</p>
+<h3 id="graphindexledger-c">GraphIndexLedger (C)</h3>
+<p>Keeps the scope&#x27;s graph store in sync with record mutations (entity upsert/removal driven by the injected <code>IEntityExtractor</code>, including consolidation cluster writes).</p>
+<p>---</p>
+<h2 id="provostxmemory-abstractions">ProvostXMemory.Abstractions</h2>
+<p>Core contracts and immutable data types shared by every layer.</p>
+<h3 id="memoryrecord-r">MemoryRecord (R)</h3>
+<p>Immutable memory unit. Members: <code>Id</code>, <code>Scope</code>, <code>Key</code>, <code>Content</code>, <code>Category?</code>, <code>Tags</code>, <code>Reps</code>, <code>CreatedAt</code>, <code>UpdatedAt</code>, <code>ExpiresAt?</code>, <code>Meta</code>. See <a href="#pane-concepts" data-doc="concepts" data-anchor="records">Concepts</a>.</p>
+<h3 id="memoryscope-r-and-memoryscopekind-e">MemoryScope (R) and MemoryScopeKind (E)</h3>
+<p>Hierarchical isolation boundary: <code>(Kind, Id, ParentScope?)</code> with kinds <code>Platform | Session | Tenant | Purpose | Custom</code>. Members: <code>PathSegment</code>, <code>Chain()</code>, <code>Contains(other)</code>, <code>WithParent(parent)</code>. See <a href="#pane-scopes">Scopes</a>.</p>
+<h3 id="memoryrepresentation-r-memoryrepresentationmodality-e">MemoryRepresentation (R), MemoryRepresentationModality (E)</h3>
+<p>One modality-specific representation of a record: <code>Modality</code> (<code>Text | Image | Table | Audio | Custom</code>), <code>Content</code>, optional <code>EmbeddingModelHash</code>, <code>Properties</code> metadata.</p>
+<h3 id="retrievalquery-r">RetrievalQuery (R)</h3>
+<p><code>Text</code>, <code>Scope</code>, <code>TopK</code> (default set by <code>VectorOptions.DefaultTopK</code>), <code>Filters?</code>, <code>Plan?</code>.</p>
+<h3 id="retrievalfilters-r">RetrievalFilters (R)</h3>
+<p><code>Tags</code>, <code>Category?</code>, <code>From?</code>, <code>To?</code> — enforced after candidate resolution.</p>
+<h3 id="retrievalresult-r">RetrievalResult (R)</h3>
+<p><code>Records</code> (<code>IReadOnlyList&lt;ScoredMemoryRecord&gt;</code>) and <code>Diagnostics</code> (<code>IReadOnlyList&lt;RetrievalStageDiagnostics&gt;</code>: stage name, duration, per-stage scores).</p>
+<h3 id="scoredmemoryrecord-r">ScoredMemoryRecord (R)</h3>
+<p><code>Record</code>, <code>Score</code>, <code>Provenance</code> (<code>RetrievalProvenance</code>: retriever name + stage scores).</p>
+<h3 id="queryplan-r-queryplanstep-r">QueryPlan (R), QueryPlanStep (R)</h3>
+<p>Declarative retrieval plan: <code>PlanId</code> + ordered steps; each step has <code>StepId</code>, <code>Action</code>, <code>TargetScopes</code>, <code>TopK</code>.</p>
+<h3 id="imemorystore-i">IMemoryStore (I)</h3>
+<p>Scope-bound CRUD over records.</p>
+<table><thead><tr><th>Member</th><th>Description</th></tr></thead><tbody><tr><td><code>AddAsync</code> / <code>UpdateAsync</code></td><td>Persist a record in its scope.</td></tr><tr><td><code>DeleteAsync(scopeKind, scopeId, id)</code></td><td>Remove one record.</td></tr><tr><td><code>GetAsync(scopeKind, scopeId, id)</code></td><td>Scope-exact fetch; <code>null</code> when absent.</td></tr><tr><td><code>ListAsync(scopeKind, scopeId)</code></td><td>All records of the scope.</td></tr><tr><td><code>CountAsync(scopeKind, scopeId)</code></td><td>Record count.</td></tr><tr><td><code>SnapshotAsync(scopeKind, scopeId)</code></td><td>Consistent snapshot for index builds.</td></tr></tbody></table>
+<p><strong>Usage note:</strong> hosts rarely implement this; use <code>JsonlMemoryStore</code>. Custom implementations must remain scope-exact.</p>
+<h3 id="ijsonlmemorystore-i">IJsonlMemoryStore (I)</h3>
+<p>Contract marker for the default JSONL store implementation (<code>ProvostXMemory.Storage</code>).</p>
+<h3 id="imemorymanifestcodec-i">IMemoryManifestCodec (I)</h3>
+<p>Reads/writes the root <code>manifest.json</code> (<code>MemoryManifest</code>: schema id, counts, timestamps; row model <code>MemoryEntryModel</code> persists records with backward-compatible Reps/Meta).</p>
+<h3 id="options-records">Options records</h3>
+<table><thead><tr><th>Type</th><th>Members (defaults)</th></tr></thead><tbody><tr><td><code>MemoryServiceOptions</code> (R)</td><td><code>Storage</code>, <code>Vector</code>, <code>Graph</code>, <code>Fusion</code>, <code>Consolidation</code>, optional <code>Logging</code>.</td></tr><tr><td><code>StorageOptions</code> (R)</td><td><code>Root</code>, <code>AtomicWrites = true</code>, <code>Fsync</code>.</td></tr><tr><td><code>VectorOptions</code> (R)</td><td><code>ModelHash</code>, <code>Dim</code>, <code>IndexKind = Flat</code>, <code>DefaultTopK</code>.</td></tr><tr><td><code>GraphOptions</code> (R)</td><td><code>Enabled = true</code>, <code>MaxNeighbors = 16</code>, <code>MaxHops = 2</code>, <code>MaxClusters = 5</code>; <code>GraphOptions.Default</code>.</td></tr><tr><td><code>FusionOptions</code> (R)</td><td><code>RrfK = 60</code>, <code>DenseWeight</code>, <code>LexicalWeight</code>.</td></tr><tr><td><code>ConsolidationOptions</code> (R)</td><td><code>DedupSimilarityThreshold</code>, <code>ExpireTtl</code>, <code>EmitClusterSummaries</code>.</td></tr><tr><td><code>ChunkOptions</code> (R)</td><td><code>MaxChunkLength = 512</code>, <code>Overlap</code>, <code>RespectStructure</code>, <code>Separator?</code>, <code>MinChunkLength</code>.</td></tr></tbody></table>
+<h3 id="supporting-types">Supporting types</h3>
+<p><code>BackendStats</code> (R) — item count, dimension stats, <code>LastFlushedAt</code>; <code>ScoredId</code> (R) — scope-qualified id + score used by fusion; <code>QueryTokens</code> (C) — query tokenization helper.</p>
+<p>---</p>
+<h2 id="provostxmemory-storage">ProvostXMemory.Storage</h2>
+<h3 id="memoryrootlayout-c">MemoryRootLayout (C)</h3>
+<p>Resolves root + scope paths (<code>root/scopeKind/scopeId/modelHash</code>); the structural basis of scope isolation. Constructor takes the root path and the model hash.</p>
+<h3 id="jsonlmemorystore-c-ijsonlmemorystore">JsonlMemoryStore (C) : IJsonlMemoryStore</h3>
+<p>Default store: one JSONL file per scope (<code>records.jsonl</code>), transactional writes.</p>
+<h3 id="atomicfilewriter-c">AtomicFileWriter (C)</h3>
+<p>Temp-file + atomic-swap writer with optional fsync; all durable file writes flow through it.</p>
+<h3 id="memorymanifestcodec-c-imemorymanifestcodec">MemoryManifestCodec (C) : IMemoryManifestCodec</h3>
+<p>Manifest (de)serialization.</p>
+<p>---</p>
+<h2 id="provostxmemory-vectorindex">ProvostXMemory.VectorIndex</h2>
+<h3 id="ivectorindex-i">IVectorIndex (I)</h3>
+<table><thead><tr><th>Member</th><th>Description</th></tr></thead><tbody><tr><td><code>Dim</code>, <code>Count</code></td><td>Dimension and item count.</td></tr><tr><td><code>BuildAsync(items)</code></td><td>Replace contents with the given <code>VectorItem</code> set.</td></tr><tr><td><code>AddAsync(item)</code> / <code>RemoveAsync(id)</code></td><td>Incremental mutation.</td></tr><tr><td><code>SearchAsync(vector, k)</code></td><td>Top-k search → <code>ScoredVectorId</code> list.</td></tr><tr><td><code>FlushAsync</code></td><td>Persist durable state.</td></tr></tbody></table>
+<p><strong>Usage note:</strong> all backends implement this and pass the same conformance suite.</p>
+<h3 id="ivectorindexfactory-i">IVectorIndexFactory (I)</h3>
+<p><code>Create(kind, dim)</code> returns an index of <code>IndexKind</code> (<code>Flat | Ivf | Hnsw | Gpu</code>).</p>
+<h3 id="ivectorembedder-i">IVectorEmbedder (I)</h3>
+<p>Host-injected embedder: <code>ModelHash</code>, <code>Dim</code>, <code>EmbedAsync(text)</code>. The library validates hash/dimension but never chooses models.</p>
+<h3 id="ivectorindexguard-i">IVectorIndexGuard (I)</h3>
+<p>Model-hash/dimension guard consulted when opening persisted index artifacts.</p>
+<h3 id="vectornamespacefile-c">VectorNamespaceFile (C)</h3>
+<p>Per-scope/model-hash index file format (FlatJson backend persistence).</p>
+<h3 id="exceptions">Exceptions</h3>
+<p><code>VectorIndexGuardMismatchException</code> — model hash or dimension mismatch on open. <code>VectorIndexIdNotFoundException</code> — unknown vector id requested for removal/resolution.</p>
+<h3 id="supporting-types">Supporting types</h3>
+<p><code>VectorItem</code> (R) — id + vector; <code>ScoredVectorId</code> (R) — id + score; <code>ScalarVectorOps</code> (C) — scalar distance helpers.</p>
+<p>---</p>
+<h2 id="provostxmemory-vectorindex-engine">ProvostXMemory.VectorIndex.Engine</h2>
+<p>Own C# vector engine; zero third-party dependencies. Namespace name reflects history; the FAISS dependency was replaced by this engine.</p>
+<h3 id="enginevectorindexfactory-c-ivectorindexfactory">EngineVectorIndexFactory (C) : IVectorIndexFactory</h3>
+<p>Creates <code>FlatExactIndex</code>, <code>IvfFlatIndex</code>, or <code>HnswIndex</code>; rejects <code>IndexKind.Gpu</code> (explicit GPU routing only).</p>
+<h3 id="flatexactindex-c-ivectorindex">FlatExactIndex (C) : IVectorIndex</h3>
+<p>Exact brute-force search with SIMD (<code>Vector512</code>) kernels.</p>
+<h3 id="ivfflatindex-c-ivectorindex">IvfFlatIndex (C) : IVectorIndex</h3>
+<p>k-means coarse quantizer + inverted posting lists; <code>nprobe</code>-style partial scan. Supporting: <code>KMeansQuantizer</code>, <code>KMeansResult</code>, <code>IvfPostingLists</code>, <code>IvfMember</code>.</p>
+<h3 id="hnswindex-c-ivectorindex">HnswIndex (C) : IVectorIndex</h3>
+<p>Hierarchical navigable small-world graph. Immutable after build; mutations trigger batch rebuild (patent-safe semantics). Supporting: <code>HnswBuilder</code>, <code>HnswGraph</code>, <code>HnswSearcher</code>, <code>HnswBeamSearcher</code>, <code>HnswSearchContext</code>, <code>HnswLevelAssigner</code>, <code>HnswPublishedGraph</code>, <code>HnswOptions</code> (seeded, deterministic builds).</p>
+<h3 id="options-c-engine-options">Options (C) — engine options</h3>
+<p>Three overloads configure the metric (flat/IVF), full HNSW parameters (connectivity, ef-construction/ef-search, levels, seed), and composition of engine-level options.</p>
+<h3 id="supporting-types">Supporting types</h3>
+<p><code>VectorMath</code>, <code>VectorScanner</code>, <code>VectorTopKBuffer</code> (SIMD kernels and top-k buffering); <code>VectorItemStore</code> (id → vector storage); <code>SeededRandom</code> (deterministic randomness).</p>
+<p>---</p>
+<h2 id="provostxmemory-vectorindex-gpu">ProvostXMemory.VectorIndex.Gpu</h2>
+<p>ILGPU-backed GPU kernels with transparent CPU fallback.</p>
+<h3 id="igpuaccelerator-i-gpuaccelerator-c">IGpuAccelerator (I) / GpuAccelerator (C)</h3>
+<p>Lazy, exception-guarded accelerator discovery and kernel launches; <code>IDisposable</code>.</p>
+<h3 id="igpucontextpolicy-i-defaultgpucontextpolicy-c">IGpuContextPolicy (I) / DefaultGpuContextPolicy (C)</h3>
+<p>Controls accelerator context creation (including a force-CPU test mode).</p>
+<h3 id="igpuscorelauncher-i-ilgpuscorelauncher-c">IGpuScoreLauncher (I) / IlgpuScoreLauncher (C)</h3>
+<p>Launches similarity kernels over a <code>GpuVectorMatrix</code> batch; <code>GpuLaunchOptions</code> (chunk size, max parallel batches).</p>
+<h3 id="gpuflatindex-c-gpuivfindex-c-ivectorindex">GpuFlatIndex (C), GpuIvfIndex (C) : IVectorIndex</h3>
+<p>GPU versions of flat exact and IVF search. Delegate to an injected CPU <code>IVectorIndex</code> when no accelerator is available — bit-identical results by construction (no barriers/shared memory; one thread per slot, chunked launches).</p>
+<h3 id="gpuvectorindexfactory-c-ivectorindexfactory">GpuVectorIndexFactory (C) : IVectorIndexFactory</h3>
+<p>Composes GPU indexes with an <code>EngineVectorIndexFactory</code> fallback.</p>
+<h3 id="supporting-types">Supporting types</h3>
+<p><code>GpuDiscoveryOptions</code>, <code>GpuLaunchOptions</code>, <code>GpuVectorKernels</code>, <code>GpuVectorMatrix</code>, <code>GpuMetricCodec</code>; per-backend <code>Options</code> records.</p>
+<p>---</p>
+<h2 id="provostxmemory-lexical">ProvostXMemory.Lexical</h2>
+<h3 id="ilexicalindex-i">ILexicalIndex (I)</h3>
+<table><thead><tr><th>Member</th><th>Description</th></tr></thead><tbody><tr><td><code>Count</code>, <code>Statistics</code></td><td>Document count; live corpus statistics.</td></tr><tr><td><code>Build(documents)</code></td><td>Replace contents.</td></tr><tr><td><code>IncrementalAdd(document)</code></td><td>Add one document (duplicate ids throw).</td></tr><tr><td><code>Remove(documentId)</code></td><td>Remove by id; <code>false</code> when unknown.</td></tr><tr><td><code>EnumerateDocuments()</code></td><td>Deterministic id-ordered snapshot.</td></tr><tr><td><code>Search(queryTokens, topK)</code></td><td>BM25-scored top-k → <code>ScoredLexicalId</code>.</td></tr></tbody></table>
+<p><strong>Usage note:</strong> documents are pre-tokenized (<code>LexicalDocument</code>: <code>Id</code>, <code>BodyTerms</code>, <code>KeyTerms?</code>, <code>Category?</code>); tokenization itself is <code>LexicalTokenizer</code>.</p>
+<h3 id="ibm25scorer-i-bm25scorer-c">IBm25Scorer (I) / Bm25Scorer (C)</h3>
+<p>Saturated-TF IDF scoring (k1 = 1.2) with key-term boost (default 2.0) and a category-match bonus. Corpus statistics are passed per call.</p>
+<h3 id="supporting-types">Supporting types</h3>
+<p><code>LexicalPosting</code> (R) — (document id, term frequency); <code>LexicalTermCounts</code>, <code>TermStat</code> (R) — corpus statistics primitives.</p>
+<p>---</p>
+<h2 id="provostxmemory-fusion">ProvostXMemory.Fusion</h2>
+<h3 id="iresultfuser-i-reciprocalrankfuser-c">IResultFuser (I) / ReciprocalRankFuser (C)</h3>
+<p>Fuses multiple ranked lists into one. Default implementation: Reciprocal Rank Fusion with <code>FusionOptions.RrfK</code> (default 60) and configurable dense/lexical weights; zero weights drop a stage; deterministic tie ordering. Fusion ids are scope-qualified so identical record ids across scopes never conflate.</p>
+<p>---</p>
+<h2 id="provostxmemory-chunking">ProvostXMemory.Chunking</h2>
+<h3 id="ichunker-i">IChunker (I)</h3>
+<p><code>Split(record, options)</code> → <code>Chunk[]</code>. Implementations: <code>StructuredChunker</code> (structure-respecting), <code>SizeChunker</code> (size/overlap).</p>
+<h3 id="iparentresolver-i-chunkparentresolver-c">IParentResolver (I) / ChunkParentResolver (C)</h3>
+<p>Chunk id → parent record lookup for parent-document recall.</p>
+<h3 id="chunkidcodec-c-chunkidparts-r">ChunkIdCodec (C), ChunkIdParts (R)</h3>
+<p>Encode/decode scope-qualified chunk ids (<code>scope kind, scope id, record id, chunk index</code>).</p>
+<p>---</p>
+<h2 id="provostxmemory-reranking">ProvostXMemory.Reranking</h2>
+<h3 id="ireranker-i">IReranker (I)</h3>
+<p><code>Rerank(query, candidates)</code> → re-ranked candidates. Implementations:</p>
+<table><thead><tr><th>Type</th><th>Behavior</th></tr></thead><tbody><tr><td><code>NoopReranker</code></td><td>Pass-through.</td></tr><tr><td><code>ScoreBoostReranker</code></td><td>Heuristic boosts (tag/key/category) + length penalties via <code>ScoreBoostRerankerOptions</code>.</td></tr><tr><td><code>ClientBackedReranker</code></td><td>Delegates to <code>IRerankerClient</code> with fallback fusion; <code>ClientBackedRerankerOptions.TrustClientCompletely</code>.</td></tr></tbody></table>
+<h3 id="irerankerclient-i">IRerankerClient (I)</h3>
+<p>Optional external rerank service contract (host-implemented; typically calls a cross-encoder or LLM endpoint).</p>
+<p>---</p>
+<h2 id="provostxmemory-correction">ProvostXMemory.Correction</h2>
+<h3 id="iretrievalgrader-i">IRetrievalGrader (I)</h3>
+<p><code>GradeAsync(query, candidate)</code> → <code>GradedCandidate</code> (<code>RetrievalGrade</code>: <code>Relevant | Irrelevant | Uncertain</code>). Host-injected.</p>
+<h3 id="iqueryrewriter-i-keywordqueryrewriter-c">IQueryRewriter (I) / KeywordQueryRewriter (C)</h3>
+<p>Query rewriting for the corrective retry.</p>
+<h3 id="iexternalfetcher-i">IExternalFetcher (I)</h3>
+<p>Extension hook invoked when retrieval returns empty and <code>CorrectionOptions.UseFetcherOnEmpty</code> is set (e.g. web augmentation). The library never fetches on its own.</p>
+<h3 id="correctiveretriever-c-icorrectiveretriever">CorrectiveRetriever (C) : ICorrectiveRetriever</h3>
+<p>Orchestrates grade → rewrite → retry loop; <code>CorrectionOptions</code> (<code>RelevanceFloor</code>, <code>UseFetcherOnEmpty</code>).</p>
+<h3 id="supporting-types">Supporting types</h3>
+<p><code>StageNames</code> (C) — stable stage-name constants for diagnostics.</p>
+<p>---</p>
+<h2 id="provostxmemory-graph">ProvostXMemory.Graph</h2>
+<h3 id="imemorygraphstore-i">IMemoryGraphStore (I)</h3>
+<table><thead><tr><th>Member</th><th>Description</th></tr></thead><tbody><tr><td><code>UpsertEntityAsync</code> / <code>UpsertRelationAsync</code></td><td>Insert or update graph nodes/edges.</td></tr><tr><td><code>UpsertClusterAsync(cluster)</code></td><td>Replace-by-id cluster write (authoritative, not accumulating).</td></tr><tr><td><code>GetEntityAsync(id)</code></td><td>Fetch entity or <code>null</code>.</td></tr><tr><td><code>SearchEntitiesAsync(query, max)</code></td><td>Whole-token name/alias match, strongest overlap first.</td></tr><tr><td><code>RelationsOfAsync(id, max)</code></td><td>Undirected relations, strongest support first.</td></tr><tr><td><code>NeighborsAsync(id, max)</code></td><td>Direct neighbors.</td></tr><tr><td><code>ShortestPathAsync(from, to)</code></td><td>Shortest entity path.</td></tr><tr><td><code>ClusterOfAsync(id)</code></td><td>Cluster containing the entity, if any.</td></tr></tbody></table>
+<p>Default implementation: <code>JsonlMemoryGraphStore</code> (scope-pinned JSONL files). <code>IMemoryGraphStoreResolver</code> supplies per-scope stores.</p>
+<h3 id="ientityextractor-i-heuristicentityextractor-c">IEntityExtractor (I) / HeuristicEntityExtractor (C)</h3>
+<p>Extracts entities + relations from records (<code>ExtractionResult</code>). Hosts may inject an LLM-backed extractor.</p>
+<h3 id="igraphretriever-i-graphretriever-c">IGraphRetriever (I) / GraphRetriever (C)</h3>
+<p>Retrieves records from the query-relevant subgraph plus cluster summaries; tuned by <code>GraphOptions</code>.</p>
+<h3 id="data-records">Data records</h3>
+<p><code>GraphEntity</code> (R) — id, name, aliases, record links; <code>GraphRelation</code> (R) — source, target, type, support; <code>GraphCluster</code> (R) — id, members, summary record id.</p>
+<p>---</p>
+<h2 id="provostxmemory-consolidation">ProvostXMemory.Consolidation</h2>
+<h3 id="imemoryconsolidator-i">IMemoryConsolidator (I)</h3>
+<p><code>ConsolidateAsync(scopeKind, scopeId, options)</code> → surviving records. Default: <code>MemoryConsolidator</code>.</p>
+<h3 id="idedupdetector-i-thresholddedupdetector-c">IDedupDetector (I) / ThresholdDedupDetector (C)</h3>
+<p>Near-duplicate detection by embedding similarity threshold.</p>
+<h3 id="iclustersummarizer-i-clustersummarizer-c">IClusterSummarizer (I) / ClusterSummarizer (C)</h3>
+<p>Produces a summary record for a cluster; tuned by <code>ConsolidationTuning</code>.</p>
+<h3 id="supporting-types">Supporting types</h3>
+<p><code>ConsolidationReportMeta</code> (C) — pass report metadata.</p>
+<p>---</p>
+<h2 id="provostxmemory-retrieval">ProvostXMemory.Retrieval</h2>
+<h3 id="ihybridretriever-i-hybridretriever-c">IHybridRetriever (I) / HybridRetriever (C)</h3>
+<p>Dense + lexical in parallel → fuse → resolve → optional rerank. Constructor takes the scope index registry, embedder, fuser, and optional telemetry, reranker, <code>FusionOptions</code>.</p>
+<h3 id="iscopeindexregistry-i-inmemoryscopeindexregistry-c">IScopeIndexRegistry (I) / InMemoryScopeIndexRegistry (C)</h3>
+<p>Maps a scope to its artifacts: <code>GetVectorIndex(scope)</code>, <code>GetLexicalIndex(scope)</code>, <code>GetRecordProvider(scope)</code>, <code>HasIndexes(scope)</code>. Implementations must be <strong>scope-exact</strong> — no parent fallthrough, no default forwarding. The in-memory registry keys on the exact (Kind, Id) pair and also exposes <code>Register*</code> methods and a <code>Reset</code>.</p>
+<h3 id="icorrectiveretriever-i">ICorrectiveRetriever (I)</h3>
+<p>Corrective-loop retrieval contract (implemented by <code>CorrectiveRetriever</code>).</p>
+<h3 id="igraphretrieverimpl-i">IGraphRetrieverImpl (I)</h3>
+<p>Graph retrieval implementation contract (implemented by <code>GraphRetriever</code>).</p>
+<h3 id="imultirepresentationretriever-i-multirepresentationretriever-c">IMultiRepresentationRetriever (I) / MultiRepresentationRetriever (C)</h3>
+<p>Query across modalities; resolves <code>repr|&lt;recordId&gt;|&lt;index&gt;</code> ids to best-representation scores per record.</p>
+<h3 id="iqueryplanrunner-i-queryplanrunner-c">IQueryPlanRunner (I) / QueryPlanRunner (C)</h3>
+<p>Executes <code>QueryPlan</code>s: scope fan-out, merge, one weak-evidence rewrite retry (<code>IQueryTextRewriter</code>, default <code>KeywordQueryTextRewriter</code>; <code>QueryPlanRunnerOptions</code>).</p>
+<h3 id="iscoperesolver-i-rootchildscoperesolver-c">IScopeResolver (I) / RootChildScopeResolver (C)</h3>
+<p>Resolves plan target scope ids to concrete scopes (root + child interpretation).</p>
+<h3 id="retrievalfilterapplier-c">RetrievalFilterApplier (C)</h3>
+<p>Enforces <code>RetrievalFilters</code> on resolved candidates.</p>
+<p>---</p>
+<h2 id="provostxmemory-eval">ProvostXMemory.Eval</h2>
+<h3 id="evalservicefactory-i-defaultevalservicefactory-c">EvalServiceFactory (I) / DefaultEvalServiceFactory (C)</h3>
+<p><code>Create(rootPath)</code> builds a self-contained <code>IMemoryService</code> for evaluation; default factory composes the standard stack at a given vector dimension.</p>
+<h3 id="evalrunner-c">EvalRunner (C)</h3>
+<table><thead><tr><th>Member</th><th>Description</th></tr></thead><tbody><tr><td><code>LoadAsync(corpus, rootPath)</code></td><td>Materializes the corpus into a fresh service and builds indexes.</td></tr><tr><td><code>RunAsync(corpus, caseSet, options?)</code></td><td>Full run on a fresh temp root: load → index → evaluate → report (root deleted unless <code>EvalRunnerOptions.DisposeRootDirectory = false</code>).</td></tr><tr><td><code>EvaluateAsync(service, caseSet, options, totalRecords)</code></td><td>Evaluates an already-loaded service.</td></tr></tbody></table>
+<h3 id="evalcase-c-evalcaseset-c">EvalCase (C), EvalCaseSet (C)</h3>
+<p>Golden case: <code>Id</code>, <code>Query</code>, <code>QueryScope</code>, <code>RelevantIds</code>, optional graded relevance (0..1 per id; binary 1.0 when absent); <code>RelevanceOf(recordId)</code>. <code>EvalCaseSet</code> is a named, ordered case collection.</p>
+<h3 id="evalrunneroptions-c-evalmetricthresholds-c">EvalRunnerOptions (C), EvalMetricThresholds (C)</h3>
+<p><code>TopK</code>, <code>Thresholds</code> (per-metric floors: <code>recallAtK</code>, <code>precisionAtK</code>, <code>mrr</code>, <code>ndcgAtK</code>), <code>DisposeRootDirectory</code>.</p>
+<h3 id="results">Results</h3>
+<p><code>EvalCaseMetrics</code> (R) — per-case metrics; <code>EvalMetricBreakdownEntry</code> (R) — per-scope/per-stage breakdowns; <code>EvalCaseTrace</code>/<code>EvalCaseTraceHit</code> (R) — hit traces with gains; <code>MetricThresholdViolation</code> (R) — metric, actual, threshold; <code>MetricThresholdViolations</code> (C) — violation collection; <code>EvalReportJson</code> (C) — canonical snake_case JSON codec.</p>
+<h3 id="deterministic-corpus">Deterministic corpus</h3>
+<p><code>DeterministicEvalCorpus</code> (C) — seeded synthetic corpus (records, clusters, vector dimension); <code>ClusterHashEmbedder</code> (C) — deterministic embedder for reproducible runs; <code>EvalMetricMath</code> (C) — the metric implementations; <code>MemoryScopeComparer</code> (C) — deterministic scope ordering.</p>
+<p>---</p>
+<h2 id="provostxmemory-logging">ProvostXMemory.Logging</h2>
+<h3 id="memoryloggingoptions-r">MemoryLoggingOptions (R)</h3>
+<p><code>Enabled</code>, <code>Level</code>, <code>Sink</code>, <code>Directory</code>, <code>FileNamePattern</code>, <code>Format</code>, <code>IncludeContent</code>, <code>Integrity</code>, <code>RetentionDays</code> — see the <a href="#pane-logging" data-doc="logging" data-anchor="options-reference">options table</a>.</p>
+<h3 id="memoryloglevel-e-memorylogsinkkind-e-memorylogformat-e-memorylogintegrity-e">MemoryLogLevel (E), MemoryLogSinkKind (E), MemoryLogFormat (E), MemoryLogIntegrity (E)</h3>
+<p>Level (<code>Debug/Info/Warn/Error</code>); sink (<code>File/Console/Injected</code>); format (JSON Lines); integrity (hash-chain toggle).</p>
+<h3 id="imemorylogsink-i">IMemoryLogSink (I)</h3>
+<p><code>WriteAsync(entry)</code> — destination for <code>MemoryLogEntry</code>. Built-in: <code>FileMemoryLogSink</code> (rolling), <code>ConsoleMemoryLogSink</code>.</p>
+<h3 id="memorylogger-c">MemoryLogger (C)</h3>
+<p>Central emitter; applies level filtering, format encoding, and chain appending. Disabled = zero writes/allocations.</p>
+<h3 id="memorylogentry-r-memorylogscope-r">MemoryLogEntry (R), MemoryLogScope (R)</h3>
+<p>Entry payload: timestamp, sequence, level, category, scope, correlation id, duration, chain hashes, optional content excerpt.</p>
+<h3 id="hashchainappender-c-logchainverifier-c-logchainverificationresult-r">HashChainAppender (C), LogChainVerifier (C), LogChainVerificationResult (R)</h3>
+<p>SHA-256 chain append and verification (<code>IsValid</code>, broken-at sequence, detail).</p>
+<h3 id="retentionsweeper-c">RetentionSweeper (C)</h3>
+<p>Deletes log files older than <code>RetentionDays</code>; explicit scheduling.</p>
+<p>---</p>
+<h2 id="provostxmemory-telemetry">ProvostXMemory.Telemetry</h2>
+<h3 id="imemorytelemetry-i">IMemoryTelemetry (I)</h3>
+<p>Query timings, per-stage scores, backend stats — host-injected sink.</p>
+<table><thead><tr><th>Implementation</th><th>Behavior</th></tr></thead><tbody><tr><td><code>NoopMemoryTelemetry</code></td><td>Silence (default; <code>Instance</code>).</td></tr><tr><td><code>InMemoryMemoryTelemetry</code></td><td>Collects events in memory for tests/diagnostics.</td></tr></tbody></table></section>
+<section class="pane" id="pane-faq" data-title="FAQ"><h1 id="faq">FAQ</h1>
+<h2 id="how-does-scope-isolation-actually-work">How does scope isolation actually work?</h2>
+<p>Isolation is structural. Every record, index, and graph artifact lives under its scope&#x27;s resolved directory path (<code>&lt;root&gt;/&lt;scope-kind&gt;/&lt;scope-id&gt;/…</code>), every API operation is scope-bound, and query routing resolves indexes per scope through a scope-exact registry. A query in one scope has no code path that can read another scope&#x27;s data. Cross-scope access happens only when you explicitly declare it via a <code>QueryPlan</code> fan-out. This is enforced at the storage, retrieval, and end-to-end levels by dedicated tests.</p>
+<h2 id="can-i-swap-the-embedding-model">Can I swap the embedding model?</h2>
+<p>Yes, but it is a migration, not a toggle. Vectors are meaningless across models, so index artifacts are namespaced by model hash and guarded at open time (<code>VectorIndexGuardMismatchException</code>). To switch: configure a new model hash and dimension in <code>VectorOptions</code> and <code>MemoryRootLayout</code>, then re-embed and <code>RebuildAsync()</code>. Old artifacts under the previous hash remain on disk until you remove them. The library never downloads or selects models — the embedder is your injected <code>IVectorEmbedder</code>.</p>
+<h2 id="does-it-need-a-server">Does it need a server?</h2>
+<p>No. ProvostXMemory is an in-process library. Storage is transactional JSON/JSONL files under a root directory; the vector engine is pure C#. The only external integration points are the ones you inject (embedding model, optional grader/rewriter/reranker clients, optional external fetcher).</p>
+<h2 id="what-are-the-gpu-requirements">What are the GPU requirements?</h2>
+<p>None mandatory. The GPU layer (<code>ProvostXMemory.VectorIndex.Gpu</code>, shipped <strong>in the single <code>ProvostXMemory</code> package</strong>) uses ILGPU kernels for Flat and IVF search, with lazy, exception-guarded accelerator discovery. On CPU-only machines — or with no compatible accelerator — the index transparently falls back to an injected CPU implementation with <strong>bit-identical</strong> results (identical accumulation order by construction). Configuring GPU unconditionally is therefore safe; the same conformance suite passes on CPU-only machines via the fallback.</p>
+<h2 id="what-is-the-persistence-format">What is the persistence format?</h2>
+<p>Human-readable files: JSONL for records (<code>records.jsonl</code>), JSON for manifests and FlatJson vector namespaces, JSONL for graph entities/relations/clusters. All writes go through <code>AtomicFileWriter</code> (temp file + atomic swap, optional fsync). Engine indexes persist their own artifact formats under <code>vectors/&lt;model-hash&gt;/</code>. Old-format record files are read forward-compatibly (Reps/Meta additions are backward-compatible).</p>
+<h2 id="is-it-thread-safe">Is it thread-safe?</h2>
+<p>Public facade operations are asynchronous and safe to call concurrently. Index mutation follows a build-or-rebuild model (HNSW indexes are immutable after build; mutations trigger batch rebuilds), which avoids the classic concurrent-mutation hazards. For heavy concurrent write workloads, serialize writes per scope as you would any transactional file store. Conformance tests exercise the documented behaviors; treat per-index instances as not thread-safe for concurrent mutation.</p>
+<h2 id="how-do-i-make-recall-results-appear">How do I make recall results appear?</h2>
+<p>Call <code>BuildIndexesAsync(scope)</code> after remembering records — index state is intentionally cold until built, and a fresh service over an existing root restores indexes via <code>BuildIndexesAsync</code>/<code>RebuildAsync</code>. Rankings after a rebuild are identical to before (determinism is tested).</p>
+<h2 id="which-backend-should-i-pick">Which backend should I pick?</h2>
+<p>Start with the zero-dependency FlatJson default. Move to the engine&#x27;s FlatExact for SIMD-speed exact search, IVF at 10k–1M vectors when you accept a tunable recall trade-off, and HNSW at 10k–10M vectors for high-recall approximate search (measured recall@10 = 0.998). See <a href="#pane-backends">Backends</a>.</p>
+<h2 id="can-i-use-my-own-reranker-or-grader">Can I use my own reranker or grader?</h2>
+<p>Yes — that is the design. Implement <code>IReranker</code> (or <code>IRerankerClient</code> for an external rerank service), <code>IRetrievalGrader</code>, and <code>IQueryRewriter</code>, and inject them. The library is LLM-agnostic: it orchestrates the corrective loop but never owns a model.</p>
+<h2 id="how-does-consolidation-decide-what-to-delete">How does consolidation decide what to delete?</h2>
+<p>Deduplication keeps the <strong>oldest</strong> record of a near-duplicate cluster and unions the tags onto the survivor; TTL expiry deletes records past <code>ExpiresAt</code>; cluster summaries are additive (new <code>summary</code>-category records plus graph clusters). All decisions are deterministic for a given store state and options. See <a href="#pane-consolidation">Consolidation</a>.</p>
+<h2 id="does-logging-leak-record-content">Does logging leak record content?</h2>
+<p>No. <code>IncludeContent</code> defaults to <code>false</code>, and when disabled, record content never appears in any log output — enforced by content-leak tests. Log entries carry scope identity, category, timings, and correlation ids, not memory content.</p>
+<h2 id="how-do-i-verify-logs-have-not-been-tampered-with">How do I verify logs have not been tampered with?</h2>
+<p>Enable <code>MemoryLogIntegrity.HashChain</code> and periodically run <code>LogChainVerifier.Verify(path)</code>. Each entry&#x27;s hash covers its sequence number, timestamp, category, payload, and the previous entry&#x27;s hash, so edits, deletions, and reordering are all detectable. See <a href="#pane-logging" data-doc="logging" data-anchor="the-audit-hash-chain">Logging</a>.</p>
+<h2 id="can-one-record-id-exist-in-multiple-scopes">Can one record id exist in multiple scopes?</h2>
+<p>Yes — ids are unique per scope, not globally, and query plans handle collisions via scope-qualified fusion identifiers so identical ids never conflate across scopes.</p>
+<h2 id="what-net-version-is-required">What .NET version is required?</h2>
+<p>.NET 8. There are no native library requirements beyond the .NET runtime; the GPU package adds the ILGPU runtime only if you reference it.</p></section>
+<div class="footnote">ProvostXMemory documentation &middot; MIT License &middot; single-file offline wiki</div>
+</main>
+</div>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
+  var panes = Array.prototype.slice.call(document.querySelectorAll('.pane'));
+
+  function show(slug, push) {
+    panes.forEach(function (p) { p.classList.toggle('visible', p.id === 'pane-' + slug); });
+    links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('data-target') === slug); });
+    if (push !== false && history.replaceState) { history.replaceState(null, '', '#' + slug); }
+    window.scrollTo(0, 0);
+  }
+
+  links.forEach(function (l) {
+    l.addEventListener('click', function (e) {
+      e.preventDefault();
+      show(l.getAttribute('data-target'));
+    });
+  });
+
+  // In-page anchors scroll within the active pane.
+  document.getElementById('main').addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a') : null;
+    if (!a || a.classList.contains('nav-link')) return;
+    var href = a.getAttribute('href') || '';
+    var doc = a.getAttribute('data-doc'), anchor = a.getAttribute('data-anchor');
+    if (doc && anchor) {
+      e.preventDefault();
+      show(doc);
+      var t = document.getElementById(anchor);
+      if (t) t.scrollIntoView();
+      return;
+    }
+    if (href.indexOf('#') === 0) {
+      var id = href.slice(1);
+      if (id.indexOf('pane-') === 0) { e.preventDefault(); show(id.slice(5)); return; }
+      var el = document.getElementById(id);
+      if (el) { e.preventDefault(); el.scrollIntoView(); }
+    }
+  });
+
+  var input = document.getElementById('search');
+  input.addEventListener('input', function () {
+    var q = input.value.trim().toLowerCase();
+    panes.forEach(function (p) {
+      var title = (p.getAttribute('data-title') || '').toLowerCase();
+      var heads = Array.prototype.slice.call(p.querySelectorAll('h1, h2, h3, h4'));
+      if (!q) {
+        p.classList.remove('match-hidden');
+        heads.forEach(function (h) { h.classList.remove('match-hidden'); });
+        Array.prototype.slice.call(p.querySelectorAll('[data-search-hidden]')).forEach(function (el) {
+          el.removeAttribute('data-search-hidden'); el.classList.remove('match-hidden');
+        });
+        return;
+      }
+      var titleMatch = title.indexOf(q) !== -1;
+      var anyHeadMatch = false;
+      heads.forEach(function (h) {
+        var m = h.textContent.toLowerCase().indexOf(q) !== -1;
+        h.classList.toggle('match-hidden', !m);
+        if (m) anyHeadMatch = true;
+      });
+      p.classList.toggle('match-hidden', !(titleMatch || anyHeadMatch));
+      if (titleMatch) {
+        heads.forEach(function (h) { h.classList.remove('match-hidden'); });
+      }
+      var blocks = Array.prototype.slice.call(p.children);
+      var currentMatch = titleMatch;
+      blocks.forEach(function (b) {
+        if (/^H[1-4]$/.test(b.tagName)) {
+          currentMatch = !b.classList.contains('match-hidden');
+          if (b.hasAttribute('data-search-hidden')) {
+            b.removeAttribute('data-search-hidden'); b.classList.remove('match-hidden');
+          }
+          return;
+        }
+        if (currentMatch) {
+          if (b.hasAttribute('data-search-hidden')) {
+            b.removeAttribute('data-search-hidden'); b.classList.remove('match-hidden');
+          }
+        } else {
+          b.setAttribute('data-search-hidden', '1'); b.classList.add('match-hidden');
+        }
+      });
+    });
+    var first = null;
+    for (var i = 0; i < panes.length; i++) {
+      if (!panes[i].classList.contains('match-hidden')) { first = panes[i]; break; }
+    }
+    if (first) {
+      var slug = first.id.replace(/^pane-/, '');
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('data-target') === slug); });
+    }
+  });
+
+  // Code copy buttons (corporate design: standard copy on every code block)
+  Array.prototype.slice.call(document.querySelectorAll('pre.code')).forEach(function (pre) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy-btn';
+    btn.setAttribute('aria-label', 'Copy code to clipboard');
+    btn.textContent = 'Copy';
+    btn.addEventListener('click', function () {
+      function done(ok) {
+        btn.textContent = ok ? 'Copied ✓' : 'Copy failed';
+        btn.classList.add('copied');
+        setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1600);
+      }
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = pre.textContent;
+        ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        return ok;
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(pre.textContent).then(function () { done(true); }, function () { done(fallback()); });
+      } else { done(fallback()); }
+    });
+    pre.appendChild(btn);
+  });
+
+  var initial = (location.hash || '').replace(/^#/, '');
+  var valid = false;
+  for (var j = 0; j < panes.length; j++) { if (panes[j].id === 'pane-' + initial) { valid = true; break; } }
+  show(valid ? initial : panes[0].id.replace(/^pane-/, ''), false);
+})();
+</script>
+</body>
+</html>

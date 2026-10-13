@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>ProvostXMemory | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="ProvostXMemory | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="provostxmemory">ProvostXMemory</h1>
+
+<p>A strict-OOP, host-agnostic long-term memory library for .NET — scoped storage, hybrid (dense + lexical) retrieval with enforced filters, consolidation, graph, corrective recall, an eval harness, and audit-grade integrity-logged observability — over pluggable vector-index backends with an own C# engine and zero third-party vector dependencies.</p>
+<p><a href="https://github.com/ProvostX-Labs/ProvostXMemory/actions/workflows/build-test-publish.yml"><img src="https://github.com/ProvostX-Labs/ProvostXMemory/actions/workflows/build-test-publish.yml/badge.svg" alt="CI"></a>
+<a href="https://www.nuget.org/packages/ProvostXMemory"><img src="https://img.shields.io/nuget/v/ProvostXMemory" alt="NuGet"></a></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>License</strong></td>
+<td>MIT (<a href="LICENSE">LICENSE</a>)</td>
+</tr>
+<tr>
+<td><strong>Target</strong></td>
+<td>.NET 8</td>
+</tr>
+<tr>
+<td><strong>Tests</strong></td>
+<td>626 green (xUnit, 17 suites), 0 warnings / 0 errors</td>
+</tr>
+<tr>
+<td><strong>Native dependencies</strong></td>
+<td>None (pure managed; ILGPU ships in the package — GPU acceleration included, transparent CPU fallback)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="why-provostxmemory">Why ProvostXMemory</h2>
+<ul>
+<li><strong>One facade.</strong> Hosts see <code>IMemoryService</code> + typed options and inject their own embedder, grader, reranker, and telemetry. Storage, indexing, and retrieval strategy are swappable by configuration — never by host code changes.</li>
+<li><strong>Scope-isolated by construction.</strong> Memory is partitioned per scope (platform / session / tenant / purpose / custom), and cross-scope access is structurally impossible — enforced by path layout and scope-exact registries, pinned by dedicated tests, not by convention.</li>
+<li><strong>Own vector engine, zero native deps.</strong> Flat (SIMD <code>Vector512</code>), IVF, and HNSW are implemented in C#; the <strong>included</strong> ILGPU kernels accelerate Flat/IVF on the GPU when an accelerator is present and fall back to the CPU bit-identically otherwise. No FAISS, no native dylibs, no server.</li>
+</ul>
+<h2 id="features">Features</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>What you get</th>
+<th>Key types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Storage</td>
+<td>Transactional JSONL records per scope, manifests, atomic writes</td>
+<td><code>IMemoryStore</code>, <code>JsonlMemoryStore</code>, <code>MemoryRootLayout</code>, <code>AtomicFileWriter</code></td>
+</tr>
+<tr>
+<td>Vector index</td>
+<td>Pluggable backends with a shared conformance suite</td>
+<td><code>IVectorIndex</code>, <code>IVectorIndexFactory</code>, <code>IndexKind</code></td>
+</tr>
+<tr>
+<td>Lexical</td>
+<td>BM25-lite inverted index with key boosts</td>
+<td><code>ILexicalIndex</code>, <code>Bm25Scorer</code></td>
+</tr>
+<tr>
+<td>Fusion</td>
+<td>RRF fusion with dense/lexical weights</td>
+<td><code>IResultFuser</code>, <code>ReciprocalRankFuser</code></td>
+</tr>
+<tr>
+<td>Retrieval</td>
+<td>Hybrid, corrective loop, graph, multi-representation, declarative query plans, enforced filters</td>
+<td><code>IHybridRetriever</code>, <code>ICorrectiveRetriever</code>, <code>IGraphRetriever</code>, <code>IMultiRepresentationRetriever</code>, <code>IQueryPlanRunner</code></td>
+</tr>
+<tr>
+<td>Chunking</td>
+<td>Structural and size/overlap chunking with parent-document recall</td>
+<td><code>IChunker</code>, <code>StructuredChunker</code>, <code>IParentResolver</code></td>
+</tr>
+<tr>
+<td>Graph</td>
+<td>Entities, relations, shortest path, cluster summaries</td>
+<td><code>IMemoryGraphStore</code>, <code>IEntityExtractor</code>, <code>GraphRetriever</code></td>
+</tr>
+<tr>
+<td>Consolidation</td>
+<td>Dedup, TTL expiry, cluster summaries</td>
+<td><code>IMemoryConsolidator</code>, <code>IDedupDetector</code>, <code>IClusterSummarizer</code></td>
+</tr>
+<tr>
+<td>Reranking</td>
+<td>Heuristic or client-backed reranking</td>
+<td><code>IReranker</code>, <code>ScoreBoostReranker</code>, <code>ClientBackedReranker</code></td>
+</tr>
+<tr>
+<td>Correction</td>
+<td>Grader-gated retrieval with query rewrite loop</td>
+<td><code>IRetrievalGrader</code>, <code>IQueryRewriter</code>, <code>CorrectiveRetriever</code></td>
+</tr>
+<tr>
+<td>Evaluation</td>
+<td>Recall@k / Precision@k / MRR / NDCG, thresholds, regression guard, JSON reports</td>
+<td><code>EvalRunner</code>, <code>EvalMetricMath</code>, <code>DeterministicEvalCorpus</code></td>
+</tr>
+<tr>
+<td>Logging</td>
+<td>Configurable sinks, SHA-256 audit hash chain, retention, content minimization</td>
+<td><code>MemoryLoggingOptions</code>, <code>LogChainVerifier</code>, <code>RetentionSweeper</code></td>
+</tr>
+<tr>
+<td>Telemetry</td>
+<td>Per-stage timings and scores into a host sink</td>
+<td><code>IMemoryTelemetry</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="quickstart">Quickstart</h2>
+<pre><code class="lang-csharp">using ProvostXMemory;
+using ProvostXMemory.Abstractions;
+using ProvostXMemory.Fusion;
+using ProvostXMemory.Storage;
+using ProvostXMemory.Telemetry;
+using ProvostXMemory.VectorIndex.Engine;
+
+var root = &quot;/data/memory-root&quot;;
+var layout = new MemoryRootLayout(root, &quot;model-hash-v1&quot;);
+
+IMemoryService memory = new MemoryServiceBuilder()
+    .WithOptions(new MemoryServiceOptions(
+        Storage: new StorageOptions(root),
+        Vector: new VectorOptions(&quot;model-hash-v1&quot;, dim: 768, IndexKind.IndexKind.Hnsw),
+        Graph: GraphOptions.Default,
+        Fusion: new FusionOptions(),
+        Consolidation: new ConsolidationOptions()))
+    .WithStore(new JsonlMemoryStore(layout))
+    .WithEmbedder(embedder)                       // host-injected IVectorEmbedder
+    .WithIndexFactory(new EngineVectorIndexFactory())
+    .WithFuser(new ReciprocalRankFuser())
+    .WithTelemetry(NoopMemoryTelemetry.Instance)
+    .Build();
+
+var scope = new MemoryScope(MemoryScopeKind.Session, &quot;user-42&quot;);
+
+await memory.RememberAsync(new MemoryRecord(
+    &quot;note-1&quot;, scope, &quot;helm-rollout&quot;, &quot;Kubernetes rollout notes…&quot;,
+    Category: &quot;ops&quot;, Tags: new[] { &quot;infra&quot;, &quot;deploy&quot; }));
+
+await memory.BuildIndexesAsync(scope);
+
+RetrievalResult result = await memory.RecallAsync(new RetrievalQuery(
+    &quot;kubernetes rollout&quot;,
+    scope,
+    TopK: 5,
+    Filters: new RetrievalFilters(Tags: new[] { &quot;deploy&quot; })));
+
+foreach (var hit in result.Records)
+{
+    Console.WriteLine($&quot;{hit.Score:0.000} {hit.Record.Id}: {hit.Record.Key}&quot;);
+}
+</code></pre>
+<h2 id="backend-matrix">Backend matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Backend</th>
+<th>Package</th>
+<th>Exactness</th>
+<th>Scale guidance</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FlatJson (default)</td>
+<td>core</td>
+<td>exact</td>
+<td>up to a few thousand vectors per scope</td>
+<td>brute-force cosine, transactional JSON persistence, zero deps</td>
+</tr>
+<tr>
+<td>FlatExact (SIMD)</td>
+<td><code>ProvostXMemory.VectorIndex.Engine</code></td>
+<td>exact</td>
+<td>up to ~10k per scope</td>
+<td><code>Vector512</code> kernels, own engine</td>
+</tr>
+<tr>
+<td>IVF</td>
+<td><code>ProvostXMemory.VectorIndex.Engine</code></td>
+<td>approximate (tunable <code>nprobe</code>)</td>
+<td>10k–1M</td>
+<td>deterministic k-means quantizer + inverted lists</td>
+</tr>
+<tr>
+<td>HNSW</td>
+<td><code>ProvostXMemory.VectorIndex.Engine</code></td>
+<td>approximate</td>
+<td>10k–10M</td>
+<td>immutable built indexes + batch rebuild; measured recall@10 = 0.998</td>
+</tr>
+<tr>
+<td>GPU (ILGPU)</td>
+<td><code>ProvostXMemory.VectorIndex.Gpu</code></td>
+<td>exact (Flat, IVF)</td>
+<td>Flat/IVF scale</td>
+<td>lazy guarded availability; transparent CPU fallback with bit-identical results</td>
+</tr>
+</tbody>
+</table>
+<p>Select via <code>VectorOptions.IndexKind</code> (<code>Flat | Ivf | Hnsw | Gpu</code>) plus the matching <code>IVectorIndexFactory</code>; every backend passes the same conformance suite. Details in <a href="docs/backends.html">docs/backends.md</a>.</p>
+<h2 id="retrieval-pipeline">Retrieval pipeline</h2>
+<pre><code>RetrievalQuery ──► routing (plan → corrective → hybrid → rerank)
+                     │
+        dense vector ┴─ lexical BM25      (per scope, in parallel)
+                     │
+                RRF fusion (weights, k=60)
+                     │
+        resolve ids → records (parent-document recall, multi-representation)
+                     │
+        filter enforcement (tags / category / date window)
+                     │
+        optional rerank ──► corrective loop (grade → rewrite → retry)
+                     │
+        RetrievalResult + per-stage diagnostics
+</code></pre>
+<h2 id="logging-and-audit-hash-chain">Logging and audit hash-chain</h2>
+<p>Logging is off by default with zero cost. When enabled it offers file/console/injected sinks, JSON-lines format, rotation, retention, strict content minimization (<code>IncludeContent = false</code> — record content never appears in logs), and a SHA-256 hash chain that makes any tampering, deletion, or reordering of historical entries verifiable via <code>LogChainVerifier</code>. See <a href="docs/logging.html">docs/logging.md</a>.</p>
+<h2 id="evaluation-harness">Evaluation harness</h2>
+<p><code>ProvostXMemory.Eval</code> measures Recall@k, Precision@k, MRR, and NDCG over golden query sets against deterministic corpora, checks metric thresholds as a regression guard, and emits canonical diff-friendly JSON reports. The library's own journey tests gate on Recall@5 ≥ 0.9 (achieved 1.0). See <a href="docs/evaluation.html">docs/evaluation.md</a>.</p>
+<h2 id="documentation">Documentation</h2>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="docs/getting-started.html">docs/getting-started.md</a></td>
+<td>Install, first run, DI wiring, backend selection</td>
+</tr>
+<tr>
+<td><code>src/ProvostXMemory.Examples/</code></td>
+<td>10 runnable end-to-end examples (quickstart → scopes → hybrid → backends → consolidation → graph → corrective loop → audit logging → eval → restart persistence); run <code>dotnet run --project src/ProvostXMemory.Examples</code></td>
+</tr>
+<tr>
+<td><a href="docs/concepts.html">docs/concepts.md</a></td>
+<td>Records, scopes, representations, chunking, model-hash guard</td>
+</tr>
+<tr>
+<td><a href="docs/scopes.html">docs/scopes.md</a></td>
+<td>Scope kinds, path layout, multi-tenancy patterns</td>
+</tr>
+<tr>
+<td><a href="docs/retrieval.html">docs/retrieval.md</a></td>
+<td>Full pipeline: hybrid, rerank, corrective loop, graph, query plans, filters</td>
+</tr>
+<tr>
+<td><a href="docs/backends.html">docs/backends.md</a></td>
+<td>Per-backend deep dive and selection matrix</td>
+</tr>
+<tr>
+<td><a href="docs/consolidation.html">docs/consolidation.md</a></td>
+<td>Dedup, TTL, cluster summaries, policies</td>
+</tr>
+<tr>
+<td><a href="docs/evaluation.html">docs/evaluation.md</a></td>
+<td>Metrics formulas, harness usage, regression guarding</td>
+</tr>
+<tr>
+<td><a href="docs/logging.html">docs/logging.md</a></td>
+<td>Options reference, hash-chain audit, retention</td>
+</tr>
+<tr>
+<td><a href="docs/api-glossary.html">docs/api-glossary.md</a></td>
+<td>Complete public API glossary, grouped by namespace</td>
+</tr>
+<tr>
+<td><a href="docs/faq.html">docs/faq.md</a></td>
+<td>Frequently asked questions</td>
+</tr>
+<tr>
+<td><a href="docs/wiki.html">docs/wiki.html</a></td>
+<td>Single-file offline documentation browser (open in any browser)</td>
+</tr>
+<tr>
+<td><a href="ARCHITECTURE.html">ARCHITECTURE.md</a></td>
+<td>Layered architecture, backend history, patent addendum</td>
+</tr>
+<tr>
+<td><a href="API-INDEX.html">API-INDEX.md</a></td>
+<td>Generated API inventory</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-principles">Design principles</h2>
+<ul>
+<li>Strict OOP: interfaces first, constructor injection, no statics, one type per file; dependencies flow strictly downward through interfaces.</li>
+<li>The library knows nothing about its hosts; hosts know nothing about the internals. No environment variables — all configuration is typed options.</li>
+<li>All file I/O is transactional (temp + atomic swap).</li>
+<li>Every backend passes the same conformance suite; cross-backend parity and determinism are pinned by tests.</li>
+</ul>
+<h2 id="license">License</h2>
+<p>Licensed under the <a href="LICENSE">MIT License</a>. Third-party notices: <a href="THIRD-PARTY-NOTICES.html">THIRD-PARTY-NOTICES.md</a> (the only third-party dependency is ILGPU, included — GPU acceleration ships in the single ProvostXMemory package with transparent CPU fallback).</p>
+<p>| <code>docs/api-site/</code> | <strong>Full API reference site</strong> — Microsoft-style, generated by DocFX from XML doc comments: every public type gets a page (hierarchies, members, inheritance). Regenerate with <code>dotnet tool run docfx metadata &amp;&amp; dotnet tool run docfx build</code>. |</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

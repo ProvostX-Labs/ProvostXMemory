@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Interface IGpuAccelerator | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Interface IGpuAccelerator | ProvostXMemory API ">
+    
+    <meta name="description" content="Availability handle for the ILGPU runtime: owns the Context and exposes the resolved accelerator lazily. Construction never throws and never touches GPU drivers; every member is guarded so machines without CUDA/OpenCL observe IsAvailable=false.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator">
+
+
+
+  <h1 id="ProvostXMemory_VectorIndex_Gpu_IGpuAccelerator" data-uid="ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator" class="text-break">Interface IGpuAccelerator</h1>
+  <div class="markdown level0 summary">Availability handle for the ILGPU runtime: owns the Context and exposes the resolved
+accelerator lazily. Construction never throws and never touches GPU drivers; every
+member is guarded so machines without CUDA/OpenCL observe IsAvailable=false.</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable.dispose">IDisposable.Dispose()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ProvostXMemory.html">ProvostXMemory</a>.<a class="xref" href="ProvostXMemory.VectorIndex.html">VectorIndex</a>.<a class="xref" href="ProvostXMemory.VectorIndex.Gpu.html">Gpu</a></h6>
+  <h6><strong>Assembly</strong>: ProvostXMemory.VectorIndex.Gpu.dll</h6>
+  <h5 id="ProvostXMemory_VectorIndex_Gpu_IGpuAccelerator_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IGpuAccelerator : IDisposable</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <a id="ProvostXMemory_VectorIndex_Gpu_IGpuAccelerator_DeviceDescription_" data-uid="ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator.DeviceDescription*"></a>
+  <h4 id="ProvostXMemory_VectorIndex_Gpu_IGpuAccelerator_DeviceDescription" data-uid="ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator.DeviceDescription">DeviceDescription</h4>
+  <div class="markdown level1 summary">Human-readable device description; empty when unavailable.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string DeviceDescription { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_VectorIndex_Gpu_IGpuAccelerator_IsAvailable_" data-uid="ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator.IsAvailable*"></a>
+  <h4 id="ProvostXMemory_VectorIndex_Gpu_IGpuAccelerator_IsAvailable" data-uid="ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator.IsAvailable">IsAvailable</h4>
+  <div class="markdown level1 summary">True when a GPU accelerator was resolved at hand-shake time.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsAvailable { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_VectorIndex_Gpu_IGpuAccelerator_Name_" data-uid="ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator.Name*"></a>
+  <h4 id="ProvostXMemory_VectorIndex_Gpu_IGpuAccelerator_Name" data-uid="ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator.Name">Name</h4>
+  <div class="markdown level1 summary">Short backend name (e.g. 'cuda', 'opencl'); empty when unavailable.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Name { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <a id="ProvostXMemory_VectorIndex_Gpu_IGpuAccelerator_RequireAccelerator_" data-uid="ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator.RequireAccelerator*"></a>
+  <h4 id="ProvostXMemory_VectorIndex_Gpu_IGpuAccelerator_RequireAccelerator" data-uid="ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator.RequireAccelerator">RequireAccelerator()</h4>
+  <div class="markdown level1 summary">The resolved accelerator for kernel loads/launches; throws when IsAvailable is false.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Accelerator RequireAccelerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Accelerator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

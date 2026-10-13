@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Namespace ProvostXMemory.Consolidation | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Namespace ProvostXMemory.Consolidation | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.Consolidation">
+
+  <h1 id="ProvostXMemory_Consolidation" data-uid="ProvostXMemory.Consolidation" class="text-break">Namespace ProvostXMemory.Consolidation</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">
+Classes
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.Consolidation.ClusterSummarizer.html">ClusterSummarizer</a></h4>
+      <section>Builds a summary <a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html">MemoryRecord</a> from a near-duplicate cluster: the
+concatenated member keys plus deterministic representative excerpts, category
+"summary", and Meta carrying the cluster-summary flag, member count, cluster id and
+member ids. Cluster id = sha256 over ordinal member ids, so the same cluster always
+maps to the same summary id (idempotent re-consolidation).</section>
+      <h4><a class="xref" href="ProvostXMemory.Consolidation.ConsolidationReport.html">ConsolidationReport</a></h4>
+      <section>Outcome counters of one consolidation pass over a scope.</section>
+      <h4><a class="xref" href="ProvostXMemory.Consolidation.ConsolidationReportMeta.html">ConsolidationReportMeta</a></h4>
+      <section>Side channel that attaches the pass <a class="xref" href="ProvostXMemory.Consolidation.ConsolidationReport.html">ConsolidationReport</a> to the records
+returned by <a class="xref" href="ProvostXMemory.Consolidation.IMemoryConsolidator.html">IMemoryConsolidator</a>: the interface signature is fixed by the
+scaffold, so the report travels as a "consolidation-report" Meta entry on each returned
+record (returned copies only — store contents are never touched by this). Pure
+helpers over immutable records; the serializer options are immutable after creation.</section>
+      <h4><a class="xref" href="ProvostXMemory.Consolidation.ConsolidationTuning.html">ConsolidationTuning</a></h4>
+      <section>Consolidation pass tuning knobs, layered over <a class="xref" href="ProvostXMemory.Abstractions.ConsolidationOptions.html">ConsolidationOptions</a>
+(thresholds have defaults and stay host-overridable via the base record).</section>
+      <h4><a class="xref" href="ProvostXMemory.Consolidation.MemoryConsolidator.html">MemoryConsolidator</a></h4>
+      <section>One consolidation pass over a scope, executed against the scope-bound
+<a class="xref" href="ProvostXMemory.Abstractions.IMemoryStore.html">IMemoryStore</a>: (1) TTL expiry deletes records whose ExpiresAt is in the
+past, (2) near-duplicate detection via <a class="xref" href="ProvostXMemory.Consolidation.IDedupDetector.html">IDedupDetector</a> keeps the oldest
+record of each duplicate group and unions the tags of the removed duplicates into the
+kept record, (3) remaining records are clustered by embedding similarity and clusters
+of sufficient size are emitted as summary records via <a class="xref" href="ProvostXMemory.Consolidation.IClusterSummarizer.html">IClusterSummarizer</a>,
+(4) all mutations are counted in a <a class="xref" href="ProvostXMemory.Consolidation.ConsolidationReport.html">ConsolidationReport</a> attached to the
+returned records. Survivors and summaries are returned (survivors first, summaries
+last); an empty scope is a no-op returning an empty list. Every deletion goes through
+the store's scope-bound API — cross-scope access stays structurally impossible.</section>
+      <h4><a class="xref" href="ProvostXMemory.Consolidation.ThresholdDedupDetector.html">ThresholdDedupDetector</a></h4>
+      <section>Near-duplicate detection: cosine over records embedded via the injected
+<a class="xref" href="ProvostXMemory.VectorIndex.IVectorEmbedder.html">IVectorEmbedder</a>, falling back to lexical Jaccard over token sets when
+both vectors degenerate (zero norm). A pair counts as duplicate when its similarity
+is greater than or equal to the given threshold. Arguments are ordered
+deterministically (earlier-id first) before evaluation, so the result never depends
+on call-site order; evaluation itself is pure. This type holds no mutable state.</section>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.Consolidation.IClusterSummarizer.html">IClusterSummarizer</a></h4>
+      <section>Summarizes a cluster of records into a new summary record.</section>
+      <h4><a class="xref" href="ProvostXMemory.Consolidation.IDedupDetector.html">IDedupDetector</a></h4>
+      <section>Near-duplicate detection via similarity threshold.</section>
+      <h4><a class="xref" href="ProvostXMemory.Consolidation.IMemoryConsolidator.html">IMemoryConsolidator</a></h4>
+      <section>Consolidation pass over a scope: dedup, merge, TTL expiry, cluster summaries.</section>
+
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

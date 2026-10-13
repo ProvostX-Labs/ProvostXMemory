@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>RELATIONSHIP-GRAPH.md — ProvostXMemory | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="RELATIONSHIP-GRAPH.md — ProvostXMemory | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="relationship-graphmd--provostxmemory">RELATIONSHIP-GRAPH.md — ProvostXMemory</h1>
+
+<p>Generated: 2026-10-13T17:26:25+00:00
+Edges: 93  |  Packages: 35</p>
+<hr>
+<h2 id="provostxmemory">ProvostXMemory</h2>
+<p>Package deps: ProvostXMemory.Abstractions, ProvostXMemory.Chunking, ProvostXMemory.Consolidation, ProvostXMemory.Correction, ProvostXMemory.Eval, ProvostXMemory.Fusion, ProvostXMemory.Graph, ProvostXMemory.Lexical, ProvostXMemory.Logging, ProvostXMemory.Reranking, ProvostXMemory.Retrieval, ProvostXMemory.Storage, ProvostXMemory.Telemetry, ProvostXMemory.VectorIndex, ProvostXMemory.VectorIndex.Engine</p>
+<ul>
+<li>MemoryService ──implements──► IMemoryService (ProvostXMemory)</li>
+</ul>
+<h2 id="provostxmemoryabstractions">ProvostXMemory.Abstractions</h2>
+<p>Package deps: —</p>
+<ul>
+<li>IJsonlMemoryStore ──implements──► IMemoryStore (ProvostXMemory.Abstractions)</li>
+<li>MemoryRecord ──uses──► MemoryScope (ProvostXMemory.Abstractions)</li>
+<li>MemoryRepresentation ──uses──► MemoryRepresentationModality (ProvostXMemory.Abstractions)</li>
+<li>MemoryScope ──uses──► MemoryScopeKind (ProvostXMemory.Abstractions)</li>
+<li>MemoryServiceOptions ──uses──► ConsolidationOptions (ProvostXMemory.Abstractions)</li>
+<li>MemoryServiceOptions ──uses──► FusionOptions (ProvostXMemory.Abstractions)</li>
+<li>MemoryServiceOptions ──uses──► GraphOptions (ProvostXMemory.Abstractions)</li>
+<li>MemoryServiceOptions ──uses──► StorageOptions (ProvostXMemory.Abstractions)</li>
+<li>MemoryServiceOptions ──uses──► VectorOptions (ProvostXMemory.Abstractions)</li>
+<li>RetrievalQuery ──uses──► MemoryScope (ProvostXMemory.Abstractions)</li>
+<li>ScoredMemoryRecord ──uses──► MemoryRecord (ProvostXMemory.Abstractions)</li>
+<li>ScoredMemoryRecord ──uses──► RetrievalProvenance (ProvostXMemory.Abstractions)</li>
+<li>VectorOptions ──uses──► IndexKind (ProvostXMemory.Abstractions)</li>
+</ul>
+<h2 id="provostxmemoryabstractionstests">ProvostXMemory.AbstractionsTests</h2>
+<p>Package deps: —</p>
+<h2 id="provostxmemorychunking">ProvostXMemory.Chunking</h2>
+<p>Package deps: ProvostXMemory.Abstractions</p>
+<ul>
+<li>ChunkIdParts ──uses──► MemoryScopeKind (ProvostXMemory.Abstractions) ← CROSS-PKG</li>
+<li>ChunkParentResolver ──implements──► IParentResolver (ProvostXMemory.Chunking)</li>
+<li>SizeChunker ──implements──► IChunker (ProvostXMemory.Chunking)</li>
+<li>StructuredChunker ──implements──► IChunker (ProvostXMemory.Chunking)</li>
+</ul>
+<h2 id="provostxmemorychunkingtests">ProvostXMemory.ChunkingTests</h2>
+<p>Package deps: —</p>
+<ul>
+<li>ChunkParentResolverTests ──implements──► IDisposable (?)</li>
+</ul>
+<h2 id="provostxmemoryconsolidation">ProvostXMemory.Consolidation</h2>
+<p>Package deps: ProvostXMemory.Abstractions, ProvostXMemory.VectorIndex</p>
+<ul>
+<li>ClusterSummarizer ──implements──► IClusterSummarizer (ProvostXMemory.Consolidation)</li>
+<li>MemoryConsolidator ──implements──► IMemoryConsolidator (ProvostXMemory.Consolidation)</li>
+<li>ThresholdDedupDetector ──implements──► IDedupDetector (ProvostXMemory.Consolidation)</li>
+</ul>
+<h2 id="provostxmemoryconsolidationtests">ProvostXMemory.ConsolidationTests</h2>
+<p>Package deps: —</p>
+<ul>
+<li>HashFakeEmbedder ──implements──► IVectorEmbedder (ProvostXMemory.VectorIndex) ← CROSS-PKG</li>
+<li>InMemoryMemoryStore ──implements──► IMemoryStore (ProvostXMemory.Abstractions) ← CROSS-PKG</li>
+</ul>
+<h2 id="provostxmemorycorrection">ProvostXMemory.Correction</h2>
+<p>Package deps: ProvostXMemory.Abstractions, ProvostXMemory.Retrieval</p>
+<ul>
+<li>CorrectiveRetriever ──implements──► ICorrectiveRetriever (ProvostXMemory.Retrieval) ← CROSS-PKG</li>
+<li>GradedCandidate ──uses──► RetrievalGrade (ProvostXMemory.Correction)</li>
+<li>GradedCandidate ──uses──► ScoredMemoryRecord (ProvostXMemory.Abstractions) ← CROSS-PKG</li>
+<li>KeywordQueryRewriter ──implements──► IQueryRewriter (ProvostXMemory.Correction)</li>
+</ul>
+<h2 id="provostxmemorycorrectiontests">ProvostXMemory.CorrectionTests</h2>
+<p>Package deps: —</p>
+<ul>
+<li>RecordingQueryRewriter ──implements──► IQueryRewriter (ProvostXMemory.Correction) ← CROSS-PKG</li>
+<li>StubExternalFetcher ──implements──► IExternalFetcher (ProvostXMemory.Correction) ← CROSS-PKG</li>
+<li>StubHybridRetriever ──implements──► IHybridRetriever (ProvostXMemory.Retrieval) ← CROSS-PKG</li>
+<li>StubRetrievalGrader ──implements──► IRetrievalGrader (ProvostXMemory.Correction) ← CROSS-PKG</li>
+</ul>
+<h2 id="provostxmemoryeval">ProvostXMemory.Eval</h2>
+<p>Package deps: ProvostXMemory.Abstractions, ProvostXMemory.VectorIndex</p>
+<ul>
+<li>ClusterHashEmbedder ──implements──► IVectorEmbedder (ProvostXMemory.VectorIndex) ← CROSS-PKG</li>
+<li>EvalMetricBreakdownEntry ──uses──► EvalMetrics (ProvostXMemory.Eval)</li>
+<li>EvalReport ──uses──► EvalMetrics (ProvostXMemory.Eval)</li>
+<li>EvalReport ──uses──► MetricThresholdViolations (ProvostXMemory.Eval)</li>
+<li>MemoryScopeComparer ──implements──► IEqualityComparer&lt;Abstractions.MemoryScope&gt; (?)</li>
+</ul>
+<h2 id="provostxmemoryevaltests">ProvostXMemory.EvalTests</h2>
+<p>Package deps: —</p>
+<ul>
+<li>EvalRunnerTests ──implements──► IDisposable (?)</li>
+</ul>
+<h2 id="provostxmemoryexamples">ProvostXMemory.Examples</h2>
+<p>Package deps: ProvostXMemory, ProvostXMemory.Eval, ProvostXMemory.VectorIndex.Engine, ProvostXMemory.VectorIndex.Gpu</p>
+<h2 id="provostxmemoryfusion">ProvostXMemory.Fusion</h2>
+<p>Package deps: ProvostXMemory.Abstractions</p>
+<ul>
+<li>ReciprocalRankFuser ──implements──► IResultFuser (ProvostXMemory.Fusion)</li>
+</ul>
+<h2 id="provostxmemoryfusiontests">ProvostXMemory.FusionTests</h2>
+<p>Package deps: —</p>
+<h2 id="provostxmemorygraph">ProvostXMemory.Graph</h2>
+<p>Package deps: ProvostXMemory.Abstractions, ProvostXMemory.Storage</p>
+<ul>
+<li>GraphRetriever ──implements──► IGraphRetriever (ProvostXMemory.Graph)</li>
+<li>HeuristicEntityExtractor ──implements──► IEntityExtractor (ProvostXMemory.Graph)</li>
+<li>JsonlMemoryGraphStore ──implements──► IMemoryGraphStore (ProvostXMemory.Graph)</li>
+</ul>
+<h2 id="provostxmemorygraphtests">ProvostXMemory.GraphTests</h2>
+<p>Package deps: —</p>
+<h2 id="provostxmemorylexical">ProvostXMemory.Lexical</h2>
+<p>Package deps: ProvostXMemory.Abstractions</p>
+<ul>
+<li>Bm25Scorer ──implements──► IBm25Scorer (ProvostXMemory.Lexical)</li>
+<li>LexicalIndex ──implements──► ILexicalIndex (ProvostXMemory.Lexical)</li>
+</ul>
+<h2 id="provostxmemorylexicaltests">ProvostXMemory.LexicalTests</h2>
+<p>Package deps: —</p>
+<h2 id="provostxmemorylogging">ProvostXMemory.Logging</h2>
+<p>Package deps: ProvostXMemory.Abstractions</p>
+<ul>
+<li>ConsoleMemoryLogSink ──implements──► IMemoryLogSink (ProvostXMemory.Logging)</li>
+<li>FileMemoryLogSink ──implements──► IMemoryLogSink (ProvostXMemory.Logging)</li>
+<li>MemoryLogEntry ──uses──► MemoryLogCategory (ProvostXMemory.Logging)</li>
+<li>MemoryLogEntry ──uses──► MemoryLogLevel (ProvostXMemory.Abstractions) ← CROSS-PKG</li>
+</ul>
+<h2 id="provostxmemoryloggingtests">ProvostXMemory.LoggingTests</h2>
+<p>Package deps: —</p>
+<ul>
+<li>RecordingSink ──implements──► IMemoryLogSink (ProvostXMemory.Logging) ← CROSS-PKG</li>
+</ul>
+<h2 id="provostxmemoryreranking">ProvostXMemory.Reranking</h2>
+<p>Package deps: ProvostXMemory.Abstractions</p>
+<ul>
+<li>ClientBackedReranker ──implements──► IReranker (ProvostXMemory.Reranking)</li>
+<li>NoopReranker ──implements──► IReranker (ProvostXMemory.Reranking)</li>
+<li>ScoreBoostReranker ──implements──► IReranker (ProvostXMemory.Reranking)</li>
+</ul>
+<h2 id="provostxmemoryrerankingtests">ProvostXMemory.RerankingTests</h2>
+<p>Package deps: —</p>
+<ul>
+<li>StubRerankerClient ──implements──► IRerankerClient (ProvostXMemory.Reranking) ← CROSS-PKG</li>
+</ul>
+<h2 id="provostxmemoryretrieval">ProvostXMemory.Retrieval</h2>
+<p>Package deps: ProvostXMemory.Abstractions, ProvostXMemory.Chunking, ProvostXMemory.Fusion, ProvostXMemory.Graph, ProvostXMemory.Lexical, ProvostXMemory.Reranking, ProvostXMemory.Storage, ProvostXMemory.Telemetry, ProvostXMemory.VectorIndex</p>
+<ul>
+<li>HybridRetriever ──implements──► IHybridRetriever (ProvostXMemory.Retrieval)</li>
+<li>InMemoryScopeIndexRegistry ──implements──► IScopeIndexRegistry (ProvostXMemory.Retrieval)</li>
+<li>KeywordQueryTextRewriter ──implements──► IQueryTextRewriter (ProvostXMemory.Retrieval)</li>
+<li>MultiRepresentationRetriever ──implements──► IMultiRepresentationRetriever (ProvostXMemory.Retrieval)</li>
+<li>QueryPlanRunner ──implements──► IQueryPlanRunner (ProvostXMemory.Retrieval)</li>
+</ul>
+<h2 id="provostxmemoryretrievaltests">ProvostXMemory.RetrievalTests</h2>
+<p>Package deps: —</p>
+<ul>
+<li>HashEmbedder ──implements──► IVectorEmbedder (ProvostXMemory.VectorIndex) ← CROSS-PKG</li>
+<li>InMemoryStore ──implements──► IMemoryStore (ProvostXMemory.Abstractions) ← CROSS-PKG</li>
+</ul>
+<h2 id="provostxmemorystorage">ProvostXMemory.Storage</h2>
+<p>Package deps: ProvostXMemory.Abstractions</p>
+<ul>
+<li>JsonlMemoryStore ──implements──► IJsonlMemoryStore (ProvostXMemory.Abstractions) ← CROSS-PKG</li>
+<li>MemoryManifestCodec ──implements──► IMemoryManifestCodec (ProvostXMemory.Abstractions) ← CROSS-PKG</li>
+</ul>
+<h2 id="provostxmemorystoragetests">ProvostXMemory.StorageTests</h2>
+<p>Package deps: —</p>
+<ul>
+<li>JsonlMemoryStoreTests ──implements──► IDisposable (?)</li>
+<li>MemoryManifestCodecTests ──implements──► IDisposable (?)</li>
+<li>ScopeIsolationTests ──implements──► IDisposable (?)</li>
+</ul>
+<h2 id="provostxmemorysystemtests">ProvostXMemory.SystemTests</h2>
+<p>Package deps: —</p>
+<ul>
+<li>ConsolidationAndGraphTests ──implements──► IDisposable (?)</li>
+<li>KnowledgeAssistantJourneyTests ──implements──► IDisposable (?)</li>
+<li>LifecycleJourneyTests ──implements──► IDisposable (?)</li>
+<li>MultiTenantJourneyTests ──implements──► IDisposable (?)</li>
+<li>PersistenceAndRoutingTests ──implements──► IDisposable (?)</li>
+<li>TempRoot ──implements──► IDisposable (?)</li>
+</ul>
+<h2 id="provostxmemorytelemetry">ProvostXMemory.Telemetry</h2>
+<p>Package deps: ProvostXMemory.Abstractions</p>
+<ul>
+<li>InMemoryMemoryTelemetry ──implements──► IMemoryTelemetry (ProvostXMemory.Telemetry)</li>
+<li>NoopMemoryTelemetry ──implements──► IMemoryTelemetry (ProvostXMemory.Telemetry)</li>
+</ul>
+<h2 id="provostxmemorytelemetrytests">ProvostXMemory.TelemetryTests</h2>
+<p>Package deps: —</p>
+<h2 id="provostxmemoryvectorindex">ProvostXMemory.VectorIndex</h2>
+<p>Package deps: ProvostXMemory.Abstractions</p>
+<ul>
+<li>FlatJsonVectorIndex ──implements──► IVectorIndex (ProvostXMemory.VectorIndex)</li>
+</ul>
+<h2 id="provostxmemoryvectorindexengine">ProvostXMemory.VectorIndex.Engine</h2>
+<p>Package deps: ProvostXMemory.VectorIndex</p>
+<ul>
+<li>EngineVectorIndexFactory ──implements──► IVectorIndexFactory (ProvostXMemory.VectorIndex) ← CROSS-PKG</li>
+<li>FlatExactIndex ──implements──► IVectorIndex (ProvostXMemory.VectorIndex) ← CROSS-PKG</li>
+<li>HnswIndex ──implements──► IVectorIndex (ProvostXMemory.VectorIndex) ← CROSS-PKG</li>
+<li>HnswPublishedGraph ──uses──► HnswGraph (ProvostXMemory.VectorIndex.Engine)</li>
+<li>IvfFlatIndex ──implements──► IVectorIndex (ProvostXMemory.VectorIndex) ← CROSS-PKG</li>
+</ul>
+<h2 id="provostxmemoryvectorindexgpu">ProvostXMemory.VectorIndex.Gpu</h2>
+<p>Package deps: ProvostXMemory.Abstractions, ProvostXMemory.VectorIndex</p>
+<ul>
+<li>DefaultGpuContextPolicy ──implements──► IGpuContextPolicy (ProvostXMemory.VectorIndex.Gpu)</li>
+<li>GpuAccelerator ──implements──► IGpuAccelerator (ProvostXMemory.VectorIndex.Gpu)</li>
+<li>GpuFlatIndex ──implements──► IVectorIndex (ProvostXMemory.VectorIndex) ← CROSS-PKG</li>
+<li>GpuIvfIndex ──implements──► IVectorIndex (ProvostXMemory.VectorIndex) ← CROSS-PKG</li>
+<li>GpuVectorIndexFactory ──implements──► IVectorIndexFactory (ProvostXMemory.VectorIndex) ← CROSS-PKG</li>
+<li>GpuVectorMatrix ──implements──► IDisposable (?)</li>
+<li>IGpuAccelerator ──implements──► IDisposable (?)</li>
+<li>IlgpuScoreLauncher ──implements──► IGpuScoreLauncher (ProvostXMemory.VectorIndex.Gpu)</li>
+</ul>
+<h2 id="provostxmemoryvectorindexgputests">ProvostXMemory.VectorIndex.GpuTests</h2>
+<p>Package deps: ProvostXMemory.VectorIndexTests</p>
+<h2 id="provostxmemoryvectorindextests">ProvostXMemory.VectorIndexTests</h2>
+<p>Package deps: —</p>
+<h2 id="provostxmemorytests">ProvostXMemoryTests</h2>
+<p>Package deps: —</p>
+<ul>
+<li>FacadeRecordingLogSink ──implements──► IMemoryLogSink (ProvostXMemory.Logging) ← CROSS-PKG</li>
+<li>FacadeStore ──implements──► IMemoryStore (ProvostXMemory.Abstractions) ← CROSS-PKG</li>
+<li>GraphIndexLedgerClusterTests ──implements──► IDisposable (?)</li>
+<li>HashEmbedder ──implements──► IVectorEmbedder (ProvostXMemory.VectorIndex) ← CROSS-PKG</li>
+<li>MemoryServiceLoggingTests ──implements──► IDisposable (?)</li>
+<li>MemoryServiceTests ──implements──► IDisposable (?)</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

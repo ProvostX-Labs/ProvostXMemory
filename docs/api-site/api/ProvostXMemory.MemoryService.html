@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class MemoryService | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class MemoryService | ProvostXMemory API ">
+    
+    <meta name="description" content="Composition root: takes  plus injected dependencies and owns the configured retrieval pipeline. Remember/Forget/Update maintain the per-scope indexes alongside the store; Recall routes through hybrid → optional corrective → plan (when the query carries one) → optional rerank. Every store access goes through the scope-bound  API, so cross-scope isolation is structural. Per-scope indexes are created lazily and registered scope-exact.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.MemoryService">
+
+
+
+  <h1 id="ProvostXMemory_MemoryService" data-uid="ProvostXMemory.MemoryService" class="text-break">Class MemoryService</h1>
+  <div class="markdown level0 summary">Composition root: takes <a class="xref" href="ProvostXMemory.Abstractions.MemoryServiceOptions.html">MemoryServiceOptions</a> plus injected dependencies
+and owns the configured retrieval pipeline. Remember/Forget/Update maintain the
+per-scope indexes alongside the store; Recall routes through hybrid → optional
+corrective → plan (when the query carries one) → optional rerank. Every store access
+goes through the scope-bound <a class="xref" href="ProvostXMemory.Abstractions.IMemoryStore.html">IMemoryStore</a> API, so cross-scope isolation
+is structural. Per-scope indexes are created lazily and registered scope-exact.</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">MemoryService</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="ProvostXMemory.IMemoryService.html">IMemoryService</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ProvostXMemory.html">ProvostXMemory</a></h6>
+  <h6><strong>Assembly</strong>: ProvostXMemory.dll</h6>
+  <h5 id="ProvostXMemory_MemoryService_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class MemoryService : IMemoryService</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <a id="ProvostXMemory_MemoryService__ctor_" data-uid="ProvostXMemory.MemoryService.#ctor*"></a>
+  <h4 id="ProvostXMemory_MemoryService__ctor_ProvostXMemory_Abstractions_MemoryServiceOptions_ProvostXMemory_Abstractions_IMemoryStore_ProvostXMemory_VectorIndex_IVectorEmbedder_ProvostXMemory_VectorIndex_IVectorIndexFactory_ProvostXMemory_Fusion_IResultFuser_ProvostXMemory_Telemetry_IMemoryTelemetry_ProvostXMemory_Correction_IRetrievalGrader_ProvostXMemory_Graph_IEntityExtractor_ProvostXMemory_Reranking_IReranker_ProvostXMemory_Chunking_IChunker_ProvostXMemory_Abstractions_ChunkOptions_ProvostXMemory_MemoryServicePipelineOptions_System_Func_ProvostXMemory_Abstractions_MemoryScope_ProvostXMemory_Graph_IMemoryGraphStore__ProvostXMemory_Logging_IMemoryLogSink_" data-uid="ProvostXMemory.MemoryService.#ctor(ProvostXMemory.Abstractions.MemoryServiceOptions,ProvostXMemory.Abstractions.IMemoryStore,ProvostXMemory.VectorIndex.IVectorEmbedder,ProvostXMemory.VectorIndex.IVectorIndexFactory,ProvostXMemory.Fusion.IResultFuser,ProvostXMemory.Telemetry.IMemoryTelemetry,ProvostXMemory.Correction.IRetrievalGrader,ProvostXMemory.Graph.IEntityExtractor,ProvostXMemory.Reranking.IReranker,ProvostXMemory.Chunking.IChunker,ProvostXMemory.Abstractions.ChunkOptions,ProvostXMemory.MemoryServicePipelineOptions,System.Func{ProvostXMemory.Abstractions.MemoryScope,ProvostXMemory.Graph.IMemoryGraphStore},ProvostXMemory.Logging.IMemoryLogSink)">MemoryService(MemoryServiceOptions, IMemoryStore, IVectorEmbedder, IVectorIndexFactory, IResultFuser, IMemoryTelemetry, IRetrievalGrader?, IEntityExtractor?, IReranker?, IChunker?, ChunkOptions?, MemoryServicePipelineOptions?, Func&lt;MemoryScope, IMemoryGraphStore&gt;?, IMemoryLogSink?)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryService(MemoryServiceOptions options, IMemoryStore store, IVectorEmbedder embedder, IVectorIndexFactory indexFactory, IResultFuser fuser, IMemoryTelemetry telemetry, IRetrievalGrader? grader = null, IEntityExtractor? graphExtractor = null, IReranker? reranker = null, IChunker? chunker = null, ChunkOptions? chunkOptions = null, MemoryServicePipelineOptions? pipelineOptions = null, Func&lt;MemoryScope, IMemoryGraphStore&gt;? graphStoreResolver = null, IMemoryLogSink? logSink = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryServiceOptions.html">MemoryServiceOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.IMemoryStore.html">IMemoryStore</a></td>
+        <td><span class="parametername">store</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.VectorIndex.IVectorEmbedder.html">IVectorEmbedder</a></td>
+        <td><span class="parametername">embedder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.VectorIndex.IVectorIndexFactory.html">IVectorIndexFactory</a></td>
+        <td><span class="parametername">indexFactory</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Fusion.IResultFuser.html">IResultFuser</a></td>
+        <td><span class="parametername">fuser</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Telemetry.IMemoryTelemetry.html">IMemoryTelemetry</a></td>
+        <td><span class="parametername">telemetry</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Correction.IRetrievalGrader.html">IRetrievalGrader</a></td>
+        <td><span class="parametername">grader</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Graph.IEntityExtractor.html">IEntityExtractor</a></td>
+        <td><span class="parametername">graphExtractor</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Reranking.IReranker.html">IReranker</a></td>
+        <td><span class="parametername">reranker</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Chunking.IChunker.html">IChunker</a></td>
+        <td><span class="parametername">chunker</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.ChunkOptions.html">ChunkOptions</a></td>
+        <td><span class="parametername">chunkOptions</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.MemoryServicePipelineOptions.html">MemoryServicePipelineOptions</a></td>
+        <td><span class="parametername">pipelineOptions</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a>, <a class="xref" href="ProvostXMemory.Graph.IMemoryGraphStore.html">IMemoryGraphStore</a>&gt;</td>
+        <td><span class="parametername">graphStoreResolver</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Logging.IMemoryLogSink.html">IMemoryLogSink</a></td>
+        <td><span class="parametername">logSink</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+</h3>
+  <h4 id="ProvostXMemory_MemoryService_ChunkPrefix" data-uid="ProvostXMemory.MemoryService.ChunkPrefix">ChunkPrefix</h4>
+  <div class="markdown level1 summary">Vector-id convention for a record's chunk embedding.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string ChunkPrefix = &quot;chunk:&quot;</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="ProvostXMemory_MemoryService_RecordAnchorPrefix" data-uid="ProvostXMemory.MemoryService.RecordAnchorPrefix">RecordAnchorPrefix</h4>
+  <div class="markdown level1 summary">Vector-id convention for a record's whole-content anchor embedding.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string RecordAnchorPrefix = &quot;record:&quot;</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <a id="ProvostXMemory_MemoryService_Grader_" data-uid="ProvostXMemory.MemoryService.Grader*"></a>
+  <h4 id="ProvostXMemory_MemoryService_Grader" data-uid="ProvostXMemory.MemoryService.Grader">Grader</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRetrievalGrader? Grader { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Correction.IRetrievalGrader.html">IRetrievalGrader</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_MemoryService_GraphExtractor_" data-uid="ProvostXMemory.MemoryService.GraphExtractor*"></a>
+  <h4 id="ProvostXMemory_MemoryService_GraphExtractor" data-uid="ProvostXMemory.MemoryService.GraphExtractor">GraphExtractor</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEntityExtractor? GraphExtractor { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Graph.IEntityExtractor.html">IEntityExtractor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_MemoryService_Options_" data-uid="ProvostXMemory.MemoryService.Options*"></a>
+  <h4 id="ProvostXMemory_MemoryService_Options" data-uid="ProvostXMemory.MemoryService.Options">Options</h4>
+  <div class="markdown level1 summary">The options this service was composed with.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryServiceOptions Options { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryServiceOptions.html">MemoryServiceOptions</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <a id="ProvostXMemory_MemoryService_BuildIndexesAsync_" data-uid="ProvostXMemory.MemoryService.BuildIndexesAsync*"></a>
+  <h4 id="ProvostXMemory_MemoryService_BuildIndexesAsync_ProvostXMemory_Abstractions_MemoryScope_System_Threading_CancellationToken_" data-uid="ProvostXMemory.MemoryService.BuildIndexesAsync(ProvostXMemory.Abstractions.MemoryScope,System.Threading.CancellationToken)">BuildIndexesAsync(MemoryScope, CancellationToken)</h4>
+  <div class="markdown level1 summary">Builds the scope's indexes from the store's current snapshot (retrieval works without
+this when records were remembered through this service; call it after populating a
+store directly, or after restart).</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task BuildIndexesAsync(MemoryScope scope, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">scope</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_MemoryService_ConsolidateAsync_" data-uid="ProvostXMemory.MemoryService.ConsolidateAsync*"></a>
+  <h4 id="ProvostXMemory_MemoryService_ConsolidateAsync_ProvostXMemory_Abstractions_MemoryScope_ProvostXMemory_Abstractions_ConsolidationOptions_System_Threading_CancellationToken_" data-uid="ProvostXMemory.MemoryService.ConsolidateAsync(ProvostXMemory.Abstractions.MemoryScope,ProvostXMemory.Abstractions.ConsolidationOptions,System.Threading.CancellationToken)">ConsolidateAsync(MemoryScope, ConsolidationOptions, CancellationToken)</h4>
+  <div class="markdown level1 summary">Runs one consolidation pass over a scope: TTL expiry deletes records whose
+<code>ExpiresAt</code> is in the past, near-duplicates are detected (embeddings with a
+lexical fallback), the oldest record of each duplicate group is kept with the
+group's tags unioned in, and sufficiently large near-duplicate clusters emit a
+summary record. Survivors and summaries are returned as the consolidated set.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ConsolidateAsync(MemoryScope scope, ConsolidationOptions options, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">scope</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.ConsolidationOptions.html">ConsolidationOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_MemoryService_ForgetAsync_" data-uid="ProvostXMemory.MemoryService.ForgetAsync*"></a>
+  <h4 id="ProvostXMemory_MemoryService_ForgetAsync_ProvostXMemory_Abstractions_MemoryScope_System_String_System_Threading_CancellationToken_" data-uid="ProvostXMemory.MemoryService.ForgetAsync(ProvostXMemory.Abstractions.MemoryScope,System.String,System.Threading.CancellationToken)">ForgetAsync(MemoryScope, string, CancellationToken)</h4>
+  <div class="markdown level1 summary">Removes a record from the scope's store and every index (vector, lexical, graph).</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ForgetAsync(MemoryScope scope, string id, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">scope</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ProvostXMemory_MemoryService_ForgetAsync_ProvostXMemory_Abstractions_MemoryScope_System_String_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks">Idempotent: forgetting an unknown id completes without error.</div>
+  <a id="ProvostXMemory_MemoryService_GetAsync_" data-uid="ProvostXMemory.MemoryService.GetAsync*"></a>
+  <h4 id="ProvostXMemory_MemoryService_GetAsync_ProvostXMemory_Abstractions_MemoryScope_System_String_System_Threading_CancellationToken_" data-uid="ProvostXMemory.MemoryService.GetAsync(ProvostXMemory.Abstractions.MemoryScope,System.String,System.Threading.CancellationToken)">GetAsync(MemoryScope, string, CancellationToken)</h4>
+  <div class="markdown level1 summary">Fetches one record by id from the given scope; null when unknown.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;MemoryRecord?&gt; GetAsync(MemoryScope scope, string id, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">scope</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html">MemoryRecord</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_MemoryService_RebuildAsync_" data-uid="ProvostXMemory.MemoryService.RebuildAsync*"></a>
+  <h4 id="ProvostXMemory_MemoryService_RebuildAsync_System_Threading_CancellationToken_" data-uid="ProvostXMemory.MemoryService.RebuildAsync(System.Threading.CancellationToken)">RebuildAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary">Rebuilds every index of every scope from the stores' current snapshots; index state
+derived from removed or stale records is discarded.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RebuildAsync(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_MemoryService_RecallAsync_" data-uid="ProvostXMemory.MemoryService.RecallAsync*"></a>
+  <h4 id="ProvostXMemory_MemoryService_RecallAsync_ProvostXMemory_Abstractions_RetrievalQuery_System_Threading_CancellationToken_" data-uid="ProvostXMemory.MemoryService.RecallAsync(ProvostXMemory.Abstractions.RetrievalQuery,System.Threading.CancellationToken)">RecallAsync(RetrievalQuery, CancellationToken)</h4>
+  <div class="markdown level1 summary">Routes the query through the configured retrieval pipeline: hybrid dense+lexical
+search fused with Reciprocal Rank Fusion, optionally reranked; when a grader is wired,
+a corrective loop grades candidates, rewrites weak queries, and retries once. Scope
+comes from the query; results never cross scopes.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;RetrievalResult&gt; RecallAsync(RetrievalQuery query, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.RetrievalQuery.html">RetrievalQuery</a></td>
+        <td><span class="parametername">query</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.RetrievalResult.html">RetrievalResult</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ProvostXMemory_MemoryService_RecallAsync_ProvostXMemory_Abstractions_RetrievalQuery_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks">An empty or whitespace query text returns an empty result (diagnostics carry the
+<code>empty-query</code> stage) rather than performing an unconstrained nearest-neighbor search.</div>
+  <a id="ProvostXMemory_MemoryService_RememberAsync_" data-uid="ProvostXMemory.MemoryService.RememberAsync*"></a>
+  <h4 id="ProvostXMemory_MemoryService_RememberAsync_ProvostXMemory_Abstractions_MemoryRecord_System_Threading_CancellationToken_" data-uid="ProvostXMemory.MemoryService.RememberAsync(ProvostXMemory.Abstractions.MemoryRecord,System.Threading.CancellationToken)">RememberAsync(MemoryRecord, CancellationToken)</h4>
+  <div class="markdown level1 summary">Persists a record and indexes it for retrieval: the record is written to the scope's
+durable store, then chunks, whole-record, and per-representation entries are embedded
+and added to the scope's vector index, and the full text is added to the scope's
+lexical index. A record id that already exists in the scope is rejected.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RememberAsync(MemoryRecord record, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html">MemoryRecord</a></td>
+        <td><span class="parametername">record</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><code class="paramref">record</code> is null.</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></td>
+        <td>A record with the same id already exists in the scope.</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_MemoryService_Scopes_" data-uid="ProvostXMemory.MemoryService.Scopes*"></a>
+  <h4 id="ProvostXMemory_MemoryService_Scopes" data-uid="ProvostXMemory.MemoryService.Scopes">Scopes()</h4>
+  <div class="markdown level1 summary">Enumerates every scope that exists under the service's storage root.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;MemoryScope&gt; Scopes()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a>&gt;</td>
+        <td>Scopes in deterministic order (kind, then id).</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_MemoryService_UpdateAsync_" data-uid="ProvostXMemory.MemoryService.UpdateAsync*"></a>
+  <h4 id="ProvostXMemory_MemoryService_UpdateAsync_ProvostXMemory_Abstractions_MemoryRecord_System_Threading_CancellationToken_" data-uid="ProvostXMemory.MemoryService.UpdateAsync(ProvostXMemory.Abstractions.MemoryRecord,System.Threading.CancellationToken)">UpdateAsync(MemoryRecord, CancellationToken)</h4>
+  <div class="markdown level1 summary">Replaces a record in place (matched by id within the record's scope) and refreshes
+all index entries (lexical, vector, graph) for the new content.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task UpdateAsync(MemoryRecord record, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html">MemoryRecord</a></td>
+        <td><span class="parametername">record</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keynotfoundexception">KeyNotFoundException</a></td>
+        <td>No record with the given id exists in the scope.</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="ProvostXMemory.IMemoryService.html">IMemoryService</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

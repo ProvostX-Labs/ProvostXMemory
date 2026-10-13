@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Concepts | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Concepts | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="concepts">Concepts</h1>
+
+<p>The memory model of ProvostXMemory: what a record is, how scopes isolate data, how representations and chunking work, and how the model-hash guard protects index consistency.</p>
+<h2 id="records">Records</h2>
+<p>A <code>MemoryRecord</code> is the atomic unit of memory. It is an immutable record type:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>Stable identifier; unique within its scope.</td>
+</tr>
+<tr>
+<td><code>Scope</code></td>
+<td>The <code>MemoryScope</code> this record belongs to (isolation boundary).</td>
+</tr>
+<tr>
+<td><code>Key</code></td>
+<td>Short symbolic name (also boosted in lexical scoring).</td>
+</tr>
+<tr>
+<td><code>Content</code></td>
+<td>Primary text content.</td>
+</tr>
+<tr>
+<td><code>Category</code></td>
+<td>Optional single-value classification, filterable.</td>
+</tr>
+<tr>
+<td><code>Tags</code></td>
+<td>Optional label set, filterable; stored normalized (empty list, never null).</td>
+</tr>
+<tr>
+<td><code>Reps</code></td>
+<td>Additional <code>MemoryRepresentation</code> entries (multi-modal).</td>
+</tr>
+<tr>
+<td><code>CreatedAt</code> / <code>UpdatedAt</code></td>
+<td>UTC timestamps, set on creation and maintained by the facade.</td>
+</tr>
+<tr>
+<td><code>ExpiresAt</code></td>
+<td>Optional TTL deadline; honored by consolidation.</td>
+</tr>
+<tr>
+<td><code>Meta</code></td>
+<td>Free-form string key/value metadata, persisted with the record.</td>
+</tr>
+</tbody>
+</table>
+<p>Hosts create records; the facade owns index maintenance. <code>RememberAsync</code>, <code>UpdateAsync</code>, and <code>ForgetAsync</code> keep the dense and lexical indexes (and optionally the graph ledger) in sync through a per-record id ledger.</p>
+<h2 id="scopes-and-the-isolation-model">Scopes and the isolation model</h2>
+<p>A <code>MemoryScope</code> is <code>(Kind, Id, ParentScope?)</code> — hierarchical and immutable:</p>
+<ul>
+<li>Kinds: <code>Platform</code>, <code>Session</code>, <code>Tenant</code>, <code>Purpose</code>, <code>Custom</code>.</li>
+<li><code>Chain()</code> flattens the parent chain, outermost first.</li>
+<li><code>Contains(other)</code> reports whether <code>other</code> is this scope or a descendant.</li>
+</ul>
+<p>Isolation is <strong>structural, not conventional</strong>: every store, index, and graph operation is scope-bound, and scope resolution is enforced by <code>MemoryRootLayout</code>, which maps each scope to its own directory subtree. Cross-scope reads are impossible by construction — a query in scope A cannot observe records, vectors, or graph entities of scope B. This property is pinned by dedicated isolation tests in every layer and by end-to-end multi-tenant journey tests.</p>
+<p>Parent chains are host-side metadata: they express intent (a session belonging to a tenant) and participate in <code>Contains</code> semantics, but persistence equality is by kind + id — scopes are stored under their own resolved paths regardless of parentage.</p>
+<h2 id="representations">Representations</h2>
+<p>One record can carry multiple <code>MemoryRepresentation</code> entries with modality <code>Text | Image | Table | Audio | Custom</code> and an optional per-representation <code>EmbeddingModelHash</code>. This supports multi-modal memory: a table and its textual description can live on the same record and be embedded separately.</p>
+<p>Retrieval addresses representations with vector ids of the form <code>repr|&lt;recordId&gt;|&lt;index&gt;</code>. The multi-representation retriever resolves these back to the owning record and reports the <strong>best-representation score</strong> per record, so one hit per record per stage regardless of how many representations matched.</p>
+<h2 id="chunking">Chunking</h2>
+<p>Long content is split into <code>Chunk</code> items before embedding. <code>IChunker</code> implementations:</p>
+<ul>
+<li><code>StructuredChunker</code> — respects document structure (line/paragraph boundaries) when <code>ChunkOptions.RespectStructure</code> is set.</li>
+<li><code>SizeChunker</code> — size/overlap-driven splitting.</li>
+</ul>
+<p><code>ChunkOptions</code> controls <code>MaxChunkLength</code> (default 512), <code>Overlap</code>, <code>MinChunkLength</code>, <code>Separator</code>, and structure respect; all combinations are validated (overlap must be smaller than the max length, minimum must not exceed the maximum, and so on). Chunk ids are encoded by <code>ChunkIdCodec</code> as scope-qualified identifiers and resolved back to their parent record by <code>IParentResolver</code> / <code>ChunkParentResolver</code> — the parent-document recall pattern: retrieve the best chunk, return the whole record.</p>
+<h2 id="model-hash-guard">Model-hash guard</h2>
+<p>Embedding models define the geometry of their vectors. Mixing vectors produced by different models (or dimensions) in one index silently destroys retrieval quality. ProvostXMemory prevents this at three levels:</p>
+<ol>
+<li><strong>Path isolation</strong> — index artifacts live under <code>vectors/&lt;model-hash&gt;/</code> inside each scope, so a different model means a different artifact set.</li>
+<li><strong>Options guard</strong> — <code>VectorOptions</code> carries the model hash and dimension; index files record them at build time.</li>
+<li><strong>Runtime guard</strong> — <code>IVectorIndexGuard</code> implementations reject opens with a mismatched model hash or dimension, throwing <code>VectorIndexGuardMismatchException</code> instead of returning garbage.</li>
+</ol>
+<p>Consequence: <strong>swapping the embedding model is a data-migration decision, not a config flag.</strong> Re-embed and rebuild (<code>RebuildAsync</code>) under the new hash. See the <a href="faq.html#can-i-swap-the-embedding-model">FAQ</a>.</p>
+<h2 id="namespaces">Namespaces</h2>
+<p>The term <em>namespace</em> in this codebase means the scope-qualified partition that owns an artifact: a (scope, model-hash) pair for vectors, a scope for records/graph/lexical state. Query plans fan out across namespaces by targeting scope ids; fusion identifiers are scope-qualified so the same record id in two scopes never conflates (see <a href="retrieval.html#query-plans">Retrieval</a>).</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

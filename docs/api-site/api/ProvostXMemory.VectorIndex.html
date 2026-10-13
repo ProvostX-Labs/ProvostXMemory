@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Namespace ProvostXMemory.VectorIndex | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Namespace ProvostXMemory.VectorIndex | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.VectorIndex">
+
+  <h1 id="ProvostXMemory_VectorIndex" data-uid="ProvostXMemory.VectorIndex" class="text-break">Namespace ProvostXMemory.VectorIndex</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">
+Classes
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.FlatJsonVectorIndex.html">FlatJsonVectorIndex</a></h4>
+      <section>Default zero-dependency backend over the JSON namespace-file format:
+brute-force cosine (dot product over L2-normalized vectors), transactional flush.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.IvfMember.html">IvfMember</a></h4>
+      <section>One IVF member: id, vector, assigned cluster.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.IvfPostingLists.html">IvfPostingLists</a></h4>
+      <section>Inverted lists: cluster id → member rows + centroid access for probing.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.KMeansQuantizer.html">KMeansQuantizer</a></h4>
+      <section>OWN deterministic k-means (Lloyd iterations, seeded) — the IVF coarse quantizer.
+Deterministic given the same training rows: seeded Fisher-Yates seeding, squared-L2
+assignment via the SIMD scanner, mean update, empty clusters reseated on the globally
+farthest points (deterministic order). Internally uses squared L2 regardless of the
+search metric — IVF coarse assignment is metric-agnostic partitioning.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.KMeansResult.html">KMeansResult</a></h4>
+      <section>Result of one k-means run: centroids plus label arrays over the training rows.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.ScalarVectorOps.html">ScalarVectorOps</a></h4>
+      <section>In-package scalar math for the FlatJson backend (instance-based, no static state).
+Deliberately separate from the Engine package's SIMD VectorMath: the base package must
+stay dependency-free below itself, and cosine/normalize here are O(dim) scalar loops —
+the flat JSON backend's cost is dominated by I/O, not arithmetic.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.ScoredVectorId.html">ScoredVectorId</a></h4>
+      <section>Vector index search hit.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.SeededRandom.html">SeededRandom</a></h4>
+      <section>Pure deterministic pseudo-random generator (xorshift64*) used wherever the engine needs
+seeded randomness (level assignment, quantizer seeding). Own implementation instead of
+<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.random">Random</a> so results are stable across .NET versions and platforms.
+Thread-unsafe by design: engine components own dedicated instances.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.VectorIndexGuard.html">VectorIndexGuard</a></h4>
+      <section>Guard record binding a vector namespace to an embedder model hash/dim.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.VectorIndexGuardMismatchException.html">VectorIndexGuardMismatchException</a></h4>
+      <section>Embedder model hash or vector dimension does not match the index guard.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.VectorIndexIdNotFoundException.html">VectorIndexIdNotFoundException</a></h4>
+      <section>Remove of an id that is not present in the index.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.VectorItem.html">VectorItem</a></h4>
+      <section>A vector index item: id + vector.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.VectorItemStore.html">VectorItemStore</a></h4>
+      <section>Mutable in-memory store shared by engine indexes: ids in row order parallel to vector
+rows plus id → row map. Owns synchronization; build/add/remove/dim-guard semantics.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.VectorMath.html">VectorMath</a></h4>
+      <section>PURE STATIC UTILITY (no mutable state, thread-safe by construction; the one sanctioned
+static exception per architecture principles). Stateless numeric kernels for the engine:
+dot product via Vector512 → Vector256 → Vector128 with scalar fallback, norm, normalize,
+cosine. Deterministic order of accumulation for a given hardware width.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.VectorNamespaceFile.html">VectorNamespaceFile</a></h4>
+      <section>On-disk JSON vector index file format (one file per scope/model-hash namespace):
+temp-file + atomic swap on write; open enforces the model-hash/dim guard.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.VectorNamespaceFile.Content.html">VectorNamespaceFile.Content</a></h4>
+      <section>Content of one namespace file: guard + entries.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.VectorNamespaceFile.Entry.html">VectorNamespaceFile.Entry</a></h4>
+      <section>Sets are keyed by id; a re-set id replaces the entry.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.VectorScanner.html">VectorScanner</a></h4>
+      <section>Scans rows with the metric's SIMD kernel; shared scoring core for flat/IVF search.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.VectorTopKBuffer.html">VectorTopKBuffer</a></h4>
+      <section>Bounded top-k min-heap buffer over (id, score); scores rise to the top.</section>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.IVectorEmbedder.html">IVectorEmbedder</a></h4>
+      <section>The host-injected embedding seam. The library never bundles, downloads, or selects
+embedding models — it consumes vectors from whatever <a class="xref" href="ProvostXMemory.VectorIndex.IVectorEmbedder.html">IVectorEmbedder</a>
+the host wires in, and it <b>validates</b> them instead: <a class="xref" href="ProvostXMemory.VectorIndex.IVectorEmbedder.html#ProvostXMemory_VectorIndex_IVectorEmbedder_ModelHash">ModelHash</a> and
+<a class="xref" href="ProvostXMemory.VectorIndex.IVectorEmbedder.html#ProvostXMemory_VectorIndex_IVectorEmbedder_Dim">Dim</a> are recorded with every vector namespace, and any index whose
+hash or dimension mismatches the embedder is rejected rather than silently mixing
+embeddings from different models.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.IVectorIndex.html">IVectorIndex</a></h4>
+      <section><p>The pluggable dense-vector index contract. The library ships four backends, all
+interchangeable through this interface (they pass one shared conformance suite):
+<code>IndexKind.FlatJson</code> (zero-dependency JSON file, brute-force cosine),
+<code>IndexKind.Flat</code> (in-memory exact search with SIMD kernels),
+<code>IndexKind.Ivf</code> (k-means inverted lists for corpus sizes where full scans
+get expensive), and <code>IndexKind.Hnsw</code> (navigable-small-world graph; built
+with immutable/rebuild semantics and searched with a layered greedy beam). A GPU tier
+(ILGPU, transparent CPU fallback) wraps any of these for machines with devices.</p>
+<p><b>Vector contract:</b> vectors are L2-normalized at index time; scores are cosine
+similarities (higher = closer, 1.0 = identical). <a class="xref" href="ProvostXMemory.VectorIndex.IVectorIndex.html#ProvostXMemory_VectorIndex_IVectorIndex_Dim">Dim</a> is fixed at
+construction; every item/query with a different dimension is rejected.
+<b>Concurrency:</b> implementations own their internal synchronization; concurrent
+Add/Remove/Search from multiple threads is safe.</p>
+<p><b>Backends compare sets, not orderings:</b> ranking parity between backends is
+exact for Flat/FlatJson and statistically guaranteed (recall ≥0.95 on the fixture) for
+the ANN tiers — results are ranked identically after fusion because ordering derives
+from scores, not insertion sequence.</p></section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.IVectorIndexFactory.html">IVectorIndexFactory</a></h4>
+      <section>Creates vector indexes of a requested <a class="xref" href="ProvostXMemory.Abstractions.IndexKind.html">IndexKind</a> for one dimension.
+Implementations decide concrete wiring (metrics, seeds, backing storage); the factory
+keeps index creation out of retrieval code so backends stay swappable by configuration
+alone. The default <code>EngineVectorIndexFactory</code> produces the own-engine backends;
+the GPU factory decorates a CPU fallback with ILGPU kernels.</section>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.IVectorIndexGuard.html">IVectorIndexGuard</a></h4>
+      <section>Guards model hash + vector dimension at every index mutation boundary.</section>
+    <h3 id="enums">
+Enums
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.VectorIndex.VectorDistanceMetric.html">VectorDistanceMetric</a></h4>
+      <section>Distance metric for vector-to-vector comparisons inside the engine.</section>
+
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

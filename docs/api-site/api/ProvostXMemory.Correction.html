@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Namespace ProvostXMemory.Correction | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Namespace ProvostXMemory.Correction | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.Correction">
+
+  <h1 id="ProvostXMemory_Correction" data-uid="ProvostXMemory.Correction" class="text-break">Namespace ProvostXMemory.Correction</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">
+Classes
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.Correction.CorrectionOptions.html">CorrectionOptions</a></h4>
+      <section>Options for the corrective retrieval pipeline. Typed options injected by the host
+(no environment configuration in product code).</section>
+      <h4><a class="xref" href="ProvostXMemory.Correction.CorrectiveRetriever.html">CorrectiveRetriever</a></h4>
+      <section>Grader-gated corrective retrieval around an injected <a class="xref" href="ProvostXMemory.Retrieval.IHybridRetriever.html">IHybridRetriever</a>:
+candidates pass or are dropped per <a class="xref" href="ProvostXMemory.Correction.IRetrievalGrader.html">IRetrievalGrader</a>; below-floor
+candidates are not yielded. One rewrite-and-retry cycle via <a class="xref" href="ProvostXMemory.Correction.IQueryRewriter.html">IQueryRewriter</a>
+runs when the first pass graded any candidate <a class="xref" href="ProvostXMemory.Correction.RetrievalGrade.html#ProvostXMemory_Correction_RetrievalGrade_Uncertain">Uncertain</a> or
+yielded nothing acceptable (all-Irrelevant/all-below-floor). When nothing survives, the
+optional <a class="xref" href="ProvostXMemory.Correction.IExternalFetcher.html">IExternalFetcher</a> hook (null = skip) runs once. Every stage
+reports diagnostics.</section>
+      <h4><a class="xref" href="ProvostXMemory.Correction.CorrectiveRetriever.StageNames.html">CorrectiveRetriever.StageNames</a></h4>
+      <section>Diagnostic stage names reported in <a class="xref" href="ProvostXMemory.Abstractions.RetrievalStageDiagnostics.html#ProvostXMemory_Abstractions_RetrievalStageDiagnostics_Stage">Stage</a>.</section>
+      <h4><a class="xref" href="ProvostXMemory.Correction.GradedCandidate.html">GradedCandidate</a></h4>
+      <section>A grade assigned to one candidate.</section>
+      <h4><a class="xref" href="ProvostXMemory.Correction.KeywordQueryRewriter.html">KeywordQueryRewriter</a></h4>
+      <section>Deterministic, zero-dependency query rewriter: distills the query to its key terms via
+<a class="xref" href="ProvostXMemory.Abstractions.QueryTokens.html#ProvostXMemory_Abstractions_QueryTokens_KeyTerms_System_String_">KeyTerms(string)</a> — stopwords stripped (acronyms preserved),
+duplicates collapsed. Emits a single-space-joined term list; empty queries rewrite to
+the empty string.</section>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.Correction.IExternalFetcher.html">IExternalFetcher</a></h4>
+      <section>Fetches content from external sources (host-injected; the library stays network-agnostic).
+Returning an empty list (or null) yields no fetched-stage content.</section>
+      <h4><a class="xref" href="ProvostXMemory.Correction.IQueryRewriter.html">IQueryRewriter</a></h4>
+      <section>Rewrites/expands a query for corrective retrieval (host-injected when an LLM-backed rewriter is desired).</section>
+      <h4><a class="xref" href="ProvostXMemory.Correction.IRetrievalGrader.html">IRetrievalGrader</a></h4>
+      <section>Grades candidates for relevance (host-injected).</section>
+    <h3 id="enums">
+Enums
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.Correction.RetrievalGrade.html">RetrievalGrade</a></h4>
+      <section>Grade of a retrieved candidate.</section>
+
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

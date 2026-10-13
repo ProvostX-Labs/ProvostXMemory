@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Namespace ProvostXMemory.Examples | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Namespace ProvostXMemory.Examples | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.Examples">
+
+  <h1 id="ProvostXMemory_Examples" data-uid="ProvostXMemory.Examples" class="text-break">Namespace ProvostXMemory.Examples</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">
+Classes
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.Examples.Ex01_Quickstart.html">Ex01_Quickstart</a></h4>
+      <section>Minimal end-to-end flow (the README quickstart, made runnable): build a service,
+remember five facts, build indexes, recall, and print the ranked hits.</section>
+      <h4><a class="xref" href="ProvostXMemory.Examples.Ex02_Scopes.html">Ex02_Scopes</a></h4>
+      <section>Multi-tenant isolation: the SAME record key is written into three tenant scopes with
+different content; recall in each scope only ever sees that scope's own record, and
+lookups from a foreign scope find nothing.</section>
+      <h4><a class="xref" href="ProvostXMemory.Examples.Ex03_HybridSearch.html">Ex03_HybridSearch</a></h4>
+      <section>Hybrid retrieval (BM25-style lexical + dense vector, fused with Reciprocal Rank Fusion):
+a keyword-only hit and a semantic-only hit answer different halves of the corpus —
+the fused query surfaces both.</section>
+      <h4><a class="xref" href="ProvostXMemory.Examples.Ex04_Backends.html">Ex04_Backends</a></h4>
+      <section>Backend parity: the same dataset is loaded into four services — engine Flat, IVF,
+HNSW, and the zero-dependency FlatJson index — plus the GPU backend (with a fallback
+note: without a GPU the factory transparently runs its CPU kernels). Every backend
+returns the same hits; timings are printed per backend.</section>
+      <h4><a class="xref" href="ProvostXMemory.Examples.Ex05_Consolidation.html">Ex05_Consolidation</a></h4>
+      <section>Consolidation: near-duplicate records are merged into one survivor plus a cluster
+summary record; TTL-expired records are deleted. Before/after counts and the summary
+record are printed.</section>
+      <h4><a class="xref" href="ProvostXMemory.Examples.Ex06_GraphRetrieval.html">Ex06_GraphRetrieval</a></h4>
+      <section>Graph retrieval: records mentioning shared entities form an entity/relation graph at
+index time (heuristic extractor). A graph-connected recall through the entity subgraph
+surfaces ALL records touching an entity — including records the plain lexical/dense
+query would miss because they share no query token.</section>
+      <h4><a class="xref" href="ProvostXMemory.Examples.Ex07_CorrectiveLoop.html">Ex07_CorrectiveLoop</a></h4>
+      <section>Corrective recall: a weak first-pass query is graded, rewritten, and retried. The
+deterministic fake grader accepts only strong fused hits (both retrieval stages
+contribute); the built-in keyword rewriter distills the noisy query so the retry pass
+ranks the target record on top. Diagnostics prove the rewrite-and-retry cycle ran.</section>
+      <h4><a class="xref" href="ProvostXMemory.Examples.Ex08_LoggingAudit.html">Ex08_LoggingAudit</a></h4>
+      <section>Audit logging with hash-chain integrity: file logging is enabled, service operations
+append chained entries, <a class="xref" href="ProvostXMemory.Logging.LogChainVerifier.html">LogChainVerifier</a> validates the chain — and after
+one line is tampered with, the verifier pinpoints the broken line.</section>
+      <h4><a class="xref" href="ProvostXMemory.Examples.Ex09_EvalHarness.html">Ex09_EvalHarness</a></h4>
+      <section>Eval harness: the deterministic seeded corpus is loaded into a fresh service, every
+golden query is replayed, and a Recall@k / MRR / NDCG report is printed. Identical
+seeds produce byte-identical corpora and runs.</section>
+      <h4><a class="xref" href="ProvostXMemory.Examples.Ex10_RestartPersistence.html">Ex10_RestartPersistence</a></h4>
+      <section>Restart persistence: records written through the service survive disposal — a brand
+new service instance rebuilt over the same root recalls them, proving the transactional
+JSONL store is the durable source of truth (indexes are rebuilt from it).</section>
+      <h4><a class="xref" href="ProvostXMemory.Examples.ExampleBase.html">ExampleBase</a></h4>
+      <section>Base class for every example: one instance, one Run, no static state.</section>
+      <h4><a class="xref" href="ProvostXMemory.Examples.ExampleRig.html">ExampleRig</a></h4>
+      <section>Shared wiring helper for the examples: every service is composed exactly as a host
+would — <a class="xref" href="ProvostXMemory.MemoryServiceBuilder.html">MemoryServiceBuilder</a> over the production <a class="xref" href="ProvostXMemory.Storage.JsonlMemoryStore.html">JsonlMemoryStore</a>,
+the deterministic <a class="xref" href="ProvostXMemory.Eval.ClusterHashEmbedder.html">ClusterHashEmbedder</a> (no real model, no network), and the
+own-engine backends. All storage roots live under the temp directory; nothing personal
+and nothing outside the example's own root is touched.</section>
+      <h4><a class="xref" href="ProvostXMemory.Examples.ExampleRig.FlatJsonFactory.html">ExampleRig.FlatJsonFactory</a></h4>
+      <section>FlatJson factory: one <a class="xref" href="ProvostXMemory.VectorIndex.VectorNamespaceFile.html">VectorNamespaceFile</a> per created scope index,
+rooted under the example root for realistic restart behavior.</section>
+      <h4><a class="xref" href="ProvostXMemory.Examples.Program.html">Program</a></h4>
+      <section>Entry point for the runnable example set. With no arguments every example runs in
+sequence and the process exits 0; pass an example name (e.g. "Ex03_HybridSearch")
+to run exactly one. Works with no GPU and no network: the embedder is deterministic,
+the backends are the own engine (CPU) or FlatJson, and storage is a temp directory.</section>
+
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

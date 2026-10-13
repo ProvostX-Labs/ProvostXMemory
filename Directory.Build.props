@@ -1,0 +1,27 @@
+<Project>
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <!-- ProvostXMemory NuGet packaging — common metadata (per-repo values).
+       Only the facade (ProvostXMemory) and the optional Gpu package ship;
+       all other projects are merged into the facade package at pack time. -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+    <Authors>ProvostX Project contributors</Authors>
+    <Company>ProvostX Project contributors</Company>
+    <Copyright>Copyright (c) ProvostX Project contributors</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/ProvostX-Labs/ProvostXMemory</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ProvostX-Labs/ProvostXMemory</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>Initial release: scoped memory library, hybrid retrieval, own C# vector engine (Flat/IVF/HNSW + ILGPU GPU acceleration with transparent CPU fallback INCLUDED in this single package), consolidation, graph, eval harness, audit logging. .NET 8. One package contains everything.</PackageReleaseNotes>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+    <EmbedUntrackedSources Condition="'$(CI)' == 'true'">true</EmbedUntrackedSources>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+</Project>

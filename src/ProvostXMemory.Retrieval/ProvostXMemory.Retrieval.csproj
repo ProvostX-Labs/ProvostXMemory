@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>ProvostXMemory.Retrieval</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../ProvostXMemory.Abstractions/ProvostXMemory.Abstractions.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Storage/ProvostXMemory.Storage.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Lexical/ProvostXMemory.Lexical.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Chunking/ProvostXMemory.Chunking.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Fusion/ProvostXMemory.Fusion.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Reranking/ProvostXMemory.Reranking.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Graph/ProvostXMemory.Graph.csproj" />
+    <ProjectReference Include="../ProvostXMemory.VectorIndex/ProvostXMemory.VectorIndex.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Telemetry/ProvostXMemory.Telemetry.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>ProvostXMemory</RootNamespace>
+    <PackageId>ProvostXMemory</PackageId>
+    <Title>ProvostXMemory</Title>
+    <Description>Strict-OOP, host-agnostic long-term memory library for .NET 8: scoped storage, hybrid (dense + lexical) retrieval with enforced filters, consolidation, graph retrieval, corrective recall, an eval harness, and audit-grade integrity logging — over an own C# vector-index engine (zero third-party vector dependencies; GPU acceleration via ILGPU with transparent CPU fallback included).</Description>
+  </PropertyGroup>
+
+  <!-- NuGet package representation: root-level files (metadata lives in Directory.Build.props). -->
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+    <None Include="../../packaging/icon.png" Pack="true" PackagePath="/" Visible="false" />
+    <None Include="../../LICENSE" Pack="true" PackagePath="/" Visible="false" />
+    <None Include="../../THIRD-PARTY-NOTICES.md" Pack="true" PackagePath="/" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../ProvostXMemory.Abstractions/ProvostXMemory.Abstractions.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Retrieval/ProvostXMemory.Retrieval.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Storage/ProvostXMemory.Storage.csproj" />
+    <ProjectReference Include="../ProvostXMemory.VectorIndex/ProvostXMemory.VectorIndex.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Lexical/ProvostXMemory.Lexical.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Chunking/ProvostXMemory.Chunking.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Reranking/ProvostXMemory.Reranking.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Fusion/ProvostXMemory.Fusion.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Graph/ProvostXMemory.Graph.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Correction/ProvostXMemory.Correction.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Consolidation/ProvostXMemory.Consolidation.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Telemetry/ProvostXMemory.Telemetry.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Logging/ProvostXMemory.Logging.csproj" />
+    <ProjectReference Include="../ProvostXMemory.Eval/ProvostXMemory.Eval.csproj" />
+    <ProjectReference Include="../ProvostXMemory.VectorIndex.Engine/ProvostXMemory.VectorIndex.Engine.csproj" />
+    <ProjectReference Include="../ProvostXMemory.VectorIndex.Gpu/ProvostXMemory.VectorIndex.Gpu.csproj" />
+  </ItemGroup>
+
+  <!-- GPU acceleration ships IN this package (owner: one package with everything).
+       ILGPU is the sole real dependency (zero transitive deps on net8.0). -->
+  <ItemGroup>
+    <PackageReference Include="ILGPU" Version="1.5.1" />
+  </ItemGroup>
+
+</Project>

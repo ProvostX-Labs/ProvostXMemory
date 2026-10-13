@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Logging and Audit Hash-Chain | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Logging and Audit Hash-Chain | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="logging-and-audit-hash-chain">Logging and Audit Hash-Chain</h1>
+
+<p>ProvostXMemory ships a self-contained logging facility with an audit-grade integrity mode: append-only files, a SHA-256 hash chain for tamper evidence, rotation, retention, and strict content minimization.</p>
+<h2 id="disabled-by-default">Disabled by default</h2>
+<p>Logging is off by default with <strong>zero cost</strong>: no files are created, no allocations occur. Enable via <code>MemoryServiceOptions.Logging</code>:</p>
+<pre><code class="lang-csharp">Logging: new MemoryLoggingOptions(
+    Enabled: true,
+    Level: MemoryLogLevel.Info,
+    Sink: MemoryLogSinkKind.File,          // File | Console | Injected
+    Directory: Path.Combine(root, &quot;logs&quot;),
+    FileNamePattern: &quot;memory-{date}.log&quot;,
+    Format: MemoryLogFormat.JsonLines,
+    IncludeContent: false,                 // content NEVER logged by default
+    Integrity: MemoryLogIntegrity.HashChain,
+    RetentionDays: 30)
+</code></pre>
+<h2 id="options-reference">Options reference</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type / default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Enabled</code></td>
+<td><code>bool</code>, <code>false</code></td>
+<td>Master switch. Disabled ⇒ no writes, no allocations.</td>
+</tr>
+<tr>
+<td><code>Level</code></td>
+<td><code>MemoryLogLevel</code>, <code>Info</code></td>
+<td>Minimum level emitted.</td>
+</tr>
+<tr>
+<td><code>Sink</code></td>
+<td><code>MemoryLogSinkKind</code>, <code>File</code></td>
+<td><code>File</code> (rolling files), <code>Console</code>, or <code>Injected</code> (host-provided <code>IMemoryLogSink</code> via <code>MemoryServiceBuilder.WithLogSink</code>).</td>
+</tr>
+<tr>
+<td><code>Directory</code></td>
+<td><code>string</code></td>
+<td>Log directory (typically under the memory root).</td>
+</tr>
+<tr>
+<td><code>FileNamePattern</code></td>
+<td><code>string</code></td>
+<td>Rolling file name pattern.</td>
+</tr>
+<tr>
+<td><code>Format</code></td>
+<td><code>MemoryLogFormat</code>, <code>JsonLines</code></td>
+<td>Line format; <code>MemoryLogJson</code> provides the encoder.</td>
+</tr>
+<tr>
+<td><code>IncludeContent</code></td>
+<td><code>bool</code>, <code>false</code></td>
+<td>When false (default), record content never appears in any output — at most a short excerpt when explicitly enabled. Pinned by content-leak tests.</td>
+</tr>
+<tr>
+<td><code>Integrity</code></td>
+<td><code>MemoryLogIntegrity</code>, <code>HashChain</code></td>
+<td>Enables the SHA-256 audit hash chain.</td>
+</tr>
+<tr>
+<td><code>RetentionDays</code></td>
+<td><code>int?</code></td>
+<td>Retention window enforced by <code>RetentionSweeper</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="emitted-categories">Emitted categories</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Level</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Lifecycle</code></td>
+<td>info</td>
+<td>Service built; scope indexes opened.</td>
+</tr>
+<tr>
+<td><code>IndexBuild</code></td>
+<td>info</td>
+<td>Vector/lexical index builds per scope.</td>
+</tr>
+<tr>
+<td><code>Consolidation</code></td>
+<td>info</td>
+<td>Consolidation pass activity.</td>
+</tr>
+<tr>
+<td><code>ScopeRejection</code></td>
+<td>warn</td>
+<td>Store rejected an operation for a missing scope or record id.</td>
+</tr>
+<tr>
+<td><code>StoreError</code></td>
+<td>error</td>
+<td>Storage-layer failures.</td>
+</tr>
+</tbody>
+</table>
+<p>Each <code>MemoryLogEntry</code> carries a timestamp, monotonically increasing sequence number, level, category, optional <code>MemoryLogScope</code> (kind + id), correlation id, duration, and the chain fields.</p>
+<h2 id="the-audit-hash-chain">The audit hash chain</h2>
+<p>When <code>Integrity = MemoryLogIntegrity.HashChain</code>, every entry is chained:</p>
+<pre><code>entryHash(n) = SHA-256( sequence(n) ‖ timestamp(n) ‖ level ‖ category ‖ payload ‖ previousHash )
+</code></pre>
+<p><code>HashChainAppender</code> computes and appends the chain; <code>previousHash</code> of entry <em>n</em> is <code>entryHash(n-1)</code>, so any modification, deletion, or reordering of historical entries breaks every subsequent link.</p>
+<h3 id="verifying-a-log">Verifying a log</h3>
+<p><code>LogChainVerifier</code> walks a log file (or stream) from the beginning and returns a <code>LogChainVerificationResult</code>:</p>
+<pre><code class="lang-csharp">var verifier = new LogChainVerifier();
+LogChainVerificationResult result = verifier.Verify(logFilePath);
+
+if (!result.IsValid)
+{
+    // result.BrokenAtSequence: first sequence number where the chain broke
+    // result.Detail: human-readable failure description
+}
+</code></pre>
+<p>A valid result means the log is complete and unmodified from the first entry onward. This makes the log admissible as internal audit evidence: silent edits are detectable, and truncation is detectable as a chain break at the missing sequence.</p>
+<h2 id="retention-and-rotation">Retention and rotation</h2>
+<ul>
+<li><code>RetentionSweeper</code> deletes log files older than <code>RetentionDays</code>. Run it on your schedule (e.g. at service start) — retention is explicit, never implicit.</li>
+<li>Rotation follows <code>FileNamePattern</code>; rolling behavior is pinned by tests (<code>FileRollingTests</code>).</li>
+<li>Deleted log segments are not chains-compatible by design: if you must delete aged logs, delete whole files and treat each file as an independent chain (each file starts its own chain at sequence 0).</li>
+</ul>
+<h2 id="routing-into-host-logging">Routing into host logging</h2>
+<p>Use <code>Sink: MemoryLogSinkKind.Injected</code> plus <code>MemoryServiceBuilder.WithLogSink(...)</code> to forward <code>MemoryLogEntry</code> objects into your own logging pipeline. Note that hash-chain integrity applies to entries as emitted; if you need the chain, keep the file sink enabled as well.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

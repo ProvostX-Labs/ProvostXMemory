@@ -1,0 +1,3658 @@
+{
+  "docfx_version": "2.81.0+ba844df625370a6bd7c1ecab0d0ec4d1d9128ac4",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "API-INDEX.md",
+      "output": {
+        ".html": {
+          "relative_path": "API-INDEX.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ARCHITECTURE.md",
+      "output": {
+        ".html": {
+          "relative_path": "ARCHITECTURE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CONCEPT.md",
+      "output": {
+        ".html": {
+          "relative_path": "CONCEPT.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "LICENSE",
+      "output": {
+        "resource": {
+          "relative_path": "LICENSE"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "PACKAGE-MAP.md",
+      "output": {
+        ".html": {
+          "relative_path": "PACKAGE-MAP.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "RELATIONSHIP-GRAPH.md",
+      "output": {
+        ".html": {
+          "relative_path": "RELATIONSHIP-GRAPH.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "THIRD-PARTY-NOTICES.md",
+      "output": {
+        ".html": {
+          "relative_path": "THIRD-PARTY-NOTICES.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/BACKLOG-MASTER.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/BACKLOG-MASTER.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/api-glossary.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/api-glossary.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/backends.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/backends.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/concepts.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/concepts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/consolidation.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/consolidation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/evaluation.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/evaluation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/faq.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/faq.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/logging.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/logging.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/retrieval.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/retrieval.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/scopes.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/scopes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/wiki.html",
+      "output": {
+        "resource": {
+          "relative_path": "docs/wiki.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.BackendStats.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.BackendStats.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.BackendStats",
+      "Summary": "Stats snapshot of a backend (store or index)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.Chunk.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.Chunk.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.Chunk",
+      "Summary": "A chunk produced by splitting a memory record. <xref href=\"ProvostXMemory.Abstractions.Chunk.StartOffset\" data-throw-if-not-resolved=\"false\"></xref> and\n<xref href=\"ProvostXMemory.Abstractions.Chunk.EndOffset\" data-throw-if-not-resolved=\"false\"></xref> are half-open offsets into the parent record's content\n(<code>parentContent[StartOffset..EndOffset] == Content</code>); the value -1 means \"unset\".\nChunkers always set both."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.ChunkOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.ChunkOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.ChunkOptions",
+      "Summary": "Chunking parameters: structural markers, size and overlap. A trailing chunk shorter\nthan <xref href=\"ProvostXMemory.Abstractions.ChunkOptions.MinChunkLength\" data-throw-if-not-resolved=\"false\"></xref> merges into its predecessor (may exceed the max \u2014\nmax is a packing target, min is a hard floor)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.ConsolidationOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.ConsolidationOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.ConsolidationOptions",
+      "Summary": "<p>Tuning for one <code>IMemoryService.ConsolidateAsync</code> pass over a scope.</p>\n<p><b><xref href=\"ProvostXMemory.Abstractions.ConsolidationOptions.DedupSimilarityThreshold\" data-throw-if-not-resolved=\"false\"></xref></b> \u2014 cosine above which two records count\nas near-duplicates (lexical Jaccard fallback when embeddings degenerate). The OLDEST\nrecord of each duplicate group is kept, tags are unioned into it, the rest are deleted.\n<b><xref href=\"ProvostXMemory.Abstractions.ConsolidationOptions.ExpireTtl\" data-throw-if-not-resolved=\"false\"></xref></b> \u2014 when on (default), records whose <code>ExpiresAt</code> is past\nare deleted first. <b><xref href=\"ProvostXMemory.Abstractions.ConsolidationOptions.EmitClusterSummaries\" data-throw-if-not-resolved=\"false\"></xref></b> \u2014 when on, the remaining\nnear-duplicate clusters (similarity \u2265 the <code>ConsolidationTuning.ClusterJoinThreshold</code>)\nemit one summary record each, graph-recorded when a graph extractor is wired.</p>"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.FusionOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.FusionOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.FusionOptions",
+      "Summary": "Fusion options: RRF constant and stage weights."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.GraphOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.GraphOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.GraphOptions",
+      "Summary": "Graph layer options: neighbor fan-out cap, walk depth, retriever behavior knobs."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.IJsonlMemoryStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.IJsonlMemoryStore.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.IJsonlMemoryStore",
+      "Summary": "Default JSONL-backed store contract (transactional file I/O)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.IMemoryManifestCodec.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.IMemoryManifestCodec.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.IMemoryManifestCodec",
+      "Summary": "Manifest read/write for a memory root."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.IMemoryStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.IMemoryStore.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.IMemoryStore",
+      "Summary": "<p>The durable record store seam. Every method takes the scope explicitly\n(kind + id) \u2014 there is no scope-less operation anywhere in the contract, so a\nstore implementation physically cannot conflate scopes. The default\n<code>JsonlMemoryStore</code> lays out one <code>records.jsonl</code> per scope directory with\ntransactional rewrites (temp file + atomic move) and tolerant reads (blank lines and\nlegacy entries without Reps/Meta deserialize to defaults).</p>\n<p><b>Concurrency contract:</b> implementations are not required to be internally\nthread-safe \u2014 <code>IMemoryService</code> serializes store mutations per service\ninstance; direct multi-threaded store access is the host's own synchronization problem.</p>"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.IndexKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.IndexKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.IndexKind",
+      "Summary": "The vector index backend family. <xref href=\"ProvostXMemory.Abstractions.IndexKind.Flat\" data-throw-if-not-resolved=\"false\"></xref> \u2014 exact SIMD scan, the correctness\nbaseline and the best choice up to tens of thousands of vectors. <xref href=\"ProvostXMemory.Abstractions.IndexKind.Ivf\" data-throw-if-not-resolved=\"false\"></xref> \u2014\ndeterministic k-means inverted lists; probes only <code>nprobe</code> clusters per query,\nthe sweet spot for large corpora. <xref href=\"ProvostXMemory.Abstractions.IndexKind.Hnsw\" data-throw-if-not-resolved=\"false\"></xref> \u2014 navigable-small-world graph,\nhighest recall per query latency; built with immutable-index/rebuild semantics and\nsearched with a layered greedy beam (see the architecture patent addendum). <xref href=\"ProvostXMemory.Abstractions.IndexKind.Gpu\" data-throw-if-not-resolved=\"false\"></xref>\n\u2014 ILGPU-kernel decoration over a CPU backend with bit-exact fallback when no device exists.\nAll kinds pass one shared conformance suite; results are interchangeable between kinds\n(FlatJson included, see <code>IVectorIndex</code>)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.MemoryEntryModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.MemoryEntryModel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.MemoryEntryModel",
+      "Summary": "Logical record model as persisted on disk (JSONL entry shape). <xref href=\"ProvostXMemory.Abstractions.MemoryEntryModel.Reps\" data-throw-if-not-resolved=\"false\"></xref> and\n<xref href=\"ProvostXMemory.Abstractions.MemoryEntryModel.Meta\" data-throw-if-not-resolved=\"false\"></xref> are optional trailing parameters: entries written before they existed\n(or writers that leave them out) deserialize with null, which the store maps to the\nrecord's empty defaults \u2014 never a null crash."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.MemoryLogFormat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.MemoryLogFormat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.MemoryLogFormat",
+      "Summary": "Seriline format used by the file sink."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.MemoryLogIntegrity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.MemoryLogIntegrity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.MemoryLogIntegrity",
+      "Summary": "Integrity protection applied to log entries."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.MemoryLogLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.MemoryLogLevel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.MemoryLogLevel",
+      "Summary": "Severity of a memory log entry."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.MemoryLogSinkKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.MemoryLogSinkKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.MemoryLogSinkKind",
+      "Summary": "Where log entries are written."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.MemoryLoggingOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.MemoryLoggingOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.MemoryLoggingOptions",
+      "Summary": "<p>Logging configuration for the memory service. Off by default \u2014\n<code>Enabled = false</code> means zero writes, zero log-entry allocations on the hot path,\nno log directory created. Enabled logging is content-minimized: log lines carry\nwhat happened (scope, operation, scores, durations), never record content itself,\nunless <code>IncludeContent</code> is explicitly set \u2014 the default-persisted posture is\nbehavior-evidence without user-content retention.</p>\n<p><b>Audit mode:</b> <code>Integrity = MemoryLogIntegrity.HashChain</code> appends entries\nSHA-256 hash-chained to their predecessor (with monotonic sequence numbers) under a\nserialized gate \u2014 any modified or deleted line breaks verification, and\n<code>LogChainVerifier</code> proves integrity in one pass. <code>RetentionDays</code> triggers the\nretention sweeper; both file and console sinks are available, hosts inject their own\n<code>IMemoryLogSink</code> (SIEM, Serilog, \u2026) through the builder.</p>"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.MemoryManifest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.MemoryManifest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.MemoryManifest",
+      "Summary": "On-disk metadata describing the memory root: codecs, counts, versions."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.MemoryRecord.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.MemoryRecord.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.MemoryRecord",
+      "Summary": "<p>The unit of remembered knowledge: an immutable record with identity, scope, content,\nand retrieval hints. Records are created by hosts and persisted through\n<code>IMemoryService.RememberAsync</code>; retrieval returns them wrapped in\n<code>ScoredMemoryRecord</code>.</p>\n<p>Retrieval relevance is driven by <xref href=\"ProvostXMemory.Abstractions.MemoryRecord.Content\" data-throw-if-not-resolved=\"false\"></xref> (embedded and lexically\nindexed), boosted by <xref href=\"ProvostXMemory.Abstractions.MemoryRecord.Tags\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"ProvostXMemory.Abstractions.MemoryRecord.Key\" data-throw-if-not-resolved=\"false\"></xref> terms and\n<xref href=\"ProvostXMemory.Abstractions.MemoryRecord.Category\" data-throw-if-not-resolved=\"false\"></xref> exact matches in the default reranker. Optional\n<xref href=\"ProvostXMemory.Abstractions.MemoryRecord.Reps\" data-throw-if-not-resolved=\"false\"></xref> add per-modality content (image captions, tables) that is embedded\nalongside the text and retrievable through the multi-representation retriever.</p>"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.MemoryRepresentation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.MemoryRepresentation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.MemoryRepresentation",
+      "Summary": "<p>Additional per-modality content of a record: image captions, tables, audio\ntranscripts, or any parallel content that should be retrievable alongside the record's\nmain text. Each representation is embedded with the host's <code>IVectorEmbedder</code>\nand indexed under its own vector id\n(<code>repr|&lt;recordId&gt;|&lt;index&gt;</code>); the multi-representation retriever compares\na query against every representation and keeps the best-matching one per record.</p>\n<p><b>Modality contract:</b> <xref href=\"ProvostXMemory.Abstractions.MemoryRepresentation.Modality\" data-throw-if-not-resolved=\"false\"></xref> is a tag, not a type system \u2014\ncontent is always string. <xref href=\"ProvostXMemory.Abstractions.MemoryRepresentation.EmbeddingModelHash\" data-throw-if-not-resolved=\"false\"></xref> is optional metadata for\nhosts that run several embedding models; the vector index namespace guard keys on the\nmodel hash + dimension, not on this field.</p>"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.MemoryRepresentationModality.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.MemoryRepresentationModality.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.MemoryRepresentationModality",
+      "Summary": "Modality of a memory representation."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.MemoryScope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.MemoryScope.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.MemoryScope",
+      "Summary": "<p>One isolation boundary of memory: the (Kind, Id) pair every record, index, and\nlog line belongs to. Records written to one scope are structurally invisible to\noperations on another \u2014 the storage root layout pins each scope to its own directory\ntree and the index registry keys indexes by the exact scope pair.</p>\n<p>Scopes may carry a <xref href=\"ProvostXMemory.Abstractions.MemoryScope.ParentScope\" data-throw-if-not-resolved=\"false\"></xref> chain for hierarchical fan-out\n(query plans target a root and resolve child scopes), but lookups never fall through\nto parents: a query against scope A sees scope A, nothing else, whatever its ancestry.</p>"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.MemoryScopeKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.MemoryScopeKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.MemoryScopeKind",
+      "Summary": "The isolation axis of a <xref href=\"ProvostXMemory.Abstractions.MemoryScope\" data-throw-if-not-resolved=\"false\"></xref>. One record lives in exactly one\n(Kind, Id) pair; the kind determines what the id conventionally names:\n<code>Platform</code> (one surface \u2014 e.g. per chat platform), <code>Session</code>\n(one conversation or run), <code>Tenant</code> (one customer \u2014 multi-tenant hosts),\n<code>Purpose</code> (one knowledge base or domain), <code>Custom</code> (host-defined).\nKinds map to storage path segments, so cross-kind and cross-id isolation are identical\nby construction. Unknown on-disk kinds degrade to <code>Custom</code> on read."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.MemoryServiceOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.MemoryServiceOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.MemoryServiceOptions",
+      "Summary": "<p>The root options record for <code>MemoryService</code>: the host's per-domain\ntuning, injected once at build time. Each section covers one pipeline concern \u2014\n<xref href=\"ProvostXMemory.Abstractions.MemoryServiceOptions.Storage\" data-throw-if-not-resolved=\"false\"></xref> (root layout), <xref href=\"ProvostXMemory.Abstractions.MemoryServiceOptions.Vector\" data-throw-if-not-resolved=\"false\"></xref> (backend + dim),\n<xref href=\"ProvostXMemory.Abstractions.MemoryServiceOptions.Graph\" data-throw-if-not-resolved=\"false\"></xref> (walk tuning), <xref href=\"ProvostXMemory.Abstractions.MemoryServiceOptions.Fusion\" data-throw-if-not-resolved=\"false\"></xref> (RRF weights),\n<xref href=\"ProvostXMemory.Abstractions.MemoryServiceOptions.Consolidation\" data-throw-if-not-resolved=\"false\"></xref> (dedup/cluster thresholds), <xref href=\"ProvostXMemory.Abstractions.MemoryServiceOptions.Logging\" data-throw-if-not-resolved=\"false\"></xref></p>\n<p>Section records carry safe defaults; a host that passes all defaults gets the\nreference pipeline. Optional capabilities (grader, graph extractor, reranker, log\nsink) are injected via <code>MemoryServiceBuilder</code> rather than this record \u2014\noptions tune behavior, wiring enables capabilities.</p>"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.QueryPlan.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.QueryPlan.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.QueryPlan",
+      "Summary": "Declarative retrieval plan: an ordered set of steps the runner executes."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.QueryPlanStep.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.QueryPlanStep.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.QueryPlanStep",
+      "Summary": "One step of a declarative plan (fan-out namespaces, merge, iterate)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.QueryTokens.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.QueryTokens.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.QueryTokens",
+      "Summary": "Pure query-text token helpers shared by text-processing packages (keyword rewriting,\nscore-boost reranking). Stateless lookups and a compiled regex only; this class is the\narchitecture-sanctioned pure-function static: no I/O, no ambient state, deterministic."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.RetrievalFilters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.RetrievalFilters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.RetrievalFilters",
+      "Summary": "Immutable tag/category/date filter set for retrieval."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.RetrievalProvenance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.RetrievalProvenance.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.RetrievalProvenance",
+      "Summary": "Provenance of a scored memory record: which retriever produced it and per-stage scores."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.RetrievalQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.RetrievalQuery.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.RetrievalQuery",
+      "Summary": "<p>A scope-bound retrieval request: what to look for, where to look, and how much\nto return. Passed to <code>IMemoryService.RecallAsync</code>.</p>\n<p><xref href=\"ProvostXMemory.Abstractions.RetrievalQuery.Scope\" data-throw-if-not-resolved=\"false\"></xref> is authoritative \u2014 results are drawn from that scope's\nindexes only, never from other scopes. <xref href=\"ProvostXMemory.Abstractions.RetrievalQuery.Text\" data-throw-if-not-resolved=\"false\"></xref> runs through the full\npipeline (embedding + BM25 lexical + fusion + optional rerank/corrective loop);\nan empty or whitespace text short-circuits to an empty result.\n<xref href=\"ProvostXMemory.Abstractions.RetrievalQuery.TopK\" data-throw-if-not-resolved=\"false\"></xref> bounds the returned records. <xref href=\"ProvostXMemory.Abstractions.RetrievalQuery.Filters\" data-throw-if-not-resolved=\"false\"></xref> (tags,\ncategory, date-from) are applied after fusion, so they never affect ranking of\nthe candidates they admit. <xref href=\"ProvostXMemory.Abstractions.RetrievalQuery.Plan\" data-throw-if-not-resolved=\"false\"></xref> (when set) executes a declarative\nmulti-scope fan-out instead of a single-scope lookup \u2014 see <code>QueryPlanRunner</code>.</p>"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.RetrievalResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.RetrievalResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.RetrievalResult",
+      "Summary": "<p>The outcome of <code>IMemoryService.RecallAsync</code>: the scored records,\nbest first, plus per-stage diagnostics.</p>\n<p><xref href=\"ProvostXMemory.Abstractions.RetrievalResult.Records\" data-throw-if-not-resolved=\"false\"></xref> is ordered by <xref href=\"ProvostXMemory.Abstractions.ScoredMemoryRecord.Score\" data-throw-if-not-resolved=\"false\"></xref>\ndescending with deterministic tie-breaks by record id. <xref href=\"ProvostXMemory.Abstractions.RetrievalResult.Diagnostics\" data-throw-if-not-resolved=\"false\"></xref> carries\none entry per pipeline stage (dense, lexical, fusion, rerank, corrective retries) with\ndurations and stage-specific metrics \u2014 feed it to the eval harness for Recall@k/MRR/NDCG.</p>"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.RetrievalStageDiagnostics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.RetrievalStageDiagnostics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.RetrievalStageDiagnostics",
+      "Summary": "Diagnostics of one retrieval stage (scores and timing)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.ScoredId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.ScoredId.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.ScoredId",
+      "Summary": "A scored hit from a store/index search: scope kind, scope id, id, score."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.ScoredMemoryRecord.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.ScoredMemoryRecord.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.ScoredMemoryRecord",
+      "Summary": "A record matched by a retrieval, its relevance score, and where the score came from.\n<xref href=\"ProvostXMemory.Abstractions.ScoredMemoryRecord.Provenance\" data-throw-if-not-resolved=\"false\"></xref> names the stage that produced the score and carries per-stage\nsubscores (e.g. the fused RRF score plus the rerank-adjusted score), so ranking changes\nacross pipeline stages remain explainable end to end."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.StorageOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.StorageOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.StorageOptions",
+      "Summary": "FlatJson store options: root folder + durability settings."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.VectorOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.VectorOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions.VectorOptions",
+      "Summary": "Vector index options: backend kind, model hash, dimension, default top-k."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Abstractions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Abstractions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Abstractions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Chunking.ChunkIdCodec.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Chunking.ChunkIdCodec.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Chunking.ChunkIdCodec",
+      "Summary": "Canonical chunk-id codec: \"<code>scopeKind|scopeId|recordId|chunkIndex</code>\" (ordinal\npipe-separated). Embeds the parent's scope so a chunk id alone is enough to locate\nits parent record in the store, and keeps record ids from colliding across scopes."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Chunking.ChunkIdParts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Chunking.ChunkIdParts.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Chunking.ChunkIdParts",
+      "Summary": "The four components of a canonical chunk id."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Chunking.ChunkParentResolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Chunking.ChunkParentResolver.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Chunking.ChunkParentResolver",
+      "Summary": "Resolves a canonical chunk id to its parent record via an <xref href=\"ProvostXMemory.Abstractions.IMemoryStore\" data-throw-if-not-resolved=\"false\"></xref>\nsnapshot of the scope embedded in the id. A malformed id or a missing parent record\nyields null; the chunk index itself is never validated against a live chunk list."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Chunking.IChunker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Chunking.IChunker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Chunking.IChunker",
+      "Summary": "<p>Splits a record's content into embedded units for the dense index. Chunks carry\nexact offsets back into the original content, so a chunk hit resolves to its parent\nrecord \u2014 the whole record is always what surfaces in results, never the fragment.</p>\n<p><b>Implementations:</b> <code>StructuredChunker</code> cuts on markdown structure first\n(headings, paragraphs, then sentences) and only hard-slices oversized content;\n<code>SizeChunker</code> packs by size with optional overlap \u2014 fixed-stride windows in\ngeometry mode, shared whole words in separator mode. Both preserve every character\nof content across the split (mod whitespace at cut points).</p>\n<p>Chunk ids are scope-qualified (<code>kind|scope-id|record-id|index</code>) \u2014 see\n<code>ChunkIdCodec</code>; ids containing the '|' separator are rejected at compose time.</p>"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Chunking.IParentResolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Chunking.IParentResolver.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Chunking.IParentResolver",
+      "Summary": "Resolves chunk ids back to their parent record (parent-document recall)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Chunking.SizeChunker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Chunking.SizeChunker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Chunking.SizeChunker",
+      "Summary": "Pure size + overlap splitting for unstructured content. Two modes:\ngeometry (no separator): with <xref href=\"ProvostXMemory.Abstractions.ChunkOptions.Overlap\" data-throw-if-not-resolved=\"false\"></xref> = 0 content is cut at\nseparators (paragraph break \u2192 newline \u2192 sentence terminator \u2192 hard slice of exactly\nmax) with separator whitespace consumed at cuts; with overlap &gt; 0 fixed stride windows\n(stride = max \u2212 overlap, window = max) guarantee consecutive chunks share exactly\n<code>Overlap</code> characters and no character is lost. Separator mode: words are packed\nand joined by the separator; <code>Overlap</code> counts shared whole words repeated from\nthe previous chunk's tail (rolling window), so shared text matches word for word."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Chunking.StructuredChunker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Chunking.StructuredChunker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Chunking.StructuredChunker",
+      "Summary": "Splits record content by markdown structure: headings become their own chunks, each\nparagraph is a chunk (or sentence-packed pieces when oversized; a single over-max\nsentence hard-slices). Non-structural mode (<xref href=\"ProvostXMemory.Abstractions.ChunkOptions.RespectStructure\" data-throw-if-not-resolved=\"false\"></xref>\n= false) delegates to <xref href=\"ProvostXMemory.Chunking.SizeChunker\" data-throw-if-not-resolved=\"false\"></xref>. Overlap is only applied by\n<xref href=\"ProvostXMemory.Chunking.SizeChunker\" data-throw-if-not-resolved=\"false\"></xref>; structural chunking keeps paragraphs intact. All content is\npreserved verbatim (modulo whitespace between structural cuts) with exact offsets."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Chunking.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Chunking.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Chunking",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Consolidation.ClusterSummarizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Consolidation.ClusterSummarizer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Consolidation.ClusterSummarizer",
+      "Summary": "Builds a summary <xref href=\"ProvostXMemory.Abstractions.MemoryRecord\" data-throw-if-not-resolved=\"false\"></xref> from a near-duplicate cluster: the\nconcatenated member keys plus deterministic representative excerpts, category\n\"summary\", and Meta carrying the cluster-summary flag, member count, cluster id and\nmember ids. Cluster id = sha256 over ordinal member ids, so the same cluster always\nmaps to the same summary id (idempotent re-consolidation)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Consolidation.ConsolidationReport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Consolidation.ConsolidationReport.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Consolidation.ConsolidationReport",
+      "Summary": "Outcome counters of one consolidation pass over a scope."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Consolidation.ConsolidationReportMeta.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Consolidation.ConsolidationReportMeta.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Consolidation.ConsolidationReportMeta",
+      "Summary": "Side channel that attaches the pass <xref href=\"ProvostXMemory.Consolidation.ConsolidationReport\" data-throw-if-not-resolved=\"false\"></xref> to the records\nreturned by <xref href=\"ProvostXMemory.Consolidation.IMemoryConsolidator\" data-throw-if-not-resolved=\"false\"></xref>: the interface signature is fixed by the\nscaffold, so the report travels as a \"consolidation-report\" Meta entry on each returned\nrecord (returned copies only \u2014 store contents are never touched by this). Pure\nhelpers over immutable records; the serializer options are immutable after creation."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Consolidation.ConsolidationTuning.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Consolidation.ConsolidationTuning.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Consolidation.ConsolidationTuning",
+      "Summary": "Consolidation pass tuning knobs, layered over <xref href=\"ProvostXMemory.Abstractions.ConsolidationOptions\" data-throw-if-not-resolved=\"false\"></xref>\n(thresholds have defaults and stay host-overridable via the base record)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Consolidation.IClusterSummarizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Consolidation.IClusterSummarizer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Consolidation.IClusterSummarizer",
+      "Summary": "Summarizes a cluster of records into a new summary record."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Consolidation.IDedupDetector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Consolidation.IDedupDetector.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Consolidation.IDedupDetector",
+      "Summary": "Near-duplicate detection via similarity threshold."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Consolidation.IMemoryConsolidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Consolidation.IMemoryConsolidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Consolidation.IMemoryConsolidator",
+      "Summary": "Consolidation pass over a scope: dedup, merge, TTL expiry, cluster summaries."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Consolidation.MemoryConsolidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Consolidation.MemoryConsolidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Consolidation.MemoryConsolidator",
+      "Summary": "One consolidation pass over a scope, executed against the scope-bound\n<xref href=\"ProvostXMemory.Abstractions.IMemoryStore\" data-throw-if-not-resolved=\"false\"></xref>: (1) TTL expiry deletes records whose ExpiresAt is in the\npast, (2) near-duplicate detection via <xref href=\"ProvostXMemory.Consolidation.IDedupDetector\" data-throw-if-not-resolved=\"false\"></xref> keeps the oldest\nrecord of each duplicate group and unions the tags of the removed duplicates into the\nkept record, (3) remaining records are clustered by embedding similarity and clusters\nof sufficient size are emitted as summary records via <xref href=\"ProvostXMemory.Consolidation.IClusterSummarizer\" data-throw-if-not-resolved=\"false\"></xref>,\n(4) all mutations are counted in a <xref href=\"ProvostXMemory.Consolidation.ConsolidationReport\" data-throw-if-not-resolved=\"false\"></xref> attached to the\nreturned records. Survivors and summaries are returned (survivors first, summaries\nlast); an empty scope is a no-op returning an empty list. Every deletion goes through\nthe store's scope-bound API \u2014 cross-scope access stays structurally impossible."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Consolidation.ThresholdDedupDetector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Consolidation.ThresholdDedupDetector.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Consolidation.ThresholdDedupDetector",
+      "Summary": "Near-duplicate detection: cosine over records embedded via the injected\n<xref href=\"ProvostXMemory.VectorIndex.IVectorEmbedder\" data-throw-if-not-resolved=\"false\"></xref>, falling back to lexical Jaccard over token sets when\nboth vectors degenerate (zero norm). A pair counts as duplicate when its similarity\nis greater than or equal to the given threshold. Arguments are ordered\ndeterministically (earlier-id first) before evaluation, so the result never depends\non call-site order; evaluation itself is pure. This type holds no mutable state."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Consolidation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Consolidation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Consolidation",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Correction.CorrectionOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Correction.CorrectionOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Correction.CorrectionOptions",
+      "Summary": "Options for the corrective retrieval pipeline. Typed options injected by the host\n(no environment configuration in product code)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Correction.CorrectiveRetriever.StageNames.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Correction.CorrectiveRetriever.StageNames.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Correction.CorrectiveRetriever.StageNames",
+      "Summary": "Diagnostic stage names reported in <xref href=\"ProvostXMemory.Abstractions.RetrievalStageDiagnostics.Stage\" data-throw-if-not-resolved=\"false\"></xref>."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Correction.CorrectiveRetriever.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Correction.CorrectiveRetriever.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Correction.CorrectiveRetriever",
+      "Summary": "Grader-gated corrective retrieval around an injected <xref href=\"ProvostXMemory.Retrieval.IHybridRetriever\" data-throw-if-not-resolved=\"false\"></xref>:\ncandidates pass or are dropped per <xref href=\"ProvostXMemory.Correction.IRetrievalGrader\" data-throw-if-not-resolved=\"false\"></xref>; below-floor\ncandidates are not yielded. One rewrite-and-retry cycle via <xref href=\"ProvostXMemory.Correction.IQueryRewriter\" data-throw-if-not-resolved=\"false\"></xref>\nruns when the first pass graded any candidate <xref href=\"ProvostXMemory.Correction.RetrievalGrade.Uncertain\" data-throw-if-not-resolved=\"false\"></xref> or\nyielded nothing acceptable (all-Irrelevant/all-below-floor). When nothing survives, the\noptional <xref href=\"ProvostXMemory.Correction.IExternalFetcher\" data-throw-if-not-resolved=\"false\"></xref> hook (null = skip) runs once. Every stage\nreports diagnostics."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Correction.GradedCandidate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Correction.GradedCandidate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Correction.GradedCandidate",
+      "Summary": "A grade assigned to one candidate."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Correction.IExternalFetcher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Correction.IExternalFetcher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Correction.IExternalFetcher",
+      "Summary": "Fetches content from external sources (host-injected; the library stays network-agnostic).\nReturning an empty list (or null) yields no fetched-stage content."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Correction.IQueryRewriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Correction.IQueryRewriter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Correction.IQueryRewriter",
+      "Summary": "Rewrites/expands a query for corrective retrieval (host-injected when an LLM-backed rewriter is desired)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Correction.IRetrievalGrader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Correction.IRetrievalGrader.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Correction.IRetrievalGrader",
+      "Summary": "Grades candidates for relevance (host-injected)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Correction.KeywordQueryRewriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Correction.KeywordQueryRewriter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Correction.KeywordQueryRewriter",
+      "Summary": "Deterministic, zero-dependency query rewriter: distills the query to its key terms via\n<xref href=\"ProvostXMemory.Abstractions.QueryTokens.KeyTerms(System.String)\" data-throw-if-not-resolved=\"false\"></xref> \u2014 stopwords stripped (acronyms preserved),\nduplicates collapsed. Emits a single-space-joined term list; empty queries rewrite to\nthe empty string."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Correction.RetrievalGrade.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Correction.RetrievalGrade.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Correction.RetrievalGrade",
+      "Summary": "Grade of a retrieved candidate."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Correction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Correction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Correction",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.DefaultEvalServiceFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.DefaultEvalServiceFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.DefaultEvalServiceFactory",
+      "Summary": "Default eval wiring: a real <xref href=\"ProvostXMemory.MemoryService\" data-throw-if-not-resolved=\"false\"></xref> over the transactional JSONL\nstore + own-engine flat index + RRF, powered by the deterministic\n<xref href=\"ProvostXMemory.Eval.ClusterHashEmbedder\" data-throw-if-not-resolved=\"false\"></xref> (no real model anywhere). Any host can substitute its\nown <xref href=\"ProvostXMemory.EvalServiceFactory\" data-throw-if-not-resolved=\"false\"></xref> to eval its production wiring instead."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.ClusterHashEmbedder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.ClusterHashEmbedder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.ClusterHashEmbedder",
+      "Summary": "Deterministic fake embedder for eval runs \u2014 NOT a real model. Cluster-preserving:\nevery token maps to a fixed slot from a stable FNV-1a hash; each of a record's tokens\nadds a fixed cluster id + token hash signature so similar content (shared cluster\nterms) lands near the same direction, with per-record seeded noise amplitude only.\nNo randomness at embed time: same text \u2192 same vector, always."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.DeterministicEvalCorpus.CorpusRecord.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.DeterministicEvalCorpus.CorpusRecord.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.DeterministicEvalCorpus.CorpusRecord",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.DeterministicEvalCorpus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.DeterministicEvalCorpus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.DeterministicEvalCorpus",
+      "Summary": "Seeded synthetic corpus: N records per scope across M scopes, round-robin assigned to\nkeyword clusters (exact balance) so every scope/cluster pair yields the same number of\nexpected matches per query. Content\nis a seeded shuffle of the record's cluster terms plus filler words, one hard-negative\nterm from a seeded foreign cluster, and one seeded noise token \u2014 derivable relevance\nwithout an LLM: the expected matches for a cluster query are exactly that cluster's\nrecords. Identical seeds yield byte-identical corpora, verified via <xref href=\"ProvostXMemory.Eval.DeterministicEvalCorpus.DeterminismHash\" data-throw-if-not-resolved=\"false\"></xref>."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.EvalCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.EvalCase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.EvalCase",
+      "Summary": "One golden retrieval case: a query bound to a scope plus the record ids a good\nretriever should surface. Relevance is binary (1.0) unless graded weights are given.\nThe query's TopK is overridden by the eval runner options' TopK at run time."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.EvalCaseMetrics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.EvalCaseMetrics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.EvalCaseMetrics",
+      "Summary": "Metrics for one eval case: Recall@k, Precision@k, MRR and NDCG@k over the ranked\n    result ids judged against the case's golden relevance."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.EvalCaseSet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.EvalCaseSet.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.EvalCaseSet",
+      "Summary": "A named set of golden eval cases grouped under one logical set id. Case ids must be\nunique within a scope (cross-scope ids may repeat); the set is immutable after creation."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.EvalCaseTrace.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.EvalCaseTrace.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.EvalCaseTrace",
+      "Summary": "Per-case ranked outcome: returned ids with their graded relevance gains and\n    how many returned records came from a scope other than the case's own (isolation guard)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.EvalCaseTraceHit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.EvalCaseTraceHit.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.EvalCaseTraceHit",
+      "Summary": "One returned id with its graded relevance gain for this case."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.EvalMetricBreakdownEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.EvalMetricBreakdownEntry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.EvalMetricBreakdownEntry",
+      "Summary": "Metric means for a breakdown group (scope or retriever stage)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.EvalMetricMath.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.EvalMetricMath.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.EvalMetricMath",
+      "Summary": "The metric formulas, implemented independently of any search engine and unit-tested\nagainst hand-computed values:\n<ul><li>Recall@k = |relevant \u2229 top-k| / |relevant| (0 when no relevant ids).</li><li>Precision@k = |relevant \u2229 top-k| / k (unfilled top-k counts against precision).</li><li>MRR = 1 / rank of the first relevant hit, else 0.</li><li>NDCG@k = DCG@k / IDCG@k with DCG = \u03a3 rel\u1d62 / log\u2082(rank + 1), rank starting at 1.</li></ul>\nAll instance methods (no static state shared across instances)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.EvalMetricThresholds.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.EvalMetricThresholds.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.EvalMetricThresholds",
+      "Summary": "Minimum metric values for the aggregate <xref href=\"ProvostXMemory.Eval.EvalReport\" data-throw-if-not-resolved=\"false\"></xref>. A violation is any\nactual value strictly below its threshold. All thresholds optional (null = unchecked)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.EvalMetrics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.EvalMetrics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.EvalMetrics",
+      "Summary": "Aggregate over all cases: plain means of the per-case metric values."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.EvalReport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.EvalReport.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.EvalReport",
+      "Summary": "Serializable result of running an <xref href=\"ProvostXMemory.Eval.EvalCaseSet\" data-throw-if-not-resolved=\"false\"></xref>: per-case metrics, the\naggregate, per-scope and per-stage breakdowns, threshold violations, and the per-case\nranked id lists (with graded gains) for diffing. JSON-ready via System.Text.Json."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.EvalReportJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.EvalReportJson.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.EvalReportJson",
+      "Summary": "JSON (de)serialization for <xref href=\"ProvostXMemory.Eval.EvalReport\" data-throw-if-not-resolved=\"false\"></xref> (System.Text.Json)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.MemoryScopeComparer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.MemoryScopeComparer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.MemoryScopeComparer",
+      "Summary": "Ordinal scope comparison helper (Kind + Id); shared by eval components."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.MetricThresholdViolation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.MetricThresholdViolation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.MetricThresholdViolation",
+      "Summary": "One threshold violation: metric name, actual vs required."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.MetricThresholdViolations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.MetricThresholdViolations.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval.MetricThresholdViolations",
+      "Summary": "Immutable violation list; empty when all thresholds pass."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Eval.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Eval.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Eval",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.EvalRunner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.EvalRunner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.EvalRunner",
+      "Summary": "Runs an <xref href=\"ProvostXMemory.Eval.EvalCaseSet\" data-throw-if-not-resolved=\"false\"></xref> against a freshly built service from an\n<xref href=\"ProvostXMemory.EvalServiceFactory\" data-throw-if-not-resolved=\"false\"></xref>: materializes the corpus records under a fresh temp\nroot, builds indexes per scope, replays every golden query, computes all metrics and\nbreakdowns, checks thresholds, and produces a JSON-serializable <xref href=\"ProvostXMemory.Eval.EvalReport\" data-throw-if-not-resolved=\"false\"></xref>.\nThe runner never constructs a service itself \u2014 hosts control wiring via the factory."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.EvalRunnerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.EvalRunnerOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.EvalRunnerOptions",
+      "Summary": "Per-run knobs for <xref href=\"ProvostXMemory.EvalRunner\" data-throw-if-not-resolved=\"false\"></xref>."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.EvalServiceFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.EvalServiceFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.EvalServiceFactory",
+      "Summary": "Host-pluggable service construction for eval runs: given a fresh root path the host\nbuilds an <xref href=\"ProvostXMemory.IMemoryService\" data-throw-if-not-resolved=\"false\"></xref> exactly as it does in production.\nImplementations must return a service with no records yet \u2014 the runner owns corpus\nloadout and index building."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.Ex01_Quickstart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.Ex01_Quickstart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples.Ex01_Quickstart",
+      "Summary": "Minimal end-to-end flow (the README quickstart, made runnable): build a service,\nremember five facts, build indexes, recall, and print the ranked hits."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.Ex02_Scopes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.Ex02_Scopes.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples.Ex02_Scopes",
+      "Summary": "Multi-tenant isolation: the SAME record key is written into three tenant scopes with\ndifferent content; recall in each scope only ever sees that scope's own record, and\nlookups from a foreign scope find nothing."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.Ex03_HybridSearch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.Ex03_HybridSearch.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples.Ex03_HybridSearch",
+      "Summary": "Hybrid retrieval (BM25-style lexical + dense vector, fused with Reciprocal Rank Fusion):\na keyword-only hit and a semantic-only hit answer different halves of the corpus \u2014\nthe fused query surfaces both."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.Ex04_Backends.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.Ex04_Backends.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples.Ex04_Backends",
+      "Summary": "Backend parity: the same dataset is loaded into four services \u2014 engine Flat, IVF,\nHNSW, and the zero-dependency FlatJson index \u2014 plus the GPU backend (with a fallback\nnote: without a GPU the factory transparently runs its CPU kernels). Every backend\nreturns the same hits; timings are printed per backend."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.Ex05_Consolidation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.Ex05_Consolidation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples.Ex05_Consolidation",
+      "Summary": "Consolidation: near-duplicate records are merged into one survivor plus a cluster\nsummary record; TTL-expired records are deleted. Before/after counts and the summary\nrecord are printed."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.Ex06_GraphRetrieval.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.Ex06_GraphRetrieval.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples.Ex06_GraphRetrieval",
+      "Summary": "Graph retrieval: records mentioning shared entities form an entity/relation graph at\nindex time (heuristic extractor). A graph-connected recall through the entity subgraph\nsurfaces ALL records touching an entity \u2014 including records the plain lexical/dense\nquery would miss because they share no query token."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.Ex07_CorrectiveLoop.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.Ex07_CorrectiveLoop.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples.Ex07_CorrectiveLoop",
+      "Summary": "Corrective recall: a weak first-pass query is graded, rewritten, and retried. The\ndeterministic fake grader accepts only strong fused hits (both retrieval stages\ncontribute); the built-in keyword rewriter distills the noisy query so the retry pass\nranks the target record on top. Diagnostics prove the rewrite-and-retry cycle ran."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.Ex08_LoggingAudit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.Ex08_LoggingAudit.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples.Ex08_LoggingAudit",
+      "Summary": "Audit logging with hash-chain integrity: file logging is enabled, service operations\nappend chained entries, <xref href=\"ProvostXMemory.Logging.LogChainVerifier\" data-throw-if-not-resolved=\"false\"></xref> validates the chain \u2014 and after\none line is tampered with, the verifier pinpoints the broken line."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.Ex09_EvalHarness.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.Ex09_EvalHarness.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples.Ex09_EvalHarness",
+      "Summary": "Eval harness: the deterministic seeded corpus is loaded into a fresh service, every\ngolden query is replayed, and a Recall@k / MRR / NDCG report is printed. Identical\nseeds produce byte-identical corpora and runs."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.Ex10_RestartPersistence.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.Ex10_RestartPersistence.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples.Ex10_RestartPersistence",
+      "Summary": "Restart persistence: records written through the service survive disposal \u2014 a brand\nnew service instance rebuilt over the same root recalls them, proving the transactional\nJSONL store is the durable source of truth (indexes are rebuilt from it)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.ExampleBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.ExampleBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples.ExampleBase",
+      "Summary": "Base class for every example: one instance, one Run, no static state."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.ExampleRig.FlatJsonFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.ExampleRig.FlatJsonFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples.ExampleRig.FlatJsonFactory",
+      "Summary": "FlatJson factory: one <xref href=\"ProvostXMemory.VectorIndex.VectorNamespaceFile\" data-throw-if-not-resolved=\"false\"></xref> per created scope index,\nrooted under the example root for realistic restart behavior."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.ExampleRig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.ExampleRig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples.ExampleRig",
+      "Summary": "Shared wiring helper for the examples: every service is composed exactly as a host\nwould \u2014 <xref href=\"ProvostXMemory.MemoryServiceBuilder\" data-throw-if-not-resolved=\"false\"></xref> over the production <xref href=\"ProvostXMemory.Storage.JsonlMemoryStore\" data-throw-if-not-resolved=\"false\"></xref>,\nthe deterministic <xref href=\"ProvostXMemory.Eval.ClusterHashEmbedder\" data-throw-if-not-resolved=\"false\"></xref> (no real model, no network), and the\nown-engine backends. All storage roots live under the temp directory; nothing personal\nand nothing outside the example's own root is touched."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.Program.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.Program.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples.Program",
+      "Summary": "Entry point for the runnable example set. With no arguments every example runs in\nsequence and the process exits 0; pass an example name (e.g. \"Ex03_HybridSearch\")\nto run exactly one. Works with no GPU and no network: the embedder is deterministic,\nthe backends are the own engine (CPU) or FlatJson, and storage is a temp directory."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Examples.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Examples.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Examples",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Fusion.IResultFuser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Fusion.IResultFuser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Fusion.IResultFuser",
+      "Summary": "Fuses multiple ranked lists (RRF, k=60 default, weighted, deterministic ties)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Fusion.RankedList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Fusion.RankedList.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Fusion.RankedList",
+      "Summary": "A single ranked list input to fusion: source name plus ranked hits."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Fusion.ReciprocalRankFuser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Fusion.ReciprocalRankFuser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Fusion.ReciprocalRankFuser",
+      "Summary": "Reciprocal Rank Fusion: each item scores sum over lists of weight / (k + rank),\nrank starting at 1. Default k = 60. Stage sources (\"dense\", \"lexical\") use the\nstage weights from <xref href=\"ProvostXMemory.Abstractions.FusionOptions\" data-throw-if-not-resolved=\"false\"></xref>; unknown sources weigh 1.0. Ties break\ndeterministically by id (ordinal) then by best (lowest) rank across lists."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Fusion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Fusion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Fusion",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Graph.ExtractionResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Graph.ExtractionResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Graph.ExtractionResult",
+      "Summary": "Entity + relation extraction result."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Graph.GraphCluster.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Graph.GraphCluster.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Graph.GraphCluster",
+      "Summary": "A graph cluster (community) with an optional summary record id."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Graph.GraphEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Graph.GraphEntity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Graph.GraphEntity",
+      "Summary": "An extracted graph entity. <xref href=\"ProvostXMemory.Graph.GraphEntity.EntityId\" data-throw-if-not-resolved=\"false\"></xref> is the stable slug id;\n<xref href=\"ProvostXMemory.Graph.GraphEntity.Name\" data-throw-if-not-resolved=\"false\"></xref> is the canonical display form; <xref href=\"ProvostXMemory.Graph.GraphEntity.Aliases\" data-throw-if-not-resolved=\"false\"></xref> holds\nalternative spellings/casings; <xref href=\"ProvostXMemory.Graph.GraphEntity.RecordIds\" data-throw-if-not-resolved=\"false\"></xref> lists the records mentioning it."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Graph.GraphRelation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Graph.GraphRelation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Graph.GraphRelation",
+      "Summary": "A relation between two graph entities, treated as undirected for traversal.\nWeight is implicit: <xref href=\"ProvostXMemory.Graph.GraphRelation.RecordIds\" data-throw-if-not-resolved=\"false\"></xref>.Count equals the number of supporting records."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Graph.GraphRetriever.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Graph.GraphRetriever.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Graph.GraphRetriever",
+      "Summary": "Graph-backed retriever: lowercased query tokens are matched against entity ids and\nentity names/aliases (via <xref href=\"ProvostXMemory.Graph.IMemoryGraphStore.SearchEntitiesAsync(System.String%2cSystem.Int32%2cSystem.Threading.CancellationToken)\" data-throw-if-not-resolved=\"false\"></xref>) and against\nrecord tags from the scope's snapshot; matched entities seed a multi-source neighbor walk up\nto <xref href=\"ProvostXMemory.Abstractions.GraphOptions.MaxHops\" data-throw-if-not-resolved=\"false\"></xref> hops via <xref href=\"ProvostXMemory.Graph.IMemoryGraphStore.NeighborsAsync(System.String%2cSystem.Int32%2cSystem.Threading.CancellationToken)\" data-throw-if-not-resolved=\"false\"></xref>;\nrecords touched by discovered entities and their relations plus\n<xref href=\"ProvostXMemory.Graph.GraphCluster.SummaryRecordId\" data-throw-if-not-resolved=\"false\"></xref> of matched clusters are scored by hop distance\n(direct evidence = 1.0, each additional hop \u00d7 0.5 decay; independent evidence sums).\nEntity/relation extraction is an index-time concern (<xref href=\"ProvostXMemory.Graph.IEntityExtractor\" data-throw-if-not-resolved=\"false\"></xref>);\nthis retriever is deliberately query-time token-based."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Graph.HeuristicEntityExtractor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Graph.HeuristicEntityExtractor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Graph.HeuristicEntityExtractor",
+      "Summary": "Zero-dependency heuristic extractor: capitalized multi-word phrases and keyword/tag\nmatches become entities; entities co-occurring inside one record become relations\n(label \"co-occurs\", weight = number of supporting records). Deliberately simple\ndefault; hosts inject stronger <xref href=\"ProvostXMemory.Graph.IEntityExtractor\" data-throw-if-not-resolved=\"false\"></xref> implementations."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Graph.IEntityExtractor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Graph.IEntityExtractor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Graph.IEntityExtractor",
+      "Summary": "Host-injected entity/relation extractor (LLM or heuristic)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Graph.IGraphRetriever.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Graph.IGraphRetriever.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Graph.IGraphRetriever",
+      "Summary": "Retrieves records from a relevant subgraph plus cluster summaries."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Graph.IMemoryGraphStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Graph.IMemoryGraphStore.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Graph.IMemoryGraphStore",
+      "Summary": "Graph-backed store over memory records: entities, relations, paths, clusters."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Graph.IMemoryGraphStoreResolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Graph.IMemoryGraphStoreResolver.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Graph.IMemoryGraphStoreResolver",
+      "Summary": "Resolves the scope-pinned graph store for a memory scope. Implementations must\nguarantee that the returned store is bound to exactly the requested scope, so\ncross-scope access stays structurally impossible."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Graph.JsonlMemoryGraphStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Graph.JsonlMemoryGraphStore.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Graph.JsonlMemoryGraphStore",
+      "Summary": "JSONL-backed graph store: <code>graph/entities.jsonl</code>, <code>graph/relations.jsonl</code> and\n<code>graph/clusters.jsonl</code> per scope directory (via <xref href=\"ProvostXMemory.Storage.MemoryRootLayout.GraphPath(System.String%2cSystem.String%2cSystem.String)\" data-throw-if-not-resolved=\"false\"></xref>).\nPaths resolve only through the layout, so cross-scope access stays structurally impossible.\nEvery mutation rewrites the affected JSONL file transactionally via <xref href=\"ProvostXMemory.Storage.AtomicFileWriter\" data-throw-if-not-resolved=\"false\"></xref>."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Graph.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Graph.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Graph",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.GraphIndexLedger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.GraphIndexLedger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.GraphIndexLedger",
+      "Summary": "Index-time graph maintenance over the scope-pinned <xref href=\"ProvostXMemory.Graph.IMemoryGraphStore\" data-throw-if-not-resolved=\"false\"></xref>\n(resolved via <xref href=\"ProvostXMemory.Graph.IMemoryGraphStoreResolver\" data-throw-if-not-resolved=\"false\"></xref>): per record, the wired\n<xref href=\"ProvostXMemory.Graph.IEntityExtractor\" data-throw-if-not-resolved=\"false\"></xref>'s entities/relations are upserted for the record's\nscope only; when a record is forgotten, its mentions are dropped by re-extracting\nthe scope's remaining snapshot. The ledger itself holds no per-record entity cache \u2014\ngraph stores accumulate weight by design, so Forget rebuilds the affected entity\nmention lists from the surviving records. Scope comes from the record; the resolver\nis scope-exact by contract."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.IMemoryService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.IMemoryService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.IMemoryService",
+      "Summary": "<p>The single public surface of the ProvostXMemory library. Host applications see\nthis interface \u2014 plus the options records they pass to <xref href=\"ProvostXMemory.MemoryServiceBuilder\" data-throw-if-not-resolved=\"false\"></xref> \u2014\nand nothing else. Every capability of the library (durable storage, hybrid lexical and\ndense-vector retrieval, fusion, reranking, optional corrective and graph retrieval,\nconsolidation, and audit-grade logging) is reachable through the members below.</p>\n<p><b>Scope isolation.</b> Every record belongs to exactly one <xref href=\"ProvostXMemory.Abstractions.MemoryScope\" data-throw-if-not-resolved=\"false\"></xref>\n(platform, session, tenant, purpose, or custom). Every operation is scope-bound; a record\nwritten to scope A is structurally invisible to operations on scope B \u2014 the storage layout\nand the index registry make cross-scope access impossible rather than merely discouraged.</p>\n<p><b>Concurrency.</b> Implementations are safe for concurrent use from multiple threads.\nMutations (Remember/Update/Forget) are serialized per service instance; embedding computation\nhappens outside the serialization gate, so concurrent callers do not block on model latency.</p>"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.IScopesAware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.IScopesAware.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.IScopesAware",
+      "Summary": "Implemented by stores that can enumerate their scopes natively."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Lexical.Bm25Scorer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Lexical.Bm25Scorer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Lexical.Bm25Scorer",
+      "Summary": "BM25-lite scoring: saturated term frequency (k1 = 1.2) \u00d7 IDF plus a key-match boost\n(default 2.0) on key-term hits and a modest single-term category match bonus (0.5).\nClassic BM25-lite: no length normalization, no third-party dependencies. Stateless\npure scoring \u2014 corpus statistics are passed in per call (the index owns them)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Lexical.CorpusStatistics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Lexical.CorpusStatistics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Lexical.CorpusStatistics",
+      "Summary": "Immutable corpus-level statistics: document count plus per-term stats."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Lexical.IBm25Scorer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Lexical.IBm25Scorer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Lexical.IBm25Scorer",
+      "Summary": "BM25-lite scoring: saturated term frequency (k1 = 1.2) \u00d7 IDF, plus a key-match boost\non key-term hits and a single-term category match bonus. Corpus statistics are passed\nper call (owned by the index, which keeps them current after build/add)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Lexical.ILexicalIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Lexical.ILexicalIndex.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Lexical.ILexicalIndex",
+      "Summary": "<p>The lexical half of hybrid retrieval: a BM25-weighted inverted index over record\ntext, kept in sync by the memory service (records remember/update \u2192 IncrementalAdd;\nforget \u2192 Remove). Complements the dense stage by matching exact terms embeddings miss\n(identifiers, acronyms, version numbers); both stages fuse into one ranking via\n<code>IResultFuser</code>.</p>\n<p><b>Contract:</b> tokens are lowercase alphanumeric words (no stemming, no external\nNLP); scores are saturated-TF \u00d7 IDF with a key-match boost. The index itself is not\nthread-safe \u2014 the memory service serializes all mutations; external callers must not\nshare an instance unsynchronized.</p>"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Lexical.LexicalDocument.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Lexical.LexicalDocument.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Lexical.LexicalDocument",
+      "Summary": "A tokenized document with optional key terms and category."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Lexical.LexicalIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Lexical.LexicalIndex.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Lexical.LexicalIndex",
+      "Summary": "BM25-lite keyword index over documents. Inverted postings over body terms, plus\nkey-term and exact-category maps so key-only and category-only matches surface.\nScoring is delegated to <xref href=\"ProvostXMemory.Lexical.IBm25Scorer\" data-throw-if-not-resolved=\"false\"></xref>; ordering is fully deterministic\n(score desc, then document id ascending)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Lexical.LexicalPosting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Lexical.LexicalPosting.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Lexical.LexicalPosting",
+      "Summary": "One body posting: (document id, term frequency)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Lexical.LexicalTermCounts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Lexical.LexicalTermCounts.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Lexical.LexicalTermCounts",
+      "Summary": "Term-frequency / token-set helpers over pre-tokenized term lists.\nPure functions over their inputs; intentionally static per architecture rule."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Lexical.LexicalTokenizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Lexical.LexicalTokenizer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Lexical.LexicalTokenizer",
+      "Summary": "Lowercases text and extracts contiguous [a0-9] word tokens (letters, digits, underscore).\nPure helpers (stateless string transforms); intentionally static per architecture rule."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Lexical.ScoredLexicalId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Lexical.ScoredLexicalId.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Lexical.ScoredLexicalId",
+      "Summary": "Lexical index search hit: id plus BM25-lite score."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Lexical.TermStat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Lexical.TermStat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Lexical.TermStat",
+      "Summary": "Immutable per-term corpus statistics for BM25 scoring."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Lexical.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Lexical.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Lexical",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Logging.ConsoleMemoryLogSink.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Logging.ConsoleMemoryLogSink.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Logging.ConsoleMemoryLogSink",
+      "Summary": "Writes log entries to standard output as plain text lines."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Logging.FileMemoryLogSink.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Logging.FileMemoryLogSink.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Logging.FileMemoryLogSink",
+      "Summary": "Append-only file sink with per-date rolling and lazy directory creation.\nEach line is written with <code>FileShare.Read</code> and flushed immediately."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Logging.HashChainAppender.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Logging.HashChainAppender.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Logging.HashChainAppender",
+      "Summary": "Computes SHA-256 entry hashes chained to the previous entry's hash and\nassigns monotonic sequence numbers. Pure computation is static; the\ninstance tracks only the chain head."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Logging.IMemoryLogSink.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Logging.IMemoryLogSink.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Logging.IMemoryLogSink",
+      "Summary": "Destination for memory log entries."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Logging.LogChainVerificationResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Logging.LogChainVerificationResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Logging.LogChainVerificationResult",
+      "Summary": "Result of verifying a hash-chained log file."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Logging.LogChainVerifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Logging.LogChainVerifier.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Logging.LogChainVerifier",
+      "Summary": "Pure verifier for hash-chained JSON-lines log files. Reads a file, checks\nhash-chain linkage and sequence-number continuity, and reports the first\nbroken line when the log has been tampered with."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Logging.MemoryLogCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Logging.MemoryLogCategory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Logging.MemoryLogCategory",
+      "Summary": "Functional area a memory log entry belongs to."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Logging.MemoryLogEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Logging.MemoryLogEntry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Logging.MemoryLogEntry",
+      "Summary": "A single memory log entry."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Logging.MemoryLogJson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Logging.MemoryLogJson.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Logging.MemoryLogJson",
+      "Summary": "JSON (de)serialization helpers for log lines."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Logging.MemoryLogJsonLine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Logging.MemoryLogJsonLine.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Logging.MemoryLogJsonLine",
+      "Summary": "Wire shape of a log entry line used by the file sink and the chain verifier."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Logging.MemoryLogScope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Logging.MemoryLogScope.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Logging.MemoryLogScope",
+      "Summary": "Scope information attached to a log entry."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Logging.MemoryLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Logging.MemoryLogger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Logging.MemoryLogger",
+      "Summary": "Facade over the logging pipeline: on/off gate, level filter, hash chaining\nand fan-out to the configured sink. When disabled, no entry objects are\nallocated and no writes occur."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Logging.RetentionSweeper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Logging.RetentionSweeper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Logging.RetentionSweeper",
+      "Summary": "Deletes log files older than the configured retention window."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Logging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Logging.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Logging",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.MemoryService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.MemoryService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.MemoryService",
+      "Summary": "Composition root: takes <xref href=\"ProvostXMemory.Abstractions.MemoryServiceOptions\" data-throw-if-not-resolved=\"false\"></xref> plus injected dependencies\nand owns the configured retrieval pipeline. Remember/Forget/Update maintain the\nper-scope indexes alongside the store; Recall routes through hybrid \u2192 optional\ncorrective \u2192 plan (when the query carries one) \u2192 optional rerank. Every store access\ngoes through the scope-bound <xref href=\"ProvostXMemory.Abstractions.IMemoryStore\" data-throw-if-not-resolved=\"false\"></xref> API, so cross-scope isolation\nis structural. Per-scope indexes are created lazily and registered scope-exact."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.MemoryServiceBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.MemoryServiceBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.MemoryServiceBuilder",
+      "Summary": "Fluent wiring helper for <xref href=\"ProvostXMemory.MemoryService\" data-throw-if-not-resolved=\"false\"></xref>. Collects the host's choices and\nhands them to the <xref href=\"ProvostXMemory.MemoryService\" data-throw-if-not-resolved=\"false\"></xref> constructor \u2014 still plain constructor\ninjection underneath, no service locator, no ambient container."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.MemoryServicePipelineOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.MemoryServicePipelineOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.MemoryServicePipelineOptions",
+      "Summary": "Pipeline wiring knobs layered over <xref href=\"ProvostXMemory.Abstractions.MemoryServiceOptions\" data-throw-if-not-resolved=\"false\"></xref>: which extra\nretrieval stages run during Recall/Remember and maintenance bounds for index updates."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Reranking.ClientBackedReranker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Reranking.ClientBackedReranker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Reranking.ClientBackedReranker",
+      "Summary": "Adapter wrapping the host-injected <xref href=\"ProvostXMemory.Reranking.IRerankerClient\" data-throw-if-not-resolved=\"false\"></xref>: the client returns\nbest-first ids; this adapter maps ids back to candidates, keeps provenance of the\nwrapped (fused) scores, and handles unlisted candidates per\n<xref href=\"ProvostXMemory.Reranking.ClientBackedRerankerOptions\" data-throw-if-not-resolved=\"false\"></xref>. The client itself stays host-owned infrastructure."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Reranking.ClientBackedRerankerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Reranking.ClientBackedRerankerOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Reranking.ClientBackedRerankerOptions",
+      "Summary": "Options for <xref href=\"ProvostXMemory.Reranking.ClientBackedReranker\" data-throw-if-not-resolved=\"false\"></xref>: which client ids to trust and where\nfallback keeps unlisted/dropped candidates."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Reranking.IReranker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Reranking.IReranker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Reranking.IReranker",
+      "Summary": "<p>The post-fusion scoring stage: reranks fused candidates against the query.\nThe default <code>ScoreBoostReranker</code> adds deterministic boosts (tag/key/category term\nmatches) and penalties (extremely short or long content) without ever dropping a\ncandidate; a <code>NoopReranker</code> preserves fused order. Hosts may inject an LLM- or\ncross-encoder-backed reranker through this interface \u2014 the library stays model-free.</p>\n<p><b>Ranks exactly once:</b> the retrieval pipeline reranks internally; a second\npass over already-reranked results compounds boosts (found by audit) \u2014 hosts calling\n<xref href=\"ProvostXMemory.Reranking.IReranker.RerankAsync(ProvostXMemory.Abstractions.RetrievalQuery%2cSystem.Collections.Generic.IReadOnlyList%7bProvostXMemory.Abstractions.ScoredMemoryRecord%7d%2cSystem.Threading.CancellationToken)\" data-throw-if-not-resolved=\"false\"></xref> directly own that responsibility.</p>"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Reranking.IRerankerClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Reranking.IRerankerClient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Reranking.IRerankerClient",
+      "Summary": "Optional external rerank service contract (LLM/cross-encoder API, host-injected).\nThe library never constructs a client; hosts adapt their transport into this contract."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Reranking.NoopReranker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Reranking.NoopReranker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Reranking.NoopReranker",
+      "Summary": "Identity reranker: returns candidates unchanged (deterministic pass-through)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Reranking.ScoreBoostReranker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Reranking.ScoreBoostReranker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Reranking.ScoreBoostReranker",
+      "Summary": "Deterministic, zero-dependency reranker: additive boosts for tag/key/category matches\nagainst the query's key terms, additive penalties for extremely short or long content.\nTies break by original rank (stable from the fused order); the output preserves input\ncasing of scores and never drops candidates."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Reranking.ScoreBoostRerankerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Reranking.ScoreBoostRerankerOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Reranking.ScoreBoostRerankerOptions",
+      "Summary": "Options for <xref href=\"ProvostXMemory.Reranking.ScoreBoostReranker\" data-throw-if-not-resolved=\"false\"></xref>. Deterministic, zero-dependency tuning."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Reranking.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Reranking.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Reranking",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.HybridRetriever.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.HybridRetriever.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval.HybridRetriever",
+      "Summary": "Hybrid retrieval within one scope: dense (vector index) and lexical (BM25-lite index)\nsearches run concurrently over the scope's registered artifacts, are fused via the\ninjected <xref href=\"ProvostXMemory.Fusion.IResultFuser\" data-throw-if-not-resolved=\"false\"></xref> (RRF over \"dense\"/\"lexical\" rank lists), resolved\nagainst the scope's records, and optionally reranked by an injected <xref href=\"ProvostXMemory.Reranking.IReranker\" data-throw-if-not-resolved=\"false\"></xref>.\nScope comes from the query and all registry lookups are scope-exact."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.ICorrectiveRetriever.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.ICorrectiveRetriever.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval.ICorrectiveRetriever",
+      "Summary": "Grader-gated hybrid retrieval with rewrite loop (corrective)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.IHybridRetriever.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.IHybridRetriever.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval.IHybridRetriever",
+      "Summary": "Dense + lexical retrieval in parallel \u2192 fused results."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.IMultiRepresentationRetriever.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.IMultiRepresentationRetriever.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval.IMultiRepresentationRetriever",
+      "Summary": "Query across modalities (multi-representation records)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.IQueryPlanRunner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.IQueryPlanRunner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval.IQueryPlanRunner",
+      "Summary": "Executes a declarative <xref href=\"ProvostXMemory.Abstractions.QueryPlan\" data-throw-if-not-resolved=\"false\"></xref> (fan-out namespaces, merge, iterate)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.IQueryTextRewriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.IQueryTextRewriter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval.IQueryTextRewriter",
+      "Summary": "Rewrites a query's plain text before a second retrieval pass (host-injected;\ntypically an LLM-backed rewriter, a lexical distiller, or a spell corrector).\nLives in Retrieval (not Correction) so plan fan-out can iterate without the\nCorrection package as a dependency."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.IScopeIndexRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.IScopeIndexRegistry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval.IScopeIndexRegistry",
+      "Summary": "Maps a <xref href=\"ProvostXMemory.Abstractions.MemoryScope\" data-throw-if-not-resolved=\"false\"></xref> to its per-scope retrieval artifacts. Implementations\nmust be scope-exact: a lookup for scope A never returns an artifact of scope B\n(no parent fallthrough, no default forwarding) \u2014 cross-scope access stays\nstructurally impossible."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry",
+      "Summary": "In-memory scope \u2192 artifact registry for single-process hosts and test harnesses.\nKeys are the exact (Kind, Id) pair; lookups never fall through to parent or child scopes."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.KeywordQueryTextRewriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.KeywordQueryTextRewriter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval.KeywordQueryTextRewriter",
+      "Summary": "Zero-dependency <xref href=\"ProvostXMemory.Retrieval.IQueryTextRewriter\" data-throw-if-not-resolved=\"false\"></xref>: distills the query text to its\nkey terms via <xref href=\"ProvostXMemory.Abstractions.QueryTokens.KeyTerms(System.String)\" data-throw-if-not-resolved=\"false\"></xref> \u2014 stopwords stripped (acronyms\npreserved), duplicates collapsed, first-appearance order. Empty queries stay empty."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.MultiRepresentationRetriever.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.MultiRepresentationRetriever.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval.MultiRepresentationRetriever",
+      "Summary": "Multi-representation retrieval: instead of scoring whole-record content, the query is\nembedded once and compared against each representation's precomputed vector for the\nrequested modality. Representation vectors are indexed in the vector index under\n\"<code>repr|&lt;recordId&gt;|&lt;index&gt;</code>\" ids (see <xref href=\"ProvostXMemory.Retrieval.MultiRepresentationRetriever.RepresentationId(System.String%2cSystem.Int32)\" data-throw-if-not-resolved=\"false\"></xref>);\nhits map back to their parent record, per-record scores take the best-matching\nrepresentation, and per-modality provenance is attached. Scope comes from the query;\nregistry lookups are scope-exact."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.QueryPlanRunner.IScopeResolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.QueryPlanRunner.IScopeResolver.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval.QueryPlanRunner.IScopeResolver",
+      "Summary": "Resolves target scope strings (\"<code>Kind/Id</code>\") against a root scope."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.QueryPlanRunner.QueryPlanRunnerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.QueryPlanRunner.QueryPlanRunnerOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval.QueryPlanRunner.QueryPlanRunnerOptions",
+      "Summary": "Tuning for the plan runner: weak-evidence thresholds and pass behavior."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.QueryPlanRunner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.QueryPlanRunner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval.QueryPlanRunner",
+      "Summary": "Executes a declarative <xref href=\"ProvostXMemory.Abstractions.QueryPlan\" data-throw-if-not-resolved=\"false\"></xref>. Each step fans out to its target\nscopes (target scope strings are \"<code>&lt;scope-kind&gt;/&lt;scope-id&gt;</code>\" pairs;\nempty targets mean the query's own scope), runs the injected retriever in every\ntarget scope with per-scope ids namespaced, and merges the step lists via the\ninjected <xref href=\"ProvostXMemory.Fusion.IResultFuser\" data-throw-if-not-resolved=\"false\"></xref>. When every step's top score is below\n<xref href=\"ProvostXMemory.Retrieval.QueryPlanRunner.QueryPlanRunnerOptions.WeakEvidenceThreshold\" data-throw-if-not-resolved=\"false\"></xref>, a single second pass\nruns once against the rewritten text from the injected <xref href=\"ProvostXMemory.Retrieval.IQueryTextRewriter\" data-throw-if-not-resolved=\"false\"></xref>;\nits results replace the first pass. Record resolution happens against each target\nscope's own snapshot \u2014 a record id from scope A never resolves into scope B."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.RetrievalFilterApplier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.RetrievalFilterApplier.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval.RetrievalFilterApplier",
+      "Summary": "Pure predicate that enforces the <xref href=\"ProvostXMemory.Abstractions.RetrievalFilters\" data-throw-if-not-resolved=\"false\"></xref> carried on a\n<xref href=\"ProvostXMemory.Abstractions.RetrievalQuery\" data-throw-if-not-resolved=\"false\"></xref> against resolved records: category exact-match,\ntag any-match, and date window (From/To) on the record's <xref href=\"ProvostXMemory.Abstractions.MemoryRecord.CreatedAt\" data-throw-if-not-resolved=\"false\"></xref>.\nA null filter set matches everything, so unfiltered retrieval is behaviorally unchanged.\nIntentionally static: it is a pure function per the architecture rule."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Retrieval.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Retrieval.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Retrieval",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.RootChildScopeResolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.RootChildScopeResolver.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.RootChildScopeResolver",
+      "Summary": "Default plan-fan-out scope resolution: a target string names either the root scope\nitself (\"<code>&lt;Kind&gt;/&lt;Id&gt;</code>\", case-insensitive) or a child scope built via\n<xref href=\"ProvostXMemory.Abstractions.MemoryScope.WithParent(ProvostXMemory.Abstractions.MemoryScope)\" data-throw-if-not-resolved=\"false\"></xref> (\"<code>&lt;ChildKind&gt;/&lt;ChildId&gt;</code>\" over\nthe root). Resolving a child pins the parent, so fan-out targets are always\ndescendants or the root itself \u2014 never unrelated scopes."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Storage.AtomicFileWriter.WriteResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Storage.AtomicFileWriter.WriteResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Storage.AtomicFileWriter.WriteResult",
+      "Summary": "Result of an atomic write: the destination path and the bytes written."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Storage.AtomicFileWriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Storage.AtomicFileWriter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Storage.AtomicFileWriter",
+      "Summary": "Durability primitive for the storage layer: writes payload to a temporary\nfile in the destination directory, fsyncs it, then atomically moves it over\nthe destination. Temp leftovers from crashed writers are cleaned up on the\nnext write to the same directory."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Storage.JsonlMemoryStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Storage.JsonlMemoryStore.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Storage.JsonlMemoryStore",
+      "Summary": "Default JSONL-backed store: one append/rewrite-friendly <code>records.jsonl</code> per\nscope, one JSON document per line, transactional rewrite on every mutation.\nAll operations take the scope as a required parameter and resolve paths only\nthrough <xref href=\"ProvostXMemory.Storage.MemoryRootLayout\" data-throw-if-not-resolved=\"false\"></xref>, so cross-scope access is structurally impossible."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Storage.MemoryManifestCodec.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Storage.MemoryManifestCodec.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Storage.MemoryManifestCodec",
+      "Summary": "Manifest read/write for a memory root (JSON, atomic swap); missing file reads as empty."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Storage.MemoryRootLayout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Storage.MemoryRootLayout.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Storage.MemoryRootLayout",
+      "Summary": "Root folder + scope path resolution: <code>&lt;root&gt;/&lt;scope-kind&gt;/&lt;scope-id&gt;/...</code>.\nEvery caller-supplied segment is validated to be a single, safe path segment\n(no traversal, no separators, no Windows-reserved names) and every resolved\npath is checked to stay inside the root folder."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Storage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Storage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Storage",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Telemetry.IMemoryTelemetry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Telemetry.IMemoryTelemetry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Telemetry.IMemoryTelemetry",
+      "Summary": "Query/consolidation timings, per-stage scores, backend stats (host-injected sink; default no-op)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Telemetry.InMemoryMemoryTelemetry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Telemetry.InMemoryMemoryTelemetry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Telemetry.InMemoryMemoryTelemetry",
+      "Summary": "Capture-style telemetry sink that records reported stages and backend stats in\nmemory. Intended for tests and lightweight in-process diagnostics; not durable."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Telemetry.NoopMemoryTelemetry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Telemetry.NoopMemoryTelemetry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Telemetry.NoopMemoryTelemetry",
+      "Summary": "Zero-op default telemetry sink. Never throws, never allocates meaningfully."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.Telemetry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.Telemetry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.Telemetry",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.EngineVectorIndexFactory.Options.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.EngineVectorIndexFactory.Options.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.EngineVectorIndexFactory.Options",
+      "Summary": "Backend options for every created index."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.EngineVectorIndexFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.EngineVectorIndexFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.EngineVectorIndexFactory",
+      "Summary": "Own-engine factory: Flat \u2192 FlatExactIndex, Ivf \u2192 IvfFlatIndex, Hnsw \u2192 HnswIndex."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.FlatExactIndex.Options.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.FlatExactIndex.Options.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.FlatExactIndex.Options",
+      "Summary": "Backend options: the ranking metric (default cosine)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.FlatExactIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.FlatExactIndex.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.FlatExactIndex",
+      "Summary": "Own-engine exact backend: SIMD brute-force scan (Vector512\u2192256\u2192128, scalar fallback)\nover the in-memory float[] store. Fully built in memory; Flush is a no-op."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.HnswBeamSearcher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.HnswBeamSearcher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.HnswBeamSearcher",
+      "Summary": "Exact analog of the canonical HNSW SEARCH-LAYER routine, in score form (higher = closer):\ncandidate heap = max-heap by score (top = nearest candidate, expanded first), result heap\n= min-heap by score bounded to ef (top = worst kept result = the stop gate). A candidate\nwhose score falls below the gate stops the beam. The visited set resets per layer\ntraversal (canonical: fresh visited per searchLayer call); the query score cache lives in\n<xref href=\"ProvostXMemory.VectorIndex.Engine.HnswSearchContext\" data-throw-if-not-resolved=\"false\"></xref> and persists across layers of the same query. Returns\nresults sorted best-first (score desc, node id asc)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.HnswBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.HnswBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.HnswBuilder",
+      "Summary": "Own HNSW construction (canonical INSERT algorithm, level-0 full beam): inserts each item\nin order, greedily descends from the entry point through layers above the node's top\nlevel, then beam-inserts per layer with the M / maxM neighbor pruning heuristic\n(keep-if-closer-than-direct-neighbors). Writes backlinks for pruned victims.\nDeterministic: seeded level assignment + insertion order + deterministic tie-breaks."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.HnswCandidate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.HnswCandidate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.HnswCandidate",
+      "Summary": "A single candidate during graph traversal: node id + metric score."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.HnswGraph.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.HnswGraph.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.HnswGraph",
+      "Summary": "Immutable-after-build layered HNSW graph topology: per-node adjacency sets per layer,\nplus the entry node and current max level. Pure data: ids/vectors live in\n<xref href=\"ProvostXMemory.VectorIndex.VectorItemStore\" data-throw-if-not-resolved=\"false\"></xref>; the graph only stores link structure (int ids). Mutations\nhappen only during construction \u2014 the finished graph is published in one reference swap\nand never modified afterwards (immutable-index semantics, ARCHITECTURE.md addendum)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.HnswIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.HnswIndex.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.HnswIndex",
+      "Summary": "Own-engine HNSW backend with IMMUTABLE-INDEX + BATCH-REBUILD semantics (patent-avoidance\ndesign, ARCHITECTURE.md addendum 2026-10-13): the layered graph is fully rebuilt from the\nitem store on every Build, Add, and Remove \u2014 there is deliberately NO incremental update\nof a live graph, the method covered by US 15/929,802 \"Dynamic Updates for HNSW\". Core\nconstruction + layered greedy/beam search (unpatented) is implemented from scratch.\nMutations mark the published graph dirty; the next search rebuilds it once (same\nbatch-rebuild behavior as <xref href=\"ProvostXMemory.VectorIndex.Engine.IvfFlatIndex\" data-throw-if-not-resolved=\"false\"></xref>). Cosine metric: vectors are\nL2-normalized internally. Deterministic given the same items in the same order + seed."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.HnswLevelAssigner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.HnswLevelAssigner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.HnswLevelAssigner",
+      "Summary": "Deterministic level assignment for HNSW layers: each node's top level is drawn from the\ngeometric distribution \u230a-ln(U)/ln(levelFactor)\u230b (U uniform in [0,1), factor &lt; 1). Own\n<xref href=\"ProvostXMemory.VectorIndex.SeededRandom\" data-throw-if-not-resolved=\"false\"></xref> keeps level assignment stable across .NET versions/platforms; same\nseed + same insertion order \u2192 identical layer structure."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.HnswOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.HnswOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.HnswOptions",
+      "Summary": "HNSW backend tuning parameters, mirroring the canonical algorithm's knobs:\n<xref href=\"ProvostXMemory.VectorIndex.Engine.HnswOptions.M\" data-throw-if-not-resolved=\"false\"></xref> outgoing links per node above layer 0 (<xref href=\"ProvostXMemory.VectorIndex.Engine.HnswOptions.MaxLevel0Connections\" data-throw-if-not-resolved=\"false\"></xref>\non layer 0, typically 2\u00b7M), <xref href=\"ProvostXMemory.VectorIndex.Engine.HnswOptions.LevelFactor\" data-throw-if-not-resolved=\"false\"></xref> as the level-assignment divisor\n(1/ln(M) canonically), <xref href=\"ProvostXMemory.VectorIndex.Engine.HnswOptions.EfConstruction\" data-throw-if-not-resolved=\"false\"></xref> beam width while inserting,\n<xref href=\"ProvostXMemory.VectorIndex.Engine.HnswOptions.EfSearch\" data-throw-if-not-resolved=\"false\"></xref> beam width at query time, and the deterministic\n<xref href=\"ProvostXMemory.VectorIndex.Engine.HnswOptions.Seed\" data-throw-if-not-resolved=\"false\"></xref> for level assignment. Same seed + same insertion order \u2192 same graph."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.HnswPublishedGraph.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.HnswPublishedGraph.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.HnswPublishedGraph",
+      "Summary": "The published immutable snapshot of a built HNSW graph: row-order ids parallel to the\nnormalized vector rows and the graph topology. Swapped in atomically after each full\nrebuild; never mutated afterwards (batch-rebuild semantics)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.HnswSearchContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.HnswSearchContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.HnswSearchContext",
+      "Summary": "Reusable traversal context for one built HNSW graph: row-order ids parallel to\nnormalized vector rows, a per-query dot-product score cache (NaN = unscored; zero-vector\nqueries legitimately score 0 and MUST be rescored), and the visited set shared by\nconstruction-time multi-layer traversals. Score cache + visited set are reset per query\n(<xref href=\"ProvostXMemory.VectorIndex.Engine.HnswSearchContext.ResetForNewQuery\" data-throw-if-not-resolved=\"false\"></xref>); the query is copied into a reusable buffer so no span\nstate is held across calls."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.HnswSearcher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.HnswSearcher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.HnswSearcher",
+      "Summary": "Query-time traversal over a built HNSW graph: greedy descent from the entry point\nthrough upper layers to layer 1, then a single ef-bounded beam search on layer 0,\nsorted best-first. Read-only over the published immutable graph."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.IvfFlatIndex.Options.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.IvfFlatIndex.Options.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.IvfFlatIndex.Options",
+      "Summary": "Backend options: metric, cluster count, probe count, k-means effort, deterministic seed."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.IvfFlatIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.IvfFlatIndex.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine.IvfFlatIndex",
+      "Summary": "Own-engine IVF-Flat: deterministic k-means coarse quantizer + inverted lists;\nsearch probes the nprobe nearest clusters (by quantizer metric) and scores members\nexactly. Mutations mark the partition stale; the next search rebuilds it (batch-rebuild\nsemantics per the 2026-10-13 addendum). Flush is a no-op (in-memory)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Engine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Engine.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Engine",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.FlatJsonVectorIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.FlatJsonVectorIndex.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.FlatJsonVectorIndex",
+      "Summary": "Default zero-dependency backend over the JSON namespace-file format:\nbrute-force cosine (dot product over L2-normalized vectors), transactional flush."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.DefaultGpuContextPolicy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.DefaultGpuContextPolicy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.DefaultGpuContextPolicy",
+      "Summary": "Default policy: GPU-first discovery (CUDA/OpenCL per options), optional CPU fallback\nacceptance (off by default \u2014 availability must reflect real GPUs only). Device\nselection prefers CUDA &gt; OpenCL and never throws when none exist."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.GpuAccelerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.GpuAccelerator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.GpuAccelerator",
+      "Summary": "Owns the ILGPU Context and the resolved accelerator. The GPU hand-shake runs once,\nlazily, on first access, inside a lock, and every failure mode (builder exception,\nmissing driver, no acceptable device, accelerator-creation failure) collapses to\nIsAvailable=false. Nothing here throws for 'no GPU present'."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.GpuDiscoveryOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.GpuDiscoveryOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.GpuDiscoveryOptions",
+      "Summary": "How the ILGPU context is built for accelerator discovery. GPU-first builders enable\nCUDA/OpenCL discovery; the flag set mirrors what the host considers acceptable."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.GpuDistanceMetric.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.GpuDistanceMetric.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.GpuDistanceMetric",
+      "Summary": "Backend metric shared with the engine kernels (mirrors VectorDistanceMetric)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.GpuFlatIndex.Options.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.GpuFlatIndex.Options.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.GpuFlatIndex.Options",
+      "Summary": "Backend options: ranking metric (default cosine) + launch chunking."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.GpuFlatIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.GpuFlatIndex.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.GpuFlatIndex",
+      "Summary": "GPU-accelerated exact flat index (ILGPU kernel scan). When no GPU is available the\ninjected CPU fallback IVectorIndex is used for every operation with identical\nsemantics \u2014 the fallback path must pass the engine conformance suite unchanged.\nKernels load lazily; all GPU faults collapse to CPU-fallback execution."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.GpuIvfIndex.Options.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.GpuIvfIndex.Options.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.GpuIvfIndex.Options",
+      "Summary": "Backend options: mirrors the engine IVF options + ranking metric + launch chunking."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.GpuIvfIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.GpuIvfIndex.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.GpuIvfIndex",
+      "Summary": "GPU-accelerated IVF index: the deterministic engine k-means partitions the corpus\n(CPU-side, same algorithm as IvfFlatIndex so partitions are identical), GPU kernels\nscore (1) coarse centroids and (2) in-cluster members. When no GPU is available the\ninjected CPU fallback IVectorIndex is used with identical semantics."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.GpuLaunchOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.GpuLaunchOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.GpuLaunchOptions",
+      "Summary": "Kernel-launch policy: rows per launch chunk and the per-launch thread cap. Chunked\nlaunches keep the per-thread flat loop short and bounded on every backend (including\nILGPU's CPU simulator, which materializes one thread per index)."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.GpuMetricCodec.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.GpuMetricCodec.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.GpuMetricCodec",
+      "Summary": "Mapping from the engine metric enum onto the GPU kernel's int metric code."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.GpuVectorIndexFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.GpuVectorIndexFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.GpuVectorIndexFactory",
+      "Summary": "Factory that produces <xref href=\"ProvostXMemory.VectorIndex.Gpu.GpuFlatIndex\" data-throw-if-not-resolved=\"false\"></xref> for <xref href=\"ProvostXMemory.Abstractions.IndexKind.Gpu\" data-throw-if-not-resolved=\"false\"></xref> and\ndelegates every other kind to the injected CPU <xref href=\"ProvostXMemory.VectorIndex.IVectorIndexFactory\" data-throw-if-not-resolved=\"false\"></xref>. The\nGPU index receives the standard <xref href=\"ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator\" data-throw-if-not-resolved=\"false\"></xref> availability gate and\nwraps a flat CPU fallback <xref href=\"ProvostXMemory.VectorIndex.IVectorIndex\" data-throw-if-not-resolved=\"false\"></xref> as its transparent CPU fallback,\nso search semantics are identical whether or not an accelerator is present."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.GpuVectorKernels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.GpuVectorKernels.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.GpuVectorKernels",
+      "Summary": "ILGPU kernels: one thread per score slot, plain loops, no barriers/shared memory \u2014\nidentical accumulation order on every backend (CPU simulator included), so GPU and\nfallback results are bit-for-bit reproducible for the same inputs."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.GpuVectorMatrix.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.GpuVectorMatrix.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.GpuVectorMatrix",
+      "Summary": "GPU-resident row-major vector matrix with lazy (re)upload: CPU-side rows + norms are\nmirrored to device buffers; uploads overwrite exactly the changed range. Ownership\nand synchronization live here \u2014 indexes never touch ILGPU buffers directly."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.IGpuAccelerator",
+      "Summary": "Availability handle for the ILGPU runtime: owns the Context and exposes the resolved\naccelerator lazily. Construction never throws and never touches GPU drivers; every\nmember is guarded so machines without CUDA/OpenCL observe IsAvailable=false."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.IGpuContextPolicy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.IGpuContextPolicy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.IGpuContextPolicy",
+      "Summary": "ILGPU accelerator hand-shake: a GPU-first context (CUDA + OpenCL as configured) with\ndevice classes the caller considers acceptable. All discovery is exception-\nguarded; a machine without GPU drivers simply observes IsAvailable=false."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.IGpuScoreLauncher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.IGpuScoreLauncher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.IGpuScoreLauncher",
+      "Summary": "Compiled-kernel launcher boundary: hides ILGPU's launcher delegates behind an\ninjectable abstraction so index classes stay backend-agnostic and testable."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.IlgpuScoreLauncher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.IlgpuScoreLauncher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu.IlgpuScoreLauncher",
+      "Summary": "Lazy, guarded ILGPU kernel launcher: kernels compile on first launch only (never at\nconstruction), launches are chunked per GpuLaunchOptions, and every launch ends with\na synchronize so scored results are deterministically visible on the host."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.Gpu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.Gpu.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.Gpu",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.IVectorEmbedder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.IVectorEmbedder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.IVectorEmbedder",
+      "Summary": "The host-injected embedding seam. The library never bundles, downloads, or selects\nembedding models \u2014 it consumes vectors from whatever <xref href=\"ProvostXMemory.VectorIndex.IVectorEmbedder\" data-throw-if-not-resolved=\"false\"></xref>\nthe host wires in, and it <b>validates</b> them instead: <xref href=\"ProvostXMemory.VectorIndex.IVectorEmbedder.ModelHash\" data-throw-if-not-resolved=\"false\"></xref> and\n<xref href=\"ProvostXMemory.VectorIndex.IVectorEmbedder.Dim\" data-throw-if-not-resolved=\"false\"></xref> are recorded with every vector namespace, and any index whose\nhash or dimension mismatches the embedder is rejected rather than silently mixing\nembeddings from different models."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.IVectorIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.IVectorIndex.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.IVectorIndex",
+      "Summary": "<p>The pluggable dense-vector index contract. The library ships four backends, all\ninterchangeable through this interface (they pass one shared conformance suite):\n<code>IndexKind.FlatJson</code> (zero-dependency JSON file, brute-force cosine),\n<code>IndexKind.Flat</code> (in-memory exact search with SIMD kernels),\n<code>IndexKind.Ivf</code> (k-means inverted lists for corpus sizes where full scans\nget expensive), and <code>IndexKind.Hnsw</code> (navigable-small-world graph; built\nwith immutable/rebuild semantics and searched with a layered greedy beam). A GPU tier\n(ILGPU, transparent CPU fallback) wraps any of these for machines with devices.</p>\n<p><b>Vector contract:</b> vectors are L2-normalized at index time; scores are cosine\nsimilarities (higher = closer, 1.0 = identical). <xref href=\"ProvostXMemory.VectorIndex.IVectorIndex.Dim\" data-throw-if-not-resolved=\"false\"></xref> is fixed at\nconstruction; every item/query with a different dimension is rejected.\n<b>Concurrency:</b> implementations own their internal synchronization; concurrent\nAdd/Remove/Search from multiple threads is safe.</p>\n<p><b>Backends compare sets, not orderings:</b> ranking parity between backends is\nexact for Flat/FlatJson and statistically guaranteed (recall \u22650.95 on the fixture) for\nthe ANN tiers \u2014 results are ranked identically after fusion because ordering derives\nfrom scores, not insertion sequence.</p>"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.IVectorIndexFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.IVectorIndexFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.IVectorIndexFactory",
+      "Summary": "Creates vector indexes of a requested <xref href=\"ProvostXMemory.Abstractions.IndexKind\" data-throw-if-not-resolved=\"false\"></xref> for one dimension.\nImplementations decide concrete wiring (metrics, seeds, backing storage); the factory\nkeeps index creation out of retrieval code so backends stay swappable by configuration\nalone. The default <code>EngineVectorIndexFactory</code> produces the own-engine backends;\nthe GPU factory decorates a CPU fallback with ILGPU kernels."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.IVectorIndexGuard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.IVectorIndexGuard.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.IVectorIndexGuard",
+      "Summary": "Guards model hash + vector dimension at every index mutation boundary."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.IvfMember.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.IvfMember.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.IvfMember",
+      "Summary": "One IVF member: id, vector, assigned cluster."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.IvfPostingLists.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.IvfPostingLists.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.IvfPostingLists",
+      "Summary": "Inverted lists: cluster id \u2192 member rows + centroid access for probing."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.KMeansQuantizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.KMeansQuantizer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.KMeansQuantizer",
+      "Summary": "OWN deterministic k-means (Lloyd iterations, seeded) \u2014 the IVF coarse quantizer.\nDeterministic given the same training rows: seeded Fisher-Yates seeding, squared-L2\nassignment via the SIMD scanner, mean update, empty clusters reseated on the globally\nfarthest points (deterministic order). Internally uses squared L2 regardless of the\nsearch metric \u2014 IVF coarse assignment is metric-agnostic partitioning."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.KMeansResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.KMeansResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.KMeansResult",
+      "Summary": "Result of one k-means run: centroids plus label arrays over the training rows."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.ScalarVectorOps.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.ScalarVectorOps.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.ScalarVectorOps",
+      "Summary": "In-package scalar math for the FlatJson backend (instance-based, no static state).\nDeliberately separate from the Engine package's SIMD VectorMath: the base package must\nstay dependency-free below itself, and cosine/normalize here are O(dim) scalar loops \u2014\nthe flat JSON backend's cost is dominated by I/O, not arithmetic."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.ScoredVectorId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.ScoredVectorId.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.ScoredVectorId",
+      "Summary": "Vector index search hit."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.SeededRandom.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.SeededRandom.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.SeededRandom",
+      "Summary": "Pure deterministic pseudo-random generator (xorshift64*) used wherever the engine needs\nseeded randomness (level assignment, quantizer seeding). Own implementation instead of\n<xref href=\"System.Random\" data-throw-if-not-resolved=\"false\"></xref> so results are stable across .NET versions and platforms.\nThread-unsafe by design: engine components own dedicated instances."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.VectorDistanceMetric.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.VectorDistanceMetric.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.VectorDistanceMetric",
+      "Summary": "Distance metric for vector-to-vector comparisons inside the engine."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.VectorIndexGuard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.VectorIndexGuard.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.VectorIndexGuard",
+      "Summary": "Guard record binding a vector namespace to an embedder model hash/dim."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.VectorIndexGuardMismatchException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.VectorIndexGuardMismatchException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.VectorIndexGuardMismatchException",
+      "Summary": "Embedder model hash or vector dimension does not match the index guard."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.VectorIndexIdNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.VectorIndexIdNotFoundException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.VectorIndexIdNotFoundException",
+      "Summary": "Remove of an id that is not present in the index."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.VectorItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.VectorItem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.VectorItem",
+      "Summary": "A vector index item: id + vector."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.VectorItemStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.VectorItemStore.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.VectorItemStore",
+      "Summary": "Mutable in-memory store shared by engine indexes: ids in row order parallel to vector\nrows plus id \u2192 row map. Owns synchronization; build/add/remove/dim-guard semantics."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.VectorMath.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.VectorMath.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.VectorMath",
+      "Summary": "PURE STATIC UTILITY (no mutable state, thread-safe by construction; the one sanctioned\nstatic exception per architecture principles). Stateless numeric kernels for the engine:\ndot product via Vector512 \u2192 Vector256 \u2192 Vector128 with scalar fallback, norm, normalize,\ncosine. Deterministic order of accumulation for a given hardware width."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.VectorNamespaceFile.Content.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.VectorNamespaceFile.Content.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.VectorNamespaceFile.Content",
+      "Summary": "Content of one namespace file: guard + entries."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.VectorNamespaceFile.Entry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.VectorNamespaceFile.Entry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.VectorNamespaceFile.Entry",
+      "Summary": "Sets are keyed by id; a re-set id replaces the entry."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.VectorNamespaceFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.VectorNamespaceFile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.VectorNamespaceFile",
+      "Summary": "On-disk JSON vector index file format (one file per scope/model-hash namespace):\ntemp-file + atomic swap on write; open enforces the model-hash/dim guard."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.VectorScanner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.VectorScanner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.VectorScanner",
+      "Summary": "Scans rows with the metric's SIMD kernel; shared scoring core for flat/IVF search."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.VectorTopKBuffer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.VectorTopKBuffer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex.VectorTopKBuffer",
+      "Summary": "Bounded top-k min-heap buffer over (id, score); scores rise to the top."
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.VectorIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.VectorIndex.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory.VectorIndex",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/ProvostXMemory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ProvostXMemory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProvostXMemory",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

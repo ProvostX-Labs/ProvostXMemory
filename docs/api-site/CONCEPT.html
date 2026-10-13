@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>ProvostXMemory — Concept | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="ProvostXMemory — Concept | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="provostxmemory--concept">ProvostXMemory — Concept</h1>
+
+<p><strong>License:</strong> MIT.</p>
+<h2 id="what-it-is">What it is</h2>
+<p>A standalone .NET library that owns ALL memory and retrieval concerns for any host
+application (Agent satellite, Admin platform, future products). Hosts see one clean
+surface (<code>IMemoryService</code> + options) and never know what storage, indexing, or
+retrieval strategy is running underneath. Swappable by config, nothing else.</p>
+<h2 id="what-problem-it-solves">What problem it solves</h2>
+<p>Every ProvostX project ends up re-implementing retrieval (the old Agent rolled its
+own flat-JSON vector index + BM25-lite; the Knowledge repo has FAISS + a shell
+script). Memory logic should live in ONE atomic, encapsulated library:</p>
+<ul>
+<li>Hosts reference one NuGet package, wire it via constructor injection, done</li>
+<li>Backends (flat JSON, FAISS, sqlite-vec) are pluggable — chosen by config</li>
+<li>Multi-tenant isolation: memory is separated by platform / session / tenant / purpose
+via namespaces. Different users, sessions, or products NEVER see each other's memories</li>
+<li>Full retrieval stack: chunking, hybrid lexical+vector search, fusion, reranking,
+corrective loops, graph traversal, multi-representation records</li>
+</ul>
+<h2 id="core-capabilities-rag-architecture-coverage">Core capabilities (RAG architecture coverage)</h2>
+<ul>
+<li><strong>Hybrid retrieval:</strong> BM25 lexical + dense vector search with RRF/weighted fusion</li>
+<li><strong>Chunking policies:</strong> structural/size/overlap chunking + parent-document recall</li>
+<li><strong>Graph layer:</strong> entities + relations over memory records; subgraph retrieval, cluster summaries</li>
+<li><strong>Corrective loop:</strong> retrieval evaluator hook (grade → keep / web-out / rewrite query) — grader injected by host, library stays LLM-agnostic</li>
+<li><strong>Agentic surface:</strong> retrieval as a declarative query-plan (fan out namespaces, merge, iterate on weak evidence)</li>
+<li><strong>Multi-representation records:</strong> one record, many representations (text / image caption / table), per-modality embeddings in one namespace</li>
+</ul>
+<h2 id="backend-matrix">Backend matrix</h2>
+<ul>
+<li><code>FlatJson</code> — zero-dependency default (ported from the old Agent; brute-force cosine)</li>
+<li><code>FaissManaged</code> — pure-.NET FAISS port (Gravicode.FaissNet), CPU SIMD</li>
+<li><code>FaissGpu</code> — ILGPU (CUDA/OpenCL) with CPU fallback, later tier</li>
+<li>Native FAISS dylib matrix via P/Invoke — optional, only if managed port falls short</li>
+</ul>
+<h2 id="isolation-model">Isolation model</h2>
+<p>Root folder per host install; inside it, namespace segments:
+<code>&lt;root&gt;/&lt;scope-kind&gt;/&lt;scope-id&gt;/&lt;model-hash&gt;/…</code>
+Scope kinds: platform (telegram/discord/…), session, tenant, custom purpose. Every
+store/index/graph operation is scope-bound; cross-scope reads are impossible by
+construction, not by convention.</p>
+<h2 id="who-uses-it">Who uses it</h2>
+<p>Hosts that need durable, recallable memory: the Agent satellite (sessions, curated
+memory), Admin platform (tenant search), any future product. Integration cost: one
+package reference + a few config lines + DI wiring.</p>
+<h2 id="non-goals">Non-goals</h2>
+<ul>
+<li>Hosting web search itself (hosts provide external fetchers via interface)</li>
+<li>Choosing embedding models (hosts inject <code>IVectorEmbedder</code>; library validates hashes/dims)</li>
+<li>UI of any kind</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

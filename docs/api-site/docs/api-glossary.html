@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>API Glossary | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="API Glossary | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="api-glossary">API Glossary</h1>
+
+<p>Reference for the public types of ProvostXMemory, grouped by namespace. Hosts normally interact only with the root facade, the abstractions, and the backend factories; the remaining namespaces document the contracts behind each capability.</p>
+<p>Legend: interfaces are marked <strong>I</strong>, classes <strong>C</strong>, records <strong>R</strong>, enums <strong>E</strong>.</p>
+<hr>
+<h2 id="provostxmemory-facade">ProvostXMemory (facade)</h2>
+<h3 id="imemoryservice-i">IMemoryService (I)</h3>
+<p>The single public surface of the library. Every operation is scope-bound.</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RememberAsync(record, ct?)</code></td>
+<td>Stores a record and maintains dense/lexical indexes (and the optional graph ledger).</td>
+</tr>
+<tr>
+<td><code>ForgetAsync(scope, id, ct?)</code></td>
+<td>Deletes a record and its index artifacts in that scope.</td>
+</tr>
+<tr>
+<td><code>GetAsync(scope, id, ct?)</code></td>
+<td>Returns the record or <code>null</code>; scope-exact.</td>
+</tr>
+<tr>
+<td><code>UpdateAsync(record, ct?)</code></td>
+<td>Updates record content/metadata and refreshes index entries.</td>
+</tr>
+<tr>
+<td><code>RecallAsync(query, ct?)</code></td>
+<td>Runs the retrieval pipeline; routes plan → corrective → hybrid, then optional rerank.</td>
+</tr>
+<tr>
+<td><code>ConsolidateAsync(scope, options, ct?)</code></td>
+<td>Runs a consolidation pass and refreshes index artifacts.</td>
+</tr>
+<tr>
+<td><code>BuildIndexesAsync(scope, ct?)</code></td>
+<td>Chunks, embeds, and builds vector + lexical indexes for a scope.</td>
+</tr>
+<tr>
+<td><code>RebuildAsync(ct?)</code></td>
+<td>Rebuilds indexes for all known scopes (deterministic; identical rankings).</td>
+</tr>
+<tr>
+<td><code>Scopes()</code></td>
+<td>Enumerates scopes known under the root.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage note:</strong> this is the only type most hosts need beyond options and factories. See <a href="getting-started.html">Getting Started</a>.</p>
+<h3 id="memoryservice-c">MemoryService (C)</h3>
+<p>Composition root implementing <code>IMemoryService</code>. Constructor takes <code>MemoryServiceOptions</code> plus injected dependencies: store, embedder, index factory, fuser, telemetry, and optional grader, graph extractor, reranker, chunker (+ <code>ChunkOptions</code>), pipeline options, graph-store resolver, and log sink. Not typically constructed directly — use the builder.</p>
+<h3 id="memoryservicebuilder-c">MemoryServiceBuilder (C)</h3>
+<p>Fluent wiring helper; plain constructor injection underneath (no service locator).</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>WithOptions(options)</code></td>
+<td>Root options (required).</td>
+</tr>
+<tr>
+<td><code>WithStore(store)</code></td>
+<td><code>IMemoryStore</code> implementation (required).</td>
+</tr>
+<tr>
+<td><code>WithEmbedder(embedder)</code></td>
+<td>Host embedding model (required).</td>
+</tr>
+<tr>
+<td><code>WithIndexFactory(factory)</code></td>
+<td>Backend factory (required).</td>
+</tr>
+<tr>
+<td><code>WithFuser(fuser)</code></td>
+<td>Result fuser (required).</td>
+</tr>
+<tr>
+<td><code>WithTelemetry(telemetry)</code></td>
+<td>Telemetry sink (required; <code>NoopMemoryTelemetry.Instance</code> for silence).</td>
+</tr>
+<tr>
+<td><code>WithGrader(grader)</code></td>
+<td>Optional; enables the corrective recall route.</td>
+</tr>
+<tr>
+<td><code>WithGraphExtractor(...)</code> / graph-store resolver</td>
+<td>Optional graph ingestion.</td>
+</tr>
+<tr>
+<td><code>WithReranker(reranker)</code></td>
+<td>Optional post-fusion reranking.</td>
+</tr>
+<tr>
+<td><code>WithChunker(chunker, options)</code></td>
+<td>Optional custom chunking.</td>
+</tr>
+<tr>
+<td><code>WithLogSink(sink)</code></td>
+<td>Optional injected log sink.</td>
+</tr>
+<tr>
+<td><code>Build()</code></td>
+<td>Validates all required wiring and returns <code>IMemoryService</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iscopesaware-i">IScopesAware (I)</h3>
+<p>Optional store hook: <code>Scopes()</code> returns all scopes currently known to the store. Enables <code>IMemoryService.Scopes()</code>; the facade falls back to the directory layout when the store does not implement it.</p>
+<h3 id="graphindexledger-c">GraphIndexLedger (C)</h3>
+<p>Keeps the scope's graph store in sync with record mutations (entity upsert/removal driven by the injected <code>IEntityExtractor</code>, including consolidation cluster writes).</p>
+<hr>
+<h2 id="provostxmemoryabstractions">ProvostXMemory.Abstractions</h2>
+<p>Core contracts and immutable data types shared by every layer.</p>
+<h3 id="memoryrecord-r">MemoryRecord (R)</h3>
+<p>Immutable memory unit. Members: <code>Id</code>, <code>Scope</code>, <code>Key</code>, <code>Content</code>, <code>Category?</code>, <code>Tags</code>, <code>Reps</code>, <code>CreatedAt</code>, <code>UpdatedAt</code>, <code>ExpiresAt?</code>, <code>Meta</code>. See <a href="concepts.html#records">Concepts</a>.</p>
+<h3 id="memoryscope-r-and-memoryscopekind-e">MemoryScope (R) and MemoryScopeKind (E)</h3>
+<p>Hierarchical isolation boundary: <code>(Kind, Id, ParentScope?)</code> with kinds <code>Platform | Session | Tenant | Purpose | Custom</code>. Members: <code>PathSegment</code>, <code>Chain()</code>, <code>Contains(other)</code>, <code>WithParent(parent)</code>. See <a href="scopes.html">Scopes</a>.</p>
+<h3 id="memoryrepresentation-r-memoryrepresentationmodality-e">MemoryRepresentation (R), MemoryRepresentationModality (E)</h3>
+<p>One modality-specific representation of a record: <code>Modality</code> (<code>Text | Image | Table | Audio | Custom</code>), <code>Content</code>, optional <code>EmbeddingModelHash</code>, <code>Properties</code> metadata.</p>
+<h3 id="retrievalquery-r">RetrievalQuery (R)</h3>
+<p><code>Text</code>, <code>Scope</code>, <code>TopK</code> (default set by <code>VectorOptions.DefaultTopK</code>), <code>Filters?</code>, <code>Plan?</code>.</p>
+<h3 id="retrievalfilters-r">RetrievalFilters (R)</h3>
+<p><code>Tags</code>, <code>Category?</code>, <code>From?</code>, <code>To?</code> — enforced after candidate resolution.</p>
+<h3 id="retrievalresult-r">RetrievalResult (R)</h3>
+<p><code>Records</code> (<code>IReadOnlyList&lt;ScoredMemoryRecord&gt;</code>) and <code>Diagnostics</code> (<code>IReadOnlyList&lt;RetrievalStageDiagnostics&gt;</code>: stage name, duration, per-stage scores).</p>
+<h3 id="scoredmemoryrecord-r">ScoredMemoryRecord (R)</h3>
+<p><code>Record</code>, <code>Score</code>, <code>Provenance</code> (<code>RetrievalProvenance</code>: retriever name + stage scores).</p>
+<h3 id="queryplan-r-queryplanstep-r">QueryPlan (R), QueryPlanStep (R)</h3>
+<p>Declarative retrieval plan: <code>PlanId</code> + ordered steps; each step has <code>StepId</code>, <code>Action</code>, <code>TargetScopes</code>, <code>TopK</code>.</p>
+<h3 id="imemorystore-i">IMemoryStore (I)</h3>
+<p>Scope-bound CRUD over records.</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AddAsync</code> / <code>UpdateAsync</code></td>
+<td>Persist a record in its scope.</td>
+</tr>
+<tr>
+<td><code>DeleteAsync(scopeKind, scopeId, id)</code></td>
+<td>Remove one record.</td>
+</tr>
+<tr>
+<td><code>GetAsync(scopeKind, scopeId, id)</code></td>
+<td>Scope-exact fetch; <code>null</code> when absent.</td>
+</tr>
+<tr>
+<td><code>ListAsync(scopeKind, scopeId)</code></td>
+<td>All records of the scope.</td>
+</tr>
+<tr>
+<td><code>CountAsync(scopeKind, scopeId)</code></td>
+<td>Record count.</td>
+</tr>
+<tr>
+<td><code>SnapshotAsync(scopeKind, scopeId)</code></td>
+<td>Consistent snapshot for index builds.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage note:</strong> hosts rarely implement this; use <code>JsonlMemoryStore</code>. Custom implementations must remain scope-exact.</p>
+<h3 id="ijsonlmemorystore-i">IJsonlMemoryStore (I)</h3>
+<p>Contract marker for the default JSONL store implementation (<code>ProvostXMemory.Storage</code>).</p>
+<h3 id="imemorymanifestcodec-i">IMemoryManifestCodec (I)</h3>
+<p>Reads/writes the root <code>manifest.json</code> (<code>MemoryManifest</code>: schema id, counts, timestamps; row model <code>MemoryEntryModel</code> persists records with backward-compatible Reps/Meta).</p>
+<h3 id="options-records">Options records</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Members (defaults)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MemoryServiceOptions</code> (R)</td>
+<td><code>Storage</code>, <code>Vector</code>, <code>Graph</code>, <code>Fusion</code>, <code>Consolidation</code>, optional <code>Logging</code>.</td>
+</tr>
+<tr>
+<td><code>StorageOptions</code> (R)</td>
+<td><code>Root</code>, <code>AtomicWrites = true</code>, <code>Fsync</code>.</td>
+</tr>
+<tr>
+<td><code>VectorOptions</code> (R)</td>
+<td><code>ModelHash</code>, <code>Dim</code>, <code>IndexKind = Flat</code>, <code>DefaultTopK</code>.</td>
+</tr>
+<tr>
+<td><code>GraphOptions</code> (R)</td>
+<td><code>Enabled = true</code>, <code>MaxNeighbors = 16</code>, <code>MaxHops = 2</code>, <code>MaxClusters = 5</code>; <code>GraphOptions.Default</code>.</td>
+</tr>
+<tr>
+<td><code>FusionOptions</code> (R)</td>
+<td><code>RrfK = 60</code>, <code>DenseWeight</code>, <code>LexicalWeight</code>.</td>
+</tr>
+<tr>
+<td><code>ConsolidationOptions</code> (R)</td>
+<td><code>DedupSimilarityThreshold</code>, <code>ExpireTtl</code>, <code>EmitClusterSummaries</code>.</td>
+</tr>
+<tr>
+<td><code>ChunkOptions</code> (R)</td>
+<td><code>MaxChunkLength = 512</code>, <code>Overlap</code>, <code>RespectStructure</code>, <code>Separator?</code>, <code>MinChunkLength</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="supporting-types">Supporting types</h3>
+<p><code>BackendStats</code> (R) — item count, dimension stats, <code>LastFlushedAt</code>; <code>ScoredId</code> (R) — scope-qualified id + score used by fusion; <code>QueryTokens</code> (C) — query tokenization helper.</p>
+<hr>
+<h2 id="provostxmemorystorage">ProvostXMemory.Storage</h2>
+<h3 id="memoryrootlayout-c">MemoryRootLayout (C)</h3>
+<p>Resolves root + scope paths (<code>root/scopeKind/scopeId/modelHash</code>); the structural basis of scope isolation. Constructor takes the root path and the model hash.</p>
+<h3 id="jsonlmemorystore-c--ijsonlmemorystore">JsonlMemoryStore (C) : IJsonlMemoryStore</h3>
+<p>Default store: one JSONL file per scope (<code>records.jsonl</code>), transactional writes.</p>
+<h3 id="atomicfilewriter-c">AtomicFileWriter (C)</h3>
+<p>Temp-file + atomic-swap writer with optional fsync; all durable file writes flow through it.</p>
+<h3 id="memorymanifestcodec-c--imemorymanifestcodec">MemoryManifestCodec (C) : IMemoryManifestCodec</h3>
+<p>Manifest (de)serialization.</p>
+<hr>
+<h2 id="provostxmemoryvectorindex">ProvostXMemory.VectorIndex</h2>
+<h3 id="ivectorindex-i">IVectorIndex (I)</h3>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Dim</code>, <code>Count</code></td>
+<td>Dimension and item count.</td>
+</tr>
+<tr>
+<td><code>BuildAsync(items)</code></td>
+<td>Replace contents with the given <code>VectorItem</code> set.</td>
+</tr>
+<tr>
+<td><code>AddAsync(item)</code> / <code>RemoveAsync(id)</code></td>
+<td>Incremental mutation.</td>
+</tr>
+<tr>
+<td><code>SearchAsync(vector, k)</code></td>
+<td>Top-k search → <code>ScoredVectorId</code> list.</td>
+</tr>
+<tr>
+<td><code>FlushAsync</code></td>
+<td>Persist durable state.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage note:</strong> all backends implement this and pass the same conformance suite.</p>
+<h3 id="ivectorindexfactory-i">IVectorIndexFactory (I)</h3>
+<p><code>Create(kind, dim)</code> returns an index of <code>IndexKind</code> (<code>Flat | Ivf | Hnsw | Gpu</code>).</p>
+<h3 id="ivectorembedder-i">IVectorEmbedder (I)</h3>
+<p>Host-injected embedder: <code>ModelHash</code>, <code>Dim</code>, <code>EmbedAsync(text)</code>. The library validates hash/dimension but never chooses models.</p>
+<h3 id="ivectorindexguard-i">IVectorIndexGuard (I)</h3>
+<p>Model-hash/dimension guard consulted when opening persisted index artifacts.</p>
+<h3 id="vectornamespacefile-c">VectorNamespaceFile (C)</h3>
+<p>Per-scope/model-hash index file format (FlatJson backend persistence).</p>
+<h3 id="exceptions">Exceptions</h3>
+<p><code>VectorIndexGuardMismatchException</code> — model hash or dimension mismatch on open. <code>VectorIndexIdNotFoundException</code> — unknown vector id requested for removal/resolution.</p>
+<h3 id="supporting-types-1">Supporting types</h3>
+<p><code>VectorItem</code> (R) — id + vector; <code>ScoredVectorId</code> (R) — id + score; <code>ScalarVectorOps</code> (C) — scalar distance helpers.</p>
+<hr>
+<h2 id="provostxmemoryvectorindexengine">ProvostXMemory.VectorIndex.Engine</h2>
+<p>Own C# vector engine; zero third-party <strong>vector</strong> dependencies (ILGPU — the GPU compiler for the included kernels, NCSA license — is the sole non-vector dependency and falls back to the CPU bit-identically). Namespace name reflects history; the FAISS dependency was replaced by this engine.</p>
+<h3 id="enginevectorindexfactory-c--ivectorindexfactory">EngineVectorIndexFactory (C) : IVectorIndexFactory</h3>
+<p>Creates <code>FlatExactIndex</code>, <code>IvfFlatIndex</code>, or <code>HnswIndex</code>; rejects <code>IndexKind.Gpu</code> (explicit GPU routing only).</p>
+<h3 id="flatexactindex-c--ivectorindex">FlatExactIndex (C) : IVectorIndex</h3>
+<p>Exact brute-force search with SIMD (<code>Vector512</code>) kernels.</p>
+<h3 id="ivfflatindex-c--ivectorindex">IvfFlatIndex (C) : IVectorIndex</h3>
+<p>k-means coarse quantizer + inverted posting lists; <code>nprobe</code>-style partial scan. Supporting: <code>KMeansQuantizer</code>, <code>KMeansResult</code>, <code>IvfPostingLists</code>, <code>IvfMember</code>.</p>
+<h3 id="hnswindex-c--ivectorindex">HnswIndex (C) : IVectorIndex</h3>
+<p>Hierarchical navigable small-world graph. Immutable after build; mutations trigger batch rebuild (patent-safe semantics). Supporting: <code>HnswBuilder</code>, <code>HnswGraph</code>, <code>HnswSearcher</code>, <code>HnswBeamSearcher</code>, <code>HnswSearchContext</code>, <code>HnswLevelAssigner</code>, <code>HnswPublishedGraph</code>, <code>HnswOptions</code> (seeded, deterministic builds).</p>
+<h3 id="options-c--engine-options">Options (C) — engine options</h3>
+<p>Three overloads configure the metric (flat/IVF), full HNSW parameters (connectivity, ef-construction/ef-search, levels, seed), and composition of engine-level options.</p>
+<h3 id="supporting-types-2">Supporting types</h3>
+<p><code>VectorMath</code>, <code>VectorScanner</code>, <code>VectorTopKBuffer</code> (SIMD kernels and top-k buffering); <code>VectorItemStore</code> (id → vector storage); <code>SeededRandom</code> (deterministic randomness).</p>
+<hr>
+<h2 id="provostxmemoryvectorindexgpu">ProvostXMemory.VectorIndex.Gpu</h2>
+<p>ILGPU-backed GPU kernels with transparent CPU fallback.</p>
+<h3 id="igpuaccelerator-i--gpuaccelerator-c">IGpuAccelerator (I) / GpuAccelerator (C)</h3>
+<p>Lazy, exception-guarded accelerator discovery and kernel launches; <code>IDisposable</code>.</p>
+<h3 id="igpucontextpolicy-i--defaultgpucontextpolicy-c">IGpuContextPolicy (I) / DefaultGpuContextPolicy (C)</h3>
+<p>Controls accelerator context creation (including a force-CPU test mode).</p>
+<h3 id="igpuscorelauncher-i--ilgpuscorelauncher-c">IGpuScoreLauncher (I) / IlgpuScoreLauncher (C)</h3>
+<p>Launches similarity kernels over a <code>GpuVectorMatrix</code> batch; <code>GpuLaunchOptions</code> (chunk size, max parallel batches).</p>
+<h3 id="gpuflatindex-c-gpuivfindex-c--ivectorindex">GpuFlatIndex (C), GpuIvfIndex (C) : IVectorIndex</h3>
+<p>GPU versions of flat exact and IVF search. Delegate to an injected CPU <code>IVectorIndex</code> when no accelerator is available — bit-identical results by construction (no barriers/shared memory; one thread per slot, chunked launches).</p>
+<h3 id="gpuvectorindexfactory-c--ivectorindexfactory">GpuVectorIndexFactory (C) : IVectorIndexFactory</h3>
+<p>Composes GPU indexes with an <code>EngineVectorIndexFactory</code> fallback.</p>
+<h3 id="supporting-types-3">Supporting types</h3>
+<p><code>GpuDiscoveryOptions</code>, <code>GpuLaunchOptions</code>, <code>GpuVectorKernels</code>, <code>GpuVectorMatrix</code>, <code>GpuMetricCodec</code>; per-backend <code>Options</code> records.</p>
+<hr>
+<h2 id="provostxmemorylexical">ProvostXMemory.Lexical</h2>
+<h3 id="ilexicalindex-i">ILexicalIndex (I)</h3>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Count</code>, <code>Statistics</code></td>
+<td>Document count; live corpus statistics.</td>
+</tr>
+<tr>
+<td><code>Build(documents)</code></td>
+<td>Replace contents.</td>
+</tr>
+<tr>
+<td><code>IncrementalAdd(document)</code></td>
+<td>Add one document (duplicate ids throw).</td>
+</tr>
+<tr>
+<td><code>Remove(documentId)</code></td>
+<td>Remove by id; <code>false</code> when unknown.</td>
+</tr>
+<tr>
+<td><code>EnumerateDocuments()</code></td>
+<td>Deterministic id-ordered snapshot.</td>
+</tr>
+<tr>
+<td><code>Search(queryTokens, topK)</code></td>
+<td>BM25-scored top-k → <code>ScoredLexicalId</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage note:</strong> documents are pre-tokenized (<code>LexicalDocument</code>: <code>Id</code>, <code>BodyTerms</code>, <code>KeyTerms?</code>, <code>Category?</code>); tokenization itself is <code>LexicalTokenizer</code>.</p>
+<h3 id="ibm25scorer-i--bm25scorer-c">IBm25Scorer (I) / Bm25Scorer (C)</h3>
+<p>Saturated-TF IDF scoring (k1 = 1.2) with key-term boost (default 2.0) and a category-match bonus. Corpus statistics are passed per call.</p>
+<h3 id="supporting-types-4">Supporting types</h3>
+<p><code>LexicalPosting</code> (R) — (document id, term frequency); <code>LexicalTermCounts</code>, <code>TermStat</code> (R) — corpus statistics primitives.</p>
+<hr>
+<h2 id="provostxmemoryfusion">ProvostXMemory.Fusion</h2>
+<h3 id="iresultfuser-i--reciprocalrankfuser-c">IResultFuser (I) / ReciprocalRankFuser (C)</h3>
+<p>Fuses multiple ranked lists into one. Default implementation: Reciprocal Rank Fusion with <code>FusionOptions.RrfK</code> (default 60) and configurable dense/lexical weights; zero weights drop a stage; deterministic tie ordering. Fusion ids are scope-qualified so identical record ids across scopes never conflate.</p>
+<hr>
+<h2 id="provostxmemorychunking">ProvostXMemory.Chunking</h2>
+<h3 id="ichunker-i">IChunker (I)</h3>
+<p><code>Split(record, options)</code> → <code>Chunk[]</code>. Implementations: <code>StructuredChunker</code> (structure-respecting), <code>SizeChunker</code> (size/overlap).</p>
+<h3 id="iparentresolver-i--chunkparentresolver-c">IParentResolver (I) / ChunkParentResolver (C)</h3>
+<p>Chunk id → parent record lookup for parent-document recall.</p>
+<h3 id="chunkidcodec-c-chunkidparts-r">ChunkIdCodec (C), ChunkIdParts (R)</h3>
+<p>Encode/decode scope-qualified chunk ids (<code>scope kind, scope id, record id, chunk index</code>).</p>
+<hr>
+<h2 id="provostxmemoryreranking">ProvostXMemory.Reranking</h2>
+<h3 id="ireranker-i">IReranker (I)</h3>
+<p><code>Rerank(query, candidates)</code> → re-ranked candidates. Implementations:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NoopReranker</code></td>
+<td>Pass-through.</td>
+</tr>
+<tr>
+<td><code>ScoreBoostReranker</code></td>
+<td>Heuristic boosts (tag/key/category) + length penalties via <code>ScoreBoostRerankerOptions</code>.</td>
+</tr>
+<tr>
+<td><code>ClientBackedReranker</code></td>
+<td>Delegates to <code>IRerankerClient</code> with fallback fusion; <code>ClientBackedRerankerOptions.TrustClientCompletely</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="irerankerclient-i">IRerankerClient (I)</h3>
+<p>Optional external rerank service contract (host-implemented; typically calls a cross-encoder or LLM endpoint).</p>
+<hr>
+<h2 id="provostxmemorycorrection">ProvostXMemory.Correction</h2>
+<h3 id="iretrievalgrader-i">IRetrievalGrader (I)</h3>
+<p><code>GradeAsync(query, candidate)</code> → <code>GradedCandidate</code> (<code>RetrievalGrade</code>: <code>Relevant | Irrelevant | Uncertain</code>). Host-injected.</p>
+<h3 id="iqueryrewriter-i--keywordqueryrewriter-c">IQueryRewriter (I) / KeywordQueryRewriter (C)</h3>
+<p>Query rewriting for the corrective retry.</p>
+<h3 id="iexternalfetcher-i">IExternalFetcher (I)</h3>
+<p>Extension hook invoked when retrieval returns empty and <code>CorrectionOptions.UseFetcherOnEmpty</code> is set (e.g. web augmentation). The library never fetches on its own.</p>
+<h3 id="correctiveretriever-c--icorrectiveretriever">CorrectiveRetriever (C) : ICorrectiveRetriever</h3>
+<p>Orchestrates grade → rewrite → retry loop; <code>CorrectionOptions</code> (<code>RelevanceFloor</code>, <code>UseFetcherOnEmpty</code>).</p>
+<h3 id="supporting-types-5">Supporting types</h3>
+<p><code>StageNames</code> (C) — stable stage-name constants for diagnostics.</p>
+<hr>
+<h2 id="provostxmemorygraph">ProvostXMemory.Graph</h2>
+<h3 id="imemorygraphstore-i">IMemoryGraphStore (I)</h3>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UpsertEntityAsync</code> / <code>UpsertRelationAsync</code></td>
+<td>Insert or update graph nodes/edges.</td>
+</tr>
+<tr>
+<td><code>UpsertClusterAsync(cluster)</code></td>
+<td>Replace-by-id cluster write (authoritative, not accumulating).</td>
+</tr>
+<tr>
+<td><code>GetEntityAsync(id)</code></td>
+<td>Fetch entity or <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>SearchEntitiesAsync(query, max)</code></td>
+<td>Whole-token name/alias match, strongest overlap first.</td>
+</tr>
+<tr>
+<td><code>RelationsOfAsync(id, max)</code></td>
+<td>Undirected relations, strongest support first.</td>
+</tr>
+<tr>
+<td><code>NeighborsAsync(id, max)</code></td>
+<td>Direct neighbors.</td>
+</tr>
+<tr>
+<td><code>ShortestPathAsync(from, to)</code></td>
+<td>Shortest entity path.</td>
+</tr>
+<tr>
+<td><code>ClusterOfAsync(id)</code></td>
+<td>Cluster containing the entity, if any.</td>
+</tr>
+</tbody>
+</table>
+<p>Default implementation: <code>JsonlMemoryGraphStore</code> (scope-pinned JSONL files). <code>IMemoryGraphStoreResolver</code> supplies per-scope stores.</p>
+<h3 id="ientityextractor-i--heuristicentityextractor-c">IEntityExtractor (I) / HeuristicEntityExtractor (C)</h3>
+<p>Extracts entities + relations from records (<code>ExtractionResult</code>). Hosts may inject an LLM-backed extractor.</p>
+<h3 id="igraphretriever-i--graphretriever-c">IGraphRetriever (I) / GraphRetriever (C)</h3>
+<p>Retrieves records from the query-relevant subgraph plus cluster summaries; tuned by <code>GraphOptions</code>.</p>
+<h3 id="data-records">Data records</h3>
+<p><code>GraphEntity</code> (R) — id, name, aliases, record links; <code>GraphRelation</code> (R) — source, target, type, support; <code>GraphCluster</code> (R) — id, members, summary record id.</p>
+<hr>
+<h2 id="provostxmemoryconsolidation">ProvostXMemory.Consolidation</h2>
+<h3 id="imemoryconsolidator-i">IMemoryConsolidator (I)</h3>
+<p><code>ConsolidateAsync(scopeKind, scopeId, options)</code> → surviving records. Default: <code>MemoryConsolidator</code>.</p>
+<h3 id="idedupdetector-i--thresholddedupdetector-c">IDedupDetector (I) / ThresholdDedupDetector (C)</h3>
+<p>Near-duplicate detection by embedding similarity threshold.</p>
+<h3 id="iclustersummarizer-i--clustersummarizer-c">IClusterSummarizer (I) / ClusterSummarizer (C)</h3>
+<p>Produces a summary record for a cluster; tuned by <code>ConsolidationTuning</code>.</p>
+<h3 id="supporting-types-6">Supporting types</h3>
+<p><code>ConsolidationReportMeta</code> (C) — pass report metadata.</p>
+<hr>
+<h2 id="provostxmemoryretrieval">ProvostXMemory.Retrieval</h2>
+<h3 id="ihybridretriever-i--hybridretriever-c">IHybridRetriever (I) / HybridRetriever (C)</h3>
+<p>Dense + lexical in parallel → fuse → resolve → optional rerank. Constructor takes the scope index registry, embedder, fuser, and optional telemetry, reranker, <code>FusionOptions</code>.</p>
+<h3 id="iscopeindexregistry-i--inmemoryscopeindexregistry-c">IScopeIndexRegistry (I) / InMemoryScopeIndexRegistry (C)</h3>
+<p>Maps a scope to its artifacts: <code>GetVectorIndex(scope)</code>, <code>GetLexicalIndex(scope)</code>, <code>GetRecordProvider(scope)</code>, <code>HasIndexes(scope)</code>. Implementations must be <strong>scope-exact</strong> — no parent fallthrough, no default forwarding. The in-memory registry keys on the exact (Kind, Id) pair and also exposes <code>Register*</code> methods and a <code>Reset</code>.</p>
+<h3 id="icorrectiveretriever-i">ICorrectiveRetriever (I)</h3>
+<p>Corrective-loop retrieval contract (implemented by <code>CorrectiveRetriever</code>).</p>
+<h3 id="igraphretrieverimpl-i">IGraphRetrieverImpl (I)</h3>
+<p>Graph retrieval implementation contract (implemented by <code>GraphRetriever</code>).</p>
+<h3 id="imultirepresentationretriever-i--multirepresentationretriever-c">IMultiRepresentationRetriever (I) / MultiRepresentationRetriever (C)</h3>
+<p>Query across modalities; resolves <code>repr|&lt;recordId&gt;|&lt;index&gt;</code> ids to best-representation scores per record.</p>
+<h3 id="iqueryplanrunner-i--queryplanrunner-c">IQueryPlanRunner (I) / QueryPlanRunner (C)</h3>
+<p>Executes <code>QueryPlan</code>s: scope fan-out, merge, one weak-evidence rewrite retry (<code>IQueryTextRewriter</code>, default <code>KeywordQueryTextRewriter</code>; <code>QueryPlanRunnerOptions</code>).</p>
+<h3 id="iscoperesolver-i--rootchildscoperesolver-c">IScopeResolver (I) / RootChildScopeResolver (C)</h3>
+<p>Resolves plan target scope ids to concrete scopes (root + child interpretation).</p>
+<h3 id="retrievalfilterapplier-c">RetrievalFilterApplier (C)</h3>
+<p>Enforces <code>RetrievalFilters</code> on resolved candidates.</p>
+<hr>
+<h2 id="provostxmemoryeval">ProvostXMemory.Eval</h2>
+<h3 id="evalservicefactory-i--defaultevalservicefactory-c">EvalServiceFactory (I) / DefaultEvalServiceFactory (C)</h3>
+<p><code>Create(rootPath)</code> builds a self-contained <code>IMemoryService</code> for evaluation; default factory composes the standard stack at a given vector dimension.</p>
+<h3 id="evalrunner-c">EvalRunner (C)</h3>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LoadAsync(corpus, rootPath)</code></td>
+<td>Materializes the corpus into a fresh service and builds indexes.</td>
+</tr>
+<tr>
+<td><code>RunAsync(corpus, caseSet, options?)</code></td>
+<td>Full run on a fresh temp root: load → index → evaluate → report (root deleted unless <code>EvalRunnerOptions.DisposeRootDirectory = false</code>).</td>
+</tr>
+<tr>
+<td><code>EvaluateAsync(service, caseSet, options, totalRecords)</code></td>
+<td>Evaluates an already-loaded service.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="evalcase-c-evalcaseset-c">EvalCase (C), EvalCaseSet (C)</h3>
+<p>Golden case: <code>Id</code>, <code>Query</code>, <code>QueryScope</code>, <code>RelevantIds</code>, optional graded relevance (0..1 per id; binary 1.0 when absent); <code>RelevanceOf(recordId)</code>. <code>EvalCaseSet</code> is a named, ordered case collection.</p>
+<h3 id="evalrunneroptions-c-evalmetricthresholds-c">EvalRunnerOptions (C), EvalMetricThresholds (C)</h3>
+<p><code>TopK</code>, <code>Thresholds</code> (per-metric floors: <code>recallAtK</code>, <code>precisionAtK</code>, <code>mrr</code>, <code>ndcgAtK</code>), <code>DisposeRootDirectory</code>.</p>
+<h3 id="results">Results</h3>
+<p><code>EvalCaseMetrics</code> (R) — per-case metrics; <code>EvalMetricBreakdownEntry</code> (R) — per-scope/per-stage breakdowns; <code>EvalCaseTrace</code>/<code>EvalCaseTraceHit</code> (R) — hit traces with gains; <code>MetricThresholdViolation</code> (R) — metric, actual, threshold; <code>MetricThresholdViolations</code> (C) — violation collection; <code>EvalReportJson</code> (C) — canonical snake_case JSON codec.</p>
+<h3 id="deterministic-corpus">Deterministic corpus</h3>
+<p><code>DeterministicEvalCorpus</code> (C) — seeded synthetic corpus (records, clusters, vector dimension); <code>ClusterHashEmbedder</code> (C) — deterministic embedder for reproducible runs; <code>EvalMetricMath</code> (C) — the metric implementations; <code>MemoryScopeComparer</code> (C) — deterministic scope ordering.</p>
+<hr>
+<h2 id="provostxmemorylogging">ProvostXMemory.Logging</h2>
+<h3 id="memoryloggingoptions-r">MemoryLoggingOptions (R)</h3>
+<p><code>Enabled</code>, <code>Level</code>, <code>Sink</code>, <code>Directory</code>, <code>FileNamePattern</code>, <code>Format</code>, <code>IncludeContent</code>, <code>Integrity</code>, <code>RetentionDays</code> — see the <a href="logging.html#options-reference">options table</a>.</p>
+<h3 id="memoryloglevel-e-memorylogsinkkind-e-memorylogformat-e-memorylogintegrity-e">MemoryLogLevel (E), MemoryLogSinkKind (E), MemoryLogFormat (E), MemoryLogIntegrity (E)</h3>
+<p>Level (<code>Debug/Info/Warn/Error</code>); sink (<code>File/Console/Injected</code>); format (JSON Lines); integrity (hash-chain toggle).</p>
+<h3 id="imemorylogsink-i">IMemoryLogSink (I)</h3>
+<p><code>WriteAsync(entry)</code> — destination for <code>MemoryLogEntry</code>. Built-in: <code>FileMemoryLogSink</code> (rolling), <code>ConsoleMemoryLogSink</code>.</p>
+<h3 id="memorylogger-c">MemoryLogger (C)</h3>
+<p>Central emitter; applies level filtering, format encoding, and chain appending. Disabled = zero writes/allocations.</p>
+<h3 id="memorylogentry-r-memorylogscope-r">MemoryLogEntry (R), MemoryLogScope (R)</h3>
+<p>Entry payload: timestamp, sequence, level, category, scope, correlation id, duration, chain hashes, optional content excerpt.</p>
+<h3 id="hashchainappender-c-logchainverifier-c-logchainverificationresult-r">HashChainAppender (C), LogChainVerifier (C), LogChainVerificationResult (R)</h3>
+<p>SHA-256 chain append and verification (<code>IsValid</code>, broken-at sequence, detail).</p>
+<h3 id="retentionsweeper-c">RetentionSweeper (C)</h3>
+<p>Deletes log files older than <code>RetentionDays</code>; explicit scheduling.</p>
+<hr>
+<h2 id="provostxmemorytelemetry">ProvostXMemory.Telemetry</h2>
+<h3 id="imemorytelemetry-i">IMemoryTelemetry (I)</h3>
+<p>Query timings, per-stage scores, backend stats — host-injected sink.</p>
+<table>
+<thead>
+<tr>
+<th>Implementation</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NoopMemoryTelemetry</code></td>
+<td>Silence (default; <code>Instance</code>).</td>
+</tr>
+<tr>
+<td><code>InMemoryMemoryTelemetry</code></td>
+<td>Collects events in memory for tests/diagnostics.</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

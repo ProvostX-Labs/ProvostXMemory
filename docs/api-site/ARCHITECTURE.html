@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>ProvostXMemory — ARCHITECTURE | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="ProvostXMemory — ARCHITECTURE | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="provostxmemory--architecture">ProvostXMemory — ARCHITECTURE</h1>
+
+<p><strong>License:</strong> MIT. <strong>Status:</strong> complete, audited (2026-10-13). <strong>Target:</strong> .NET 8.</p>
+<p><strong>Summary:</strong> atomic, encapsulated .NET 8 memory/RAG library; hosts see only <code>IMemoryService</code> + typed options and inject their own embedder/grader/rewriter/telemetry; backends pluggable by config over an OWN C# vector engine (zero third-party vector dependencies); memory isolated per scope (platform/session/tenant/purpose/custom) by construction.</p>
+<h2 id="principles">Principles</h2>
+<ul>
+<li>Strict OOP: interfaces first, constructor injection, no statics (pure-factory exceptions), one type per file</li>
+<li>Library knows NOTHING about its hosts; hosts know nothing about the internals</li>
+<li>No env vars in product code — config via typed options injected by the host</li>
+<li>All file I/O transactional (temp + atomic swap) at the storage layer</li>
+<li>Every public operation is scope-bound; cross-scope access is structurally impossible</li>
+</ul>
+<h2 id="layers-top--bottom">Layers (top → bottom)</h2>
+<pre><code>L3 Application Facade   IMemoryService, MemoryServiceBuilder, query plans, eval runner
+L2 Retrieval Features   hybrid search, fusion, reranking, corrective loop, graph retrieval,
+                        multi-representation, query plans, scope registry
+L1 Packages             stores, vector indexes (own engine), lexical index, chunker, graph store,
+                        consolidation, correction, telemetry, eval primitives, logging
+L0 Types/Atoms          records, results, options, contracts, primitive codecs
+</code></pre>
+<p>Dependency direction: strictly downward through interfaces. No cycles.</p>
+<h2 id="l0--types-provostxmemoryabstractions">L0 — Types (<code>ProvostXMemory.Abstractions</code>)</h2>
+<ul>
+<li><code>MemoryRecord</code> — Id, Scope, Key, Content, Category, Tags[], Reps[], CreatedAt, UpdatedAt, ExpiresAt?, Meta</li>
+<li><code>MemoryScope</code> — Kind (Platform|Session|Tenant|Purpose|Custom), Id, ParentScope?; hierarchical, immutable</li>
+<li><code>MemoryRepresentation</code> — Modality (Text|Image|Table|Audio|Custom), Content, EmbeddingModelHash?</li>
+<li><code>ScoredMemoryRecord</code> — Record, Score, Provenance (retriever, stage scores)</li>
+<li><code>RetrievalQuery</code> — Text, Scope, TopK, Filters (tags/category/date), Plan?</li>
+<li><code>RetrievalResult</code> — IReadOnlyList<scoredmemoryrecord>, Diagnostics (per-stage scores, timings)</scoredmemoryrecord></li>
+<li><code>Chunk</code>, <code>ChunkOptions</code> — chunk model + structural/size/overlap parameters</li>
+<li><code>MemoryLoggingOptions</code> — logging/integrity/retention configuration (lives here so Abstractions stays dependency-free)</li>
+<li><code>QueryPlan</code>, <code>QueryPlanStep</code>, <code>QueryTokens</code>, <code>RetrievalProvenance</code>, <code>RetrievalStageDiagnostics</code> — retrieval/pipeline atom types</li>
+<li><code>MemoryManifest</code>, <code>MemoryEntryModel</code> — on-disk metadata codec contracts</li>
+<li>Options records: <code>MemoryServiceOptions</code>, <code>StorageOptions</code>, <code>VectorOptions</code> (+ <code>IndexKind</code>), <code>GraphOptions</code>, <code>FusionOptions</code>, <code>ConsolidationOptions</code>, <code>CorrectionOptions</code></li>
+</ul>
+<p><strong>Abstractions has ZERO project references</strong> (verified against csproj) — dependency-free atom layer.</p>
+<h2 id="l1--packages-each--its-own-csproj--tests">L1 — Packages (each = its own csproj + tests)</h2>
+<p><strong>Storage</strong> (<code>ProvostXMemory.Storage</code>)</p>
+<ul>
+<li><code>IMemoryStore</code> — Add/Update/Delete/Get/List/Count(scope), Snapshot(scope)</li>
+<li><code>IJsonlMemoryStore : IMemoryStore</code> — default store impl (<code>JsonlMemoryStore</code>: JSONL, transactional rewrites)</li>
+<li><code>IMemoryManifestCodec</code> — manifest read/write (<code>MemoryManifestCodec</code>)</li>
+<li><code>MemoryRootLayout</code> — root folder + scope path resolution (root/scopeKind/scopeId/modelHash)</li>
+<li><code>AtomicFileWriter</code> — temp + atomic swap (POSIX-safe move, temp cleanup on failure)</li>
+</ul>
+<p><strong>VectorIndex</strong> (<code>ProvostXMemory.VectorIndex</code>)</p>
+<ul>
+<li><code>IVectorIndex</code> — Build(items), Add, Remove, Search(vector, k) → ScoredIds; Dim; Count; Flush</li>
+<li><code>IVectorIndexFactory</code> — creates Flat/Ivf/Hnsw indexes (own engine); <code>IndexKind</code> enum = Flat | Ivf | Hnsw | Gpu</li>
+<li><code>IVectorIndexGuard</code> — per-index dim/epoch guard (rejects stale writes across rebuilds)</li>
+<li><code>IVectorEmbedder</code> — Embed(text) → float[] (host-injected)</li>
+<li><code>ScoredVectorId</code>, <code>VectorItem</code>, <code>VectorItemStore</code>, <code>VectorScanner</code>, <code>VectorTopKBuffer</code> — index primitives</li>
+<li><code>VectorNamespaceFile</code> — per-scope/model-hash index file format + model-hash/dim guard</li>
+<li><code>FlatJsonVectorIndex</code> — zero-dependency brute-force cosine backend, transactional JSON file</li>
+<li><code>ScalarVectorOps</code>, <code>VectorMath</code> — SIMD math (Vector512 → Vector256 → Vector128 → scalar fallback; zero-vector guarded)</li>
+<li><code>KMeansQuantizer</code>, <code>SeededRandom</code> — deterministic k-means + locked xorshift RNG</li>
+</ul>
+<p><strong>VectorIndex.Engine</strong> (<code>ProvostXMemory.VectorIndex.Engine</code>) — the OWN engine (no third-party vector deps):</p>
+<ul>
+<li><code>FlatExactIndex</code> — SIMD exact brute-force scan</li>
+<li><code>IvfFlatIndex</code> — k-means coarse quantizer + inverted lists (deterministic, empty-cluster reseating)</li>
+<li><code>HnswIndex</code>/<code>HnswBuilder</code>/<code>HnswBeamSearcher</code> — <strong>immutable-index + batch-rebuild semantics</strong> (see Patent notes)</li>
+</ul>
+<p><strong>VectorIndex.Gpu</strong> (<code>ProvostXMemory.VectorIndex.Gpu</code>, optional)</p>
+<ul>
+<li>ILGPU 1.5.3 kernels (Flat + IVF): <code>GpuFlatIndex</code>, <code>GpuIvfIndex</code>, one-thread-per-slot, chunked launches, no barriers/shared memory → <strong>bit-identical accumulation order CPU/GPU</strong></li>
+<li><code>IGpuAccelerator</code> availability gate — lazy, exception-guarded; transparent injected-CPU fallback; no Engine-package reference</li>
+</ul>
+<p><strong>Lexical</strong> (<code>ProvostXMemory.Lexical</code>)</p>
+<ul>
+<li><code>ILexicalIndex</code> — Build/IncrementalAdd/Remove/EnumerateDocuments/Search(terms, k) → ScoredIds</li>
+<li><code>IBm25Scorer</code> — saturated-TF IDF scoring + key boost</li>
+</ul>
+<p><strong>Chunking</strong> (<code>ProvostXMemory.Chunking</code>)</p>
+<ul>
+<li><code>IChunker</code> — Split(record, options) → Chunk[] (<code>SizeChunker</code>, <code>StructuredChunker</code>)</li>
+<li><code>IParentResolver</code> — chunk id → parent record (parent-document recall)</li>
+<li><code>ChunkIdCodec</code> — chunk id codec; <strong>rejects <code>|</code> in scope/record ids loudly</strong> (silent dense-recall loss otherwise)</li>
+</ul>
+<p><strong>Fusion</strong> (<code>ProvostXMemory.Fusion</code>)</p>
+<ul>
+<li><code>IResultFuser</code> — Fuse(ranked lists, weights) → fused ranked list (<code>ReciprocalRankFuser</code>, RRF k=60, weighted, deterministic tie order)</li>
+</ul>
+<p><strong>Reranking</strong> (<code>ProvostXMemory.Reranking</code>)</p>
+<ul>
+<li><code>IReranker</code> — Rerank(query, candidates) → reranked (<code>ScoreBoostReranker</code> additive, no drops; <code>NoopReranker</code>)</li>
+<li><code>IRerankerClient</code> — external rerank service contract (<code>ClientBackedReranker</code>)</li>
+</ul>
+<p><strong>Graph</strong> (<code>ProvostXMemory.Graph</code>)</p>
+<ul>
+<li><code>IMemoryGraphStore</code> — UpsertEntity/UpsertRelation/Neighbors/ShortestPath/ClusterOf (<code>JsonlMemoryGraphStore</code>, scope-pinned)</li>
+<li><code>IEntityExtractor</code> — Extract(records) → entities+relations (host-injected; <code>HeuristicEntityExtractor</code> default)</li>
+<li><code>IGraphRetriever</code> — Retrieve(query, scope) → records + cluster summaries (<code>GraphRetriever</code>, deterministic BFS)</li>
+<li><code>GraphIndexLedger</code> — facade-side graph extraction ledger</li>
+</ul>
+<p><strong>Correction</strong> (<code>ProvostXMemory.Correction</code>)</p>
+<ul>
+<li><code>IRetrievalGrader</code> — Grade(query, candidate) → Relevant/Irrelevant/Uncertain (host-injected)</li>
+<li><code>IQueryRewriter</code> — Rewrite(query) → expanded/keyword query (<code>KeywordQueryRewriter</code> default)</li>
+<li><code>CorrectiveRetriever</code> — grade→external-fetch-hook→rewrite loop via injected <code>IExternalFetcher</code> (bounded retries)</li>
+</ul>
+<p><strong>Consolidation</strong> (<code>ProvostXMemory.Consolidation</code>)</p>
+<ul>
+<li><code>IMemoryConsolidator</code> — pass over scope: dedup, TTL expiry, cluster summary emission (<code>MemoryConsolidator</code>)</li>
+<li><code>IDedupDetector</code> (<code>ThresholdDedupDetector</code>) — near-duplicate detection (oldest kept, tags unioned)</li>
+<li><code>IClusterSummarizer</code> — summarize cluster into a summary record</li>
+</ul>
+<p><strong>Telemetry</strong> (<code>ProvostXMemory.Telemetry</code>)</p>
+<ul>
+<li><code>IMemoryTelemetry</code> — query timings, per-stage scores, backend stats (host sink; <code>NoopMemoryTelemetry</code>/<code>InMemoryMemoryTelemetry</code>)</li>
+</ul>
+<p><strong>Eval</strong> (<code>ProvostXMemory.Eval</code>) — deterministic evaluation primitives</p>
+<ul>
+<li><code>EvalCase</code>/<code>EvalCaseSet</code>/<code>DeterministicEvalCorpus</code> — reproducible golden corpora</li>
+<li><code>ClusterHashEmbedder</code> — deterministic hash embedder (no real model anywhere)</li>
+<li><code>EvalMetrics</code>/<code>EvalMetricMath</code> — Recall@k, Precision@k, MRR, NDCG@k + per-scope/per-stage breakdowns</li>
+<li><code>EvalReport</code>/<code>EvalReportJson</code>/<code>EvalMetricThresholds</code> — serializable results + threshold gates</li>
+<li>Eval references only Abstractions + VectorIndex (downward only)</li>
+</ul>
+<p><strong>Logging</strong> (<code>ProvostXMemory.Logging</code>) — leaf package (depends only on Abstractions)</p>
+<ul>
+<li><code>IMemoryLogSink</code> + <code>ConsoleMemoryLogSink</code>/<code>FileMemoryLogSink</code> — rolling files, JSON lines or text</li>
+<li><code>MemoryLogger</code> — facade-facing logger (toggle/level via <code>MemoryLoggingOptions</code>)</li>
+<li><code>HashChainAppender</code>/<code>LogChainVerifier</code> — SHA-256 hash-chain integrity (covers timestamp+seq+content+prev-hash; <strong>serialized under a gate</strong> — concurrent writes never interleave chain links)</li>
+<li><code>RetentionSweeper</code> — deletes log files past the retention window (pattern-scoped deletes)</li>
+</ul>
+<h2 id="l2--retrieval-features-provostxmemoryretrieval">L2 — Retrieval Features (<code>ProvostXMemory.Retrieval</code>)</h2>
+<ul>
+<li><code>IHybridRetriever</code> → <code>HybridRetriever</code> — dense + lexical in parallel → <code>IResultFuser</code> → resolve → optional <code>IReranker</code> (exactly ONE rerank pass; per-stage diagnostics)</li>
+<li><code>ICorrectiveRetriever</code> — grader-gated hybrid retrieval with rewrite loop (Correction package)</li>
+<li><code>IMultiRepresentationRetriever</code> → <code>MultiRepresentationRetriever</code> — query across modalities (<code>repr|&lt;recordId&gt;|&lt;index&gt;</code> ids; representation ids reject the separator loudly)</li>
+<li><code>IQueryPlanRunner</code> → <code>QueryPlanRunner</code> — executes declarative <code>QueryPlan</code>: target-scope fan-out, scope-qualified fusion ids (same record id in two scopes never conflates), weak-evidence single rewrite-retry</li>
+<li><code>IScopeIndexRegistry</code> → <code>InMemoryScopeIndexRegistry</code> — scope-exact artifact registry (vector/lexical/record provider per scope; exact-scope keys)</li>
+</ul>
+<h2 id="l3--application-facade-provostxmemory-root-package">L3 — Application Facade (<code>ProvostXMemory</code> root package)</h2>
+<ul>
+<li><code>IMemoryService</code> — THE public surface:
+<ul>
+<li><code>RememberAsync</code>/<code>ForgetAsync</code>/<code>UpdateAsync</code> — store + dense/lexical index maintenance via per-record id ledger; optional graph extraction</li>
+<li><code>RecallAsync(RetrievalQuery) → RetrievalResult</code> — routes: plan → corrective (when grader wired) → hybrid → optional rerank (single rerank pass)</li>
+<li><code>ConsolidateAsync(scope, options)</code> — delegates to <code>IMemoryConsolidator</code>, refreshes/removes index artifacts</li>
+<li><code>BuildIndexesAsync(scope)</code>/<code>RebuildAsync</code> — chunk + embed + vector + lexical build per scope</li>
+<li><code>Scopes()</code> — enumerate existing scopes (<code>IScopesAware</code> store hook, directory-layout fallback)</li>
+</ul>
+</li>
+<li><code>MemoryService</code> — composition root; takes <code>MemoryServiceOptions</code> + injected deps</li>
+<li><code>MemoryServiceBuilder</code> — fluent wiring helper (still DI, no service locator)</li>
+<li><code>EvalRunner</code> + <code>DefaultEvalServiceFactory</code> live HERE (they compose a full <code>IMemoryService</code>; keeps Eval a pure L1 — no L1→L3 edge)</li>
+<li><code>RootChildScopeResolver</code>, <code>MemoryServicePipelineOptions</code>, <code>RetrievalFilterApplier</code></li>
+</ul>
+<h2 id="backend-matrix">Backend matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Backend</th>
+<th>Package</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FlatJson (default)</td>
+<td>core</td>
+<td>zero-dependency brute-force cosine, transactional JSON file</td>
+</tr>
+<tr>
+<td>FlatExact (SIMD)</td>
+<td><code>…VectorIndex.Engine</code></td>
+<td>own engine, Vector512 kernels, exact search</td>
+</tr>
+<tr>
+<td>IvfFlat</td>
+<td><code>…VectorIndex.Engine</code></td>
+<td>own engine, deterministic k-means coarse quantizer + inverted lists</td>
+</tr>
+<tr>
+<td>Hnsw</td>
+<td><code>…VectorIndex.Engine</code></td>
+<td>own engine, <strong>immutable-index + batch-rebuild</strong> semantics</td>
+</tr>
+<tr>
+<td>Gpu (ILGPU, optional)</td>
+<td><code>…VectorIndex.Gpu</code></td>
+<td>own kernels (Flat + IVF), lazy guarded availability, transparent CPU fallback (bit-identical results)</td>
+</tr>
+<tr>
+<td>Native FAISS (P/Invoke)</td>
+<td><strong>not adopted</strong></td>
+<td>own engine replaces it; zero third-party vector deps</td>
+</tr>
+</tbody>
+</table>
+<p>All backends pass the SAME <code>IVectorIndex</code> conformance suite; cross-backend parity and determinism pinned by tests.</p>
+<h2 id="concurrency--correctness-model">Concurrency &amp; correctness model</h2>
+<ul>
+<li><strong>Per-service async store gate</strong> (<code>SemaphoreSlim</code>): store write + index mutation + graph update serialize across Remember/Forget/Update; embeddings compute OUTSIDE the gate (parallel-safe)</li>
+<li><strong>Per-service lexical mutation gate</strong>: lexical index (plain Dictionary) mutations never race readers</li>
+<li><strong>Serialized hash-chain logging gate</strong>: concurrent log entries never interleave chain links</li>
+<li>Index guard (<code>IVectorIndexGuard</code>): dim/epoch mismatched (stale, post-rebuild) writes rejected loudly</li>
+<li>Everything else audited clean (three full-context audits 2026-10-13): no races beyond the gates above, no leaks (scope isolation structurally enforced), no unhandled IO paths, all traversals hop-bounded/visited-guarded</li>
+</ul>
+<h2 id="dependency-flow">Dependency flow</h2>
+<pre><code>MemoryService (L3) → IHybridRetriever/ICorrectiveRetriever/IQueryPlanRunner (L2)
+                       → IFusion/ILexical/IVectorIndex/IMemoryGraphStore/IRetrievalGrader (L1)
+                          → IMemoryStore + record types (L0)
+</code></pre>
+<ul>
+<li>Abstractions (L0): zero references</li>
+<li>Eval (L1): Abstractions + VectorIndex only, downward</li>
+<li>VectorIndex.Gpu: VectorIndex interfaces only (CPU fallback index injected) — no Engine reference</li>
+<li>Logging (L1): leaf, Abstractions only</li>
+<li>Facade (L3): references Eval (runner/factory composition) + all backend packages</li>
+<li>Hosts reference ONLY the root package + optionally backend packages</li>
+</ul>
+<h2 id="storage-layout-per-root-folder-host-configured">Storage layout (per root folder, host-configured)</h2>
+<pre><code>&lt;root&gt;/
+  manifest.json
+  &lt;scope-kind&gt;/&lt;scope-id&gt;/
+    records.jsonl
+    chunks/
+    vectors/&lt;model-hash&gt;/index.json        (FlatJson backend)
+    graph/entities.jsonl, relations.jsonl, clusters.jsonl
+</code></pre>
+<h2 id="testing-strategy">Testing strategy</h2>
+<ul>
+<li>One test project per package (17 suites) + <code>ProvostXMemory.SystemTests</code> — <strong>host-agnostic</strong>: zero references to any product; exercises ONLY the public surface with <code>ClusterHashEmbedder</code> + temp-dir store</li>
+<li>Tiers: UNIT (scope/filters/chunker/fuser/HNSW-determinism/report round-trip), INTEGRATION (backend matrix parity: FlatExact/Ivf/Hnsw/FlatJson/Gpu-fallback — identical deterministic rankings cross-backend; persistence/restart; consolidation; graph clusters), JOURNEY (knowledge assistant Recall@5 ≥ 0.9 — achieved 1.0; multi-tenant 3-scope isolation, zero leakage incl. restart; lifecycle)</li>
+<li>5 real concurrency/durability bugs found by audits and pinned by regression tests: hash-chain gate, <code>ChunkIdCodec</code> pipe rejection, facade double-rerank removal, lexical mutation gate, store gate</li>
+<li><strong>Suite total: 626 green, 0 warnings / 0 errors on .NET 8</strong></li>
+</ul>
+<h2 id="known-semantics-documented-decisions-not-bugs">Known semantics (documented decisions, not bugs)</h2>
+<ul>
+<li><code>QueryPlanRunnerOptions.WeakEvidenceThreshold</code> (default 0.02) is on the RRF scale: with a rewriter wired, pass-2 (rewritten) fully REPLACES pass-1 when the top hit lacks two-stage corroboration — retry-only-when-uncorroborated semantics</li>
+<li><code>JsonlMemoryStore.WriteEntryAsync</code> appends replaced entries at file end while <code>UpdateAsync</code> preserves position — both full rewrites; consumers re-sort</li>
+<li>Cold-index semantics: recall on a fresh <code>MemoryService</code> over an existing root is empty until <code>BuildIndexesAsync</code>/<code>RebuildAsync</code></li>
+</ul>
+<h2 id="patent--license-notes-own-engine">Patent &amp; license notes (own engine)</h2>
+<ul>
+<li>Owner decision (2026-10-13): build our own FAISS-equivalent in C#; ALL third-party vector-index packages dropped (Gravicode.FaissNet unverified license; FAISS ships no .NET bindings)</li>
+<li>Patent review: NO broad granted patent on HNSW core (build + greedy layered search). Sole known claim = US application 15/929,802 &quot;Dynamic Updates for HNSW&quot; (narrow: incremental updates on live graphs, pending). Our HNSW uses <strong>immutable built indexes + batch rebuild on mutation</strong> — it never implements the claimed dynamic-update method. IVF/Flat = classic methods, no blocking claims. Earlier &quot;Yandex HNSW patent&quot; note was wrong (unrelated number) — corrected.</li>
+<li>ILGPU 1.5.3: NCSA license (MIT-compatible), verified against the license file shipped in the nupkg — see THIRD-PARTY-NOTICES.md</li>
+<li>Periodic HNSW patent-status re-check: owner-gated backlog item (see docs/BACKLOG-MASTER.md)</li>
+</ul>
+<h2 id="documentation-artifacts">Documentation artifacts</h2>
+<ul>
+<li>README.md — landing (features, quickstart, backend matrix, design principles)</li>
+<li>docs/ — getting-started, concepts, scopes, retrieval, backends, consolidation, evaluation, logging, api-glossary, FAQ</li>
+<li>docs/api-site/ — DocFX API reference (265 pages), generated from the shared corporate template (<code>~/Agent/ProvostX/docs/templates/docfx-template/</code>)</li>
+<li>docs/wiki.html — single-file offline wiki browser (generated by <code>.ldc/gen_wiki.py</code>)</li>
+<li>API-INDEX.md / RELATIONSHIP-GRAPH.md / PACKAGE-MAP.md — LDC artifacts (generated by <code>.ldc/gen_ldc.py</code>)</li>
+<li>docs/BACKLOG-MASTER.md — owner-gated backlog (NuGet publish, Inference-backed embedder adapter, HNSW patent re-check)</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

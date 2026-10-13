@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class InMemoryScopeIndexRegistry | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class InMemoryScopeIndexRegistry | ProvostXMemory API ">
+    
+    <meta name="description" content="In-memory scope → artifact registry for single-process hosts and test harnesses. Keys are the exact (Kind, Id) pair; lookups never fall through to parent or child scopes.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry">
+
+
+
+  <h1 id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry" class="text-break">Class InMemoryScopeIndexRegistry</h1>
+  <div class="markdown level0 summary">In-memory scope → artifact registry for single-process hosts and test harnesses.
+Keys are the exact (Kind, Id) pair; lookups never fall through to parent or child scopes.</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">InMemoryScopeIndexRegistry</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="ProvostXMemory.Retrieval.IScopeIndexRegistry.html">IScopeIndexRegistry</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ProvostXMemory.html">ProvostXMemory</a>.<a class="xref" href="ProvostXMemory.Retrieval.html">Retrieval</a></h6>
+  <h6><strong>Assembly</strong>: ProvostXMemory.Retrieval.dll</h6>
+  <h5 id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class InMemoryScopeIndexRegistry : IScopeIndexRegistry</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <a id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry__ctor_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.#ctor*"></a>
+  <h4 id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry__ctor" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.#ctor">InMemoryScopeIndexRegistry()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InMemoryScopeIndexRegistry()</code></pre>
+  </div>
+  <h3 id="methods">Methods
+</h3>
+  <a id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_GetLexicalIndex_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.GetLexicalIndex*"></a>
+  <h4 id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_GetLexicalIndex_ProvostXMemory_Abstractions_MemoryScope_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.GetLexicalIndex(ProvostXMemory.Abstractions.MemoryScope)">GetLexicalIndex(MemoryScope)</h4>
+  <div class="markdown level1 summary">Returns the scope-pinned lexical index, or throws <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keynotfoundexception">KeyNotFoundException</a> when none is registered.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ILexicalIndex GetLexicalIndex(MemoryScope scope)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">scope</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Lexical.ILexicalIndex.html">ILexicalIndex</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_GetRecordProvider_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.GetRecordProvider*"></a>
+  <h4 id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_GetRecordProvider_ProvostXMemory_Abstractions_MemoryScope_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.GetRecordProvider(ProvostXMemory.Abstractions.MemoryScope)">GetRecordProvider(MemoryScope)</h4>
+  <div class="markdown level1 summary">Returns the scope-pinned record snapshot provider (reads only the requested scope's records).</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;MemoryScope, CancellationToken, Task&lt;IReadOnlyList&lt;MemoryRecord&gt;&gt;&gt; GetRecordProvider(MemoryScope scope)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">scope</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html">MemoryRecord</a>&gt;&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_GetVectorIndex_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.GetVectorIndex*"></a>
+  <h4 id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_GetVectorIndex_ProvostXMemory_Abstractions_MemoryScope_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.GetVectorIndex(ProvostXMemory.Abstractions.MemoryScope)">GetVectorIndex(MemoryScope)</h4>
+  <div class="markdown level1 summary">Returns the scope-pinned vector index, or throws <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keynotfoundexception">KeyNotFoundException</a> when none is registered.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IVectorIndex GetVectorIndex(MemoryScope scope)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">scope</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.VectorIndex.IVectorIndex.html">IVectorIndex</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_HasIndexes_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.HasIndexes*"></a>
+  <h4 id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_HasIndexes_ProvostXMemory_Abstractions_MemoryScope_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.HasIndexes(ProvostXMemory.Abstractions.MemoryScope)">HasIndexes(MemoryScope)</h4>
+  <div class="markdown level1 summary">True when the scope has at least a vector or lexical index registered.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasIndexes(MemoryScope scope)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">scope</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_RegisterLexicalIndex_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.RegisterLexicalIndex*"></a>
+  <h4 id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_RegisterLexicalIndex_ProvostXMemory_Abstractions_MemoryScope_ProvostXMemory_Lexical_ILexicalIndex_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.RegisterLexicalIndex(ProvostXMemory.Abstractions.MemoryScope,ProvostXMemory.Lexical.ILexicalIndex)">RegisterLexicalIndex(MemoryScope, ILexicalIndex)</h4>
+  <div class="markdown level1 summary">Registers (or replaces) the lexical index for one exact scope.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RegisterLexicalIndex(MemoryScope scope, ILexicalIndex index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">scope</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Lexical.ILexicalIndex.html">ILexicalIndex</a></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_RegisterRecordProvider_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.RegisterRecordProvider*"></a>
+  <h4 id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_RegisterRecordProvider_ProvostXMemory_Abstractions_MemoryScope_System_Func_ProvostXMemory_Abstractions_MemoryScope_System_Threading_CancellationToken_System_Threading_Tasks_Task_System_Collections_Generic_IReadOnlyList_ProvostXMemory_Abstractions_MemoryRecord____" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.RegisterRecordProvider(ProvostXMemory.Abstractions.MemoryScope,System.Func{ProvostXMemory.Abstractions.MemoryScope,System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{ProvostXMemory.Abstractions.MemoryRecord}}})">RegisterRecordProvider(MemoryScope, Func&lt;MemoryScope, CancellationToken, Task&lt;IReadOnlyList&lt;MemoryRecord&gt;&gt;&gt;)</h4>
+  <div class="markdown level1 summary">Registers (or replaces) the record provider for one exact scope.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RegisterRecordProvider(MemoryScope scope, Func&lt;MemoryScope, CancellationToken, Task&lt;IReadOnlyList&lt;MemoryRecord&gt;&gt;&gt; provider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">scope</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html">MemoryRecord</a>&gt;&gt;&gt;</td>
+        <td><span class="parametername">provider</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_RegisterVectorIndex_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.RegisterVectorIndex*"></a>
+  <h4 id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_RegisterVectorIndex_ProvostXMemory_Abstractions_MemoryScope_ProvostXMemory_VectorIndex_IVectorIndex_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.RegisterVectorIndex(ProvostXMemory.Abstractions.MemoryScope,ProvostXMemory.VectorIndex.IVectorIndex)">RegisterVectorIndex(MemoryScope, IVectorIndex)</h4>
+  <div class="markdown level1 summary">Registers (or replaces) the vector index for one exact scope.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RegisterVectorIndex(MemoryScope scope, IVectorIndex index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">scope</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.VectorIndex.IVectorIndex.html">IVectorIndex</a></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_Reset_" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.Reset*"></a>
+  <h4 id="ProvostXMemory_Retrieval_InMemoryScopeIndexRegistry_Reset" data-uid="ProvostXMemory.Retrieval.InMemoryScopeIndexRegistry.Reset">Reset()</h4>
+  <div class="markdown level1 summary">Removes every registration (all scopes); used by full rebuilds.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Reset()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="ProvostXMemory.Retrieval.IScopeIndexRegistry.html">IScopeIndexRegistry</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

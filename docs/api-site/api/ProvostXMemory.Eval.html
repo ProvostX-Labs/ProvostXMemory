@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Namespace ProvostXMemory.Eval | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Namespace ProvostXMemory.Eval | ProvostXMemory API ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.Eval">
+
+  <h1 id="ProvostXMemory_Eval" data-uid="ProvostXMemory.Eval" class="text-break">Namespace ProvostXMemory.Eval</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">
+Classes
+</h3>
+      <h4><a class="xref" href="ProvostXMemory.Eval.ClusterHashEmbedder.html">ClusterHashEmbedder</a></h4>
+      <section>Deterministic fake embedder for eval runs — NOT a real model. Cluster-preserving:
+every token maps to a fixed slot from a stable FNV-1a hash; each of a record's tokens
+adds a fixed cluster id + token hash signature so similar content (shared cluster
+terms) lands near the same direction, with per-record seeded noise amplitude only.
+No randomness at embed time: same text → same vector, always.</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.DeterministicEvalCorpus.html">DeterministicEvalCorpus</a></h4>
+      <section>Seeded synthetic corpus: N records per scope across M scopes, round-robin assigned to
+keyword clusters (exact balance) so every scope/cluster pair yields the same number of
+expected matches per query. Content
+is a seeded shuffle of the record's cluster terms plus filler words, one hard-negative
+term from a seeded foreign cluster, and one seeded noise token — derivable relevance
+without an LLM: the expected matches for a cluster query are exactly that cluster's
+records. Identical seeds yield byte-identical corpora, verified via <a class="xref" href="ProvostXMemory.Eval.DeterministicEvalCorpus.html#ProvostXMemory_Eval_DeterministicEvalCorpus_DeterminismHash">DeterminismHash()</a>.</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.DeterministicEvalCorpus.CorpusRecord.html">DeterministicEvalCorpus.CorpusRecord</a></h4>
+      <section></section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.EvalCase.html">EvalCase</a></h4>
+      <section>One golden retrieval case: a query bound to a scope plus the record ids a good
+retriever should surface. Relevance is binary (1.0) unless graded weights are given.
+The query's TopK is overridden by the eval runner options' TopK at run time.</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.EvalCaseMetrics.html">EvalCaseMetrics</a></h4>
+      <section>Metrics for one eval case: Recall@k, Precision@k, MRR and NDCG@k over the ranked
+    result ids judged against the case's golden relevance.</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.EvalCaseSet.html">EvalCaseSet</a></h4>
+      <section>A named set of golden eval cases grouped under one logical set id. Case ids must be
+unique within a scope (cross-scope ids may repeat); the set is immutable after creation.</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.EvalCaseTrace.html">EvalCaseTrace</a></h4>
+      <section>Per-case ranked outcome: returned ids with their graded relevance gains and
+    how many returned records came from a scope other than the case's own (isolation guard).</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.EvalCaseTraceHit.html">EvalCaseTraceHit</a></h4>
+      <section>One returned id with its graded relevance gain for this case.</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.EvalMetricBreakdownEntry.html">EvalMetricBreakdownEntry</a></h4>
+      <section>Metric means for a breakdown group (scope or retriever stage).</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.EvalMetricMath.html">EvalMetricMath</a></h4>
+      <section>The metric formulas, implemented independently of any search engine and unit-tested
+against hand-computed values:
+<ul><li>Recall@k = |relevant ∩ top-k| / |relevant| (0 when no relevant ids).</li><li>Precision@k = |relevant ∩ top-k| / k (unfilled top-k counts against precision).</li><li>MRR = 1 / rank of the first relevant hit, else 0.</li><li>NDCG@k = DCG@k / IDCG@k with DCG = Σ relᵢ / log₂(rank + 1), rank starting at 1.</li></ul>
+All instance methods (no static state shared across instances).</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.EvalMetricThresholds.html">EvalMetricThresholds</a></h4>
+      <section>Minimum metric values for the aggregate <a class="xref" href="ProvostXMemory.Eval.EvalReport.html">EvalReport</a>. A violation is any
+actual value strictly below its threshold. All thresholds optional (null = unchecked).</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.EvalMetrics.html">EvalMetrics</a></h4>
+      <section>Aggregate over all cases: plain means of the per-case metric values.</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.EvalReport.html">EvalReport</a></h4>
+      <section>Serializable result of running an <a class="xref" href="ProvostXMemory.Eval.EvalCaseSet.html">EvalCaseSet</a>: per-case metrics, the
+aggregate, per-scope and per-stage breakdowns, threshold violations, and the per-case
+ranked id lists (with graded gains) for diffing. JSON-ready via System.Text.Json.</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.EvalReportJson.html">EvalReportJson</a></h4>
+      <section>JSON (de)serialization for <a class="xref" href="ProvostXMemory.Eval.EvalReport.html">EvalReport</a> (System.Text.Json).</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.MemoryScopeComparer.html">MemoryScopeComparer</a></h4>
+      <section>Ordinal scope comparison helper (Kind + Id); shared by eval components.</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.MetricThresholdViolation.html">MetricThresholdViolation</a></h4>
+      <section>One threshold violation: metric name, actual vs required.</section>
+      <h4><a class="xref" href="ProvostXMemory.Eval.MetricThresholdViolations.html">MetricThresholdViolations</a></h4>
+      <section>Immutable violation list; empty when all thresholds pass.</section>
+
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

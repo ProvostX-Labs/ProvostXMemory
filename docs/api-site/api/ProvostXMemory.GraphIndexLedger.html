@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class GraphIndexLedger | ProvostXMemory API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class GraphIndexLedger | ProvostXMemory API ">
+    
+    <meta name="description" content="Index-time graph maintenance over the scope-pinned  (resolved via ): per record, the wired &#39;s entities/relations are upserted for the record&#39;s scope only; when a record is forgotten, its mentions are dropped by re-extracting the scope&#39;s remaining snapshot. The ledger itself holds no per-record entity cache — graph stores accumulate weight by design, so Forget rebuilds the affected entity mention lists from the surviving records. Scope comes from the record; the resolver is scope-exact by contract.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ProvostXMemory.GraphIndexLedger">
+
+
+
+  <h1 id="ProvostXMemory_GraphIndexLedger" data-uid="ProvostXMemory.GraphIndexLedger" class="text-break">Class GraphIndexLedger</h1>
+  <div class="markdown level0 summary">Index-time graph maintenance over the scope-pinned <a class="xref" href="ProvostXMemory.Graph.IMemoryGraphStore.html">IMemoryGraphStore</a>
+(resolved via <a class="xref" href="ProvostXMemory.Graph.IMemoryGraphStoreResolver.html">IMemoryGraphStoreResolver</a>): per record, the wired
+<a class="xref" href="ProvostXMemory.Graph.IEntityExtractor.html">IEntityExtractor</a>'s entities/relations are upserted for the record's
+scope only; when a record is forgotten, its mentions are dropped by re-extracting
+the scope's remaining snapshot. The ledger itself holds no per-record entity cache —
+graph stores accumulate weight by design, so Forget rebuilds the affected entity
+mention lists from the surviving records. Scope comes from the record; the resolver
+is scope-exact by contract.</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">GraphIndexLedger</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ProvostXMemory.html">ProvostXMemory</a></h6>
+  <h6><strong>Assembly</strong>: ProvostXMemory.dll</h6>
+  <h5 id="ProvostXMemory_GraphIndexLedger_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class GraphIndexLedger</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <a id="ProvostXMemory_GraphIndexLedger__ctor_" data-uid="ProvostXMemory.GraphIndexLedger.#ctor*"></a>
+  <h4 id="ProvostXMemory_GraphIndexLedger__ctor_ProvostXMemory_Graph_IEntityExtractor_System_Func_ProvostXMemory_Abstractions_MemoryScope_ProvostXMemory_Graph_IMemoryGraphStore__System_Func_ProvostXMemory_Abstractions_MemoryScope_System_Threading_CancellationToken_System_Threading_Tasks_Task_System_Collections_Generic_IReadOnlyList_ProvostXMemory_Abstractions_MemoryRecord____" data-uid="ProvostXMemory.GraphIndexLedger.#ctor(ProvostXMemory.Graph.IEntityExtractor,System.Func{ProvostXMemory.Abstractions.MemoryScope,ProvostXMemory.Graph.IMemoryGraphStore},System.Func{ProvostXMemory.Abstractions.MemoryScope,System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{ProvostXMemory.Abstractions.MemoryRecord}}})">GraphIndexLedger(IEntityExtractor, Func&lt;MemoryScope, IMemoryGraphStore&gt;, Func&lt;MemoryScope, CancellationToken, Task&lt;IReadOnlyList&lt;MemoryRecord&gt;&gt;&gt;)</h4>
+  <div class="markdown level1 summary">Creates the ledger. <code class="paramref">storeResolver</code> must return the scope-pinned
+graph store; <code class="paramref">recordsProvider</code> the scope's record snapshot
+(typically the store's SnapshotAsync closure).</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GraphIndexLedger(IEntityExtractor extractor, Func&lt;MemoryScope, IMemoryGraphStore&gt; storeResolver, Func&lt;MemoryScope, CancellationToken, Task&lt;IReadOnlyList&lt;MemoryRecord&gt;&gt;&gt; recordsProvider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Graph.IEntityExtractor.html">IEntityExtractor</a></td>
+        <td><span class="parametername">extractor</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a>, <a class="xref" href="ProvostXMemory.Graph.IMemoryGraphStore.html">IMemoryGraphStore</a>&gt;</td>
+        <td><span class="parametername">storeResolver</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html">MemoryRecord</a>&gt;&gt;&gt;</td>
+        <td><span class="parametername">recordsProvider</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <a id="ProvostXMemory_GraphIndexLedger_ApplyAsync_" data-uid="ProvostXMemory.GraphIndexLedger.ApplyAsync*"></a>
+  <h4 id="ProvostXMemory_GraphIndexLedger_ApplyAsync_ProvostXMemory_Abstractions_MemoryScope_ProvostXMemory_Abstractions_MemoryRecord_System_Threading_CancellationToken_" data-uid="ProvostXMemory.GraphIndexLedger.ApplyAsync(ProvostXMemory.Abstractions.MemoryScope,ProvostXMemory.Abstractions.MemoryRecord,System.Threading.CancellationToken)">ApplyAsync(MemoryScope, MemoryRecord, CancellationToken)</h4>
+  <div class="markdown level1 summary">Extracts entities/relations from one record and upserts them into its scope's graph store.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ApplyAsync(MemoryScope scope, MemoryRecord record, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">scope</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html">MemoryRecord</a></td>
+        <td><span class="parametername">record</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_GraphIndexLedger_DropScopeRecord_" data-uid="ProvostXMemory.GraphIndexLedger.DropScopeRecord*"></a>
+  <h4 id="ProvostXMemory_GraphIndexLedger_DropScopeRecord_ProvostXMemory_Abstractions_MemoryScope_System_String_" data-uid="ProvostXMemory.GraphIndexLedger.DropScopeRecord(ProvostXMemory.Abstractions.MemoryScope,System.String)">DropScopeRecord(MemoryScope, string)</h4>
+  <div class="markdown level1 summary">Fire-and-forget variant used by ForgetAsync (rebuild is best-effort, never blocks the delete path).</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DropScopeRecord(MemoryScope scope, string forgottenRecordId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">scope</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">forgottenRecordId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_GraphIndexLedger_DropScopeRecordAsync_" data-uid="ProvostXMemory.GraphIndexLedger.DropScopeRecordAsync*"></a>
+  <h4 id="ProvostXMemory_GraphIndexLedger_DropScopeRecordAsync_ProvostXMemory_Abstractions_MemoryScope_System_String_System_Threading_CancellationToken_" data-uid="ProvostXMemory.GraphIndexLedger.DropScopeRecordAsync(ProvostXMemory.Abstractions.MemoryScope,System.String,System.Threading.CancellationToken)">DropScopeRecordAsync(MemoryScope, string, CancellationToken)</h4>
+  <div class="markdown level1 summary">Rebuilds mention lists for one scope from its surviving records: the forgotten
+record's mentions are removed by re-running extraction over the remaining snapshot
+for every entity/relation the store still lists for the scope. Records the store
+no longer holds contribute nothing — the re-extraction result replaces mention
+membership for the rebuilt entities.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DropScopeRecordAsync(MemoryScope scope, string forgottenRecordId, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryScope.html">MemoryScope</a></td>
+        <td><span class="parametername">scope</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">forgottenRecordId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_GraphIndexLedger_IsClusterSummary_" data-uid="ProvostXMemory.GraphIndexLedger.IsClusterSummary*"></a>
+  <h4 id="ProvostXMemory_GraphIndexLedger_IsClusterSummary_ProvostXMemory_Abstractions_MemoryRecord_" data-uid="ProvostXMemory.GraphIndexLedger.IsClusterSummary(ProvostXMemory.Abstractions.MemoryRecord)">IsClusterSummary(MemoryRecord)</h4>
+  <div class="markdown level1 summary">Pure predicate: the record is a cluster summary produced by <a class="xref" href="ProvostXMemory.Consolidation.IClusterSummarizer.html">IClusterSummarizer</a>
+(identified by the "cluster-summary" meta flag; the flag value is not interpreted).</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsClusterSummary(MemoryRecord record)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html">MemoryRecord</a></td>
+        <td><span class="parametername">record</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="ProvostXMemory_GraphIndexLedger_RecordClusterSummaryAsync_" data-uid="ProvostXMemory.GraphIndexLedger.RecordClusterSummaryAsync*"></a>
+  <h4 id="ProvostXMemory_GraphIndexLedger_RecordClusterSummaryAsync_ProvostXMemory_Abstractions_MemoryRecord_System_Threading_CancellationToken_" data-uid="ProvostXMemory.GraphIndexLedger.RecordClusterSummaryAsync(ProvostXMemory.Abstractions.MemoryRecord,System.Threading.CancellationToken)">RecordClusterSummaryAsync(MemoryRecord, CancellationToken)</h4>
+  <div class="markdown level1 summary">Records one <a class="xref" href="ProvostXMemory.Consolidation.IClusterSummarizer.html">IClusterSummarizer</a>-produced summary as a graph cluster: the
+summary's member record ids are resolved against the scope's snapshot, members are
+re-extracted (one batch, same discipline as <a class="xref" href="ProvostXMemory.GraphIndexLedger.html#ProvostXMemory_GraphIndexLedger_ApplyAsync_ProvostXMemory_Abstractions_MemoryScope_ProvostXMemory_Abstractions_MemoryRecord_System_Threading_CancellationToken_">ApplyAsync(MemoryScope, MemoryRecord, CancellationToken)</a>) and every entity
+attributable to at least one member becomes a cluster member, linked to the summary
+record id. Entities the extractor lists without per-record attribution (empty
+RecordIds) count as members too — they were extracted from these very records.
+Unresolvable member ids are skipped (partial clusters beat dropped clusters); a record
+without the cluster-summary flag or cluster-id meta, or with no attributable entities,
+records nothing and returns null. Scope comes from the summary record itself, so the
+write stays scope-bound by construction.</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;GraphCluster?&gt; RecordClusterSummaryAsync(MemoryRecord summary, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ProvostXMemory.Abstractions.MemoryRecord.html">MemoryRecord</a></td>
+        <td><span class="parametername">summary</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ProvostXMemory.Graph.GraphCluster.html">GraphCluster</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="../index.html">Home</a>&ensp;&middot;&ensp;<a href="#top">Back to top</a>
+            </span>
+      ProvostXMemory — MIT
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
